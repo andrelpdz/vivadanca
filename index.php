@@ -2,7 +2,7 @@
 $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : "home";
 $titulo = isset($_GET['titulo']) ? $_GET['titulo'] : "Sorocaba 60+";
 
-$caminho = __DIR__ . "/pages/" . $pagina . ".html";
+$caminho = __DIR__ . "/pages/" . $pagina . ".html"; //ooooo
 $raiz = str_contains($_SERVER['HTTP_HOST'], 'localhost') ? "/projetodanca" : "" ;
 
 $v = md5(date('Y-m-d H:m:s'));
