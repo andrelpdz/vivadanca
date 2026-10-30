@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="../assets/css/cadastro.css">
+    <title>Cadastro</title>
+</head>
+<body class="cadastro-page">
+    <div class="cadastro-main">
+        <div class="cadastro-container">
+            
+            <!-- Imagem -->
+            <div class="left">
+                <div>
+                    <img src="../assets/img/image.png" alt="" >
+                </div>
+            </div>
+            
+            <!-- cadastro -->
+            <div class="auth">
+                <div class="text-cadastro">
+                    <h1>VivaDança Cadastro</h1>
+                    <p class="cadastro-subtitle">Crie a sua conta</p>
+                </div>
+
+                <div class="painel-auth form-cadastro"  >
+                    
+                    <form class="form-cadastro" id="auth" action="../backend/registro_login.php" method="post">
+                        <div class="form-cadastro">s
+                            <label for="cadastroNome">Nome</label>
+                            <input id="cadastroNome" name="nome" type="text" placeholder="Nome Completo" required>
+                        </div>
+
+                        <div class="form-cadastro">
+                            <label for="cadastroEmail">E-mail</label>
+                            <input id="cadastroEmail" name="email" type="email" placeholder="seuemail@exemplo.com.br" autocomplete="username" required>
+                        </div>
+                    
+                        <div class="form-passwd">
+                            <label for="cadastroPassword">Senha</label>
+                            <input id="cadastroPassword" name="senha" type="password" placeholder="SENHA" autocomplete="current-password" required>
+                        </div>
+                    
+                        <button class="btn-submit" type="submit">Cadastrar</button>
+                    </form>
+                    <div class="voltar-home">
+                        <a href="../">voltar</a>
+                    </div>
+
+      
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

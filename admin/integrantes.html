@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrante</title>
+</head>
+<body>
+
+    <a href="cadastro_evento.html"> ir para cadastro evento</a><br>
+    <a href="cadastro_conquista.html">Cadastro Conquista</a><br>
+    <a href="cadastro_coreografia.html"> ir para cadastro de coreografia</a><br>
+
+    <br>
+
+    <form action="../backend/api_integrante.php" method="POST" enctype="multipart/form-data">
+        <input type="text" name="nome" placeholder="Nome" required value="teste"><br><br>
+        <input type="text" name="descricao" placeholder="descricao" required value="teste"><br><br>
+        <input type="file" id="foto" name="foto"><br><br>
+        <label for="">Integrante ativo: </label>
+        <input type="checkbox" name="ativo" checked><br><br>
+        <input type="submit" value="Cadastrar">
+    </form>
+
+    <section id="integrantes">
+
+    </section>
+    
+    <script src="../assets/js/integrantes.js"></script>
+
+    
+</body>
+</html>

@@ -1,0 +1,37 @@
+
+body{
+    background-color: #F3EEE6;
+}
+
+h1{
+    color: #6E1F2A;
+}
+
+.dourado{
+    color: #C29A4A;
+}
+
+.grid-integrantes{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px 30px;
+}
+
+.integrante{
+    text-align: center;
+    min-width: 0;
+    max-width: 200px;
+}
+
+.integrante a{
+    text-decoration: none;
+}
+
+.integrante img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.integrante p{
+    color: #0E1B2B;
+}

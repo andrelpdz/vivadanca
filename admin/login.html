@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
+    <title>Document</title>
+</head>
+<body class="login-page">
+    <div class="login-main">
+        <div class="login-container">
+            
+            <!-- Imagem -->
+            <div class="left">
+                <div>
+                    <img src="../assets/img/image.png" alt="" >
+                </div>
+            </div>
+            
+            <!-- login -->
+            <div class="auth">
+                <div class="text-login">
+                    <h1>VivaDança Login</h1>
+                    <p class="login-subtitle">Entre na sua conta</p>
+                </div>
+
+                <div class="painel-auth form-login"  >
+                    
+                    <form class="form-login" id="auth" action="../backend/valida_login.php" method="post">
+                        <div class="form-login">
+                            <label for="loginEmail">E-mail</label>
+                            <input id="loginEmail" name="email" type="email" placeholder="seuemail@exemplo.com.br" autocomplete="username" required>
+                        </div>
+                    
+                        <div class="form-passwd">
+                            <label for="loginPassword">Senha</label>
+                            <input id="loginPassword" name="senha" type="password" placeholder="SENHA" autocomplete="current-password" required>
+                        </div>
+                    
+                        <button class="btn-submit" type="submit">Entrar</button>
+                    </form>
+                    <div class="voltar-home">
+                        <a href="../">voltar</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

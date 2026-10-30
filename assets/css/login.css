@@ -1,0 +1,80 @@
+/* pagina login */
+
+.login-pages{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+
+.login-container{
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.left{
+    width: 45%;
+    background-color: azure;
+}
+.left img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.auth{
+    width: 55%;
+    background: #941e1e;
+    background: linear-gradient(265deg, rgba(148, 30, 30, 0.45) 0%, rgba(255, 255, 255, 0.52) 100%);
+}
+
+
+
+.auth .text-login{
+    text-align: center;
+   color: #852a35;
+   margin-bottom: 8px;
+   margin-top: 10px;
+}
+
+.login-subtitle{
+    color: #756767;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.form-login label, .form-passwd label{
+    display: block;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 2px;
+}
+
+.form-login input:focus, form:focus{
+    outline: 2px solid #e4e0e1;
+    outline-offset:1px ;
+}
+
+.btn-submit{
+     width: 50%;
+     padding: 12px;
+     margin-top: 10px;
+     border: none;
+     border-radius: 5px;
+     background-color: #852a35;
+     color: white;
+     font: inherit;
+     font-weight: bold;
+     cursor: pointer;
+}
+
+.form-login{
+    text-align: center;
+    padding: 15px;
+}
