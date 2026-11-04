@@ -25,7 +25,10 @@ body {
         linear-gradient(135deg, #f8fafc, #eef2ff);
 }
 
-form{
+
+/* INTEGRANTES */
+
+.form-integrantes{
     display: table;
     padding: 20px;
     margin: 50px auto;
@@ -34,7 +37,7 @@ form{
     background-color: #ccc;
 }
 
-form input{
+.form-integrantes input{
     display: block;
     font-size: 1.2rem;
     padding: 8px;
@@ -44,11 +47,11 @@ form input{
     border-radius: 10px;
 }
 
-form label{
+.form-integrantes label{
     font-size: 1.2rem;
 }
 
-form input#ativo{
+.form-integrantes input#ativo{
     display: inline-block;
     width: 16px;
     height: 16px;
