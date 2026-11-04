@@ -1,80 +1,136 @@
-/* pagina login */
 
-.login-pages{
-    min-height: 100vh;
+/* Configuração geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.login-page {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+/* Área principal */
+.login-main {
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 10px;
+    align-items: center;
+    height: 100vh;
 }
 
-
-.login-container{
-    width: 100%;
-    max-width: 800px;
+/* Caixa do login */
+.login-container {
     display: flex;
-    border-radius: 10px;
+    background-color: white;
+    width: 800px;
+    min-height: 450px;
+    border-radius: 15px;
     overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.left{
-    width: 45%;
-    background-color: azure;
-}
-.left img{
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+/* Lado da imagem */
+.left {
+    width: 50%;
+    background-color: #d9b8e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.auth{
-    width: 55%;
-    background: #941e1e;
-    background: linear-gradient(265deg, rgba(148, 30, 30, 0.45) 0%, rgba(255, 255, 255, 0.52) 100%);
+.left img {
+    width: 90%;
+    border-radius: 10px;
 }
 
+/* Área de autenticação */
+.auth {
+    width: 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-
-.auth .text-login{
+/* Título */
+.text-login {
     text-align: center;
-   color: #852a35;
-   margin-bottom: 8px;
-   margin-top: 10px;
+    margin-bottom: 30px;
 }
 
-.login-subtitle{
-    color: #756767;
+.text-login h1 {
+    color: #6b3c85;
+    font-size: 28px;
+}
+
+.login-subtitle {
+    color: #777;
+    margin-top: 10px;
+}
+
+/* Formulário */
+.form-login label,
+.form-passwd label {
+    display: block;
     margin-bottom: 8px;
-    margin-top: 8px;
+    color: #333;
 }
 
-.form-login label, .form-passwd label{
-    display: block;
-    font-weight: bold;
-    font-size: 15px;
-    margin: 2px;
+.form-login input,
+.form-passwd input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
 }
 
-.form-login input:focus, form:focus{
-    outline: 2px solid #e4e0e1;
-    outline-offset:1px ;
+/* Botão */
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #6b3c85;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-.btn-submit{
-     width: 50%;
-     padding: 12px;
-     margin-top: 10px;
-     border: none;
-     border-radius: 5px;
-     background-color: #852a35;
-     color: white;
-     font: inherit;
-     font-weight: bold;
-     cursor: pointer;
+.btn-submit:hover {
+    background-color: #512c68;
 }
 
-.form-login{
+/* Voltar */
+.voltar-home {
     text-align: center;
-    padding: 15px;
+    margin-top: 20px;
+}
+
+.voltar-home a {
+    color: #6b3c85;
+    text-decoration: none;
+}
+
+.voltar-home a:hover {
+    text-decoration: underline;
+}
+
+/* Celular */
+@media (max-width: 700px) {
+    .login-container {
+        width: 90%;
+        flex-direction: column;
+    }
+
+    .left {
+        display: none;
+    }
+
+    .auth {
+        width: 100%;
+        padding: 30px;
+    }
 }
