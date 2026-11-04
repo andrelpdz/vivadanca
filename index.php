@@ -1,4 +1,5 @@
 <?php
+// Pagina responsavel por carregar o conteudo de pages
 $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : "home";
 $titulo = isset($_GET['titulo']) ? $_GET['titulo'] : "Sorocaba 60+";
 
