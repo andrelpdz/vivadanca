@@ -53,7 +53,7 @@ function excluirFoto($pasta, $nome_foto){
 
     $nome_completo = "$caminhoInicial/$pasta/$nome_foto";
     if ( !is_file($nome_completo) || is_link($nome_completo) ){
-        throw new Exception("Arquivo invalido!");
+        return ;
     }
     return unlink($nome_completo);
 }

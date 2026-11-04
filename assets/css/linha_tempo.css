@@ -1,0 +1,427 @@
+/* ==============================================
+   COVER FLOW — HEADER & FOOTER LARGOS | IMAGENS CENTRALIZADAS
+   ============================================== */
+
+:root {
+    --background-radial-gradient: radial-gradient(rgb(255, 255, 255), rgb(192, 192, 192));
+    --font: .875rem/1.5 system-ui, sans-serif;
+    --font-color: rgb(0 0 0 / 1);
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+/* ==============================================
+   ESTRUTURA — HEADER E FOOTER LARGOS
+   ============================================== */
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--background-radial-gradient);
+}
+
+
+
+*:focus-visible,
+*::scroll-marker:focus-visible,
+*::scroll-button(*):focus-visible {
+    outline: 2px solid rgb(0 0 0 / 1);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgb(0 0 0 / .5);
+}
+
+@property --_cover-flow-nav-progress {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+}
+
+@property --_cover-flow-slide-distance {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+}
+
+@function --_calc-cover-flow-offset(--s, --d, --p) {
+    result: calc(var(--s) * 2 + var(--d) * 2 + var(--p) * 2);
+}
+
+@function --_supports-function-test() returns <length> {
+    result: 1px;
+}
+
+/* ==============================================
+   CARROSSEL — SÓ ELE CENTRALIZADO
+   ============================================== */
+.cover-flow {
+    --_cover-flow-image-width: 576;
+    --_cover-flow-image-height: 576;
+
+    --_cover-flow-scroll-button-size: clamp(1.5rem, min(7dvw, 7dvh), 2.5rem);
+    --_cover-flow-scroll-button-distance: clamp(.5rem, min(2dvw, 2dvh), .875rem);
+    --_cover-flow-scroll-button-image-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cpath fill='%23fff' d='M225 132.3 207.3 150 357.3 300 207.3 450 225 467.65 392.65 300 225 132.3Z'/%3E%3C/svg%3E");
+
+    --_cover-flow-scroll-marker-group-position: bottom;
+    --_cover-flow-scroll-marker-group-distance: clamp(.875rem, min(3dvw, 3dvh), 1.25rem);
+
+    --_cover-flow-scroll-marker-size: clamp(.25rem, min(2dvw, 2dvh), .938rem);
+    --_cover-flow-scroll-marker-size-active: clamp(1rem, min(4.5dvw, 4.5dvh), 2.5rem);
+    --_cover-flow-scroll-marker-distance: clamp(.25rem, min(1dvw, 1dvh), .5rem);
+
+    --_cover-flow-control-bg-color-base:   rgb(0 0 0 / .5);
+    --_cover-flow-control-bg-color-active: rgb(0 0 0 / 1);
+
+    --_cover-flow-control-transition-duration: .25s;
+    --_cover-flow-control-transition-timing-function: ease-in-out;
+
+    --_cover-flow-padding: clamp(3rem, min(12dvw, 12dvh), 4rem);
+
+    --_cover-flow-slide-rotate-y: 58deg;
+    --_cover-flow-slide-perspective: 1000px;
+
+    --_cover-flow-slide-scale-min: .66;
+    --_cover-flow-slide-scale-step: .5;
+
+    --_cover-flow-slide-stack-gutter: 3.25rem;
+    --_cover-flow-slide-stack-gap-factor: .2;
+
+    --_cover-flow-aspect-ratio: calc(var(--_cover-flow-image-width) / var(--_cover-flow-image-height));
+
+    --_cover-flow-size-max-x: calc(var(--_cover-flow-image-width) * 1px);
+    --_cover-flow-size-offset-x: calc(var(--_cover-flow-scroll-button-size) * 2 + var(--_cover-flow-scroll-button-distance) * 2 + var(--_cover-flow-padding) * 2);
+    --_cover-flow-size-offset-y: calc(var(--_cover-flow-scroll-marker-size) * 2 + var(--_cover-flow-scroll-marker-group-distance) * 2 + var(--_cover-flow-padding) * 2);
+
+    --_cover-flow-size-available-x: calc(100dvw - var(--_cover-flow-size-offset-x));
+    --_cover-flow-size-available-y: calc(100dvh - var(--_cover-flow-size-offset-y));
+
+    --_cover-flow-width: min(var(--_cover-flow-size-max-x), var(--_cover-flow-size-available-x), calc(var(--_cover-flow-size-available-y) * var(--_cover-flow-aspect-ratio)));
+
+    --_cover-flow-slide-neighbor-scale: max(var(--_cover-flow-slide-scale-min), calc(1 - var(--_cover-flow-slide-scale-step)));
+    --_cover-flow-slide-neighbor-visible-width: calc(var(--_cover-flow-width) * var(--_cover-flow-slide-neighbor-scale) * cos(var(--_cover-flow-slide-rotate-y)));
+
+    --_cover-flow-slide-stack-offset: calc(var(--_cover-flow-width) * .5 + var(--_cover-flow-slide-neighbor-visible-width) * .5 + var(--_cover-flow-slide-stack-gutter));
+    --_cover-flow-slide-stack-gap: calc(var(--_cover-flow-slide-neighbor-visible-width) * var(--_cover-flow-slide-stack-gap-factor));
+
+    --_cover-flow-peek-inline: max(0px, calc((100dvw - var(--_cover-flow-width)) * .5));
+
+    width: var(--_cover-flow-width);
+    aspect-ratio: var(--_cover-flow-aspect-ratio);
+    position: relative;
+    overflow: visible;
+    margin: 0 auto 3rem auto;
+    z-index: 2;
+}
+
+.cover-flow__scroller {
+    width: 100dvw;
+    height: 100%;
+    overflow: auto;
+    list-style-type: none;
+    padding-inline: var(--_cover-flow-peek-inline);
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scroll-marker-group: after;
+    scrollbar-width: none;
+    anchor-name: --_cover-flow-anchor;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+
+    display: flex;
+    overscroll-behavior: contain;
+    touch-action: pan-x;
+    isolation: isolate;
+    animation: cover-flow-nav-progress-animation 1ms linear both;
+    animation-timeline: scroll(self inline);
+}
+
+@keyframes cover-flow-nav-progress-animation {
+    from { --_cover-flow-nav-progress: 0; }
+    to   { --_cover-flow-nav-progress: 1; }
+}
+
+.cover-flow__scroller,
+.cover-flow__scroller * {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.cover-flow__scroller::-webkit-scrollbar {
+    display: none;
+}
+
+.cover-flow__scroller > li {
+    --_cover-flow-slide-index: calc(sibling-index() - 1);
+    --_cover-flow-slide-count: sibling-count();
+    --_cover-flow-nav-position: calc(var(--_cover-flow-nav-progress) * (var(--_cover-flow-slide-count) - 1));
+    --_cover-flow-slide-distance: calc(var(--_cover-flow-slide-index) - var(--_cover-flow-nav-position));
+    --_cover-flow-slide-distance-abs: abs(var(--_cover-flow-slide-distance));
+    --_cover-flow-slide-side: clamp(-1, var(--_cover-flow-slide-distance), 1);
+    --_cover-flow-slide-base-x: calc(var(--_cover-flow-slide-distance) * var(--_cover-flow-width));
+    --_cover-flow-slide-stack-x: calc(var(--_cover-flow-slide-side) * (var(--_cover-flow-slide-stack-offset) + max(0, calc(var(--_cover-flow-slide-distance-abs) - 1)) * var(--_cover-flow-slide-stack-gap)));
+    --_cover-flow-slide-translate-x: calc(var(--_cover-flow-slide-stack-x) - var(--_cover-flow-slide-base-x));
+    --_cover-flow-slide-scale: max(var(--_cover-flow-slide-scale-min), calc(1 - var(--_cover-flow-slide-distance-abs) * var(--_cover-flow-slide-scale-step)));
+
+    position: relative;
+    z-index: calc(1000 - round(nearest, calc(var(--_cover-flow-slide-distance-abs) * 10), 1));
+    flex: 0 0 var(--_cover-flow-width);
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    view-timeline: --_cover-flow-timeline inline;
+    view-timeline-inset: var(--_cover-flow-peek-inline);
+}
+
+.cover-flow__scroller > li:nth-child(3) {
+    scroll-initial-target: nearest;
+}
+
+.cover-flow__scroller > li > div {
+    width: 100%;
+    height: 100%;
+    translate: var(--_cover-flow-slide-translate-x) 0;
+    display: grid;
+    place-items: center;
+}
+
+.cover-flow__scroller > li > div > p{
+    margin-top: -120px;
+    position: absolute;
+    background-color: #ffffffcc;
+    padding: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+.cover-flow__scroller > li > div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+
+    user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
+
+    transform-origin: center center;
+    backface-visibility: hidden;
+
+    transform:
+        perspective(var(--_cover-flow-slide-perspective))
+        rotateY(calc(var(--_cover-flow-slide-side) * var(--_cover-flow-slide-rotate-y) * -1))
+        scale(var(--_cover-flow-slide-scale));
+}
+
+.cover-flow__scroller > li > div > img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+
+    user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;    
+}
+
+.cover-flow__scroller > li > div > img::before {
+    content: "Imagem indisponível";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: var(--background-radial-gradient);
+    padding: 1rem;
+    font: var(--font);
+    color: var(--font-color);
+    pointer-events: none;
+}
+
+/* ==============================================
+   SCROLL MARKERS
+   ============================================== */
+.cover-flow__scroller::scroll-marker-group {
+    position: absolute;
+    position-anchor: --_cover-flow-anchor;
+    left: anchor(center);
+    translate: -50% 0;
+    inline-size: max-content;
+    max-inline-size: calc(100dvw - var(--_cover-flow-padding) * 2);
+    min-height: var(--_cover-flow-scroll-marker-size);
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: var(--_cover-flow-scroll-marker-distance);
+
+    top: if(
+        style(--_cover-flow-scroll-marker-group-position: top): calc(anchor(var(--_cover-flow-scroll-marker-group-position)) - var(--_cover-flow-scroll-marker-group-distance) - var(--_cover-flow-scroll-marker-size));
+        style(--_cover-flow-scroll-marker-group-position: center): calc(anchor(var(--_cover-flow-scroll-marker-group-position)) - var(--_cover-flow-scroll-marker-size) * .5);
+        style(--_cover-flow-scroll-marker-group-position: bottom): calc(anchor(var(--_cover-flow-scroll-marker-group-position)) + var(--_cover-flow-scroll-marker-group-distance));
+        else: calc(100% + var(--_cover-flow-scroll-marker-group-distance));
+    );
+}
+
+.cover-flow__scroller > li::scroll-marker {
+    content: "";
+    flex: 0 0 auto;
+    width: var(--_cover-flow-scroll-marker-size);
+    height: var(--_cover-flow-scroll-marker-size);
+    border-radius: 999px;
+    background-color: var(--_cover-flow-control-bg-color-base);
+    transition-property: background-color;
+    transition-duration: var(--_cover-flow-control-transition-duration);
+    transition-timing-function: var(--_cover-flow-control-transition-timing-function);
+    animation-name: cover-flow-marker-expand-animation;
+    animation-duration: 1ms;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-timeline: --_cover-flow-timeline;
+    animation-range: cover;
+}
+
+.cover-flow__scroller > li::scroll-marker:hover,
+.cover-flow__scroller > li::scroll-marker:target-current {
+    background-color: var(--_cover-flow-control-bg-color-active);
+}
+
+@keyframes cover-flow-marker-expand-animation {
+    0%, 100% { width: var(--_cover-flow-scroll-marker-size); }
+    50%      { width: var(--_cover-flow-scroll-marker-size-active); }
+}
+
+/* ==============================================
+   BOTÕES DE NAVEGAÇÃO
+   ============================================== */
+.cover-flow__scroller::scroll-button(*) {
+    position: absolute;
+    top: 50%;
+    width: var(--_cover-flow-scroll-button-size);
+    aspect-ratio: 1;
+    cursor: pointer;
+    translate: 0 -50%;
+    background-color: var(--_cover-flow-control-bg-color-base);
+    background-image: var(--_cover-flow-scroll-button-image-url);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+    border: 0;
+    transition-property: background-color, opacity;
+    transition-duration: var(--_cover-flow-control-transition-duration);
+    transition-timing-function: var(--_cover-flow-control-transition-timing-function);
+}
+
+.cover-flow__scroller::scroll-button(left) {
+    content: "" / "Imagem anterior";
+    right: calc(50% + var(--_cover-flow-width) * .5 + var(--_cover-flow-scroll-button-distance));
+    rotate: 180deg;
+}
+
+.cover-flow__scroller::scroll-button(right) {
+    content: "" / "Próxima imagem";
+    left: calc(50% + var(--_cover-flow-width) * .5 + var(--_cover-flow-scroll-button-distance));
+}
+
+.cover-flow__scroller::scroll-button(*):hover {
+    background-color: var(--_cover-flow-control-bg-color-active);
+}
+
+.cover-flow__scroller::scroll-button(*):disabled,
+.cover-flow__scroller::scroll-button(*):disabled:hover {
+    background-color: var(--_cover-flow-control-bg-color-base);
+    opacity: .25;
+    cursor: auto;
+}
+
+/* ==============================================
+   ACESSIBILIDADE
+   ============================================== */
+@media (prefers-reduced-motion: reduce) {
+    .cover-flow {
+        --_cover-flow-control-transition-duration: 0s;
+        --_cover-flow-control-transition-timing-function: linear;
+    }
+    .cover-flow__scroller {
+        scroll-behavior: auto;
+    }
+    .cover-flow__scroller > li::scroll-marker {
+        animation: none;
+    }
+    .cover-flow__scroller > li::scroll-marker:target-current {
+        width: var(--_cover-flow-scroll-marker-size-active);
+    }
+}
+
+/* ==============================================
+   TEXTO INFORMATIVO
+   ============================================== */
+.cover-flow__info {
+    position: absolute;
+    left: 0;
+    top: 1rem;
+    width: 100%;
+    padding: 0 1.25rem;
+    font: var(--font);
+    color: var(--font-color);
+    text-align: center;
+    z-index: 3;
+}
+
+p a {
+    color: inherit;
+}
+
+/* ==============================================
+   FALLBACK COMPLETO
+   ============================================== */
+.cover-flow__unsupported {
+    display: none;
+}
+
+@supports not (
+    (width: calc(sibling-index() * 1px)) and
+    (width: calc(sibling-count() * 1px)) and
+    (width: round(nearest, 1.5px, 1px)) and
+    (width: calc(abs(-1) * 1px)) and
+    (width: calc(cos(45deg) * 1px)) and
+    (width: --_supports-function-test()) and
+    (width: if(style(--_supports-if: true): 1px; else: 2px)) and
+    (animation-timeline: scroll(self inline)) and
+    (view-timeline: --_supports-timeline inline) and
+    (scroll-initial-target: nearest) and
+    (anchor-name: --_supports-anchor) and
+    (position-anchor: --_supports-anchor) and
+    (scroll-marker-group: after) and
+    selector(.cover-flow__scroller::scroll-marker-group) and
+    selector(.cover-flow__scroller > li::scroll-marker) and
+    selector(.cover-flow__scroller::scroll-button(left)) and
+    selector(.cover-flow__scroller::scroll-button(right))
+) {
+    .cover-flow__info,
+    .cover-flow {
+        display: none;
+    }
+
+    .cover-flow__unsupported {
+        display: block;
+        max-width: 36rem;
+        margin: 3rem auto;
+        padding: 2rem 1.25rem;
+        font: var(--font);
+        color: var(--font-color);
+        text-align: center;
+        background-color: rgb(255 255 255 / 70%);
+        border-radius: .5rem;
+    }
+}

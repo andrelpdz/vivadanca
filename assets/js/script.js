@@ -52,12 +52,12 @@ document.querySelector("#agendaBtEsq").addEventListener("click", () => {
 // Caminho relativo à PÁGINA (não ao CSS), por isso é "assets/img/..." e não "../img/..."
 // Troque pelas 6 fotos reais da equipe
 const fotos = [
-    "assets/img/banner.png",
-    "assets/img/banner2.png",
-    "assets/img/banner3.png",
-    "assets/img/banner4.png",
-    "assets/img/banner5.png",
-    "assets/img/banner6.png"
+    "assets/img/palco1.png",
+    "assets/img/palco2.png",
+    "assets/img/palco3.png",
+    "assets/img/palco4.png",
+    "assets/img/palco5.png",
+    "assets/img/palco6.png"
 ];
 let fotoAtual = 0;
 

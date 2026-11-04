@@ -1,0 +1,86 @@
+/* -> GERAL */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --links:#C29A4A;
+    --azul:#0F1B2D;
+    --vinho:#6E1F2A;
+    --bege: #f3eee6;
+    --texto: #333;
+    --bgsub: #E9D9BC;   
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-size: 14px;
+}
+
+form{
+    display: table;
+    padding: 20px;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 6px 0 #000;
+    background-color: #ccc;
+}
+
+form input{
+    display: block;
+    font-size: 1.2rem;
+    padding: 8px;
+    margin: 10px 0;
+    background-color: #E9D9BC;
+    border: 1px solid #999;
+    border-radius: 10px;
+}
+
+form label{
+    font-size: 1.2rem;
+}
+
+form input#ativo{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+}
+
+/* LISTA INTEGRANTES */
+section#integrantes{}
+section#integrantes div{
+    display: inline-block;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 0 0 6px 0 #000;
+}
+section#integrantes div img{
+    width: 200px;
+    height: 200px;
+}
+section#integrantes div p{
+    position: absolute;
+    width: 190px;
+    font-size: 1.2rem;
+    padding: 0 5px;
+    margin-top: -26px;
+    background-color: #FFFFFFcc;
+    border-radius: 0 0 10px 10px;
+}
+
+section#integrantes div span{
+    position: absolute;
+    display: block;
+    margin-top: -200px;
+    margin-left: 95px;
+}
+section#integrantes div span button{
+    display: inline-block;
+    padding: 3px;
+}
+
+/*LOGIN*/

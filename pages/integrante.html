@@ -1,0 +1,157 @@
+<!-- CAMINHO DA PÁGINA -->
+<div class="integrante-caminho">
+    <a href="?pagina=trajetoria">Trajetória</a>
+    <span>›</span>
+    <a href="?pagina=integrantes">Integrantes</a>
+    <span>›</span>
+    <span>Helena Souza</span>
+</div>
+
+<!-- PERFIL DO INTEGRANTE -->
+<section class="perfil-integrante">
+
+    <div class="perfil-foto">
+        <img src="assets/integrantes/integrante.png"
+             alt="Helena Souza">
+    </div>
+
+    <div class="perfil-texto">
+        <h1>Helena Souza</h1>
+        <h2>Fundadora</h2>
+
+        <p>
+            Maria Helena de Souza é bailarina do Viva Dança
+            Sorocaba 60+ e uma das integrantes com trajetória
+            mais antiga na formação que deu origem ao grupo.
+            Nascida em Botucatu, mudou-se ainda jovem para
+            Sorocaba e construiu carreira como funcionária
+            pública estadual, aposentando-se como diretora
+            administrativa.
+        </p>
+
+        <p>
+            Entrou na dança coletiva aos 55 anos, cinco anos
+            antes de poder competir nos Jogos Regionais
+            do Idoso em Sorocaba (JORI).
+        </p>
+
+        <p>
+            Desde então, participa de apresentações, festivais
+            e competições, incluindo o Festival de Dança de
+            Joinville e uma apresentação em programa nacional
+            de televisão. Para Helena, a dança é força, saúde
+            e afirmação da própria existência:
+            "Eu existo. Eu estou aqui."
+        </p>
+
+        <div class="perfil-informacoes">
+            <span>Idade: 60+</span>
+            <span>Cidade: Botucatu - SP</span>
+            <span>Desde: 2015</span>
+        </div>
+    </div>
+
+</section>
+
+<!-- ABAS -->
+<section class="integrante-conteudo">
+
+    <div class="integrante-abas">
+        <button class="aba"
+                onclick="mostrarAba('coreografias', this)">
+            COREOGRAFIAS</button>
+
+        <button class="aba ativa"
+                onclick="mostrarAba('conquistas', this)">
+            CONQUISTAS
+        </button>
+
+        <button class="aba"
+                onclick="mostrarAba('galeria', this)">
+            GALERIA
+        </button>
+    </div>
+
+    <!-- COREOGRAFIAS -->
+    <div id="coreografias" class="conteudo-aba" style="display: none;">
+        <p>Participou das coreografias:</p>
+
+        <div class="integrante-cards">
+
+            <div class="integrante-card">
+                <img src="assets/integrantes/integrante.png"
+                     alt="Indiana">
+                <div class="card-informacoes">
+                    <div>
+                        <h3>Indiana</h3>
+                        <p>2012</p>
+                    </div>
+                    <button class="botao-integrante">›</button>
+                </div>
+            </div>
+
+            <div class="integrante-card">
+                <img src="assets/integrantes/integrante.png"
+                     alt="Noite em Paris">
+                <div class="card-informacoes">
+                    <div>
+                        <h3>Noite em Paris</h3>
+                        <p>2014</p>
+                    </div>
+                    <button class="botao-integrante">›</button>
+                </div>
+            </div>
+
+            <div class="integrante-card">
+                <img src="assets/integrantes/integrante.png"
+                     alt="La Vita è Bella">
+                <div class="card-informacoes">
+                    <div>
+                        <h3>La Vita è Bella</h3>
+                        <p>2016</p>
+                    </div>
+                    <button class="botao-integrante">›</button>
+                </div>
+            </div>
+
+            <div class="integrante-card">
+                <img src="assets/integrantes/integrante.png"
+                     alt="Memórias">
+                <div class="card-informacoes">
+                    <div>
+                        <h3>Memórias</h3>
+                        <p>2018</p>
+                    </div>
+                    <button class="botao-integrante">›</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CONQUISTAS -->
+    <div id="conquistas" class="conteudo-aba">
+        <p>Festivais, competições, premiações e convites.</p>
+    </div>
+
+    <!-- GALERIA -->
+        <div id="galeria" class="conteudo-aba" style="display: none;">
+        <p class="galeria-integrante-legenda">Fotos de Helena em apresentações do Viva Dança.</p>
+        <div class="galeria-integrante-grid">
+            <figure>
+                <img src="assets/integrantes/integrante.png" alt="Helena dançando em uma apresentação">
+            </figure>
+        </div>
+    </div>
+
+</section>
+<script>
+function mostrarAba(id, botao) {
+    document.querySelectorAll('.conteudo-aba').forEach((aba) => {
+        aba.style.display = aba.id === id ? '' : 'none';
+    });
+    document.querySelectorAll('.integrante-abas .aba').forEach((item) => {
+        item.classList.toggle('ativa', item === botao);
+    });
+}
+</script>

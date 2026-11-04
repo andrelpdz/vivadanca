@@ -1,13 +1,12 @@
-/* -> GERAL */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 :root{
     --links:#C29A4A;
     --azul:#0F1B2D;
     --vinho:#6E1F2A;
     --bege: #f3eee6;
     --texto: #333;
-    --bgsub: #E9D9BC;   
+    --bgsub: #E9D9BC;
 }
 
 *{
@@ -64,7 +63,7 @@ body{
     display: block;
     color: var(--links);
     text-decoration: none;
-    font-size: 1.5rem;    
+    font-size: 1.5rem;
     padding: 5px;
 }
 
@@ -264,7 +263,7 @@ section.palco .palco-texto p{
     line-height: 1.9;
     letter-spacing: 0.1rem;
     margin-bottom: 15px;
-    
+
 }
 section.palco .palco-texto .destaque{
     font-weight: bold;
@@ -445,4 +444,2581 @@ section.galeria .item .descricao{
 
 .cards{
     color: aquamarine;
+}
+
+/* ===== Integrantes e eventos (Fernanda) ===== */
+/* SUBMENU DA PÁGINA INTEGRANTES */
+
+.integrantes-menu {
+    background-color: #E9D9BC;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.integrantes-menu ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.integrantes-menu li{
+    list-style: none;
+}
+
+.integrantes-menu a{
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #111;
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 20px 0 15px;
+    border-bottom: 3px solid transparent;
+}
+
+.integrantes-menu a:hover,
+.integrantes-menu .integrantes-ativo {
+    color: var(--vinho);
+    border-bottom-color: var(--vinho);
+}
+
+/* SEÇÃO INTEGRANTES*/
+.integrantes{
+    background-color: #F3eee6;
+    padding: 40px 10% 15px;
+}
+.integrantes-titulo {
+    font-family: "Cormorant Garamond", Serif;
+    font-size: 70px;
+    color: var(--vinho);
+    margin: 0;
+}
+
+/*SUBTÍTULO*/
+.integrantes-subtitulo{
+    font-family: "Cormorant Garamond", Serif;
+    font-size: 34px;
+    font-style: italic;
+    color: var(--links);
+    margin: 10px 0 20px;
+}
+.integrantes-descricao{
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    max-width: 600px;
+    color: #0E1B2B;
+    margin-bottom: 15px;
+}
+
+ /* GALERIA DE INTEGRANTES */
+
+section.galeria{
+    padding: 20px 10% 50px;
+    background-color: var(--bege);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+section.galeria .item{
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    background-color: #fffaf3;
+}
+section.galeria .item .foto{
+    width: 100%;
+    height: 230px;
+    background-image: url(../integrantes/integrante.png);
+    background-size: cover;
+    background-position: center;
+}
+section.galeria .item .descricao{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--azul);
+}
+
+
+/* PÁGINA INDIVIDUAL DO INTEGRANTE */
+
+.integrante-caminho {
+    padding: 25px 10%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    background-color: var(--bege);
+}
+
+.integrante-caminho a {
+    color: #666;
+    text-decoration: none;
+}
+
+/* PERFIL */
+
+.perfil-integrante {
+    display: flex;
+    gap: 35px;
+    padding: 10px 10% 40px;
+    background-color: var(--bege);
+    align-items: flex-start;
+}
+
+.perfil-foto {
+    width: 40%;
+    flex-shrink: 0;
+}
+
+.perfil-foto img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.perfil-texto {
+    flex: 1;
+    min-width: 0;
+}
+
+.perfil-texto h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 65px;
+    color: var(--azul);
+    margin: 0;
+}
+
+.perfil-texto h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--links);
+    margin: 0 0 15px;
+}
+
+.perfil-texto p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.perfil-informacoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: #666;
+}
+
+/* ABAS */
+
+.integrante-conteudo {
+    padding: 0 10% 50px;
+    background-color: var(--bege);
+}
+
+.integrante-abas {
+    display: flex;
+    border-bottom: 1px solid #aaa;
+}
+
+.integrante-abas .aba {
+    flex: 1;
+    padding: 20px;
+    border: none;
+    border-bottom: 4px solid transparent;
+    background: transparent;
+    color: #666;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.integrante-abas .aba.ativa {
+    color: var(--vinho);
+    border-bottom-color: var(--vinho);
+    font-weight: 600;
+}
+
+/* CARDS DAS COREOGRAFIAS */
+
+.conteudo-aba > p {
+    font-family: 'Montserrat', sans-serif;
+    color: #666;
+    margin: 30px 0 20px;
+}
+
+.integrante-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.integrante-card {
+    background-color: #fffaf3;
+    min-width: 0;
+}
+
+.integrante-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.card-informacoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+}
+
+.card-informacoes h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: var(--azul);
+    margin: 0;
+}
+
+.card-informacoes p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #777;
+    margin: 5px 0 0;
+}
+
+/* ===== AGENDA E EVENTOS ===== */
+
+/* BANNER */
+
+.eventos-banner {
+    display: flex;
+    background-color: var(--bege);
+    min-height: 380px;
+    height: auto;
+}
+
+.eventos-banner-texto {
+    width: 50%;
+    padding: 35px 30PX 35px 10vw;
+    box-sizing: border-box;
+}
+
+.eventos-banner-texto h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 70px;
+    line-height: 0.9;
+    color: var(--vinho);
+    margin: 0 0 20px;
+}
+
+.eventos-banner-texto h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--links);
+    margin: 0 0 15px;
+}
+
+.eventos-banner-texto p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    line-height: 1.5;
+    color: #666;
+}
+
+/* .eventos-banner-foto {
+    width: 50%;
+    min-height: 380px;
+    background-image: url(../img/banner4.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+} */
+
+/* BOTÕES E FILTROS
+
+.eventos-filtros {
+    padding: 15px 10%;
+    background-color: var(--bege);
+}
+
+.eventos-botoes {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.evento-botao {
+    padding: 13px 30px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #666;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.evento-botao.ativo {
+    background-color: var(--vinho);
+    color: white;
+    border-color: var(--vinho);
+}
+
+.eventos-pesquisa {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.eventos-pesquisa select,
+.eventos-pesquisa input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    font-family: 'Montserrat', sans-serif;
+    color: #555;
+} */
+
+/* TÍTULOS DAS SEÇÕES */
+
+.proximos-eventos,
+.eventos-anteriores {
+    padding: 25px 10%;
+    background-color: var(--bege);
+}
+
+.proximos-eventos h2,
+.eventos-anteriores h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    color: var(--vinho);
+    margin: 0;
+}
+
+.eventos-introducao {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #777;
+    max-width: 850px;
+    margin: 5px 0 20px;
+}
+
+/* CARDS DOS PRÓXIMOS EVENTOS */
+
+.eventos-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.evento-card {
+    background-color: #fffaf3;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+}
+
+.evento-card > img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    display: block;
+}
+
+.evento-card-conteudo {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+}
+
+.evento-data {
+    background-color: var(--vinho);
+    color: white;
+    border-radius: 5px;
+    min-width: 65px;
+    height: 95px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.evento-data strong {
+    font-size: 38px;
+    line-height: 1;
+}
+
+.evento-data span {
+    font-size: 17px;
+    text-align: center;
+}
+
+.evento-detalhes {
+    flex: 1;
+    min-width: 0;
+}
+
+.evento-detalhes h3,
+.passado-texto h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: var(--azul);
+    margin: 0 0 8px;
+}
+
+.evento-detalhes p,
+.passado-texto p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: #777;
+    line-height: 1.5;
+    margin: 4px 0;
+}
+
+.evento-tipo {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #eee2c9;
+    border-radius: 5px;
+    color: #92733e;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    margin: 7px 0;
+}
+
+.evento-link {
+    display: inline-block;
+    background-color: var(--vinho);
+    color: white;
+    text-decoration: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    margin-top: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+}
+
+.evento-link:hover {
+    background-color: var(--azul);
+}
+
+/* EVENTOS ANTERIORES */
+
+.anteriores-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.anteriores-topo select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.eventos-linha-tempo {
+    border-left: 2px solid var(--links);
+    margin-left: 10px;
+    padding-left: 20px;
+}
+
+.evento-passado {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    background-color: #fffaf3;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.evento-passado::before {
+    content: '';
+    position: absolute;
+    left: -27px;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--links);
+    background-color: var(--bege);
+    border-radius: 50%;
+}
+
+.passado-ano {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 27px;
+    font-weight: 600;
+    color: var(--vinho);
+    min-width: 65px;
+}
+
+.evento-passado > img {
+    width: 180px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.passado-texto {
+    flex: 1;
+}
+
+.evento-passado .botao-integrante {
+    flex-shrink: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+
+
+
+/* BOTÃO DOS INTEGRANTES */
+
+.botao-integrante {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    border: 1px solid var(--links);
+    background-color: transparent;
+    color: var(--vinho);
+
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.botao-integrante:hover {
+    background-color: var(--vinho);
+    color: white;
+}
+
+/* ===== Sobre (Henry) ===== */
+/* SOBRE */
+
+.sobreGeral{}
+
+/* BANNER */
+.containerImagem{
+}
+.sobreTitulo{
+    padding: 1px;
+}
+
+.sobreImagem{
+    width: 100%;
+    height: 805px;
+    background-image: url(../img/fotoSobre.png);
+    background-size: cover;
+    background-position:top center;
+}
+
+/* QUEM SOMOS */
+
+.containerQuemSomos{
+    background-color: #F3EEE6;
+    display: inline-block;
+    text-align: center;
+}
+
+.quemSomosT{
+    font-size: 75px;
+    font-family: "Cormorant Upright", serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.containerQuemSomos p{
+    font-family: "Inria Serif", serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 30px;
+    margin: 20px 370px;
+
+}
+
+/* MISSAO */
+
+.missao{
+    background-color: var(--azul);
+    padding-bottom: 20px;
+}
+
+.missaoContainerTexto{
+    display: block;
+    font-family: "Cormorant Upright", serif;
+    text-align: left;
+    color: #fff;
+}
+
+.tituloMissao{
+    font-size: 110px;
+    padding: 40px 0px 0px 130px;
+
+}
+
+.text-area{
+    display: flex;
+    padding: 0 129px;
+    gap: 160px;
+}
+
+.missaoTexto{
+    margin-top: 40px;
+    font-size: 46px;
+    line-height: 58px;
+    letter-spacing: 5px;
+    padding: 5px 0px;
+}
+
+.containerFoto{}
+
+
+
+/* NOSSOS VALORES*/
+
+.nossosValores{
+    background-color: var(--vermelho);
+    padding-bottom: 20px;
+}
+
+.valoresContainerTexto{
+    display: block;
+    font-family: "Cormorant Upright", serif;
+    text-align: right;
+    color: #fff;
+}
+
+.presenca{
+    margin-top: 25px;
+    font-size: 60px;
+    line-height: 58px;
+    letter-spacing: 5px;
+    padding: 0px 213px 0px 0px;
+    text-align: right;
+    color: var(--mostarda);
+
+}
+
+.tituloValores{
+    font-size: 110px;
+    padding: 40px 160px 0px 130px
+}
+
+.text-area-valores{
+    display: flex;
+    padding: 0 129px;
+    gap: 160px;
+}
+
+.valoresTexto{
+    margin-top: 25px;
+    font-size: 46px;
+    line-height: 58px;
+    letter-spacing: 3px;
+    padding: 40px 103px 0px 213px;
+}
+
+.containerFotoValores{}
+
+.fotoValores{
+    margin-top: -200px;
+}
+
+/* CONTINUIDADE */
+.continuidade{
+    background-color: var(--azul);
+    padding-bottom: 20px;
+    padding-top: 65px;
+}
+
+.continuidadeContainerTexto{
+    display: block;
+    font-family: "Cormorant Upright", serif;
+    text-align: left;
+    color: #fff;
+}
+
+.tituloContinuidade{
+    color: var(--mostarda);
+    font-size: 110px;
+    padding: 40px 0px 0px 360px;
+
+}
+
+.text-area-continuidade{
+    display: flex;
+    padding: 0 129px;
+    gap: 160px;
+    text-align: center;
+}
+
+.continuidadeTexto{
+    margin-top: 40px;
+    font-size: 46px;
+    line-height: 58px;
+    letter-spacing: 5px;
+    padding: 45px 200px;
+}
+
+.fotoContinuidade{
+    margin-top: -125px;
+}
+
+
+/* Compromisso coletivo */
+
+.compromissoColetivo{
+    background-color: var(--vermelho);
+    padding-bottom: 20px;
+}
+
+.compromissoContainerTexto{
+    display: block;
+    font-family: "Cormorant Upright", serif;
+    text-align: right;
+    color: #fff;
+    padding-top: 60px
+}
+
+.tituloCompromisso{
+    font-size: 95px;
+    padding: 40px 160px 0px 130px;
+    color: var(--mostarda);
+}
+
+.text-area-compromisso{
+    display: flex;
+    padding: 0 129px;
+    gap: 160px;
+}
+
+.CompromissoTexto{
+    margin-top: 25px;
+    font-size: 46px;
+    line-height: 58px;
+    letter-spacing: 3px;
+    padding: 40px 103px 0px 213px;
+}
+
+.containerFotoCompromisso{}
+
+.fotoCompromisso{
+    margin-top: -200px;
+}
+
+/* Aprendizagem */
+
+.aprendizagem{
+    background-color: var(--azul);
+    padding-bottom: 20px;
+    padding-top: 65px;
+}
+
+.aprendizagemContainerTexto{
+    display: block;
+    font-family: "Cormorant Upright", serif;
+    text-align: left;
+    color: #fff;
+}
+
+.tituloAprendizagem{
+    color: var(--mostarda);
+    font-size: 110px;
+    padding: 40px 0px 0px 360px;
+
+}
+
+.text-area-aprendizagem{
+    display: flex;
+    padding: 0 129px;
+    gap: 160px;
+    text-align: center;
+}
+
+.aprendizagemTexto{
+    margin-top: 40px;
+    font-size: 46px;
+    line-height: 58px;
+    letter-spacing: 5px;
+    padding: 45px 200px;
+}
+
+.aprendizagemTexto{
+    margin-top: 40px;
+    font-size: 46px;
+    line-height: 58px;
+    letter-spacing: 5px;
+    padding: 45px 200px;
+}
+
+.containerFotoAprendizagem{}
+
+.fotoAprendizagem{
+    margin-top: -125px;
+}
+
+
+/* CUIDADO */
+
+.cuidado{
+    background-color: var(--vermelho);
+    padding-bottom: 20px;
+}
+
+.cuidadoContainerTexto{
+    display: block;
+    font-family: "Cormorant Upright", serif;
+    text-align: right;
+    color: #fff;
+    padding-top: 60px
+}
+
+.tituloCuidado{
+    font-size: 95px;
+    padding: 40px 160px 0px 130px;
+    color: var(--mostarda);
+}
+
+.text-area-cuidado{
+    display: flex;
+    padding: 0 129px;
+    gap: 160px;
+}
+
+.cuidadoTexto{
+    margin-top: 25px;
+    font-size: 46px;
+    line-height: 58px;
+    letter-spacing: 3px;
+    padding: 40px 103px 0px 213px;
+}
+
+.containerFotoCuidado{}
+
+.fotoCuidado{
+    margin-top: -200px;
+}
+
+/* FAZER!!!!!!!! Nossa História  */
+
+/* ===== Coreografias (Lucas) ===== */
+/* Header */
+.container-header{
+    background: #fbf8f2;
+    border-bottom: 1px solid #e3d8c4;
+}
+.container-header ul{
+    list-style: none;
+    text-align: center;
+}
+.container-header ul li{
+    display: inline-block;
+    margin: 0 15px;
+    line-height: 50px;
+}
+.container-header ul li a{
+    font-size: 13px;
+    text-transform: uppercase;
+}
+.container-header ul li a.ativo{
+    color: #6e1626;
+    font-weight: bold;
+    border-bottom: 2px solid #6e1626;
+}
+
+/* Titulos */
+.titulo{
+    font-family: Georgia, serif;
+    color: #6e1626;
+    font-size: 50px;
+}
+.subtitulo{
+    font-family: Georgia, serif;
+    font-style: italic;
+    color: #c0902f;
+    font-size: 24px;
+    margin: 10px 0;
+}
+.titulo-secao{
+    font-family: Georgia, serif;
+    color: #6e1626;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin: 40px 0 15px 0;
+}
+
+/* Topo da pagina de coreografias */
+.topo-pagina{
+    padding: 40px 0;
+}
+.topo-pagina p{
+    width: 450px;
+    max-width: 100%;
+    margin-top: 10px;
+}
+
+/* Cards */
+.lista-cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.card{
+    width: calc(40% - 12px);
+    background: #fbf8f2;
+    border: 1px solid #e3d8c4;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.card .corpo{
+    padding: 12px;
+}
+.card h3{
+    font-family: Georgia, serif;
+    font-size: 20px;
+}
+.card .ano{
+    font-size: 12px;
+    color: #6b5d57;
+}
+.card p{
+    font-size: 13px;
+    margin: 8px 0;
+}
+.tag{
+    display: inline-block;
+    background: #e9d7b0;
+    color: #6e1626;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 4px;
+}
+
+/* Paginacao */
+.paginacao{
+    text-align: center;
+    margin: 30px 0;
+}
+.paginacao a{
+    display: inline-block;
+    padding: 5px 10px;
+}
+.paginacao a.ativo{
+    background: #6e1626;
+    color: #fff;
+}
+
+/* Citacao */
+.citacao{
+    background: #efe6d6;
+    padding: 40px 0;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 24px;
+    color: #c0902f;
+}
+
+/* Pagina Indiana */
+.migalhas{
+    font-size: 13px;
+    padding: 15px 0;
+}
+.detalhe{
+    display: flex;
+    gap: 30px;
+}
+.detalhe img{
+    width: 45%;
+    border-radius: 6px;
+}
+.detalhe div{
+    width: 55%;
+}
+.dados{
+    margin-top: 20px;
+}
+.dados p{
+    display: inline-block;
+    width: 32%;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+/* Integrantes */
+.integrantes{
+    display: flex;
+    gap: 10px;
+}
+.integrantes div{
+    width: 14%;
+    text-align: center;
+    font-size: 13px;
+}
+
+/* Apresentacoes */
+.apresentacoes{
+    display: flex;
+    gap: 15px;
+}
+.apresentacoes .card{
+    width: 20%;
+}
+
+/* Fotos e videos */
+.fotos-videos{
+    display: flex;
+    gap: 30px;
+}
+.fotos-videos .fotos{
+    width: 55%;
+}
+.fotos-videos .videos{
+    width: 45%;
+}
+
+/* ===== Galeria e conquistas (Vinicius) ===== */
+/* =========================================================
+   INTEGRANTES
+========================================================= */
+
+section.nav-integrantes .nav-inte ul {
+    background-color: var(--bege);
+    text-align: center;
+    list-style: none;
+}
+
+section.nav-integrantes .nav-inte ul li {
+    display: inline-block;
+}
+
+section.nav-integrantes .nav-inte ul li a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: var(--azul);
+    font-weight: 500;
+}
+
+section.nav-integrantes .nav-inte ul li a:hover {
+    color: var(--vinho);
+}
+
+.nav-inte p {
+    padding: 0 50px;
+}
+
+section.integrantes {
+    background-color: var(--creme);
+    width: 100%;
+    padding: 40px 20%;
+}
+
+section.integrantes h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 4rem;
+    color: var(--vinho);
+    padding: 20px 0 0;
+}
+
+section.integrantes .sub {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--links);
+}
+
+section.integrantes .des {
+    padding: 0 10px 0 0;
+    margin-top: 20px;
+}
+
+
+/* =========================================================
+   NAVEGAÇÃO DA GALERIA
+========================================================= */
+
+.nav-galeria {
+    width: 100%;
+    background-color: var(--bege);
+}
+
+.nav-galeria-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.nav-galeria ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-galeria li {
+    margin: 0;
+    padding: 0;
+}
+
+.nav-galeria a {
+    display: block;
+    padding: 14px 0 11px;
+    text-decoration: none;
+    color: #111;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.nav-galeria a:hover,
+.nav-galeria a.active {
+    color: var(--vinho);
+}
+
+.nav-galeria a.active {
+    border-bottom-color: var(--vinho);
+}
+
+
+/* =========================================================
+   FILTROS DA GALERIA
+========================================================= */
+
+.filtros-galeria {
+    width: 100%;
+    min-height: 62px;
+    display: flex;
+    align-items: center;
+    padding: 0 38px;
+    gap: 22px;
+    border-bottom: 2px solid #d2d2d2;
+    box-sizing: border-box;
+}
+
+.filtro {
+    position: relative;
+    height: 62px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: none;
+    background: transparent;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #777;
+    cursor: pointer;
+}
+
+.filtro svg {
+    width: 25px;
+    height: 25px;
+    stroke-width: 1.8;
+}
+
+.filtro.ativo {
+    color: #7b1725;
+    font-weight: 700;
+}
+
+.filtro.ativo svg {
+    color: #7b1725;
+}
+
+.filtro.ativo::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #7b1725;
+}
+
+.segundo-filtro {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.segundo-filtro .p-f,
+.segundo-filtro .s-f,
+.segundo-filtro .t-f {
+    background-color: #fefefe;
+    line-height: 30px;
+    margin-top: 20px;
+    padding: 0 10px;
+}
+
+.segundo-filtro .p-f,
+.segundo-filtro .s-f {
+    width: 230px;
+}
+
+.segundo-filtro .t-f {
+    width: 270px;
+}
+
+
+/* =========================================================
+   GALERIA
+========================================================= */
+
+.galeria {
+    width: 100%;
+    min-height: 665px;
+    padding: 50px 7% 70px;
+    background-color: #f8f6f1;
+    border-left: 10px solid #172638;
+    box-sizing: border-box;
+}
+
+.galeria-introducao {
+    max-width: 600px;
+    margin: 0 auto 38px;
+    text-align: left;
+}
+
+.galeria-introducao h2 {
+    margin: 0 0 8px;
+    text-align: center;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 4rem;
+    font-weight: 500;
+    color: #172638;
+}
+
+.galeria-introducao h3 {
+    margin: 0 0 8px;
+    text-align: center;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    font-weight: 500;
+    color: #c69a42;
+}
+
+.galeria-introducao p {
+    max-width: 390px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.25;
+    color: #222;
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.galeria-grid {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.galeria .card {
+    width: 100%;
+    min-width: 0;
+    display: block !important;
+    background: #fffdf9;
+    overflow: hidden;
+    box-sizing: border-box;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.galeria .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================================
+   IMAGEM DO CARD
+========================================================= */
+
+.galeria .card > img {
+    width: 100% !important;
+    height: 140px !important;
+    display: block !important;
+    object-fit: cover;
+    margin: 0;
+}
+
+
+/* =========================================================
+   CONTEÚDO DO CARD
+========================================================= */
+
+.galeria .card-conteudo {
+    width: 100%;
+    padding: 9px 10px 11px;
+    box-sizing: border-box;
+    display: block;
+}
+
+.galeria .card-topo {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+
+/* =========================================================
+   ANO
+========================================================= */
+
+.galeria .ano {
+    display: block;
+    margin: 0 0 2px;
+    color: #8a1826;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   TÍTULO
+========================================================= */
+
+.galeria .card h3 {
+    margin: 0;
+    color: #303030;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   LOCAL
+========================================================= */
+
+.galeria .local {
+    margin: 5px 0 0;
+    color: #888;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   DESCRIÇÃO
+========================================================= */
+
+.galeria .descricao {
+    margin: 5px 0 0;
+    color: #c58b2b;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    line-height: 1.25;
+}
+
+
+/* =========================================================
+   SETA
+========================================================= */
+
+.galeria .seta {
+    flex-shrink: 0;
+    width: 25px;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #c58b2b;
+    border-radius: 50%;
+    background: #fffdf9;
+    color: #8a1826;
+    font-family: Arial, sans-serif;
+    font-size: 21px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   CONQUISTAS
+========================================================= */
+
+.nav-conquistas {
+    padding: 10px;
+    background-color: var(--bege);
+    width: 100%;
+}
+
+.nav-conquistas-container ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav-conquistas-container ul li a {
+    text-decoration: none;
+    color: var(--azul);
+    font-weight: 500;
+}
+
+.main-conquistas-container {
+    min-height: 1300px;
+    width: 100%;
+    padding: 40px 20%;
+    background-color: var(--creme);
+}
+
+.main-conquistas-container h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 5rem;
+    font-weight: bold;
+    color: var(--vinho);
+    padding-bottom: 10px;
+}
+
+.main-conquistas-container .main-conquistas-p1 {
+    color: var(--links);
+    font-size: 2rem;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+}
+
+.main-conquistas-container .main-conquistas-p2 {
+    padding-top: 10px;
+}
+
+.main-conquistas-container .main-conquistas-img {
+    width: 500px;
+    max-width: 100%;
+    height: auto;
+    float: right;
+}
+
+.main-conquistas-dados{
+    display: flex;
+}
+
+.main-conquistas-dados h2{
+    font-size: 1rem;
+}
+
+/* ===== Linha do tempo (Wellington) ===== */
+/* PAGINA LINHA DO TEMPO */
+
+.pagina3{
+    background-color: var(--off);
+    padding: 10px 20%;
+}
+.linha_tempo h1{
+    color: var(--preto);
+    padding: 10px;
+    width: 100%;
+    font-family: "Cormorant Garamond", "serif";
+    font-size:3.5rem;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+
+}
+
+:root { --off: #F3EEE6; --preto: #0E1B2B; }
+
+
+/* ===== HOME: composição alinhada à referência ===== */
+body.pagina-home {
+    width: 100%;
+    overflow-x: hidden;
+    background: var(--bege);
+}
+
+.container-header {
+    box-sizing: border-box;
+    width: 100%;
+    height: 142px;
+    padding: 10px 5% 10px 1.5%;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+}
+
+.container-header .logo {
+    flex: 0 0 auto;
+    width: 130px;
+    height: 120px;
+    margin: 0;
+    object-fit: contain;
+}
+
+.container-header > div {
+    flex: 1;
+    width: auto;
+    text-align: right;
+}
+
+.container-header div #icoMenu {
+    display: none;
+}
+
+.container-header div nav {
+    display: inline-block;
+    width: auto;
+    margin: 0;
+    line-height: normal;
+    overflow: visible;
+    vertical-align: middle;
+}
+
+.container-header div nav ul {
+    display: flex;
+    width: auto;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(14px, 2.1vw, 34px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.container-header div nav ul li {
+    margin: 0;
+}
+
+.container-header div nav ul li a {
+    padding: 8px 0;
+    color: var(--links);
+    font-size: clamp(1rem, 1.65vw, 1.5rem);
+    font-weight: 600;
+    white-space: nowrap;
+    transition: color .2s ease;
+}
+
+.container-header div nav ul li a:hover {
+    color: var(--vinho);
+}
+
+body.pagina-home section.banner .banner-image {
+    width: 100%;
+    height: clamp(420px, 46.5vw, 680px);
+    background-position: center center;
+}
+
+body.pagina-home section.agenda {
+    box-sizing: border-box;
+    min-height: 250px;
+    padding: 8px 4.5% 22px;
+    border: 1px solid #f3eee6;
+    font-size: 2rem;
+}
+
+body.pagina-home section.agenda h1 {
+    margin: 0;
+    font-size: clamp(2.4rem, 3.5vw, 3.5rem);
+    line-height: 1.05;
+    color: var(--links);
+    -webkit-text-stroke: 1px #f3eee6;
+    text-shadow: 0 1px 1px rgb(0 0 0 / 25%);
+}
+
+body.pagina-home section.agenda .agenda-info {
+    width: min(82%, 1100px);
+    min-height: 160px;
+    margin: 0 auto;
+}
+
+body.pagina-home section.agenda .agenda-data,
+body.pagina-home section.agenda .agenda-descricao {
+    width: 46%;
+}
+
+body.pagina-home section.agenda .agenda-data .numero {
+    font-size: clamp(2.8rem, 4vw, 4rem);
+    line-height: .95;
+}
+
+body.pagina-home section.agenda .agenda-data .ano {
+    margin: -14px 0 -38px 42px;
+    font-size: 1.35rem;
+    line-height: 1;
+}
+
+body.pagina-home section.agenda .divisor {
+    height: 150px;
+    border-left: 4px dashed #f3eee6;
+}
+
+body.pagina-home section.agenda .agenda-descricao {
+    font-size: clamp(1.35rem, 2.6vw, 2rem);
+    line-height: 1.15;
+}
+
+body.pagina-home section.agenda .agenda-descricao .rua {
+    font-size: clamp(1rem, 1.8vw, 1.5rem);
+}
+
+body.pagina-home section.agenda button {
+    top: 53%;
+    display: grid;
+    width: 68px;
+    height: 68px;
+    place-items: center;
+    border: 1px solid #f3eee6;
+    background: #371015;
+    color: var(--links);
+    font-size: 3.1rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+body.pagina-home section.agenda button#agendaBtEsq {
+    left: 1.4%;
+}
+
+body.pagina-home section.agenda button#agendaBtDir {
+    right: 1.4%;
+}
+
+body.pagina-home section.sobre {
+    box-sizing: border-box;
+    padding: 4.2rem 5.2vw 4.5rem;
+    color: #f3eee6;
+    text-align: left;
+    background: var(--azul);
+}
+
+body.pagina-home section.sobre .sobre-topo {
+    min-height: 260px;
+    margin-bottom: 28px;
+}
+
+body.pagina-home section.sobre h2 {
+    width: 56%;
+    font-size: clamp(3.5rem, 6.7vw, 6.2rem);
+    line-height: .95;
+}
+
+body.pagina-home section.sobre .sobre-logo {
+    flex: 0 1 36%;
+    width: 36%;
+    max-width: 470px;
+    min-height: 250px;
+    aspect-ratio: 1.55 / 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+body.pagina-home section.sobre .sobre-texto p {
+    margin-bottom: 22px;
+    font-size: clamp(1.25rem, 2.3vw, 2rem);
+    font-weight: 500;
+    line-height: 1.28;
+    letter-spacing: 0;
+}
+
+body.pagina-home section.sobre .sobre-texto .destaque {
+    font-size: clamp(1.7rem, 2.7vw, 2.5rem);
+    font-weight: 800;
+}
+
+body.pagina-home section.sobre .botao-vinho {
+    width: min(660px, 100%);
+    box-sizing: border-box;
+    margin: 38px auto 0;
+    padding: 10px 28px;
+    font-size: clamp(1.2rem, 2.1vw, 1.8rem);
+}
+
+body.pagina-home section.palco {
+    box-sizing: border-box;
+    padding: 42px 4.8vw 38px;
+    color: #080808;
+}
+
+body.pagina-home section.palco .palco-logo {
+    width: min(440px, 38vw);
+    aspect-ratio: 1.65 / 1;
+    margin-bottom: 22px;
+    background-image: url(../img/vivadanca-text.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+body.pagina-home section.palco .palco-conteudo {
+    gap: 4%;
+}
+
+body.pagina-home section.palco .palco-texto {
+    width: 42%;
+}
+
+body.pagina-home section.palco .palco-texto h3 {
+    margin-bottom: 20px;
+    font-size: clamp(1.5rem, 2.3vw, 2.2rem);
+}
+
+body.pagina-home section.palco .palco-texto p {
+    font-size: clamp(1.15rem, 1.8vw, 1.65rem);
+    line-height: 1.45;
+    letter-spacing: 0;
+}
+
+body.pagina-home section.palco .palco-foto {
+    width: 54%;
+    aspect-ratio: 1.6 / 1;
+    border-radius: 14px 0 0 14px;
+    background-image: url(../img/palco1.png);
+}
+
+body.pagina-home section.palco .palco-controles {
+    width: 54%;
+    margin: 26px 0 0 46%;
+    padding: 0;
+    gap: 28px;
+}
+
+body.pagina-home section.palco .palco-controles span {
+    font-size: 1.5rem;
+}
+
+body.pagina-home section.palco .palco-controles button {
+    width: 68px;
+    height: 58px;
+    border-radius: 32px;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.container-footer {
+    box-sizing: border-box;
+    padding: 48px 5% 16px;
+}
+
+.container-footer .footer-topo {
+    align-items: center;
+    gap: clamp(28px, 5vw, 72px);
+}
+
+.container-footer .footer-logo {
+    width: clamp(120px, 14vw, 190px);
+    filter: none;
+}
+
+.container-footer .footer-menu {
+    flex: 1;
+    justify-content: space-around;
+    gap: 24px;
+}
+
+.container-footer .footer-coluna a {
+    font-size: clamp(1rem, 1.5vw, 1.35rem);
+    line-height: 1.2;
+}
+
+.container-footer .footer-coluna a:first-child {
+    margin-bottom: 6px;
+    color: var(--links);
+    font-variant: small-caps;
+}
+
+.container-footer .footer-social a {
+    width: 36px;
+    height: 36px;
+    font-size: .75rem;
+}
+
+.container-footer .footer-copy {
+    border-top: 1px solid rgb(243 238 230 / 45%);
+    padding-top: 8px;
+}
+
+@media (max-width: 900px) {
+    .container-header {
+        position: relative;
+        z-index: 5;
+        height: 112px;
+        padding: 8px 5%;
+    }
+
+    .container-header .logo {
+        width: 100px;
+        height: 96px;
+    }
+
+    .container-header > div {
+        position: static;
+    }
+
+    .container-header div #icoMenu {
+        display: inline-block;
+        width: 38px;
+        cursor: pointer;
+    }
+
+    .container-header div nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        z-index: 10;
+        display: block;
+        width: 0;
+        max-width: 88vw;
+        margin: 0;
+        background: #fff;
+        box-shadow: 0 12px 24px rgb(15 27 45 / 15%);
+        overflow: hidden;
+    }
+
+    .container-header div nav.ativo {
+        width: 360px;
+    }
+
+    .container-header div nav ul {
+        width: 100%;
+        padding: 12px 22px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2px;
+    }
+
+    .container-header div nav ul li a {
+        padding: 10px 0;
+        font-size: 1.15rem;
+    }
+
+    body.pagina-home section.banner .banner-image {
+        height: 52vw;
+        min-height: 360px;
+    }
+
+    body.pagina-home section.agenda {
+        padding-right: 8%;
+        padding-left: 8%;
+    }
+
+    body.pagina-home section.agenda .agenda-info {
+        width: 88%;
+    }
+
+    body.pagina-home section.agenda button#agendaBtEsq {
+        left: 1%;
+    }
+
+    body.pagina-home section.agenda button#agendaBtDir {
+        right: 1%;
+    }
+
+    body.pagina-home section.sobre .sobre-topo {
+        min-height: 200px;
+    }
+
+    body.pagina-home section.sobre .sobre-logo {
+        min-height: 170px;
+    }
+
+    body.pagina-home section.palco .palco-conteudo {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 28px;
+    }
+
+    body.pagina-home section.palco .palco-texto,
+    body.pagina-home section.palco .palco-foto {
+        width: 100%;
+    }
+
+    body.pagina-home section.palco .palco-logo {
+        width: min(360px, 70vw);
+    }
+
+    body.pagina-home section.palco .palco-controles {
+        width: 100%;
+        margin: 22px 0 0;
+    }
+
+    .container-footer .footer-topo {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+    .container-header {
+        height: 92px;
+    }
+
+    .container-header .logo {
+        width: 82px;
+        height: 80px;
+    }
+
+    body.pagina-home section.banner .banner-image {
+        height: 72vw;
+        min-height: 280px;
+    }
+
+    body.pagina-home section.agenda {
+        min-height: 220px;
+        padding: 8px 12px 20px;
+        font-size: 1rem;
+    }
+
+    body.pagina-home section.agenda h1 {
+        font-size: 2.4rem;
+    }
+
+    body.pagina-home section.agenda .agenda-info {
+        width: 88%;
+        min-height: 145px;
+        gap: 8px;
+    }
+
+    body.pagina-home section.agenda .agenda-data,
+    body.pagina-home section.agenda .agenda-descricao {
+        width: 44%;
+    }
+
+    body.pagina-home section.agenda .agenda-data .numero {
+        font-size: 2.45rem;
+    }
+
+    body.pagina-home section.agenda .agenda-data .ano {
+        margin: -8px 0 -24px 24px;
+        font-size: .95rem;
+    }
+
+    body.pagina-home section.agenda .divisor {
+        height: 112px;
+        border-left-width: 2px;
+    }
+
+    body.pagina-home section.agenda .agenda-descricao {
+        font-size: 1rem;
+    }
+
+    body.pagina-home section.agenda .agenda-descricao .rua {
+        font-size: .78rem;
+    }
+
+    body.pagina-home section.agenda button {
+        top: auto;
+        bottom: 10px;
+        width: 38px;
+        height: 38px;
+        font-size: 1.8rem;
+    }
+
+    body.pagina-home section.sobre {
+        padding: 34px 22px 42px;
+    }
+
+    body.pagina-home section.sobre .sobre-topo {
+        min-height: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+    }
+
+    body.pagina-home section.sobre h2 {
+        width: 100%;
+        font-size: clamp(3rem, 12vw, 4.2rem);
+    }
+
+    body.pagina-home section.sobre .sobre-logo {
+        flex-basis: auto;
+        width: min(280px, 78vw);
+        min-height: 150px;
+    }
+
+    body.pagina-home section.sobre .sobre-texto p {
+        font-size: 1.08rem;
+        line-height: 1.55;
+    }
+
+    body.pagina-home section.sobre .sobre-texto .destaque {
+        font-size: 1.45rem;
+    }
+
+    body.pagina-home section.sobre .botao-vinho {
+        width: 100%;
+        margin-top: 26px;
+        padding: 10px 18px;
+    }
+
+    body.pagina-home section.palco {
+        padding: 32px 22px;
+    }
+
+    body.pagina-home section.palco .palco-texto p {
+        font-size: 1.05rem;
+        line-height: 1.55;
+    }
+
+    body.pagina-home section.palco .palco-foto {
+        aspect-ratio: 1.25 / 1;
+        border-radius: 12px;
+    }
+
+    .container-footer {
+        padding: 34px 22px 12px;
+    }
+
+    .container-footer .footer-topo {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container-footer .footer-menu {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .container-footer .footer-social {
+        margin-top: 22px;
+    }
+}
+
+/* ===== Largura interna compartilhada ===== */
+.container-header,
+.container-footer {
+    padding-left: max(22px, calc(50vw - 650px));
+    padding-right: max(22px, calc(50vw - 650px));
+}
+
+body.pagina-home section.sobre,
+body.pagina-home section.palco {
+    padding-left: max(22px, calc(50vw - 650px));
+    padding-right: max(22px, calc(50vw - 650px));
+}
+
+body.pagina-home section.agenda .agenda-info {
+    width: 100%;
+    max-width: 1300px;
+}
+/* ===== SOBRE: tipografia e largura alinhadas à home ===== */
+body.pagina-sobre .sobreGeral {
+    --vermelho: var(--vinho);
+    --mostarda: var(--links);
+    width: 100%;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+}
+
+body.pagina-sobre .sobreImagem {
+    height: clamp(320px, 46.5vw, 650px);
+    background-position: center;
+}
+
+body.pagina-sobre .containerQuemSomos {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: clamp(42px, 5vw, 76px) max(22px, calc(50vw - 650px));
+    background-color: #F3EEE6;
+    text-align: center;
+}
+
+body.pagina-sobre .quemSomosT,
+body.pagina-sobre .tituloMissao,
+body.pagina-sobre .tituloValores,
+body.pagina-sobre .tituloContinuidade,
+body.pagina-sobre .tituloCompromisso,
+body.pagina-sobre .tituloAprendizagem,
+body.pagina-sobre .tituloCuidado {
+    margin: 0 0 24px;
+    padding: 0;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0;
+}
+
+body.pagina-sobre .containerQuemSomos p {
+    max-width: 1050px;
+    margin: 0 auto;
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+    font-weight: 400;
+    line-height: 1.75;
+}
+
+body.pagina-sobre .missao,
+body.pagina-sobre .nossosValores,
+body.pagina-sobre .continuidade,
+body.pagina-sobre .compromissoColetivo,
+body.pagina-sobre .aprendizagem,
+body.pagina-sobre .cuidado {
+    box-sizing: border-box;
+    width: 100%;
+    padding: clamp(42px, 5vw, 72px) max(22px, calc(50vw - 650px));
+}
+
+body.pagina-sobre .missao,
+body.pagina-sobre .continuidade,
+body.pagina-sobre .aprendizagem {
+    background-color: var(--azul);
+}
+
+body.pagina-sobre .nossosValores,
+body.pagina-sobre .compromissoColetivo,
+body.pagina-sobre .cuidado {
+    background-color: var(--vinho);
+}
+
+body.pagina-sobre .missaoContainerTexto,
+body.pagina-sobre .valoresContainerTexto,
+body.pagina-sobre .continuidadeContainerTexto,
+body.pagina-sobre .compromissoContainerTexto,
+body.pagina-sobre .aprendizagemContainerTexto,
+body.pagina-sobre .cuidadoContainerTexto {
+    display: block;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    text-align: left;
+}
+
+body.pagina-sobre .tituloMissao,
+body.pagina-sobre .tituloContinuidade,
+body.pagina-sobre .tituloAprendizagem {
+    color: #fff;
+}
+
+body.pagina-sobre .tituloValores,
+body.pagina-sobre .tituloCompromisso,
+body.pagina-sobre .tituloCuidado,
+body.pagina-sobre .presenca {
+    color: var(--links);
+}
+
+body.pagina-sobre .presenca {
+    margin: 0 0 18px;
+    padding: 0;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-align: left;
+}
+
+body.pagina-sobre .text-area,
+body.pagina-sobre .text-area-valores,
+body.pagina-sobre .text-area-continuidade,
+body.pagina-sobre .text-area-compromisso,
+body.pagina-sobre .text-area-aprendizagem,
+body.pagina-sobre .text-area-cuidado {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: clamp(28px, 4vw, 64px);
+    padding: 0;
+    text-align: left;
+}
+
+body.pagina-sobre .missaoTexto,
+body.pagina-sobre .valoresTexto,
+body.pagina-sobre .continuidadeTexto,
+body.pagina-sobre .CompromissoTexto,
+body.pagina-sobre .aprendizagemTexto,
+body.pagina-sobre .cuidadoTexto {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+    font-weight: 400;
+    line-height: 1.75;
+    letter-spacing: 0;
+}
+
+body.pagina-sobre .containerFoto,
+body.pagina-sobre .containerFotoValores,
+body.pagina-sobre .containerFotoContinuidade,
+body.pagina-sobre .containerFotoCompromisso,
+body.pagina-sobre .containerFotoAprendizagem,
+body.pagina-sobre .containerFotoCuidado {
+    min-width: 0;
+    margin: 0;
+}
+
+body.pagina-sobre .containerFoto img,
+body.pagina-sobre .containerFotoValores img,
+body.pagina-sobre .containerFotoContinuidade img,
+body.pagina-sobre .containerFotoCompromisso img,
+body.pagina-sobre .containerFotoAprendizagem img,
+body.pagina-sobre .containerFotoCuidado img {
+    display: block;
+    width: 100%;
+    max-width: 560px;
+    height: auto;
+    margin: 0 auto;
+    object-fit: cover;
+}
+
+@media (max-width: 760px) {
+    body.pagina-sobre .text-area,
+    body.pagina-sobre .text-area-valores,
+    body.pagina-sobre .text-area-continuidade,
+    body.pagina-sobre .text-area-compromisso,
+    body.pagina-sobre .text-area-aprendizagem,
+    body.pagina-sobre .text-area-cuidado {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    body.pagina-sobre .text-area-valores,
+    body.pagina-sobre .text-area-compromisso,
+    body.pagina-sobre .text-area-cuidado {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    body.pagina-sobre .tituloMissao,
+    body.pagina-sobre .tituloValores,
+    body.pagina-sobre .tituloContinuidade,
+    body.pagina-sobre .tituloCompromisso,
+    body.pagina-sobre .tituloAprendizagem,
+    body.pagina-sobre .tituloCuidado {
+        font-size: clamp(2.5rem, 10vw, 3.8rem);
+    }
+}
+/* Cabeçalho compartilhado das páginas da trajetória */
+.trajetoria-capa {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    min-height: clamp(230px, 34vw, 430px);
+    overflow: hidden;
+    color: #fff;
+    background: #102035 url('../img/banner.png') center 38% / cover no-repeat;
+    border: 2px solid #1688e8;
+}
+.trajetoria-capa::before {
+    position: absolute;
+    inset: 0;
+    content: '';
+    background: linear-gradient(90deg, rgb(8 17 39 / 78%) 0%, rgb(8 17 39 / 36%) 52%, rgb(8 17 39 / 8%) 100%);
+}
+.trajetoria-capa__conteudo {
+    position: relative;
+    z-index: 1;
+    width: min(1300px, 100%);
+    margin-inline: auto;
+    padding: clamp(24px, 4vw, 48px) clamp(20px, 3vw, 40px);
+}
+.trajetoria-capa h1 {
+    margin: 0;
+    color: #fff;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2.6rem, 6vw, 4.8rem);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: .025em;
+}
+.trajetoria-capa p {
+    margin: 12px 0 0;
+    color: #c79a43;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    font-style: italic;
+    line-height: 1.35;
+}
+.trajetoria-submenu {
+    background: #ead9b8;
+}
+.trajetoria-submenu ul {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 0 clamp(4px, 1.4vw, 22px);
+    width: min(1300px, 100%);
+    margin: 0 auto;
+    padding: 0 16px;
+    list-style: none;
+}
+.trajetoria-submenu a {
+    display: block;
+    padding: 14px 8px;
+    color: #111827;
+    font-family: Montserrat, Arial, sans-serif;
+    font-size: clamp(.72rem, 1.15vw, .88rem);
+    font-weight: 500;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color .2s ease;
+}
+.trajetoria-submenu a:hover,
+.trajetoria-submenu a[aria-current="page"] {
+    color: #79202b;
+}
+@media (max-width: 600px) {
+    .trajetoria-capa { min-height: 230px; background-position: 58% center; }
+    .trajetoria-submenu ul { gap: 0 4px; padding-inline: 8px; }
+    .trajetoria-submenu a { padding: 11px 5px; font-size: .68rem; }
+}
+/* Página de integrantes dentro da trajetória */
+body.pagina-integrantes {
+    background: #f3eee6;
+}
+body.pagina-integrantes .integrantes {
+    width: 100%;
+    padding: clamp(18px, 3vw, 30px) max(16px, calc((100% - 1300px) / 2));
+    background: #f3eee6;
+}
+body.pagina-integrantes .integrantes-titulo {
+    margin: 0;
+    color: var(--vinho, #6e1f2a);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2.6rem, 6vw, 3.4rem);
+    font-weight: 500;
+    line-height: 1;
+}
+body.pagina-integrantes .integrantes-subtitulo {
+    margin: 10px 0 8px;
+    color: var(--links, #c29a4a);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.25rem, 3vw, 1.55rem);
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.2;
+}
+body.pagina-integrantes .integrantes-descricao {
+    max-width: 390px;
+    margin: 0;
+    color: #182335;
+    font-family: Montserrat, Arial, sans-serif;
+    font-size: .8rem;
+    line-height: 1.35;
+}
+body.pagina-integrantes .integrantes-galeria {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px 22px;
+    width: min(600px, 100%);
+    margin: 0 auto;
+    padding: 12px 8px 28px;
+    background: #ead9b8;
+}
+body.pagina-integrantes .integrantes-galeria .item {
+    min-width: 0;
+    margin: 0;
+    padding: 4px;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: border-color .2s ease;
+}
+body.pagina-integrantes .integrantes-galeria .item:hover,
+body.pagina-integrantes .integrantes-galeria .item:focus-within {
+    border-color: #a34aff;
+}
+body.pagina-integrantes .integrantes-galeria .foto {
+    width: 100%;
+    aspect-ratio: 1 / .95;
+    height: auto;
+    background: url('../integrantes/integrante.png') center 35% / cover no-repeat;
+}
+body.pagina-integrantes .integrantes-galeria .descricao {
+    display: block;
+    padding: 7px 0 0;
+    margin: 0;
+    color: #101b2b;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(.95rem, 1.8vw, 1.1rem);
+    font-weight: 600;
+    line-height: 1.1;
+}
+body.pagina-integrantes .integrantes-galeria .botao-integrante {
+    display: none;
+}
+@media (max-width: 520px) {
+    body.pagina-integrantes .integrantes-galeria {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        width: 100%;
+    }
+}
+/* Perfil individual acessado ao abrir um integrante */
+body.pagina-integrante { background: #f3eee6; }
+body.pagina-integrante .integrante-caminho,
+body.pagina-integrante .perfil-integrante,
+body.pagina-integrante .integrante-conteudo { background: #f3eee6; }
+body.pagina-integrante .integrante-caminho {
+    width: min(1300px, 100%); margin: 0 auto; padding: 18px clamp(14px, 2.3vw, 30px) 14px;
+    gap: 14px; color: #605b56; font-size: clamp(.9rem, 1.5vw, 1.1rem);
+}
+body.pagina-integrante .integrante-caminho span:last-child { color: #605b56; font-weight: 600; }
+body.pagina-integrante .perfil-integrante {
+    display: grid; grid-template-columns: minmax(180px, 36%) minmax(0, 1fr); align-items: start;
+    gap: clamp(14px, 2.5vw, 24px); width: min(1300px, 100%); margin: 0 auto;
+    padding: 12px clamp(14px, 2.3vw, 30px) 26px;
+}
+body.pagina-integrante .perfil-foto { width: 100%; }
+body.pagina-integrante .perfil-foto img {
+    display: block; width: 100%; height: auto; aspect-ratio: .82; object-fit: cover; border-radius: 5px;
+}
+body.pagina-integrante .perfil-texto h1 {
+    margin: 0 0 1px; color: #0e1b2b; font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.05;
+}
+body.pagina-integrante .perfil-texto h2 {
+    margin: 0 0 8px; color: #0e1b2b; font-size: clamp(.95rem, 1.8vw, 1.1rem);
+}
+body.pagina-integrante .perfil-texto p {
+    margin: 0 0 12px; color: #0e1b2b; font-size: clamp(.72rem, 1.3vw, .85rem); line-height: 1.35;
+}
+body.pagina-integrante .perfil-informacoes { display: none; }
+body.pagina-integrante .integrante-conteudo {
+    width: min(1300px, 100%); margin: 0 auto; padding: 0 clamp(14px, 2.3vw, 30px) 32px;
+}
+body.pagina-integrante .integrante-abas { width: min(410px, 100%); border-bottom: 1px solid #aaa49a; }
+body.pagina-integrante .integrante-abas .aba {
+    flex: 1 1 0; padding: 12px 8px 8px; border-bottom-width: 3px; font-size: clamp(.82rem, 1.7vw, 1rem);
+}
+body.pagina-integrante .conteudo-aba > p { margin: 18px 0; font-size: .8rem; }
+body.pagina-integrante .integrante-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+body.pagina-integrante .integrante-card img { height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+body.pagina-integrante .integrante-card h3 { font-size: 1rem; line-height: 1.1; }
+body.pagina-integrante .card-informacoes { align-items: flex-start; padding: 6px 0; }
+body.pagina-integrante .card-informacoes p { margin-top: 2px; }
+body.pagina-integrantes .integrante-link { display: block; color: inherit; text-decoration: none; }
+body.pagina-integrantes .integrante-link:hover .descricao span { color: var(--vinho); }
+@media (max-width: 560px) {
+    body.pagina-integrante .perfil-integrante { grid-template-columns: minmax(120px, 38%) minmax(0, 1fr); }
+    body.pagina-integrante .integrante-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* Galeria geral: acervo do grupo, separada da galeria de cada perfil */
+body.pagina-galeria .galeria {
+    min-height: 0;
+    padding: clamp(28px, 5vw, 54px) clamp(16px, 4vw, 42px) 56px;
+    background: #f3eee6;
+    border: 0;
+}
+body.pagina-galeria .galeria-introducao {
+    width: min(280px, 68%);
+    margin: 0 0 32px auto;
+    text-align: left;
+}
+body.pagina-galeria .galeria-introducao h2 {
+    margin-bottom: 2px;
+    text-align: right;
+    font-size: clamp(2.4rem, 5vw, 3.2rem);
+    line-height: 1;
+}
+body.pagina-galeria .galeria-introducao h3 {
+    margin-bottom: 8px;
+    text-align: left;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+}
+body.pagina-galeria .galeria-introducao p {
+    max-width: none;
+    margin: 0;
+    font-size: .72rem;
+    line-height: 1.35;
+}
+body.pagina-galeria .galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(10px, 2vw, 18px);
+    width: min(1180px, 100%);
+    margin: 0 auto;
+}
+body.pagina-galeria .galeria-item {
+    min-width: 0;
+    overflow: hidden;
+    background: transparent;
+}
+body.pagina-galeria .galeria-item img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+body.pagina-integrante .galeria-integrante-legenda {
+    margin: 18px 0;
+    color: #77716a;
+    font-family: Montserrat, Arial, sans-serif;
+    font-size: .8rem;
+}
+body.pagina-integrante .galeria-integrante-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+body.pagina-integrante .galeria-integrante-grid figure {
+    margin: 0;
+    overflow: hidden;
+}
+body.pagina-integrante .galeria-integrante-grid img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+@media (max-width: 560px) {
+    body.pagina-galeria .galeria-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    body.pagina-integrante .galeria-integrante-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}body.pagina-integrantes .integrante-link:focus-visible {
+    outline: 3px solid #a34aff;
+    outline-offset: 2px;
 }

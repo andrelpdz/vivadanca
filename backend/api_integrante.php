@@ -25,6 +25,7 @@ function cadastrar(){
     }
 }
 
+// PENDENTE PARA ORGGANIZAR A FUNÇÃO
 function atualizar(){
     // verificar a foto na atualização, precisa confirmar se tem foto ou nao
     // se nao tem a foto no formulario, então nao precisa mudar a foto
@@ -46,6 +47,20 @@ function atualizar(){
     }
 }
 
+function deletar(){
+    $id = $_GET['id'] ?? 0;
+    try{
+        $integrante = obterIntegrante($id);
+        excluirFoto("integrantes", $integrante["foto"]);
+        excluirIntegrante($id);
+        return true;
+
+    }catch(throwable $e){
+        throw $e;
+    }
+}
+
+
 
 
 try{
@@ -64,13 +79,7 @@ try{
         exit;
     }
     else if ($metodo == "DELETE"){
-        // excluir integrante
-        echo "DELETE";
-        exit;
-        // $id = trim($_POST['id']);
-        // $resposta = excluirIntegrante($id);
-        // header("location: ../admin/integrantes.html");
-        // exit;
+        deletar();
     }
     else{
         throw new Exception("Metodo invalido!");

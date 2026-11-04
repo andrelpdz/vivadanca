@@ -12,11 +12,13 @@ $v = md5(date('Y-m-d H:m:s'));
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php if ($pagina === "trajetoria"): ?><link rel="stylesheet" href="assets/css/linha_tempo.css?v=<?=$v;?>"><?php endif; ?>
     <link rel="stylesheet" href="assets/css/style.css?v=<?=$v;?>">
 
     <title>Viva Dança - <?=$titulo?></title>
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body>
+<body class="<?= $pagina === 'home' ? 'pagina-home' : ($pagina === 'sobre' ? 'pagina-sobre' : ($pagina === 'integrantes' ? 'pagina-integrantes' : ($pagina === 'integrante' ? 'pagina-integrante' : ($pagina === 'galeria' ? 'pagina-galeria' : '')))) ?>">
     <header class="container-header">
         <img src="assets/img/logo.png" class="logo">
         <div>
@@ -26,8 +28,8 @@ $v = md5(date('Y-m-d H:m:s'));
                     <li><a href="<?=$raiz;?>/?pagina=sobre">Sobre</a></li>
                     <li><a href="<?=$raiz;?>/?pagina=trajetoria">Trajetória</a></li>
                     <li><a href="<?=$raiz;?>/?pagina=integrantes">Integrantes</a></li>
-                    <li><a href="<?=$raiz;?>/?pagina=premiacoes">Premiações</a></li>
-                    <li><a href="<?=$raiz;?>/?pagina=faleconosco">Fale Conosco</a></li>
+                    <li><a href="<?=$raiz;?>/?pagina=conquistas">Premiações</a></li>
+                    <li><a href="<?=$raiz;?>/?pagina=contato">Fale Conosco</a></li>
                 </ul>                
             </nav>
         </div>
@@ -45,12 +47,12 @@ $v = md5(date('Y-m-d H:m:s'));
                 <div class="footer-coluna">
                     <a href="<?=$raiz;?>/">Home</a>
                     <a href="<?=$raiz;?>/?pagina=eventos">Eventos</a>
-                    <a href="<?=$raiz;?>/?pagina=faleconosco">Fale Conosco</a>
+                    <a href="<?=$raiz;?>/?pagina=contato">Fale Conosco</a>
                 </div>
                 <div class="footer-coluna">
                     <a href="<?=$raiz;?>/?pagina=trajetoria">Trajetória</a>
                     <a href="<?=$raiz;?>/?pagina=integrantes">Integrantes</a>
-                    <a href="<?=$raiz;?>/?pagina=premiacoes">Premiações</a>
+                    <a href="<?=$raiz;?>/?pagina=conquistas">Premiações</a>
                 </div>
             </div>
         </div>
