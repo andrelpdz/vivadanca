@@ -10,13 +10,19 @@
     --bgsub: #E9D9BC;   
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    font-size: 14px;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #172033;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, #dbeafe 0, transparent 35%),
+        linear-gradient(135deg, #f8fafc, #eef2ff);
 }
 
 form{
@@ -84,3 +90,383 @@ section#integrantes div span button{
 }
 
 /*LOGIN*/
+.login-main {
+    width: 100%;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+ 
+ 
+.login-container {
+    width: 100%;
+    max-width: 1100px;
+    min-height: 650px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 15px 45px rgba(31, 54, 92, 0.08);
+}
+ 
+/* LADO ESQUERDO */
+.login-info {
+    padding: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(145deg,
+            rgba(255, 255, 255, 0.6),
+            rgba(239, 246, 255, 0.7));
+}
+ 
+/* LOGO */
+.login-img {
+    width: 135px;
+    height: auto;
+}
+ 
+.info {
+    margin: auto 0;
+}
+ 
+.tag-bem-vindo {
+    display: inline-block;
+    color: #bd871b;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+ 
+.info h1 {
+    font-size: 42px;
+    line-height: 1.2;
+    color: #172033;
+    margin-bottom: 18px;
+}
+ 
+.info h1 span {
+    color: #c58b17;
+}
+ 
+.info p {
+    max-width: 360px;
+    color: #687386;
+    font-size: 15px;
+    line-height: 1.8;
+}
+ 
+/* RODAPÉ ESQUERDO */
+.info-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #687386;
+    font-size: 13px;
+}
+ 
+.info-footer span {
+    color: #22a06b;
+}
+ 
+/* LADO DIREITO */
+.cadastro {
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+ 
+/* PAINEL */
+.painel-cadastro {
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+    padding: 38px;
+    background: #fff;
+    border: 1px solid #f0f1f4;
+    border-radius: 16px;
+    box-shadow: 0 10px 35px rgba(31, 41, 55, 0.09);
+}
+ 
+.texto-login {
+    margin-bottom: 28px;
+}
+ 
+.texto-login h2 {
+    font-size: 28px;
+    color: #172033;
+    margin-bottom: 8px;
+}
+ 
+.texto-login p {
+    font-size: 15px;
+    color: #8992a2;
+}
+ 
+/* FORMULÁRIO */
+.form-login {
+    width: 100%;
+}
+ 
+.input-grupo {
+    margin-bottom: 22px;
+}
+ 
+.form-login label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #344054;
+    margin-bottom: 9px;
+}
+ 
+/* INPUTS */
+.input-box {
+    width: 100%;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    border: 1px solid #e1e5ec;
+    border-radius: 8px;
+    background: #fff;
+    transition: 0.3s;
+}
+ 
+.input-box:focus-within {
+    border-color: #c58b17;
+    box-shadow: 0 0 0 3px rgba(197, 139, 23, 0.10);
+}
+ 
+.input-icon {
+    color: #9ca3af;
+    margin-right: 12px;
+    font-size: 16px;
+}
+ 
+.input-box input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: #172033;
+}
+ 
+.input-box input::placeholder {
+    color: #aab1bd;
+}
+ 
+ 
+.senha-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ 
+.senha-label a {
+    font-size: 12px;
+    color: #bd871b;
+    text-decoration: none;
+    font-weight: 600;
+}
+ 
+.senha-label a:hover {
+    text-decoration: underline;
+}
+ 
+ 
+.lembrar {
+    margin-bottom: 22px;
+}
+ 
+.lembrar label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 13px;
+    font-weight: normal;
+    color: #687386;
+    cursor: pointer;
+}
+ 
+.lembrar input {
+    width: 16px;
+    height: 16px;
+    accent-color: #bd871b;
+}
+ 
+/* BOTÃO */
+.btn-submit {
+    width: 100%;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #d5a332, #b78013);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+ 
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgba(183, 128, 19, 0.25);
+}
+ 
+.arrow {
+    font-size: 19px;
+}
+ 
+/* DIVISOR */
+.divisor {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 24px 0;
+    color: #a0a8b6;
+    font-size: 13px;
+}
+ 
+.divisor::before,
+.divisor::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #e9ecf1;
+}
+ 
+/* CADASTRO */
+.registro {
+    text-align: center;
+}
+ 
+.registro p {
+    font-size: 13px;
+    color: #7b8493;
+    margin-bottom: 8px;
+}
+ 
+.registro a {
+    font-size: 14px;
+    font-weight: bold;
+ 
+    color: #bd871b;
+    text-decoration: none;
+}
+ 
+.registro a:hover {
+    text-decoration: underline;
+}
+ 
+/* SEGURANÇA */
+.segurança {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 22px;
+    font-size: 12px;
+    color: #8992a2;
+}
+ 
+/* RODAPÉ */
+footer {
+    min-height: 8vh;
+    padding: 18px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #8992a2;
+    font-size: 13px;
+}
+ 
+footer div {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+ 
+footer a {
+    color: #8992a2;
+    text-decoration: none;
+    transition: 0.2s;
+}
+ 
+footer a:hover {
+    color: #bd871b;
+}
+ 
+/* RESPONSIVIDADE */
+@media (max-width: 800px) {
+ 
+    .login-container {
+        grid-template-columns: 1fr;
+        max-width: 550px;
+    }
+ 
+    .login-info {
+        min-height: 320px;
+        padding: 35px;
+    }
+ 
+    .info h1 {
+        font-size: 34px;
+    }
+ 
+    .cadastro {
+        padding: 30px;
+    }
+ 
+}
+ 
+@media (max-width: 500px) {
+ 
+    .login-main {
+        padding: 15px;
+    }
+ 
+    .login-info {
+        min-height: 280px;
+        padding: 25px;
+    }
+ 
+    .login-img {
+        width: 105px;
+    }
+ 
+    .info h1 {
+        font-size: 29px;
+    }
+ 
+    .cadastro {
+        padding: 20px;
+    }
+ 
+    .painel-cadastro {
+        padding: 25px 20px;
+    }
+ 
+    footer {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+ 
+    footer div {
+        gap: 15px;
+    }
+ 
+}
