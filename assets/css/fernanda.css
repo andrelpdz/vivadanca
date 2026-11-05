@@ -1,0 +1,236 @@
+/* -> GERAL */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --links:#C29A4A;
+    --azul:#0F1B2D;
+    --vinho:#6E1F2A;
+    --bege: #f3eee6;
+    --texto: #333;
+    --bgsub: #E9D9BC;   
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   PÁGINA ADMINISTRATIVA - INTEGRANTES
+========================================== */
+
+/* INTEGRANTES */
+
+.integrantes-main {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 40px;
+    background: #f3eee6c0;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px #00000010;
+}
+
+/* CABEÇALHO */
+
+.integrantes-header {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 35px;
+}
+
+.integrantes-header img {
+    width: 130px;
+}
+
+.integrantes-header span {
+    color: #bd871b;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.integrantes-header h1 {
+    color: #172033;
+    font-size: 36px;
+    margin: 12px 0;
+}
+
+.integrantes-header em {
+    color: #c58b17;
+    font-style: normal;
+}
+
+.integrantes-header p {
+    color: #687386;
+}
+
+/* PAINÉIS */
+
+.integrantes-painel {
+    background: white;
+    padding: 35px;
+    margin-bottom: 30px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px #00000010;
+}
+
+.integrantes-painel h2 {
+    color: #172033;
+    margin-bottom: 8px;
+}
+
+.integrantes-painel > p {
+    color: #687386;
+    margin-bottom: 25px;
+}
+
+/* FORMULÁRIO */
+
+.form-integrantes label {
+    display: block;
+    margin-bottom: 8px;
+    color: #344054;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.form-integrantes input[type="text"],
+.form-integrantes input[type="file"] {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #e1e5ec;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.form-integrantes input:focus {
+    outline-color: #c58b17;
+}
+
+.form-integrantes .integrantes-ativo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: #687386;
+    font-weight: normal;
+}
+
+.integrantes-ativo input {
+    accent-color: #bd871b;
+}
+
+/* BOTÃO CADASTRAR */
+
+.integrantes-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #d5a332, #b78013);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.integrantes-btn:hover {
+    background: #b78013;
+}
+
+/* CARDS */
+
+#integrantes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+#integrantes > div {
+    padding: 20px;
+    border: 1px solid #e1e5ec;
+    border-radius: 12px;
+    text-align: center;
+}
+
+#integrantes img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+#integrantes p {
+    color: var(--azul);
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+#integrantes button {
+    padding: 10px 18px;
+    margin: 4px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#integrantes button:first-child {
+    background: #c58b17;
+    color: white;
+}
+
+#integrantes button:last-child {
+    background: #fff1f1;
+    color: var(--vinho);
+}
+
+footer{
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #687386;
+    font-size: 13px;
+}
+footer div{
+    display: flex;
+    gap: 25px;
+}
+
+footer a{
+    color: #687386;
+    text-decoration: none;
+}
+
+footer a:hover{
+    color: #c58b17;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 768px) {
+    .integrantes-main {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .integrantes-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #integrantes {
+        grid-template-columns: 1fr;
+    }
+
+    .footer{
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
