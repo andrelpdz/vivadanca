@@ -1,0 +1,22 @@
+section.galeria{
+    padding: 40px 20%;
+    background-color: var(--bege);
+}
+section.galeria .item{
+    display: inline-block;
+    text-align: center;
+    margin:0px 10px 40px 10px;
+}
+section.galeria .item .foto{
+    width: 200px;
+    height: 200px;
+    background-image: url(../integrantes/integrante.png);
+    background-size: cover;
+    background-position: center;
+}
+section.galeria .item .descricao{
+    margin-top: 10px;
+    font-weight: bold;
+    font-family: 'Cormorant Garamond';
+    font-size: 1.5rem;
+}
