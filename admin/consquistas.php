@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    <?php include "header.php";?>
     <main class="container">
 
         <h1>Cadastro de Conquistas</h1>
