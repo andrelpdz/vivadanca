@@ -2260,7 +2260,7 @@ body.pagina-home section.palco .palco-controles button {
 
 .container-footer .footer-logo {
     width: clamp(120px, 14vw, 190px);
-    filter: none;
+
 }
 
 .container-footer .footer-menu {
