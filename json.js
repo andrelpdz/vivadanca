@@ -9,8 +9,12 @@ fetch("json.php")
     })
     .catch(function(erro){
         console.log("Erro:"+erro);
+<<<<<<< HEAD
     });
 */
+=======
+    });*/
+>>>>>>> 93c45b8d81aabea42d9674f27fd9d538a4188470
 
 async function dados(){
     try{
@@ -20,5 +24,9 @@ async function dados(){
         document.querySelector("body").innerHTML = dados.msg;
     }catch(erro){
         console.log(erro);
+<<<<<<< HEAD
     }
+=======
+    }   
+>>>>>>> 93c45b8d81aabea42d9674f27fd9d538a4188470
 }
