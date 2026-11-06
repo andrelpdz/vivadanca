@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viva Dança - Envio de Fotos</title>
+    <!-- Link para o arquivo CSS separado -->
+    <link rel="stylesheet" href="../assets/css/linha_tempo_admin.css">
+</head>
+<body>
+    <div class="form-card">
+        <div class="logo">
+            <span>Viva Dança</span>
+        </div>
+
+        <form action="#" method="POST" enctype="multipart/form-data" id="photoForm">
+            <!-- Data da Apresentação -->
+            <div class="form-group">
+                <label for="data">Data da Apresentação</label>
+                <input type="date" id="data" name="data_apresentacao" required>
+            </div>
+
+            <!-- Ano da Coreografia -->
+            <div class="form-group">
+                <label for="ano"> Ano da Coreografia</label>
+                <input type="number" id="ano" name="ano_coreografia" 
+                       min="2010" placeholder="Ex: 2026" required>
+            </div>
+
+            <!-- Descrição Ampliada -->
+            <div class="form-group">
+                <label for="descricao">Descrição / Nome da Coreografia</label>
+                <textarea id="descricao" name="descricao" 
+                          placeholder="Descreva aqui: nome da coreografia, grupo, estilo, detalhes da apresentação..." 
+                          required></textarea>
+            </div>
+
+            <!-- Upload de Imagem com Pré-visualização -->
+            <div class="form-group">
+                <label> Escolha a Foto</label>
+                <label class="upload-area">
+                    <input type="file" id="foto" name="foto" 
+                           accept="image/*" required>
+                    <div class="upload-text">
+                        Clique ou arraste a foto aqui<br>
+                        <small>Formatos: JPG, PNG | Máx: 5MB</small>
+                    </div>
+                    <div class="preview-container" id="previewContainer">
+                        <img id="previewImg" class="preview-img" alt="Pré-visualização">
+                    </div>
+                </label>
+            </div>
+
+            <button type="submit">Enviar Foto </button>
+        </form>
+    </div>
+
+
+</body>
+</html>

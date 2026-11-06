@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <?php inlude header.php; ?>
+    <?php include "header.php"; ?>
     <main class="galeriaMain">
 
         <div class="GaleriaContainer">
