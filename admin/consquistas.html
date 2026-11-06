@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Conquistas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+
+        <h1>Cadastro de Conquistas</h1>
+        <p>Cadastre uma nova conquista.</p>
+
+        <form action="#" method="POST">
+
+            <label>Nome da conquista:</label>
+            <input type="text" name="nome" placeholder="Digite o nome da conquista" required>
+
+            <label>Descrição:</label>
+            <textarea name="descricao" placeholder="Descreva a conquista" required></textarea>
+
+            <label>Integrante responsável:</label>
+            <input type="text" name="integrante" placeholder="Nome do integrante">
+
+            <label>Data da conquista:</label>
+            <input type="date" name="data">
+
+            <label>Categoria:</label>
+            <select name="categoria">
+                <option value="">Selecione uma categoria</option>
+                <option value="Acadêmica">Acadêmica</option>
+                <option value="Profissional">Profissional</option>
+                <option value="Esportiva">Esportiva</option>
+                <option value="Pessoal">Pessoal</option>
+            </select>
+
+            <button type="submit">Cadastrar Conquista</button>
+
+        </form>
+
+    </main>
+
+</body>
+</html>
