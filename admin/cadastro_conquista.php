@@ -7,11 +7,6 @@
 </head>
 <body>
     <?php include "header.php"; ?>
-    <a href="cadastro_evento.html">Cadastro Evento</a><br>
-    <a href="cadastro_coreografia.html">Cadastro Coreografia</a><br>
-
-    <br>
-
     <form action="../backend/registro_conquista.php" method="POST" enctype="multipart/form-data">
         <label>Evento ID: </label>
         <input type="number" name="evento_id" placeholder="Nome da Conquista" value="1" min="1"><br><br>
@@ -23,6 +18,7 @@
         <input type="text" name="descricao" placeholder="descricao"><br><br>
         <input type="file" name="foto"><br><br>
         <input type="submit" value="Cadastrar">
+        
     </form>
     
 </body>
