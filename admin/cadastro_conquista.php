@@ -6,7 +6,7 @@
     <title>Cadastro Conquista</title>
 </head>
 <body>
-    <?php include header.php; ?>
+    <?php include "header.php"; ?>
     <a href="cadastro_evento.html">Cadastro Evento</a><br>
     <a href="cadastro_coreografia.html">Cadastro Coreografia</a><br>
 
