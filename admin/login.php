@@ -145,7 +145,7 @@
  
                             <p>Ainda não possui uma conta?</p>
  
-                            <a href="#">Criar uma conta</a>
+                            <a href="cadastro.html">Criar uma conta</a>
  
                         </div>
  
