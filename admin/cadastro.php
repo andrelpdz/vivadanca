@@ -1,3 +1,24 @@
+<?php
+
+include "../backend/conexao.php";
+
+global $con;
+
+$sql = "SELECT * FROM usuario";
+
+$resultado = $con->query($sql);
+
+$dados = $resultado->fetch_assoc(); 
+
+    echo $dados['id'];
+    echo $dados['nome'];
+    echo $dados['email'];
+    echo $dados['criado'];
+    echo "<hr>";
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
