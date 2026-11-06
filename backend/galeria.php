@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once __DIR__ . "/conexao.php";
 
 function cadastrarImagemGaleria($foto, $descricao, $data = null)
