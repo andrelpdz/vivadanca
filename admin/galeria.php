@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -86,6 +87,12 @@
         </section>
 
         </div>
+
+        <div id="galeria"></div>
+        <script src="../assets/js/galeria.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded",popularCardsGaleriaAdmin);
+    </script>
 
     </main>
 </body>
