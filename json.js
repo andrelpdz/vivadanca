@@ -1,4 +1,19 @@
 <<<<<<< HEAD
+//Javascript
+/*
+fetch("json.php")
+    .then(function(resposta){
+    return resposta.json();
+})
+    .then(function(dados){
+    console.log(dados);
+})
+    .catch(function(erro){
+    console.log("Erro:"+ erro);
+});
+*/
+=======
+<<<<<<< HEAD
 //JAVASCRIPT
 
 // fetch("json.php")
@@ -13,11 +28,19 @@
 //     });
 
 
+>>>>>>> e39db20fbe5d6326b820f7c6cc51e5906d908715
 async function dados(){
 try{
     const resposta = await fetch("json.php");
     const dados = await resposta.json();
     console.log(dados);
+<<<<<<< HEAD
+    document.querySelector("body").innerHTML = dados.msg; 
+    }catch(erro){
+    console.log(erro);
+
+    }
+=======
     document.querySelector("body").innerHTML = dados.msg;
 } catch(erro){
     console.log(erro);
@@ -55,4 +78,5 @@ async function dados(){
     }   
 >>>>>>> 93c45b8d81aabea42d9674f27fd9d538a4188470
 >>>>>>> abb79ca95115fca35edaca231544d79002dd24f3
+>>>>>>> e39db20fbe5d6326b820f7c6cc51e5906d908715
 }

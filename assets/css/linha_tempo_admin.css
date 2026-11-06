@@ -1,0 +1,140 @@
+:root{
+    --links:#C29A4A;
+    --azul:#0F1B2D;
+    --vinho:#6E1F2A;
+    --bege: #f3eee6;
+    --texto: #333;
+    --bgsub: #E9D9BC;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #E9D9BC, #dbb876, #e7c992);
+    padding: 20px;
+}
+
+.form-card {
+    background: linear-gradient(180deg, #C29A4A, #cea965);
+    color: #fff;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+    border: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+.logo {
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.logo span:nth-child(1) {
+    color: #6E1F2A;
+}
+
+.logo span:nth-child(2) {
+    color: #d4af37;
+}
+
+.form-group {
+    margin-bottom: 22px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #0F1B2D;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+textarea,
+input[type="file"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #2b080e;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.5);
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.upload-area {
+    border: 2px dashed #d4af37;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #6E1F2A;
+    display: block;
+}
+
+
+.upload-area input {
+    display: none;
+}
+
+.upload-text {
+    color: #f8e4a8;
+    font-weight: 500;
+}
+
+.preview-container {
+    margin-top: 15px;
+    display: none;
+}
+
+.preview-img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    background-color: #f3eee6;
+    color: #2c0a0a;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(172, 140, 35, 0.4);
+}
