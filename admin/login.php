@@ -15,7 +15,7 @@
  
         <div class="login-container">
  
-            <!-- LADO ESQUERDO -->
+            <!-- LADO ESQUERDO -->     
             <section class="login-info">
  
                 <div class="logo-area">
