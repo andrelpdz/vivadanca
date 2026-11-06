@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../assets/css/linha_tempo_admin.css">
 </head>
 <body>
+    <?php include "header.php"; ?>
     <div class="form-card">
         <div class="logo">
             <span>Viva Dança</span>
