@@ -1,3 +1,16 @@
+<?php
+include "../backend/conexao.php";
+
+function listarConquistas(){
+    global $con;
+    $sql = "SELECT * FROM conquistas";
+    $resultado = $con->query($sql);
+    $dados $resultado->fetch_all(MYSQLI_ASSOC);
+    echo $dados ['foto'];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

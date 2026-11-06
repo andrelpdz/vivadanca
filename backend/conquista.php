@@ -11,7 +11,7 @@ function cadastrarConquista($nome, $descricao, $foto, $evento_id, $coreografia_i
     $stmt->execute();
     $stmt->close();
     return true;
-}
+} 
 
 function listarConquistas(){
     global $con;
