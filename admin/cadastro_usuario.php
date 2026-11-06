@@ -1,23 +1,3 @@
-<?php
-
-include "../backend/conexao.php";
-
-global $con;
-
-$sql = "SELECT * FROM usuario";
-
-$resultado = $con->query($sql);
-
-$dados = $resultado->fetch_assoc(); 
-
-    echo $dados['id'];
-    echo $dados['nome'];
-    echo $dados['email'];
-    echo $dados['criado'];
-    echo "<hr>";
-
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -253,6 +233,8 @@ $dados = $resultado->fetch_assoc();
  
                     </div>
 
+                    <div id="usuario"></div>
+
                 </div>
 
             </section>
@@ -277,7 +259,15 @@ $dados = $resultado->fetch_assoc();
  
 </footer>
 
+<section id="usuarios">
+
+</section>
+
 </body>
+<script src="../assets/js/cadastro_usuario.js"></script>
+<script>
+    popularCardsUsuarioAdmin();
+</script>
 
 <script>
   const inputTelefone = document.getElementById('telefone');
