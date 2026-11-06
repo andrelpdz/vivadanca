@@ -6,6 +6,7 @@
         <li><a href="cadastro_conquista.php">Conquistas</a></li>
         <li><a href="cadastro_evento.php">Eventos</a></li>
         <li><a href="galeria.php">Galeria</a></li>
+        <li><a href="linha_tempo.php">Linha do Tempo</a></li>
         <li><a href="usuarios.php">Usuários</a></li>
         <li><a href="sair.php">Sair</a></li>
     </ul>
