@@ -1,3 +1,14 @@
+<?php
+include "../backend/conexao.php";
+
+    global $con;
+    $sql = "SELECT * FROM linha_tempo";
+    $resultado = $con->query($sql);
+    $dados = $resultado->fetch_assoc();
+
+    echo $dados['foto'];
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -14,13 +25,7 @@
             <span>Viva Dança</span>
         </div>
 
-        <form action="#" method="POST" enctype="multipart/form-data" id="photoForm">
-            <!-- Data da Apresentação -->
-            <div class="form-group">
-                <label for="data">Data da Apresentação</label>
-                <input type="date" id="data" name="data_apresentacao" required>
-            </div>
-
+        
             <!-- Ano da Coreografia -->
             <div class="form-group">
                 <label for="ano"> Ano da Coreografia</label>
