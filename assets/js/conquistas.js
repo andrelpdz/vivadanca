@@ -5,3 +5,4 @@ function criarCardConquista(conquista){
     const nomeEvento = document.createElement('p');
     const local = document.createElement('p');
     const nomeConquista = document.createElement('p');
+}
