@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <?php include "header.php"; ?>
     <main class="main-cadastro">
 
         <div class="div-cadastro">
