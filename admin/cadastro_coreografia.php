@@ -6,6 +6,7 @@
     <title>Cadastro Coreografia</title>
 </head>
 <body>
+    <?php include "header.php"; ?>
     <a href="cadastro_integrante.html"> ir para cadastro de integrantes</a><br>
     <a href="cadastro_conquista.html">Cadastro Conquista</a><br>
     <a href="cadastro_evento.html"> ir para cadastro evento</a><br>
