@@ -7,6 +7,8 @@ function listarConquistas(){
     $resultado = $con->query($sql);
     $dados $resultado->fetch_all(MYSQLI_ASSOC);
     echo $dados ['foto'];
+
+
 }
 
 ?>
@@ -43,7 +45,6 @@ function listarConquistas(){
             <label>Categoria:</label>
             <select name="categoria">
                 <option value="">Selecione uma categoria</option>
-                <option value="Acadêmica">Acadêmica</option>
                 <option value="Profissional">Profissional</option>
                 <option value="Esportiva">Esportiva</option>
                 <option value="Pessoal">Pessoal</option>
