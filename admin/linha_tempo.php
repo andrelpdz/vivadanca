@@ -1,12 +1,6 @@
 <?php
 include "../backend/conexao.php";
 
-    global $con;
-    $sql = "SELECT * FROM linha_tempo";
-    $resultado = $con->query($sql);
-    $dados = $resultado->fetch_assoc();
-
-    echo $dados['foto'];
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +54,16 @@ include "../backend/conexao.php";
             <button type="submit">Enviar Foto </button>
         </form>
     </div>
+            <div id="linha_tempo"></div>
 
+        </section>
+
+    </main>
+
+    <script src="../assets/js/linha_tempo.js"></script>
+    <script>
+        popularCardsLinha_tempoAdmin();
+    </script>
 
 </body>
 </html>
