@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -232,6 +233,8 @@
  
                     </div>
 
+                    <div id="usuario"></div>
+
                 </div>
 
             </section>
@@ -256,7 +259,15 @@
  
 </footer>
 
+<section id="usuarios">
+
+</section>
+
 </body>
+<script src="../assets/js/cadastro_usuario.js"></script>
+<script>
+    popularCardsUsuarioAdmin();
+</script>
 
 <script>
   const inputTelefone = document.getElementById('telefone');

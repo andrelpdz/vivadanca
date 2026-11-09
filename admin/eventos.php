@@ -1,3 +1,9 @@
+<?php
+include "../backend/conexao.php";
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,5 +31,16 @@
     </form>
 
     
+
+
+   <section id="eventos" aria-live="polite"></section>
+ 
+    <script src="../assets/js/eventos.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", popularCardsEventosAdmin);
+    </script>
+
 </body>
+
+  
 </html>

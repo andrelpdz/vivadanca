@@ -1,14 +1,24 @@
 <?php
+
 require_once __DIR__ . "/conexao.php";
 
-$sql = "SELECT * FROM usuario";
+header("Content-Type: application/json; charset=UTF-8");
+
+$sql = "SELECT id, nome, email, criado FROM usuario ORDER BY id DESC";
+
 $resultado = $con->query($sql);
 
-while($user = $resultado->fetch_assoc()){
-    echo "e-mail: {$user["email"]} <br>";
-    echo "nome: {$user["nome"]} <br>";
-    echo "cod: {$user["id"]} <br>";
-    echo "registro: {$user["criado"]} <br>";
-    echo "<br>";
+$usuarios = [];
+
+while ($user = $resultado->fetch_assoc()) {
+    $usuarios[] = $user;
 }
+
+echo json_encode([
+    "sucesso" => true,
+    "usuarios" => $usuarios
+]);
+
+$con->close();
+
 ?>
