@@ -75,4 +75,32 @@ function excluirLinhaTempo($id)
 
     return true;
 }
+
+try {
+    if ($_SERVER["REQUEST_METHOD"] !== "GET") {
+        http_response_code(405);
+        throw new Exception("Método não permitido.");
+    }
+ 
+    echo json_encode(
+        [
+            "sucesso" => true,
+            "linha_tempo" => listarLinhaTempo()
+        ],
+        JSON_UNESCAPED_UNICODE
+    );
+} catch (Throwable $erro) {
+    if (http_response_code() < 400) {
+        http_response_code(500);
+    }
+ 
+    error_log($erro->getMessage());
+    echo json_encode(
+        [
+            "sucesso" => false,
+            "mensagem" => "Não foi possível carregar a galeria."
+        ],
+        JSON_UNESCAPED_UNICODE
+    );
+}
 ?>

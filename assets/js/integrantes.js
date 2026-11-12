@@ -52,7 +52,7 @@ function criarCardAdmin(integrante){
         <img src="../assets/integrantes/${integrante.foto}" alt="" width=200 height=200>
         <p>${integrante.nome}</p>
         <span>
-            <button onclick="editarFormulario('${integrante.id}', '${integrante.nome}', '${integrante.descricao}', '${integrante.foto}')">Editar</button>
+            <button onclick="editarFormulario('${integrante.id}', '${integrante.nome}', '${integrante.descricao}', '${integrante.foto}', '${integrante.ativo}')">Editar</button>
             <button onclick="excluirIntegrante(${integrante.id})" >Excluir</button>
         </span>
     </div>
@@ -61,16 +61,18 @@ function criarCardAdmin(integrante){
     return card;
 }
 
-function editarFormulario(id, nome, descricao, foto){
+function editarFormulario(id, nome, descricao, foto, ativo){
     const campo_id = document.getElementById("id");
     const campo_nome = document.getElementById("nome");
     const campo_descricao = document.getElementById("descricao");
     const campo_foto = document.getElementById("foto");
+    const campo_ativo = document.getElementById("ativo");
     const btn = document.getElementById("btnEnviar");
 
     campo_id.value = id;
     campo_nome.value = nome;
     campo_descricao.value = descricao;
+    campo_ativo.checked = ativo;
     btn.value = "Atualizar";
 }
 
