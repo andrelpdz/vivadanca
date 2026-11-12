@@ -21,6 +21,14 @@
         <input type="submit" value="Cadastrar Evento">
     </form>
 
+     <section id="coreografia"></section>
+ 
+    
+
     
 </body>
+    <script src="../assets/js/cadastro_coreografia.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", popularCardscoreografiaAdmin);
+    </script>
 </html>
