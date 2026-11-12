@@ -2,8 +2,7 @@
 
 require_once __DIR__ . "/conexao.php";
 
-function cadastrarImagemGaleria($foto, $descricao, $data = null)
-{
+function cadastrarImagemGaleria($foto, $descricao, $data = null){
     global $con;
 
     if ($data === null) {

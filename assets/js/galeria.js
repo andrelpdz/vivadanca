@@ -45,6 +45,22 @@ async function carregarGaleria() {
     }
 }
 
+async function deletarFoto(id) {
+    try {
+        const resposta = await fetch(`../backend/galeria.php?id=${encodeURIComponent(id)}`, {
+            method: "DELETE",
+            headers: { Accept: "application/json" }
+        });
+        const dados = await resposta.json();
+
+        if (!resposta.ok || !dados.sucesso) {
+            throw new Error(dados.mensagem || "Não foi possível excluir a imagem.");
+        }
+    } catch (erro) {
+        console.error("Erro ao excluir a foto:", erro);
+    }
+}
+
 document.getElementById("auth").addEventListener("submit", async (event) => {
     event.preventDefault();
 
