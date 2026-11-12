@@ -211,6 +211,79 @@ footer a:hover{
     color: #c58b17;
 }
 
+/* CADASTRO DE EVENTOS */
+
+.eventos {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 35px;
+    background: #f3eee6c0;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px #00000010;
+}
+
+.eventos h1, .eventos h2 {
+    color: #172033;
+}
+
+.eventos h1 span {
+    color: #c58b17;
+}
+
+.eventos p {
+    color: #687386;
+    margin-bottom: 25px;
+}
+
+.eventos form {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px #00000010;
+}
+
+.eventos label {
+    display: block;
+    margin: 15px 0 8px;
+    color: #344054;
+    font-size: 14px;
+}
+
+.eventos input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #e1e5ec;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.eventos button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 25px;
+    background: linear-gradient(135deg, #d5a332, #b78013);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.eventos nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.eventos a {
+    color: #bd871b;
+    text-decoration: none;
+}
+
+
+
+
 /* RESPONSIVIDADE */
 
 @media (max-width: 768px) {
