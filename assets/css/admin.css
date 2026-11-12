@@ -93,7 +93,7 @@ section#integrantes div span button{
 }
 
 /*LOGIN*/
-.login-main {
+main {
     width: 100%;
     min-height: 92vh;
     display: flex;
