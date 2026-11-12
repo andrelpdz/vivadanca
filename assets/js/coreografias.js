@@ -60,28 +60,28 @@ async function popularCoreografiasAdmin(){
         sectionCoreografias.innerHTML += cardCoreografiaAdmin(coreografia);
     });
 
-    sectionIntegrantes = document.getElementById("integrantes");
-    var dados = await carregarIntegrantes();
-    dados.integrantes.forEach((integrante)=>{
+    sectionCoreografia = document.getElementById("coreografia");
+    var dados = await carregarCoreografias();
+    dados.coreografias.forEach((coreografia)=>{
         var card = `
         <div>
-            <input type="checkbox" value="${integrante.id}" name="integrantes">
-            <label>${integrante.nome}</label>
+            <input type="checkbox" value="${coreografia.id}" name="coreografia">
+            <label>${coreografia.nome}</label>
         </div>
         `;
-        sectionIntegrantes.innerHTML += card;
+        sectionCoreografia.innerHTML += card;
     });
 
     // evento para personalizar antes do envio do FORMS
     form = document.getElementById("formCoreografia");
     form.addEventListener("submit", async (event)=>{
         // event.preventDefault();
-        const integrantesSelecionado = Array.from(
-            document.querySelectorAll('input[name="integrantes"]:checked')
+        const coreografiaSelecionado = Array.from(
+            document.querySelectorAll('input[name="coreografia"]:checked')
         ).map(input=>Number(input.value));
 
-        const listaIntegrantes = document.getElementById("listaIntegrantes");
-        listaIntegrantes.value = integrantesSelecionado;
+        const listaCoreografia = document.getElementById("listaCoreografia");
+        listaCoreografia.value = coreografiaSelecionado;
     });
 
 }
@@ -98,6 +98,7 @@ async function carregarCoreografias(){
         if(!resposta.ok || !dados.sucesso){
             throw new Error( dados.mensagem || "Não foi possivel carregar");
         }
+        console.log(dados);
         return dados;
         
     }catch(error) {

@@ -54,8 +54,6 @@ function deletar(){
 }
 
 
-
-
 try{
     if ($metodo == "GET"){
         $id = isset($_GET['id']) ? $_GET['id'] : null;
