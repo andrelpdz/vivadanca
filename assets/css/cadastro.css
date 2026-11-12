@@ -24,7 +24,7 @@ body {
         linear-gradient(135deg, #f8fafc, #eef2ff);
 }
 
-.main-cadastro{
+main{
     width: 100%;
     min-height: 92vh;
     display: flex;
