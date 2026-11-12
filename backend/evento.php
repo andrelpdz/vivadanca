@@ -95,41 +95,41 @@ require_once __DIR__ . "/conexao.php";
 //     }
 // }
 
-// function excluirEvento($id){
-//     global $con;
-//     $con->begin_transaction();
-//     try{
-//         // removendo os participantes
-//         $sql = "DELETE FROM participantes WHERE evento_id = ?";
-//         $stmt = $con->prepare($sql);
-//         $stmt->bind_param("i", $id);
-//         $resultado = $stmt->execute();
-//         $stmt->close();
+function excluirEvento($id){
+    global $con;
+    $con->begin_transaction();
+    try{
+        // removendo os participantes
+        $sql = "DELETE FROM participantes WHERE evento_id = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $resultado = $stmt->execute();
+        $stmt->close();
 
-//         // falta remover a conquista relacionada ao evento
-//         // PENDENTE !!!!!!
-//         $sql = "DELETE FROM conquistas WHERE evento_id = ?";
-//         $stmt = $con->prepare($sql);
-//         $stmt->bind_param("i", $id);
-//         $stmt->execute();
-//         $stmt->close();
+        // falta remover a conquista relacionada ao evento
+        // PENDENTE !!!!!!
+        $sql = "DELETE FROM conquistas WHERE evento_id = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
 
-//         // excluir evento
-//         $sql = "DELETE FROM eventos WHERE id = ?";
-//         $stmt = $con->prepare($sql);
-//         $stmt->bind_param("i", $id);
-//         $stmt->execute();
+        // excluir evento
+        $sql = "DELETE FROM eventos WHERE id = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
 
-//         // confirmar transação
-//         $stmt->close();
-//         $con->commit();
-//         return true;
+        // confirmar transação
+        $stmt->close();
+        $con->commit();
+        return true;
 
-//     }catch (Throwable $e){
-//         $con->rollback();
-//         return false;
-//     }
-// }
+    }catch (Throwable $e){
+        $con->rollback();
+        return false;
+    }
+}
 
 function listarEventos(){
     global $con;

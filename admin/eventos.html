@@ -14,32 +14,42 @@
         <h1>Cadastro de <span>Eventos</span></h1>
         <p>Cadastre os eventos do Viva Dança.</p>
 
-        <form action="../backend/registro_evento.php" method="POST">
+        <form id="formEvento" action="../backend/registro_evento.php" method="POST">
             <h2>Novo evento</h2>
 
+            <input type="hidden" id="id" name="id">
+
             <label>Nome do evento</label>
-            <input type="text" name="nome" required>
+            <input type="text" id="nome" name="nome" placeholder = "Nome do evento" required>
 
             <label>Descrição</label>
-            <input type="text" name="descricao" required>
+            <input type="text" id="descricao" name="descricao" placeholder = "Descrição do evento" required>
 
             <label>Data de início</label>
-            <input type="datetime-local" name="data_inicio" required>
+            <input type="datetime-local" id="data_inicio" name= "data_inicio" required>
 
             <label>Data de término</label>
-            <input type="datetime-local" name="data_termino" required>
+            <input type="datetime-local" id="data_termino" name= "data_termino" required>
 
             <label>Cidade</label>
-            <input type="text" name="cidade" required>
+            <input type="text" id="cidade" name = "cidade" placeholder = "Cidade">
 
             <label>Local</label>
-            <input type="text" name="local" required>
+            <input type="text" id="local" name = "local" placeholder = "Local do evento">
 
             <label>Premiação</label>
-            <input type="text" name="premiacao">
+            <input type="text" id="premiacao" name = "premiacao" placeholder = "Premiação do evento">
 
-            <button type="submit">Cadastrar Evento</button>
+            <input type="hidden" id= "listaIntegrantes" name="listaIntegrantes" value = "">
+            
+            <button type="submit" id="btnEnviar" value = "Cadastrar Evento">Cadastrar Evento</button>
         </form>
+
+        <hr>
+        <section id="eventos">
+
+        </section>
+
 
         <nav>
             <a href="cadastro_integrante.html">Integrantes</a>
@@ -57,14 +67,24 @@
         </div>
     </footer>
 
+    <script src="../assets/js/integrantes.js"></script>
+    <script src="../assets/js/eventos.js"></script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+       popularCardsEventosAdmin();
+    </script>
+
+  
 </body>
-  <section id="eventos" aria-live="polite"></section>
+  <!-- <section id="eventos" aria-live="polite"></section>
 </body>
     <script src="../assets/js/admin.js"></script>
     <script src="../assets/js/eventos.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", popularCardsEventosAdmin);
-    </script>  
+    </script>   -->
 
 
 
