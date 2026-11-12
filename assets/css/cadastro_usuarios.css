@@ -1,0 +1,351 @@
+
+:root {
+    --links: #C29A4A;
+    --azul: #0F1B2D;
+    --vinho: #6E1F2A;
+    --bege: #f3eee6;
+    --texto: #333;
+    --bgsub: #E9D9BC;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #172033;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(circle at top left, #dbeafe 0, transparent 35%),
+        linear-gradient(135deg, #f8fafc, #eef2ff);
+}
+
+/* CONTAINER PRINCIPAL */
+
+.lado-direito-admin {
+    padding: 45px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+}
+
+/* FORMULÁRIO */
+
+.painel-cadastro-usuario {
+    width: 100%;
+    max-width: 600px;
+    padding: 38px;
+    background: #fff;
+    border: 1px solid #f0f1f4;
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(31, 41, 55, 0.09);
+}
+
+.texto-cadastro {
+    margin-bottom: 28px;
+}
+
+.texto-cadastro h2 {
+    font-size: 28px;
+    color: var(--azul);
+    margin-bottom: 8px;
+}
+
+.texto-cadastro p {
+    font-size: 15px;
+    color: #8992a2;
+}
+
+.form-usuario {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* CAMPOS */
+
+.input-grupo {
+    margin-bottom: 17px;
+}
+
+.input-grupo label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--azul);
+}
+
+.input-box {
+    width: 100%;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+    background: #fff;
+    transition: 0.3s;
+}
+
+.input-box:focus-within {
+    border-color: var(--links);
+    box-shadow: 0 0 0 3px rgba(194, 154, 74, 0.15);
+}
+
+.input-icon {
+    margin-right: 10px;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: #172033;
+}
+
+.input-box input::placeholder {
+    color: #a0a7b3;
+}
+
+/* CONFIGURAÇÕES DO USUÁRIO */
+
+.configuracoes-usuario {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 15px;
+    margin: 25px 0;
+    align-items: stretch;
+}
+
+/* PAINÉIS DE TIPO E PERMISSÕES */
+
+.configuracoes-usuario .tipo-usuario,
+.configuracoes-usuario .permissoes {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    padding: 20px 16px;
+    margin: 0;
+    border: 1px solid #e8dfcf;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #fffdf9, #f8f4eb);
+    box-shadow: 0 4px 12px rgba(15, 27, 45, 0.04);
+}
+
+/* TÍTULOS DOS PAINÉIS */
+
+.configuracoes-usuario h3 {
+    color: var(--azul);
+    font-size: 15px;
+    font-weight: 700;
+    padding-bottom: 11px;
+    border-bottom: 2px solid var(--links);
+    margin-bottom: 3px;
+}
+
+/* OPÇÕES */
+
+.configuracoes-usuario label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #394252;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.configuracoes-usuario label:hover {
+    color: #a16d0b;
+}
+
+/* RADIO E CHECKBOX */
+
+.configuracoes-usuario input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: var(--links);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* BOTÕES */
+
+.btn-registrar,
+.btn-cancelar {
+    padding: 14px 20px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* CADASTRAR */
+
+.btn-registrar {
+    background: linear-gradient(135deg, #d5a332, #b78013);
+    border: none;
+    color: white;
+    box-shadow: 0 4px 10px rgba(183, 128, 19, 0.18);
+}
+
+.btn-registrar:hover {
+    background: linear-gradient(135deg, #b78013, #96650c);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(183, 128, 19, 0.25);
+}
+
+/* CANCELAR */
+
+.btn-cancelar {
+    background: #fff;
+    border: 1px solid #d6dce5;
+    color: var(--azul);
+    margin-left: 5px;
+}
+
+.btn-cancelar:hover {
+    background: #f1f5f9;
+    border-color: #b8c2d1;
+}
+
+/* LISTA DE USUÁRIOS */
+
+.lista-usuarios {
+    width: 100%;
+    max-width: 1100px;
+    padding: 35px;
+    background: #fff;
+    border: 1px solid #f0f1f4;
+    border-radius: 16px;
+    box-shadow: 0 10px 35px rgba(31, 41, 55, 0.09);
+}
+
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabela-usuarios {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    min-width: 650px;
+}
+
+.tabela-usuarios th {
+    background-color: #b78013;
+    color: #fff;
+    padding: 15px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.tabela-usuarios td {
+    padding: 15px;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 14px;
+    color: #333;
+}
+
+.tabela-usuarios tbody tr:hover {
+    background: #faf8f4;
+}
+
+/* BOTÕES DE AÇÃO */
+
+.btn-atualizar,
+.btn-excluir {
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+/* ATUALIZAR */
+
+.btn-atualizar {
+    background: #fff8e7;
+    color: #a16d0b;
+    border: 1px solid #e8c778;
+    margin-right: 6px;
+}
+
+.btn-atualizar:hover {
+    background: var(--links);
+    color: white;
+}
+
+/* EXCLUIR */
+
+.btn-excluir {
+    background: #fff1f2;
+    color: #be123c;
+    border: 1px solid #fecdd3;
+}
+
+.btn-excluir:hover {
+    background: #be123c;
+    color: white;
+}
+
+/* COLUNA DE AÇÕES */
+
+.tabela-usuarios td:last-child {
+    white-space: nowrap;
+    min-width: 180px;
+}
+
+/* MENSAGEM DE LISTA VAZIA */
+
+#mensagemVazia {
+    text-align: center;
+    color: #8992a2;
+    padding: 20px;
+    font-size: 14px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 600px) {
+
+    .lado-direito-admin {
+        padding: 20px 12px;
+    }
+
+    .painel-cadastro-usuario,
+    .lista-usuarios {
+        padding: 22px;
+    }
+
+    .texto-cadastro h2 {
+        font-size: 24px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .configuracoes-usuario {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-registrar,
+    .btn-cancelar {
+        padding: 12px 14px;
+        font-size: 13px;
+    }
+
+}
