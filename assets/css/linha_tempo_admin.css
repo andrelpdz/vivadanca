@@ -148,34 +148,3 @@ button[type="submit"]:hover {
   gap: 10px;
   z-index: 999
 }
-.estilo-menu{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%; 
-    padding: 12px 20px;
-    z-index: 1000; 
-}
-.estilo-menu ul{
-list-style: none;
-  display: flex; 
-  flex-wrap: wrap; 
-  gap: 18px;
-  justify-content: center;
-}
-.estilo-menu a{
-  color: #6E1F2A;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 6px 8px;
-  border-radius: 4px;
-  transition: background-color 0.25s ease;
-}
-.area-adm{
- display: flex;
- color: #333;
- text-align: center;
-}
-.cabecalho img{
-    filter: brightness(0);
-}
