@@ -1,3 +1,9 @@
+<?php
+include "../backend/conexao.php";
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +12,13 @@
     <title>Cadastro Evento</title>
 </head>
 <body>
-    <?php include "header.php";?>
-    <a href="cadastro_integrante.html"> ir para cadastro de integrantes</a><br>
-    <a href="cadastro_conquista.html">Cadastro Conquista</a><br>
-    <a href="cadastro_coreografia.html"> ir para cadastro de coreografia</a><br>
+    <!-- TOPO -->
+    <header></header>
+    <section>
+        <h1>Gerenciar <em>integrantes.</em></h1>
+        <p>Cadastre e gerencie os integrantes do Viva Dança.</p>
+    </section>
 
-    <br>
 
     <form action="../backend/registro_evento.php" method="POST">
         <input type="text" name="nome" placeholder="Nome do Evento"><br>
@@ -25,5 +32,13 @@
     </form>
 
     
+
+
+   <section id="eventos" aria-live="polite"></section>
 </body>
+    <script src="../assets/js/admin.js"></script>
+    <script src="../assets/js/eventos.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", popularCardsEventosAdmin);
+    </script>  
 </html>

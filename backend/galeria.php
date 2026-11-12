@@ -1,8 +1,7 @@
-﻿<?php
+<?php
 require_once __DIR__ . "/conexao.php";
 
-function cadastrarImagemGaleria($foto, $descricao, $data = null)
-{
+function cadastrarImagemGaleria($foto, $descricao, $data = null){
     global $con;
 
     if ($data === null) {
@@ -21,18 +20,15 @@ function cadastrarImagemGaleria($foto, $descricao, $data = null)
     return true;
 }
 
-function listarGaleria()
-{
+function listarGaleria(){
     global $con;
-
     $sql = "SELECT * FROM galeria ORDER BY data DESC";
     $resultado = $con->query($sql);
 
     return $resultado->fetch_all(MYSQLI_ASSOC);
 }
 
-function obterImagemGaleria($id)
-{
+function obterImagemGaleria($id){
     global $con;
 
     $sql = "SELECT * FROM galeria WHERE id = ?";
@@ -52,8 +48,7 @@ function obterImagemGaleria($id)
     return $imagem;
 }
 
-function atualizarImagemGaleria($id, $foto, $descricao, $data = null)
-{
+function atualizarImagemGaleria($id, $foto, $descricao, $data = null){
     global $con;
 
     if ($data === null) {
@@ -72,8 +67,7 @@ function atualizarImagemGaleria($id, $foto, $descricao, $data = null)
     return true;
 }
 
-function excluirImagemGaleria($id)
-{
+function excluirImagemGaleria($id){
     global $con;
 
     $sql = "DELETE FROM galeria WHERE id = ?";
@@ -83,5 +77,33 @@ function excluirImagemGaleria($id)
     $stmt->close();
 
     return true;
+}
+
+try {
+    if ($_SERVER["REQUEST_METHOD"] !== "GET") {
+        http_response_code(405);
+        throw new Exception("Método não permitido.");
+    }
+ 
+    echo json_encode(
+        [
+            "sucesso" => true,
+            "galeria" => listarGaleria()
+        ],
+        JSON_UNESCAPED_UNICODE
+    );
+} catch (Throwable $erro) {
+    if (http_response_code() < 400) {
+        http_response_code(500);
+    }
+ 
+    error_log($erro->getMessage());
+    echo json_encode(
+        [
+            "sucesso" => false,
+            "mensagem" => "Não foi possível carregar a galeria."
+        ],
+        JSON_UNESCAPED_UNICODE
+    );
 }
 ?>

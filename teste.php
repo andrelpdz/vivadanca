@@ -24,7 +24,7 @@ try{
     // $resp = listarConquistas();
     // $resp = obterConquista(1);
     // $resp = atualizarConquista(2, "O mais BELO", "Melhor Figurino MASC","AFOTO.png", 2, 5);
-    $resp = excluirConquista(4);
+   // $resp = excluirConquista(4);
 
     echo json_encode([
         "sucesso" => true,

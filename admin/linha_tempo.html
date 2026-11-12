@@ -1,3 +1,8 @@
+<?php
+include "../backend/conexao.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,19 +13,19 @@
     <link rel="stylesheet" href="../assets/css/linha_tempo_admin.css">
 </head>
 <body>
-    <?php include "header.php"; ?>
+    <!-- TOPO -->
+    <header></header>
+    <section>
+        <h1>Gerenciar <em>linha do tempo</em></h1>
+        <p>Cadastre e gerencie a linha do tempo.</p>
+    </section>
+        
     <div class="form-card">
         <div class="logo">
             <span>Viva Dança</span>
         </div>
 
-        <form action="#" method="POST" enctype="multipart/form-data" id="photoForm">
-            <!-- Data da Apresentação -->
-            <div class="form-group">
-                <label for="data">Data da Apresentação</label>
-                <input type="date" id="data" name="data_apresentacao" required>
-            </div>
-
+        
             <!-- Ano da Coreografia -->
             <div class="form-group">
                 <label for="ano"> Ano da Coreografia</label>
@@ -55,7 +60,17 @@
             <button type="submit">Enviar Foto </button>
         </form>
     </div>
+            <div id="linha_tempo"></div>
 
+        </section>
+
+    </main>
+
+    <script src="../assets/js/linha_tempo.js"></script>
+    <script>
+        popularCardsLinha_tempoAdmin();
+    </script>
 
 </body>
+<script src="../assets/js/admin.js"></script>
 </html>

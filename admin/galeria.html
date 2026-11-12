@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -9,9 +10,14 @@
 </head>
 
 <body>
-    <?php include "header.php"; ?>
-    <main class="galeriaMain">
+    <!-- TOPO -->
+    <header></header>
+    <section>
+        <h1>Gerenciar <em>integrantes.</em></h1>
+        <p>Cadastre e gerencie os integrantes do Viva Dança.</p>
+    </section>
 
+    <main>
         <div class="GaleriaContainer">
 
             <!-- CONTAINER -->
@@ -87,7 +93,13 @@
 
         </div>
 
+        <div id="galeria"></div>   
+
     </main>
 </body>
-
+<script src="../assets/js/admin.js"></script>
+<script src="../assets/js/galeria.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded",popularCardsGaleriaAdmin);
+</script>
 </html>
