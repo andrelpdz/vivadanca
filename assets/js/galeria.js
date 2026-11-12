@@ -44,3 +44,28 @@ async function carregarGaleria() {
         };
     }
 }
+
+document.getElementById("auth").addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+
+    try {
+        const resposta = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form)
+        });
+
+        const dados = await resposta.json();
+
+        if (!resposta.ok || !dados.sucesso) {
+            throw new Error(dados.mensagem || "Não foi possível cadastrar a foto.");
+        }
+
+        form.reset();
+        document.getElementById("galeria").replaceChildren();
+        await popularCardsGaleriaAdmin();
+    } catch (erro) {
+        console.error("Erro ao cadastrar a foto:", erro);
+    }
+}); //mostrar as paginas sem precisar atualizar a pagina

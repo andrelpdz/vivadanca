@@ -33,7 +33,7 @@
 
                     </div>
 
-                    <form class="form-" id="auth" action="backend/valida_login.php" method="post">
+                    <form class="form-" id="auth" action="../backend/galeria.php" method="post" enctype="multipart/form-data">
 
                         <!-- CADASTRO IMAGEM -->
                         <div class="SelecImg">
@@ -56,12 +56,14 @@
                                             </g>
                                         </g>
                                     </g>
-                                </svg>                        
+                                </svg>               
                                 <input id="galeriaBtImagem" name="imagem" type="file" placeholder="Escolher arquivo" required>
                             </div>
+                                <input name="descricao" required placeholder="Descrição da imagem" type="text" class="inputGaleria">         
 
                             <div class="inputBoxGaleria">                                
 
+        
                                 <!-- BOTÃO -->
                                 <button type="submit" class="btn-submitGaleria">
 
@@ -72,7 +74,7 @@
 
 
                                 </button>
-                                <div class="formatos">Formatos: JPEG ou PNG</div>
+                                <div class="formatos">Formatos: JPEG, PNG ou WebP</div>
                             </div>
 
                         </div>
@@ -100,6 +102,10 @@
 <script src="../assets/js/admin.js"></script>
 <script src="../assets/js/galeria.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded",popularCardsGaleriaAdmin);
+    document.addEventListener("DOMContentLoaded", popularCardsGaleriaAdmin);
 </script>
+<script>
+    // document.addEventListener("DOMContentLoaded",popularCardsGaleriaAdmin);
+</script>
+
 </html>
