@@ -9,7 +9,9 @@
 <body>
 
     <main class="eventos">
-        <img src="../assets/img/logo.png" alt="Viva Dança" width="130">
+        <header>
+
+        </header>
 
         <h1>Cadastro de <span>Eventos</span></h1>
         <p>Cadastre os eventos do Viva Dança.</p>
@@ -23,7 +25,7 @@
             <input type="text" id="nome" name="nome" placeholder = "Nome do evento" required>
 
             <label>Descrição</label>
-            <input type="text" id="descricao" name="descricao" placeholder = "Descrição do evento" required>
+            <textarea id="descricao" name="descricao" placeholder = "Descrição do evento" required></textarea>
 
             <label>Data de início</label>
             <input type="datetime-local" id="data_inicio" name= "data_inicio" required>
@@ -69,9 +71,10 @@
 
     <script src="../assets/js/integrantes.js"></script>
     <script src="../assets/js/eventos.js"></script>
+     <script src="../assets/js/admin.js"></script>
 
     <script src="https://unpkg.com/lucide@latest"></script>
-    
+
     <script>
        popularCardsEventosAdmin();
     </script>
