@@ -1,0 +1,169 @@
+/* Geral */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f2eb;
+  color: #222;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto 20px auto;
+}
+ 
+.container-header img {
+  width: 110px;
+}
+ 
+.container-header p {
+  color: #b8923a;
+  letter-spacing: 2px;
+  font-size: 13px;
+}
+  
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+ 
+h1 em {
+  color: #b8923a;
+}
+
+.btn-cadastrar {
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  background-color: #c8891a;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+ 
+/* PAINÉIS */
+
+.painel {
+    background: white;
+    padding: 35px;
+    margin-bottom: 30px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px #00000010;
+}
+
+.painel h2 {
+    color: #172033;
+    margin-bottom: 8px;
+}
+
+.painel  p {
+    color: #687386;
+    margin-bottom: 25px;
+}
+
+.container {
+  background-color: white;
+  width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+
+/* Lista */
+.lista {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+  box-sizing: border-box; 
+  font-weight:bold;
+}
+
+button {
+  background-color: #b8923a;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+ .lista {
+  background-color: white;
+  border: 1px solid #e5dfd3;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  display: inline-block;
+  width: 200px;
+}
+
+.lista h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.lista p {
+  margin: 0 0 4px;
+  font-size: 14px;
+  color: #444;
+}
+
+.lista .data {
+  color: #888;
+  font-size: 12px;
+}
+
+.botoes {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.botoes button {
+  background-color: #b8923a;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  cursor: pointer;
+}
+
+.botoes .excluir {
+  background-color: #999;
+}
+#coreografias{
+    width: 610px;
+}
+
+
+/* Campos de texto e data */
+input[type="text"],
+input[type="date"] {
+    width: 100%;
+    max-width: 350px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Botão de cadastrar */
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #b89535;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #9e7e28;
+}

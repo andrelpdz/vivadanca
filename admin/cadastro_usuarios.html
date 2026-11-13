@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../assets/css/cadastro_usuarios.css">
+
+    <title>Cadastro de usuários</title>
+</head>
+
+<body>
+
+    <section class="lado-direito-admin">
+
+        <!-- PAINEL DE CADASTRO -->
+        <div class="painel-cadastro-usuario">
+
+            <div class="texto-cadastro">
+                <h2 id="tituloFormulario">Novo usuário</h2>
+                <p id="descricaoFormulario">Registrar um novo usuário</p>
+            </div>
+
+            <form class="form-usuario" id="auth">
+
+                <input type="hidden" id="idUsuario">
+
+                <!-- NOME -->
+                <div class="input-grupo">
+
+                    <label for="cadastroNome">Nome:</label>
+
+                    <div class="input-box">
+                        <span class="input-icon">👤</span>
+
+                        <input
+                            id="cadastroNome"
+                            name="nome"
+                            type="text"
+                            placeholder="Seu nome"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <!-- EMAIL -->
+                <div class="input-grupo">
+
+                    <label for="cadastroEmail">E-mail:</label>
+
+                    <div class="input-box">
+                        <span class="input-icon">✉️</span>
+
+                        <input
+                            id="cadastroEmail"
+                            name="email"
+                            type="email"
+                            placeholder="seuemail@exemplo.com"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <!-- SENHA -->
+                <div class="input-grupo">
+
+                    <label for="senha">Senha:</label>
+
+                    <div class="input-box">
+                        <span class="input-icon">🗝️</span>
+
+                        <input
+                            id="senha"
+                            name="senha"
+                            type="password"
+                            placeholder="Digite sua senha"
+                            autocomplete="new-password"
+                            minlength="8"
+                        >
+                    </div>
+
+                </div>
+
+                <!-- CONFIRMAR SENHA -->
+                <div class="input-grupo">
+
+                    <label for="confirmarSenha">
+                        Confirme sua senha:
+                    </label>
+
+                    <div class="input-box">
+                        <span class="input-icon">🗝️</span>
+
+                        <input
+                            id="confirmarSenha"
+                            name="confirmarSenha"
+                            type="password"
+                            placeholder="Confirme sua senha"
+                            autocomplete="new-password"
+                            minlength="8"
+                        >
+                    </div>
+
+                </div>
+
+
+                <!-- CONFIGURAÇÕES DO USUÁRIO -->
+                <div class="configuracoes-usuario">
+
+                    <!-- TIPO DE USUÁRIO -->
+                    <div class="tipo-usuario">
+
+                        <h3>Tipo de usuário</h3>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="tipo_usuario"
+                                value="admin"
+                                checked
+                            >
+                            Administrador
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="tipo_usuario"
+                                value="editor"
+                            >
+                            Editor
+                        </label>
+
+                    </div>
+
+
+                    <!-- PERMISSÕES -->
+                    <div class="permissoes">
+
+                        <h3>Permissões</h3>
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="permissoes"
+                                value="Linha do tempo"
+                            >
+                            Linha do tempo
+                        </label>
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="permissoes"
+                                value="Integrantes"
+                            >
+                            Integrantes
+                        </label>
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="permissoes"
+                                value="Coreografias"
+                            >
+                            Coreografias
+                        </label>
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="permissoes"
+                                value="Conquistas"
+                            >
+                            Conquistas
+                        </label>
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="permissoes"
+                                value="Galerias"
+                            >
+                            Galerias
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BOTÕES -->
+                <button
+                    type="submit"
+                    class="btn-registrar"
+                    id="btnSalvar"
+                >
+                    Cadastrar usuário
+                </button>
+
+                <button
+                    type="reset"
+                    class="btn-cancelar"
+                    id="btnCancelar"
+                >
+                    Cancelar
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- LISTA DE USUÁRIOS -->
+        <div class="lista-usuarios">
+
+            <div class="texto-cadastro">
+
+                <h2>Usuários cadastrados</h2>
+
+                <p>Gerencie os usuários do sistema</p>
+
+            </div>
+
+            <div class="tabela-container">
+
+                <table class="tabela-usuarios">
+
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Tipo</th>
+                            <th>Permissões</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="listaUsuarios">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <p id="mensagemVazia">
+                Nenhum usuário cadastrado.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="../assets/js/admin.js" defer></script>
+    <script src="../assets/js/cadastro_usuarios.js" defer></script>
+
+</body>
+
+</html>

@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Coreografia</title>
+    <link rel="stylesheet" href="../assets/css/coreografia.css">
 </head>
 <body>
+    <section class="painel">
     <!-- TOPO -->
     <header></header>
     <section>
@@ -15,16 +17,25 @@
 
 
     <br>
+    
+        <form action="../backend/registro_coreografia.php" method="POST" id="formCoreografia">
+            <input type="text" name="titulo" placeholder="Nome coreografia"><br>
+            <input type="text" name="descricao" placeholder="Descrição da coreografia"><br>
+            <input type="date" name="data_criacao"><br>
+            <input type="text" name="modalidade" placeholder="modalidade"><br><br>
+            <input type="submit" value="Cadastrar Evento">
+        </form>
+    </section>
 
-    <form action="../backend/registro_coreografia.php" method="POST">
-        <input type="text" name="titulo" placeholder="Nome coreografia"><br>
-        <input type="text" name="descricao" placeholder="Descrição da coreografia"><br>
-        <input type="date" name="data_criacao"><br>
-        <input type="text" name="modalidade" placeholder="modalidade"><br><br>
-        <input type="submit" value="Cadastrar Evento">
-    </form>
+     <section id="coreografias"></section>
+ 
+
 
     
 </body>
 <script src="../assets/js/admin.js"></script>
+<script src="../assets/js/coreografias.js"></script>
+<script>
+    popularCoreografiasAdmin();
+</script>
 </html>
