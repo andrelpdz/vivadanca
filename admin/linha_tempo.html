@@ -1,8 +1,3 @@
-<?php
-include "../backend/conexao.php";
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -15,47 +10,49 @@ include "../backend/conexao.php";
 </head>
 <body>
     <!-- TOPO -->
-    <header></header>
-    <main>    
-    <div class="form-card">
-        <div class="logo">
-            <span>Viva Dança</span>
-        </div>
-
         
-            <!-- Ano da Coreografia -->
-            <div class="form-group">
-                <label for="ano"> Ano da Coreografia</label>
-                <input type="number" id="ano" name="ano_coreografia" 
-                       min="2015" placeholder="Ex: 2026" required>
-            </div>
+        <header></header>
 
-            <!-- Descrição Ampliada -->
-            <div class="form-group">
-                <label for="descricao">Descrição / Nome da Coreografia</label>
-                <textarea id="descricao" name="descricao" 
-                          placeholder="Descreva aqui: nome da coreografia, grupo, estilo, detalhes da apresentação..." 
-                          required></textarea>
+        <main>    
+        <div class="form-card">
+            <div class="logo">
+                <span>Viva Dança</span>
             </div>
+        <form class="form-linha_tempo" action="../backend/linha_tempo.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="id" id="id">      
+                <!-- Ano da Coreografia -->
+                <div class="form-group">
+                    <label for="ano"> Ano da Coreografia</label>
+                    <input type="number" id="ano" name="ano" 
+                        min="2015" placeholder="Ex: 2026" required>
+                </div>
 
-            <!-- Upload de Imagem com Pré-visualização -->
-            <div class="form-group">
-                <label> Escolha a Foto</label>
-                <label class="upload-area">
-                    <input type="file" id="foto" name="foto" 
-                           accept="image/*" required>
-                    <div class="upload-text">
-                        Clique ou arraste a foto aqui<br>
-                        <small>Formatos: JPG, PNG | Máx: 5MB</small>
-                    </div>
-                    <div class="preview-container" id="previewContainer">
-                        <img id="previewImg" class="preview-img" alt="Pré-visualização">
-                    </div>
-                </label>
-            </div>
+                <!-- Descrição Ampliada -->
+                <div class="form-group">
+                    <label for="descricao">Descrição / Nome da Coreografia</label>
+                    <textarea id="descricao" name="descricao" 
+                            placeholder="Descreva aqui: nome da coreografia, grupo, estilo, detalhes da apresentação..." 
+                            required></textarea>
+                </div>
 
-            <button type="submit">Enviar Foto </button>
-        </form>
+                <!-- Upload de Imagem com Pré-visualização -->
+                <div class="form-group">
+                    <label> Escolha a Foto</label>
+                    <label class="upload-area">
+                        <input type="file" id="foto" name="foto" 
+                            accept="image/*" required>
+                        <div class="upload-text">
+                            Clique ou arraste a foto aqui<br>
+                            <small>Formatos: JPG, PNG | Máx: 5MB</small>
+                        </div>
+                        <div class="preview-container" id="previewContainer">
+                            <img id="previewImg" class="preview-img" alt="Pré-visualização">
+                        </div>
+                    </label>
+                </div>
+
+                <input type="submit" name="btnEnviar" id="btnEnviar" value="Cadastrar">
+            </form>
     </div>
             <div id="linha_tempo"></div>
 
@@ -65,7 +62,7 @@ include "../backend/conexao.php";
 
     <script src="../assets/js/linha_tempo.js"></script>
     <script>
-       // popularCardsLinha_tempoAdmin();
+        popularCardsLinha_tempoAdmin();
     </script>
 
 </body>
