@@ -1,9 +1,12 @@
 //-> Controle Menu
 const icoMenu = document.querySelector("#icoMenu");
 const nav = document.querySelector("nav");
-icoMenu.addEventListener("mousemove", () => {
-    nav.classList.toggle("ativo");
-});
+
+if (icoMenu && nav) {
+    icoMenu.addEventListener("mousemove", () => {
+        nav.classList.toggle("ativo");
+    });
+}
 
 //-> Controle Agenda
 // Cada evento da agenda é um "objeto" dentro da lista (os dois últimos são exemplos, troque pelos reais)
@@ -81,3 +84,112 @@ document.querySelector("#palcoBtEsq").addEventListener("click", () => {
     fotoAtual = (fotoAtual - 1 + fotos.length) % fotos.length;
     trocarFoto();
 });
+
+<<<<<<< HEAD
+//Carrega Integrantes
+
+async function popularIntegrantes(){
+    sectionIntegrantes = document.querySelector(".galeriaIntegrante");
+=======
+// Carrega Integrantes
+async function popularIntegrantes(){
+    sectionIntegrantes = document.querySelector(".integrantes-galeria");
+>>>>>>> ed3fe482d666a0879ee9bdeccb672b0f0b2410b5
+    const dados = await carregarIntegrantes();
+ 
+    dados.integrantes.forEach((integrante)=>{
+        sectionIntegrantes.innerHTML += cardIntegrantes(integrante);
+    });
+}
+ 
+async function carregarIntegrantes(){
+<<<<<<< HEAD
+    try{
+        const resposta = await fetch(
+            "backend/api_integrante.php",
+            {headers: {"Accept": "application/json"}}
+        );
+        const dados = await resposta.json();
+        if(!resposta.ok || !dados.sucesso){
+            throw new Error(dados.mensagem || "Não foi possível carregar");
+            
+        }
+        return dados;
+
+    }catch(error) {
+        console.log(error);
+        return {"integrantes": []};
+    }
+}
+
+=======
+    try {
+        const resposta = await fetch(
+            "backend/api_integrante.php",
+            { headers:{"Accept": "application/json"}}
+        );
+        const dados = await resposta.json();
+        if(!resposta.ok || !dados.sucesso){
+            throw new Error( dados.mensagem || "Não foi possivel carregar");
+        }
+        return dados;        
+    }catch(error) {
+        console.log(error);
+        return { "integrantes":[] };
+    }    
+}
+ 
+>>>>>>> ed3fe482d666a0879ee9bdeccb672b0f0b2410b5
+function cardIntegrantes(integrante){
+    const card = `
+    <a class="item integrante-link" href="#">
+        <div class="foto" style="background-image:url('assets/integrantes/${integrante.foto}');"></div>
+<<<<<<< HEAD
+        <div class="descricao">${integrante.nome}
+        <button class="botao-integrante">›</button>
+        </div>
+=======
+        <div class="descricao">${integrante.nome}</div>
+    </a>
+    `;
+    return card;
+}
+
+
+//Caregar Galeria
+
+async function popularGalerias(){
+    sectionGalerias = document.querySelector(".galeria-imagens");
+    const dados = await carregarGalerias();
+
+    dados.galeria.forEach((galeria)=>{
+        sectionGalerias.innerHTML += cardGalerias(galeria);
+    });
+}
+
+async function carregarGalerias(){
+    try {
+        const resposta = await fetch(
+            "backend/galeria.php",
+            { headers:{"Accept": "application/json"}}
+        );
+        const dados = await resposta.json();
+        if(!resposta.ok || !dados.sucesso){
+            throw new Error( dados.mensagem || "Não foi possivel carregar");
+        }
+        return dados;        
+    }catch(error) {
+        console.log(error);
+        return { "galerias": [] };
+    }    
+}
+ 
+function cardGalerias(galeria){
+    const card = `
+    <a class="item galeria-link" href="#">
+        <div class="foto" style="background-image:url('assets/galeria/${galeria.foto}');"></div>
+>>>>>>> ed3fe482d666a0879ee9bdeccb672b0f0b2410b5
+    </a>
+    `;
+    return card;
+}
