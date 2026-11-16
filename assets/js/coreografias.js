@@ -3,8 +3,11 @@
 
 function cardCoreografiaAdmin(coreografia){
     const card = `
-    <div>
+    <div class="lista">
         <p>${coreografia.titulo}</p>
+        <p>${coreografia.descricao}</p>
+        <p>${coreografia.data_criacao}</p>
+        <p>${coreografia.modalidade}</p>
         <span>
             <button data-info='${JSON.stringify(coreografia)}'
                 onclick="editarCoreografia(this.dataset.info)">
@@ -58,18 +61,6 @@ async function popularCoreografiasAdmin(){
     var dados = await carregarCoreografias();
     dados.coreografias.forEach((coreografia)=>{
         sectionCoreografias.innerHTML += cardCoreografiaAdmin(coreografia);
-    });
-
-    sectionCoreografia = document.getElementById("coreografia");
-    var dados = await carregarCoreografias();
-    dados.coreografias.forEach((coreografia)=>{
-        var card = `
-        <div>
-            <input type="checkbox" value="${coreografia.id}" name="coreografia">
-            <label>${coreografia.nome}</label>
-        </div>
-        `;
-        sectionCoreografia.innerHTML += card;
     });
 
     // evento para personalizar antes do envio do FORMS

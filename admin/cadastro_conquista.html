@@ -1,46 +1,74 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="../assets/css/conquista.css">
+
     <title>Cadastro de Conquistas</title>
-    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <!-- TOPO -->
-    <header></header>
-    <section>
-        <h1>Gerenciar <em>integrantes.</em></h1>
-        <p>Cadastre e gerencie os integrantes do Viva Dança.</p>
-    </section>
 
-    <main>
-        <h1>Cadastro de Conquistas</h1>
-        <p>Preencha os dados da conquista.</p>
+<body class="login-page">
 
-        <form action="#" method="POST" enctype="multipart/form-data">
+    <main class="login-main">
 
-            <label>Evento ID:</label>
-            <input type="number" name="evento_id" required>
+        <!-- Lado esquerdo -->
+        <section class="login-left">
 
-            <label>Coreografia ID:</label>
-            <input type="number" name="coreografia_id" required>
+            <img src="../assets/img/logo.png" alt="Logo VivaDança">
 
-            <label>Nome:</label>
-            <input type="text" name="nome" placeholder="Nome da conquista" required>
+            <div>
+                <p class="welcome">VIVADANÇA</p>
 
-            <label>Descrição:</label>
-            <textarea name="descricao" placeholder="Descreva a conquista"></textarea>
+                <h1>
+                    Cada conquista conta uma história.
+                </h1>
 
-            <label>Foto:</label>
-            <input type="file" name="foto" accept="image/*">
+                <p>
+                    Registre os momentos e as conquistas
+                    importantes da nossa trajetória.
+                </p>
+            </div>
 
-            <button type="submit">Cadastrar Conquista</button>
+        </section>
 
-        </form>
+        <!-- Lado direito -->
+        <section class="login-right">
+
+            <form class="form-login" action="#" method="POST" enctype="multipart/form-data">
+
+                <h2>Nova Conquista</h2>
+                <p>Preencha os dados da conquista.</p>
+
+                <label for="evento_id">Evento ID</label>
+                <input type="number" id="evento_id" name="evento_id" required>
+
+                <label for="coreografia_id">Coreografia ID</label>
+                <input type="number" id="coreografia_id" name="coreografia_id" required>
+
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="Nome da conquista" required>
+
+                <label for="descricao">Descrição</label> 
+                <input id="descricao" name="descricao" placeholder="Descreva a conquista"></input>
+
+                <label for="foto">Foto</label>
+                <input type="file" id="foto" name="foto" accept="image/*">
+
+                <button type="submit">
+                    Cadastrar Conquista →
+                </button>
+
+            </form>
+
+        </section>
 
     </main>
-
+ 
 </body>
-<script src="../assets/js/admin.js"></script>
+    <script src="../assets/js/conquistas.js"></script>
 </html>

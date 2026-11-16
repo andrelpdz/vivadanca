@@ -24,9 +24,9 @@ body {
 /* ESTRUTURA DAS PÁGINAS */
 
 main {
-    max-width: 1100px;
+    max-width: 80%;
     margin: 40px auto;
-    padding: 40px;
+    padding: 40px 10%;
     background: #f3eee6c0;
     border-radius: 25px;
     box-shadow: 0 10px 30px #00000010;
@@ -64,6 +64,29 @@ header p, .eventos p {
     color: var(--cinza);
 }
 
+/* LINKS DE NAVEGAÇÃO */
+
+header nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+header nav ul li{
+    display: inline-block;
+    margin: 0 8px;
+}
+
+header nav a {
+    color: var(--dourado);
+    text-decoration: none;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
 /* FORMULÁRIOS */
 
 .integrantes-painel, .eventos form {
@@ -94,6 +117,8 @@ header p, .eventos p {
     font-weight: bold;
 }
 
+.form-integrantes textarea,
+.eventos textarea,
 .form-integrantes input[type="text"],
 .form-integrantes input[type="file"],
 .eventos input:not([type="hidden"]) {
@@ -104,6 +129,14 @@ header p, .eventos p {
     border-radius: 8px;
     font-family: inherit;
 }
+
+.eventos textarea{
+    height: 200px;
+}
+.form-integrantes textarea{
+    height: 200px;
+}
+
 
 input:focus {
     outline-color: var(--dourado);
@@ -189,8 +222,7 @@ input:focus {
 /* PÁGINA DE EVENTOS */
 
 .eventos {
-    max-width: 700px;
-    padding: 35px;
+    padding: 35px 10%;
     border-radius: 20px;
 }
 
