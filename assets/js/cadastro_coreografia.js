@@ -37,7 +37,7 @@ async function carregarcoreografia() {
         console.error("Erro ao carregar a galeria:", erro);
         return {
             sucesso: false,
-            mensagem: erro.message || "NÃ£o foi possÃ­vel carregar a galeria.",
+            mensagem: erro.message || "Não foi possÃ­vel carregar a galeria.",
             imagens: []
         };
     }
