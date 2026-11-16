@@ -76,9 +76,6 @@ function editarFormulario(id, nome, descricao, foto, ativo){
     btn.value = "Atualizar";
 }
 
-
-
-
 async function popularCardsIntegrantesAdmin(){
     sectionIntegrantes = document.getElementById("integrantes");
     const dados = await carregarIntegrantes();
