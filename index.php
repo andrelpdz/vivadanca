@@ -18,6 +18,7 @@ $v = md5(date('Y-m-d H:m:s'));
 
     <title>Viva Dança - <?=$titulo?></title>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="assets/js/script.js"></script>
 </head>
 <body class="<?= $pagina === 'home' ? 'pagina-home' : ($pagina === 'sobre' ? 'pagina-sobre' : ($pagina === 'integrantes' ? 'pagina-integrantes' : ($pagina === 'integrante' ? 'pagina-integrante' : ($pagina === 'galeria' ? 'pagina-galeria' : '')))) ?>">
     <header class="container-header">
@@ -69,6 +70,6 @@ $v = md5(date('Y-m-d H:m:s'));
         <p class="footer-copy">©</p>
     </footer>
 
-    <script src="assets/js/script.js"></script>
+    
 </body>
 </html>

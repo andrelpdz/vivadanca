@@ -81,3 +81,45 @@ document.querySelector("#palcoBtEsq").addEventListener("click", () => {
     fotoAtual = (fotoAtual - 1 + fotos.length) % fotos.length;
     trocarFoto();
 });
+
+//Carrega Integrantes
+
+async function popularIntegrantes(){
+    sectionIntegrantes = document.querySelector(".galeriaIntegrante");
+    const dados = await carregarIntegrantes();
+ 
+    dados.integrantes.forEach((integrante)=>{
+        sectionIntegrantes.innerHTML += cardIntegrantes(integrante);
+    });
+}
+ 
+async function carregarIntegrantes(){
+    try{
+        const resposta = await fetch(
+            "backend/api_integrante.php",
+            {headers: {"Accept": "application/json"}}
+        );
+        const dados = await resposta.json();
+        if(!resposta.ok || !dados.sucesso){
+            throw new Error(dados.mensagem || "Não foi possível carregar");
+            
+        }
+        return dados;
+
+    }catch(error) {
+        console.log(error);
+        return {"integrantes": []};
+    }
+}
+
+function cardIntegrantes(integrante){
+    const card = `
+    <a class="item integrante-link" href="#">
+        <div class="foto" style="background-image:url('assets/integrantes/${integrante.foto}');"></div>
+        <div class="descricao">${integrante.nome}
+        <button class="botao-integrante">›</button>
+        </div>
+    </a>
+    `;
+    return card;
+}

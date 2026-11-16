@@ -343,27 +343,37 @@ section.subpagina .subpagina-texto p{
     color: var(--texto);
 }
 
-section.galeria{
-    padding: 40px 20%;
+section.galeriaIntegrante{
+        padding: 20px 10% 50px;
     background-color: var(--bege);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
 }
-section.galeria .item{
-    display: inline-block;
-    text-align: center;
-    margin:0px 10px 40px 10px;
+section.galeriaIntegrante .item{
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    background-color: #fffaf3;
 }
-section.galeria .item .foto{
-    width: 200px;
-    height: 200px;
+section.galeriaIntegrante .item .foto{
+    width: 100%;
+    height: 230px;
     background-image: url(../integrantes/integrante.png);
     background-size: cover;
     background-position: center;
 }
-section.galeria .item .descricao{
-    margin-top: 10px;
-    font-weight: bold;
-    font-family: 'Cormorant Garamond';
+section.galeriaIntegrante .item .descricao{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
     font-size: 1.5rem;
+    color: var(--azul);
 }
 
 
@@ -513,45 +523,11 @@ section.galeria .item .descricao{
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     max-width: 600px;
-    color: #0E1B2B;
+    color: var(--azul);
     margin-bottom: 15px;
 }
 
- /* GALERIA DE INTEGRANTES */
-
-section.galeria{
-    padding: 20px 10% 50px;
-    background-color: var(--bege);
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-}
-
-section.galeria .item{
-    width: 100%;
-    min-width: 0;
-    margin: 0;
-    background-color: #fffaf3;
-}
-section.galeria .item .foto{
-    width: 100%;
-    height: 230px;
-    background-image: url(../integrantes/integrante.png);
-    background-size: cover;
-    background-position: center;
-}
-section.galeria .item .descricao{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    padding: 15px;
-    margin: 0;
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 600;
-    font-size: 1.5rem;
-    color: var(--azul);
-}
+ 
 
 
 /* PÁGINA INDIVIDUAL DO INTEGRANTE */
@@ -2819,7 +2795,7 @@ body.pagina-sobre .containerFotoCuidado img {
     .trajetoria-submenu a { padding: 11px 5px; font-size: .68rem; }
 }
 /* Página de integrantes dentro da trajetória */
-body.pagina-integrantes {
+/* body.pagina-integrantes {
     background: #f3eee6;
 }
 body.pagina-integrantes .integrantes {
@@ -2888,17 +2864,10 @@ body.pagina-integrantes .integrantes-galeria .descricao {
     font-size: clamp(.95rem, 1.8vw, 1.1rem);
     font-weight: 600;
     line-height: 1.1;
-}
-body.pagina-integrantes .integrantes-galeria .botao-integrante {
-    display: none;
-}
-@media (max-width: 520px) {
-    body.pagina-integrantes .integrantes-galeria {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
-        width: 100%;
-    }
-}
+} */
+
+
+
 /* Perfil individual acessado ao abrir um integrante */
 body.pagina-integrante { background: #f3eee6; }
 body.pagina-integrante .integrante-caminho,
@@ -3021,4 +2990,52 @@ body.pagina-integrante .galeria-integrante-grid img {
 }body.pagina-integrantes .integrante-link:focus-visible {
     outline: 3px solid #a34aff;
     outline-offset: 2px;
+}
+
+/* CORREÇÃO DA PÁGINA INTEGRANTES */
+
+body.pagina-integrantes section.integrantes {
+    display: block;
+    width: auto;
+    box-sizing: border-box;
+    background-color: #F3EEE6;
+    padding: 40px 10% 15px;
+}
+
+body.pagina-integrantes section.integrantes div {
+    width: auto;
+    text-align: left;
+    font-size: inherit;
+}
+
+/* TÍTULO */
+
+body.pagina-integrantes .integrantes-titulo {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 70px;
+    font-weight: 400;
+    color: var(--vinho);
+    margin: 0;
+}
+
+/* SUBTÍTULO */
+
+body.pagina-integrantes .integrantes-subtitulo {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 34px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--links);
+    margin: 10px 0 20px;
+}
+
+/* DESCRIÇÃO */
+
+body.pagina-integrantes .integrantes-descricao {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    line-height: 1.4;
+    max-width: 600px;
+    color: var(--azul);
+    margin-bottom: 15px;
 }

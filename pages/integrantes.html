@@ -1,112 +1,31 @@
-<?php require __DIR__ . '/../components/trajetoria-cabecalho.php'; ?>
+<!--SUBMENU DA PÁGINA INTEGRANTES-->
+
+    <nav class="integrantes-menu">
+            <ul>
+                <li><a href="<?=$raiz;?>/?pagina=linhadotempo">LINHA DO TEMPO</a></li>
+                <li><a class="integrantes-ativo" href="<?=$raiz;?>/?pagina=integrantes">INTEGRANTES</a></li>
+                <li><a href="<?=$raiz;?>/?pagina=coreografias">COREOGRAFIAS</a></li>
+                <li><a href="<?=$raiz;?>/?pagina=conquistas">CONQUISTAS</a></li>
+                <li><a href="<?=$raiz;?>/?pagina=galeria">GALERIA</a></li>
+                <li><a href="<?=$raiz;?>/?pagina=eventos">AGENDA & EVENTOS</a></li>
+            </ul>                
+    </nav>
+</section>
+   
+
 <section class="integrantes" id="integrantes">
-    <h2 class="integrantes-titulo">INTEGRANTES</h2>
-    <h3 class="integrantes-subtitulo">Conheça as pessoas que fazem o viva dança.</h3>
+    <h2 class="integrantes-titulo">INTEGRANTES</h2><br>
+    <h3 class="integrantes-subtitulo">Conheça as pessoas que fazem o viva dança.</h3><br>
     <p class="integrantes-descricao">Cada integrante traz sua história,<br>
         sua energia e sua forma única de viver a dança,<br>
         mantendo viva a essência do nosso grupo.</p>
 </section>
 
 
-<section class="integrantes-galeria">
-
-    <a class="item integrante-link" href="?pagina=integrante" aria-label="Ver perfil de Helena Souza">
-        <div class="foto"></div>
-
-        <div class="descricao">
-            <span>Helena de Souza</span>
-            
-        </div>
-    </a>
-
-    <a class="item integrante-link" href="?pagina=integrante">
-        <div class="foto"></div>
-
-        <div class="descricao">
-            <span>Marili Bruestle</span>
-            
-        </div>
-    </a>
-
-    <a class="item integrante-link" href="?pagina=integrante">
-        <div class="foto"></div>
-
-        <div class="descricao">
-            <span>Suely Rodrigues</span>
-            
-        </div>
-    </a>
-
-     <a class="item integrante-link" href="?pagina=integrante">
-        <div class="foto"></div>
-
-        <div class="descricao">
-            <span>Catarina Mello</span>
-            
-        </div>
-    </a>
-
-     <a class="item integrante-link" href="?pagina=integrante">
-        <div class="foto"></div>
-
-        <div class="descricao">
-            <span>Ivani Oliveira</span>
-            
-        </div>
-    </a>
-
-     <a class="item integrante-link" href="?pagina=integrante">
-        <div class="foto"></div>
-
-        <div class="descricao">
-            <span>Nilcea Zambon</span>
-            
-        </div>
-    </a>
-
-     <a class="item integrante-link" href="?pagina=integrante">
-        <div class="foto"></div>
-
-        <div class="descricao">
-            <span>Neide Palandi</span>
-            
-        </div>
-    </a>
-
-     <a class="item integrante-link" href="?pagina=integrante">
-        <div class="foto"></div>
-
-        <div class="descricao">
-            <span>Fábio Leonardi</span>
-            
-        </div>
-    </a>
-
-     <a class="item integrante-link" href="?pagina=integrante">
-        <div class="foto"></div>
-
-        <div class="descricao">
-            <span>Eliana Galvão</span>
-            
-        </div>
-    </a>
-
-     <a class="item integrante-link" href="?pagina=integrante">
-        <div class="foto"></div>
-
-        <div class="descricao">
-            <span>Cristina Gomes</span>
-            
-        </div>
-    </a>
-
-     <a class="item integrante-link" href="?pagina=integrante">
-        <div class="foto"></div>
-
-        <div class="descricao">
-            <span>Vitor Gil</span>
-            
-        </div>
-    </a>
+<section class="galeriaIntegrante"></section>
+    <script>
+        window.addEventListener('DOMContentLoaded', popularIntegrantes());
+    </script>
+    
 
 </section>
