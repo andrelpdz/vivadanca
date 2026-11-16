@@ -15,6 +15,7 @@ $v = md5(date('Y-m-d H:m:s'));
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php if ($pagina === "trajetoria"): ?><link rel="stylesheet" href="assets/css/linha_tempo.css?v=<?=$v;?>"><?php endif; ?>
     <link rel="stylesheet" href="assets/css/style.css?v=<?=$v;?>">
+    <script src="assets/js/script.js"></script>
 
     <title>Viva Dança - <?=$titulo?></title>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -69,6 +70,6 @@ $v = md5(date('Y-m-d H:m:s'));
         <p class="footer-copy">©</p>
     </footer>
 
-    <script src="assets/js/script.js"></script>
+   
 </body>
 </html>
