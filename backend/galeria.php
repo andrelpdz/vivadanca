@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . "/conexao.php";
+require_once __DIR__ . "/foto.php";
 
 function cadastrarImagemGaleria($foto, $descricao, $data = null){
     global $con;
@@ -66,15 +67,27 @@ function atualizarImagemGaleria($id, $foto, $descricao, $data = null){
     return true;
 }
 
-function excluirImagemGaleria($id){
+function excluirImagemGaleria(){
+    $id = $_GET['id'] ?? 0;
+    try{
+        $galeria = obterImagemGaleria($id);
+        excluirFoto("galeria", $galeria["foto"]);
+        excluirGaleria($id);
+        return true;
+
+    }catch(throwable $e){
+        throw $e;
+    }
+}
+
+function excluirGaleria($id){
     global $con;
-
-    $stmt = $con->prepare("DELETE FROM galeria WHERE id = ?");
+    $sql = "DELETE FROM galeria WHERE id=?";
+    $stmt = $con->prepare($sql);
     $stmt->bind_param("i", $id);
-    $stmt->execute();
+    $resultado = $stmt->execute();
     $stmt->close();
-
-    return true;
+    return $resultado;
 }
 
 header("Content-Type: application/json; charset=utf-8");
@@ -94,6 +107,8 @@ try{
             ], JSON_UNESCAPED_UNICODE);
             exit;
         }
+
+        
 
         $tipo = (new finfo(FILEINFO_MIME_TYPE))->file($imagem["tmp_name"]);
         $extensoes = [
@@ -144,6 +159,10 @@ try{
         exit;
     }
 
+    if ($metodo == "DELETE"){
+        excluirImagemGaleria();
+    }
+    
     header("Allow: GET, POST");
     http_response_code(405);
     echo json_encode([
