@@ -61,6 +61,10 @@ label {
     color: #0F1B2D;
 }
 
+header nav{
+    margin: -100px 0 0 0;
+}
+
 input[type="text"],
 input[type="date"],
 input[type="number"],
@@ -137,14 +141,4 @@ button[type="submit"] {
 button[type="submit"]:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(172, 140, 35, 0.4);
-}
-.cabecalho{
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 5px 10px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  z-index: 999
 }
