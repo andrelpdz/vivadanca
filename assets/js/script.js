@@ -33,6 +33,109 @@ function mostrarEvento() {
         <span class="rua">${e.rua}</span>`;
 }
 
+// Carrega corografias
+async function popularIntegrantes(){
+    sectionIntegrantes = document.querySelector(".integrantes-galeria");
+    const dados = await carregarIntegrantes();
+ 
+    dados.integrantes.forEach((integrante)=>{
+        sectionIntegrantes.innerHTML += cardIntegrantes(integrante);
+    });
+}
+ 
+async function carregarIntegrantes(){
+    try {
+        const resposta = await fetch(
+            "backend/api_integrante.php",
+            { headers:{"Accept": "application/json"}}
+        );
+        const dados = await resposta.json();
+        if(!resposta.ok || !dados.sucesso){
+            throw new Error( dados.mensagem || "Não foi possivel carregar");
+        }
+        return dados;        
+    }catch(error) {
+        console.log(error);
+        return { "integrantes":[] };
+    }    
+}
+ 
+function cardIntegrantes(integrante){
+    const card = `
+    <a class="item integrante-link" href="#">
+        <div class="foto" style="background-image:url('assets/integrantes/${integrante.foto}');"></div>
+        <div class="descricao">${integrante.nome}</div>
+    </a>
+    `;
+    return card;
+}
+
+async function popularCardsIntegrantesAdmin(){
+    sectionIntegrantes = document.getElementById("integrantes");
+    const dados = await carregarIntegrantes();
+
+    dados.integrantes.forEach((integrante)=>{
+        sectionIntegrantes.innerHTML += criarCardAdmin(integrante);
+    });
+
+} 
+
+
+// Carrega Integrantes
+async function popularCoreografias(){
+    sectionCoreografias = document.querySelector(".lista-cards");
+    const dados = await carregarCoreografias();
+    
+    dados.coreografias.forEach((coreografia)=>{
+        sectionCoreografias.innerHTML += cardCoreografias(coreografia);
+    });
+}
+ 
+async function carregarCoreografias(){
+    try {
+        const resposta = await fetch(
+            "backend/api_coreografia.php",
+            { headers:{"Accept": "application/json"}}
+        );
+        const dados = await resposta.json();
+        if(!resposta.ok || !dados.sucesso){
+            throw new Error( dados.mensagem || "Não foi possivel carregar");
+        }
+        return dados;        
+    }catch(error) {
+        console.log(error);
+        return { "coreografias":[] };
+    }    
+}
+ 
+function cardCoreografias(coreografia){
+    const card = `
+   <div class="card">
+                <a href=""><img src="assets/integrantes/Rectangle 34.png" alt="Noite em Paris"></a>
+                <div class="corpo">
+
+                    <h3>${coreografia.titulo}</h3>
+                    <span class="ano">${coreografia.data_criacao}</span>
+                    <p>${coreografia.descricao}</p>
+                    <span class="tag">${coreografia.modalidade}</span>
+                    <button>></button>
+                </div>
+            </div>
+    
+    `;
+    return card
+}
+
+async function popularCardsCoreografiasAdmin(){
+    sectionCoreografias = document.getElementById("coreografias");
+    const dados = await carregarCoreografias();
+
+    dados.Coreografias.forEach((coreografia)=>{
+        sectionCoreografias.innerHTML += criarCardAdmin(coreografia);
+    });
+
+} 
+
 // 1) some (fade out) -> 2) troca o conteúdo -> 3) aparece (fade in)
 function trocarEvento() {
     agendaInfo.classList.add("some");
@@ -83,6 +186,9 @@ document.querySelector("#palcoBtDir").addEventListener("click", () => {
 document.querySelector("#palcoBtEsq").addEventListener("click", () => {
     fotoAtual = (fotoAtual - 1 + fotos.length) % fotos.length;
     trocarFoto();
+<<<<<<< HEAD
+});   
+=======
 });
 
 <<<<<<< HEAD
@@ -193,3 +299,4 @@ function cardGalerias(galeria){
     `;
     return card;
 }
+>>>>>>> 535875a22ac6936bae32bcb3fadc1a91be71c580
