@@ -10,7 +10,7 @@ function cadastrar()
 {
     global $con;
     $descricao = trim($_POST['descricao']);
-    $data = isset($_POST['data']) ? 1 : 0 ;
+    $data = $_POST['ano'];
     $foto = $_FILES['foto'];
     $nome_foto = salvarFoto("linha_tempo", $foto);
 
@@ -18,7 +18,7 @@ function cadastrar()
             VALUES (?, ?, ?)";
 
     $stmt = $con->prepare($sql);
-    $stmt->bind_param("sss", $nome_foto, $descricao, $data);
+    $stmt->bind_param("ssi", $nome_foto, $descricao, $data);
     $stmt->execute();
     $stmt->close();
 
@@ -56,24 +56,31 @@ function obterLinhaTempo($id)
     return $linhaTempo;
 }
 
-function atualizarLinhaTempo($id, $foto, $descricao, $data)
+function atualizarLinhaTempo()
 {
     global $con;
+
+    $id = $_POST['id'];
+    $descricao = $_POST['descricao'];
+    $data = $_POST['ano'];
+    $foto = $_FILES['foto'];
+    $nome_foto = salvarFoto("linha_tempo", $foto);
 
     $sql = "UPDATE linha_tempo
             SET foto = ?, descricao = ?, data = ?
             WHERE id = ?";
 
     $stmt = $con->prepare($sql);
-    $stmt->bind_param("sssi", $foto, $descricao, $data, $id);
+    $stmt->bind_param("ssii", $nome_foto, $descricao, $data, $id);
     $stmt->execute();
     $stmt->close();
 
     return true;
 }
 
-function excluirLinhaTempo($id)
+function excluirLinhaTempo()
 {
+    $id = $_GET['id'] ?? 0;
     global $con;
 
     $sql = "DELETE FROM linha_tempo WHERE id = ?";
@@ -86,13 +93,18 @@ function excluirLinhaTempo($id)
 }
 
 
+
 try{
     if ($metodo == "GET"){
         // listar os integrantes
-        $resp = ["linha_tempo" => listarLinhaTempo()];
+        $resp = ["linha_tempo" => listarLinhaTempo()];        
     }
     else if ($metodo == "POST"){
-        cadastrar();
+        if($_POST['btnEnviar'] == 'Cadastrar'){
+            cadastrar();
+        }else if($_POST['btnEnviar'] == 'Atualizar'){
+            atualizarLinhaTempo();
+        }
         header("location: ../admin/linha_tempo.html");
         exit;
     }
@@ -102,7 +114,7 @@ try{
         exit;
     }
     else if ($metodo == "DELETE"){
-        deletar();
+        excluirLinhaTempo();
     }
     else{
         throw new Exception("Metodo invalido!");
