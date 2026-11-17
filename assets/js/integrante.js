@@ -1,52 +1,4 @@
-// const sectionCoreografias = document.getElementById("Coreografias");
-// const sectionConquistas = document.getElementById("Conquistas");
-
-
-function definirIntegrante(integrante){
-    const foto = document.getElementById("foto");
-    const nome = document.getElementById("nome");
-    const descricao = document.getElementById("descricao");
-    foto.src = "../assets/integrantes/" + integrante.foto;
-    nome.textContent = integrante.nome;
-    descricao.textContent = integrante.descricao;
-}
-
-function criarCardConquista(conquista){
-    const div = document.createElement('div');
-    const img = document.createElement('img');
-    const data = document.createElement('p');
-    const nomeEvento = document.createElement('p');
-    const local = document.createElement('p');
-    const nomeConquista = document.createElement('p');
-
-    img.src = "../assets/conquistas/" + conquista.foto;
-    img.width=50;
-    img.height=50;
-    data.textContent = conquista.data_inicio;
-    nomeEvento.textContent = conquista.nome_evento;
-    local.textContent = "Sorocaba";
-    nomeConquista.textContent = conquista.nome;
-
-    div.append(img, data, nomeEvento, local, nomeConquista);
-    return div;
-}
-
-function criarCardCoreografia(coreografia){
-    const div = document.createElement('div');
-    const img = document.createElement('img');
-    const nome = document.createElement('p');
-    const data = document.createElement('p');
-
-    // img.src = "../assets/conquistas/" + conquista.foto;
-    // img.width=50;
-    // img.height=50;
-    data.textContent = coreografia.data_criacao;
-    nome.textContent = coreografia.titulo;
-    div.append(img, nome, data);
-    return div;
-}
-
-function criarCardAdmin(integrante){
+function criarCard(integrante){
     const card = `
     <div>
         <img src="../assets/integrantes/${integrante.foto}" alt="" width=200 height=200>
@@ -76,19 +28,17 @@ function editarFormulario(id, nome, descricao, foto, ativo){
     btn.value = "Atualizar";
 }
 
-async function popularCardsIntegrantesAdmin(){
+async function popularCards(){
     sectionIntegrantes = document.getElementById("integrantes");
-    const dados = await carregarIntegrantes();
+    const dados = await carregarLista();
 
     dados.integrantes.forEach((integrante)=>{
-        sectionIntegrantes.innerHTML += criarCardAdmin(integrante);
+        sectionIntegrantes.innerHTML += criarCard(integrante);
     });
 
 }
 
-
-// FUNCOES PARA CARREGAR OS DADOS
-async function carregarIntegrantes(){
+async function carregarLista(){
     try {
         const resposta = await fetch(
             "../backend/api_integrante.php",
@@ -128,9 +78,7 @@ async function carregarIntegrante(){
 
         dados.conquistas.forEach((conquista)=>{
             sectionConquistas.append( criarCardConquista(conquista) );
-        });
-
-        
+        });        
     }catch(error) {
         console.log(error);
     }
@@ -149,5 +97,3 @@ async function excluirIntegrante(id){
     }
     location.reload();
 }
-
-

@@ -1,87 +1,47 @@
-async function popularCardsGaleriaAdmin(){
-    const sectionGaleria = document.getElementById("galeria");
-    const dados = await carregarGaleria();
- 
-    dados.galeria.forEach((galeria)=>{
-        sectionGaleria.append(criarCardAdmin(galeria));
+function criarCard(item){
+    return `
+    <div>
+        <img src="../assets/galeria/${item.foto}" alt="" width=200 height=200>
+        <p>${item.descricao}</p>
+        <span>
+            <button onclick="editarFormulario('${item.id}', '${item.descricao}')">Editar</button>
+            <button onclick="excluirGaleria(${item.id})">Excluir</button>
+        </span>
+    </div>
+    `;
+}
+
+function editarFormulario(id, descricao){
+    document.getElementById("id").value = id;
+    document.getElementById("descricao").value = descricao;
+    document.getElementById("btnEnviar").value = "Atualizar";
+}
+
+async function popularCards(){
+    const container = document.getElementById("galeria");
+    const dados = await carregarLista();
+    dados.galeria.forEach((item) => {
+        container.innerHTML += criarCard(item);
     });
+
 }
- 
-function criarCardAdmin(galeria) {
-    const card = document.createElement("figure");
-    const foto = document.createElement("img");
-    const descricao = document.createElement("figcaption");
-    const data = document.createElement("p");
- 
-    foto.src = `../assets/galeria/${encodeURIComponent(galeria.foto)}`;
-    foto.alt = galeria.descricao || "Imagem da galeria";
-    foto.loading = "lazy";
-    descricao.textContent = galeria.descricao || "";
-    data.textContent = galeria.data || "";
- 
-    card.append(foto, descricao, data);
-    return card;
-}
- 
-async function carregarGaleria() {
+
+async function carregarLista(){
     try {
-        const resposta = await fetch("../backend/galeria.php", {
-            headers: { Accept: "application/json" }
-        });
+        const resposta = await fetch("../backend/api_galeria.php", { headers: {"Accept": "application/json"} });
         const dados = await resposta.json();
- 
-        if (!resposta.ok || !dados.sucesso) {
-            throw new Error(dados.mensagem || "NÃ£o foi possÃ­vel carregar a galeria.");
-        }
- 
-        return dados;
-    } catch (erro) {
-        console.error("Erro ao carregar a galeria:", erro);
-        return {
-            sucesso: false,
-            mensagem: erro.message || "NÃ£o foi possÃ­vel carregar a galeria.",
-            imagens: []
-        };
+        return (resposta.ok && dados.sucesso) ? dados : { "galeria": [] };
+    } catch(error) {
+        console.log(error);
+        return { "galeria": [] };
     }
 }
 
-async function deletarFoto(id) {
-    try {
-        const resposta = await fetch(`../backend/galeria.php?id=${encodeURIComponent(id)}`, {
-            method: "DELETE",
-            headers: { Accept: "application/json" }
-        });
-        const dados = await resposta.json();
-
-        if (!resposta.ok || !dados.sucesso) {
-            throw new Error(dados.mensagem || "Não foi possível excluir a imagem.");
-        }
-    } catch (erro) {
-        console.error("Erro ao excluir a foto:", erro);
-    }
+async function excluirGaleria(id){
+    const resposta = await fetch(`../backend/api_galeria.php?id=${id}`, {
+        method: "DELETE",
+        headers: {"Accept": "application/json"},
+    });
+    const dados = await resposta.json();
+    if (resposta.ok && dados.sucesso) location.reload();
 }
-
-document.getElementById("auth").addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    const form = event.currentTarget;
-
-    try {
-        const resposta = await fetch(form.action, {
-            method: "POST",
-            body: new FormData(form)
-        });
-
-        const dados = await resposta.json();
-
-        if (!resposta.ok || !dados.sucesso) {
-            throw new Error(dados.mensagem || "Não foi possível cadastrar a foto.");
-        }
-
-        form.reset();
-        document.getElementById("galeria").replaceChildren();
-        await popularCardsGaleriaAdmin();
-    } catch (erro) {
-        console.error("Erro ao cadastrar a foto:", erro);
-    }
-}); //mostrar as paginas sem precisar atualizar a pagina
