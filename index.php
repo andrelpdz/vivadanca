@@ -7,6 +7,7 @@ if (is_string($paginaPublica)) {
     if (str_starts_with($paginaPublica, 'teste') && in_array(substr($paginaPublica, 5), $paginasPublicas, true)) {
         $paginaPublica = substr($paginaPublica, 5);
     }
+    if ($paginaPublica === 'agenda') $paginaPublica = 'eventos';
     if ($paginaPublica === 'coreografia') $paginaPublica = 'coreografias';
     if ($paginaPublica === 'linhadotempo') $paginaPublica = 'trajetoria';
     if (in_array($paginaPublica, $paginasPublicas, true)) {
@@ -14,6 +15,7 @@ if (is_string($paginaPublica)) {
         if (in_array($paginaPublica, ['integrante', 'coreografias'], true) && isset($_GET['id']) && is_scalar($_GET['id'])) {
             $parametros['id'] = (string) $_GET['id'];
         }
+        if ($paginaPublica === 'eventos') $parametros['v'] = '20261117-2';
         $query = $parametros ? '?' . http_build_query($parametros) : '';
         header('Location: pages/' . $paginaPublica . '.html' . $query);
         exit;
