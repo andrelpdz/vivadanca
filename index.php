@@ -1,4 +1,13 @@
 <?php
+// Paginas de teste independentes: evita misturar o layout global com o estudo visual.
+if (isset($_GET['pagina']) && in_array($_GET['pagina'], ['testehome', 'testeintegrantes', 'testeintegrante'], true)) {
+    $testQuery = $_GET['pagina'] === 'testeintegrante' && isset($_GET['id'])
+        ? '?' . http_build_query(['id' => (string) $_GET['id']]) : '';
+    header('Location: pages/' . $_GET['pagina'] . '.html' . $testQuery);
+    exit;
+}
+?>
+<?php
 // Pagina responsavel por carregar o conteudo de pages
 $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : "home";
 $titulo = isset($_GET['titulo']) ? $_GET['titulo'] : "Sorocaba 60+";
