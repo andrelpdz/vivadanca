@@ -78,9 +78,7 @@ function trocarFoto() {
 }
 
  
-
-
-// Carrega corografias
+//-> EVENTOS DAS PAGINAS
 async function popularIntegrantes(){
     sectionIntegrantes = document.querySelector(".integrantes-galeria");
     const dados = await carregarIntegrantes();
@@ -116,16 +114,6 @@ function cardIntegrantes(integrante){
     `;
     return card;
 }
-
-async function popularCardsIntegrantesAdmin(){
-    sectionIntegrantes = document.getElementById("integrantes");
-    const dados = await carregarIntegrantes();
-
-    dados.integrantes.forEach((integrante)=>{
-        sectionIntegrantes.innerHTML += criarCardAdmin(integrante);
-    });
-
-} 
 
 
 // Carrega Integrantes
@@ -173,56 +161,8 @@ function cardCoreografias(coreografia){
     return card
 }
 
-async function popularCardsCoreografiasAdmin(){
-    sectionCoreografias = document.getElementById("coreografias");
-    const dados = await carregarCoreografias();
-
-    dados.Coreografias.forEach((coreografia)=>{
-        sectionCoreografias.innerHTML += criarCardAdmin(coreografia);
-    });
-
-} 
-
-// Carrega Integrantes
-async function popularIntegrantes(){
-    sectionIntegrantes = document.querySelector(".integrantes-galeria");
-    const dados = await carregarIntegrantes();
- 
-    dados.integrantes.forEach((integrante)=>{
-        sectionIntegrantes.innerHTML += cardIntegrantes(integrante);
-    });
-}
- 
-async function carregarIntegrantes(){
-    try {
-        const resposta = await fetch(
-            "backend/api_integrante.php",
-            { headers:{"Accept": "application/json"}}
-        );
-        const dados = await resposta.json();
-        if(!resposta.ok || !dados.sucesso){
-            throw new Error( dados.mensagem || "Não foi possivel carregar");
-        }
-        return dados;        
-    }catch(error) {
-        console.log(error);
-        return { "integrantes":[] };
-    }    
-}
- 
-function cardIntegrantes(integrante){
-    const card = `
-    <a class="item integrante-link" href="#">
-        <div class="foto" style="background-image:url('assets/integrantes/${integrante.foto}');"></div>
-        <div class="descricao">${integrante.nome}</div>
-    </a>
-    `;
-    return card;
-}
-
 
 //Caregar Galeria
-
 async function popularGalerias(){
     sectionGalerias = document.querySelector(".galeria-imagens");
     const dados = await carregarGalerias();
