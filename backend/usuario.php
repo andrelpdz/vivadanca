@@ -5,9 +5,9 @@ function cadastrarUsuario($nome, $email, $senha, $tipo_usuario, $permissoes){
     global $con;
     try{
         $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO usuario(nome, email, senha, tipo_usuario, permissoes) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO usuario(nome, email, senha) VALUES (?, ?, ?)";
         $stmt = $con->prepare($sql);
-        $stmt->bind_param("sssss", $nome, $email, $senha_cripto, $tipo_usuario, $permissoes);
+        $stmt->bind_param("sss", $nome, $email, $senha_cripto);
         $stmt->execute();
         $stmt->close();
         return true;
@@ -18,14 +18,14 @@ function cadastrarUsuario($nome, $email, $senha, $tipo_usuario, $permissoes){
 
 function listarUsuarios(){
     global $con;
-    $sql = "SELECT id, nome, email, tipo_usuario, permissoes, criado FROM usuario";
+    $sql = "SELECT id, nome, email, criado FROM usuario";
     $resultado = $con->query($sql);
     return $resultado->fetch_all(MYSQLI_ASSOC);
 }
 
 function obterUsuario($id){
     global $con;
-    $sql = "SELECT id, nome, email, tipo_usuario, permissoes FROM usuario WHERE id=?";
+    $sql = "SELECT id, nome, email FROM usuario WHERE id=?";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
@@ -39,14 +39,14 @@ function atualizarUsuario($id, $nome, $email, $senha, $tipo_usuario, $permissoes
     try {
         if(!empty($senha)){
             $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
-            $sql = "UPDATE usuario SET nome = ?, email = ?, senha = ?, tipo_usuario = ?, permissoes = ? WHERE id = ?";
+            $sql = "UPDATE usuario SET nome = ?, email = ?, senha = ? WHERE id = ?";
             $stmt = $con->prepare($sql);
-            $stmt->bind_param("sssssi", $nome, $email, $senha_cripto, $tipo_usuario, $permissoes, $id);
+            $stmt->bind_param("sssi", $nome, $email, $senha_cripto, $id);
         } else {
             // Atualiza sem alterar a senha caso o campo venha em branco
-            $sql = "UPDATE usuario SET nome = ?, email = ?, tipo_usuario = ?, permissoes = ? WHERE id = ?";
+            $sql = "UPDATE usuario SET nome = ?, email = ? WHERE id = ?";
             $stmt = $con->prepare($sql);
-            $stmt->bind_param("ssssi", $nome, $email, $tipo_usuario, $permissoes, $id);
+            $stmt->bind_param("ssi", $nome, $email, $id);
         }
         $resultado = $stmt->execute();
         $stmt->close();

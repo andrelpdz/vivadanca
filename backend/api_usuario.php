@@ -17,6 +17,9 @@ function cadastrar(){
     $permissoes = is_array($permissoes_arr) ? implode(", ", $permissoes_arr) : $permissoes_arr;
 
     try{
+        if (strlen($senha) < 8) {
+            throw new Exception("A senha deve ter pelo menos 8 caracteres.");
+        }
         if (!empty($senha) && $senha !== $confirmarSenha) {
             throw new Exception("As senhas não coincidem!");
         }
@@ -77,8 +80,7 @@ try{
         } else {
             cadastrar();
         }
-        header("location: ../admin/cadastro_usuarios.html");
-        exit;
+        $resp = ["mensagem" => "Usuário salvo com sucesso."];
     }
     else if ($metodo == "DELETE"){
         deletar();
