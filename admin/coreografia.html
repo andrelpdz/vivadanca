@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coreografias | Gerenciar</title>
+    <link rel="stylesheet" href="../assets/css/fernanda.css">
+</head>
+<body>
+    <main class="admin-main">
+        <!-- TOPO -->
+        <header></header>
+
+        <!-- CADASTRO -->
+        <section class="integrantes-painel">
+            <h2>Cadastrar coreografia</h2>
+            <form class="form-integrantes" action="../backend/api_coreografia.php" method="POST">
+                <input type="hidden" id="id" name="id" value="">
+
+                <label for="titulo">Título</label>
+                <input type="text" id="titulo" name="titulo" required>
+
+                <label for="descricao">Descrição</label>
+                <textarea id="descricao" name="descricao" required></textarea>
+
+                <label for="data_criacao">Data de Criação</label>
+                <input type="date" id="data_criacao" name="data_criacao" required>
+
+                <label for="modalidade">Modalidade</label>
+                <input type="text" id="modalidade" name="modalidade" required>
+
+                <input type="submit" id="btnEnviar" name="btnEnviar" class="integrantes-btn" value="Cadastrar">
+            </form>
+        </section>
+
+        <section class="integrantes-painel">
+            <h2>Coreografias cadastradas</h2>
+            <div id="coreografias"></div>
+        </section>
+    </main>
+    <script src="../assets/js/admin.js"></script>
+    <script src="../assets/js/coreografia.js"></script>
+    <script>popularCards();</script>
+</body>
+</html>
