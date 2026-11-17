@@ -1,31 +1,6 @@
 <?php
 require_once __DIR__ . "/conexao.php";
-require_once __DIR__ . "/foto.php";
 
-<<<<<<< HEAD
-$metodo = $_SERVER['REQUEST_METHOD'];
-
-function cadastrar(){
-    global $con;
-
-    $evento_id = 1; //teste
-    $coreografia_id = 3; //teste
-
-    $nome = $_POST['nome'];
-    $descricao  = $_POST['descricao'];
-    $foto = $_FILES['foto'];
-    $nome_foto = salvarFoto("conquistas", $foto);
-
-    $sql = "INSERT INTO conquistas
-        (nome, descricao, foto, evento_id, coreografia_id)
-        VALUES (?, ?, ?, ?, ?)";
-    $stmt = $con->prepare($sql);
-    $stmt->bind_param("sssii", $nome, $descricao, $nome_foto, $evento_id, $coreografia_id);
-    $stmt->execute();
-    $stmt->close();
-    return true;
-} 
-=======
 function cadastrarConquista($evento_id, $coreografia_id, $nome, $descricao, $foto){
     global $con;
     try{
@@ -39,14 +14,13 @@ function cadastrarConquista($evento_id, $coreografia_id, $nome, $descricao, $fot
         return false;
     }
 }
->>>>>>> b53359648acc28bfb299e25220db34b65ce444bb
 
 function listarConquistas(){
     global $con;
-    $sql = "SELECT c.*, e.nome as evento_nome, e.data_inicio, e.cidade, cor.titulo as coreografia_titulo 
+    $sql = "SELECT c.*, e.nome as evento_nome, cor.titulo as coreografia_titulo 
             FROM conquistas c 
-            LEFT JOIN eventos e ON c.evento_id = e.id 
-            LEFT JOIN coreografias cor ON c.coreografia_id = cor.id";
+            JOIN eventos e ON c.evento_id = e.id 
+            JOIN coreografias cor ON c.coreografia_id = cor.id";
     $resultado = $con->query($sql);
     return $resultado->fetch_all(MYSQLI_ASSOC);
 }
@@ -79,53 +53,6 @@ function excluirConquista($id){
     $stmt->close();
     return $resultado;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-try {
-    $status = true;
-
-    if ($metodo == "GET") {
-
-        $resp = ["conquista" => listarConquistas()];
-
-    } 
-    else if ($metodo == "POST") {
-
-        cadastrar();
-        header("location: ../admin/cadastro_conquista.html");
-        exit;
-
-    } 
-    else if ($metodo == "DELETE") {
-
-        $id = $_GET['id'];
-        excluirConquista($id);
-
-        $resp = ["mensagem" => "Conquista excluída!"];
-
-    } 
-    else {
-
-        throw new Exception("Método inválido!");
-
-    }
-
-} catch (Throwable $e) {
-
-    http_response_code(500);
-    $status = false;
-    $resp = ["erro" => $e->getMessage()];
-
-}
-
-header("Content-Type: application/json; charset=utf-8");
-echo json_encode(["sucesso" => $status] + $resp);
-
-
-=======
->>>>>>> b53359648acc28bfb299e25220db34b65ce444bb
-=======
 
 // Funções auxiliares para popular os selects
 function listarEventosSimples() {
@@ -141,5 +68,4 @@ function listarCoreografiasSimples() {
     $res = $con->query($sql);
     return $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
 }
->>>>>>> 42fe8ba85f30bcaee2a6c4d0e29a445e968fef1b
 ?>
