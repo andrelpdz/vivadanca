@@ -124,7 +124,7 @@ textarea {
     object-fit: cover;
 }
 
-button[type="submit"] {
+#btnEnviar {
     width: 100%;
     padding: 14px;
     background-color: #f3eee6;
@@ -138,7 +138,7 @@ button[type="submit"] {
     margin-top: 10px;
 }
 
-button[type="submit"]:hover {
+#btnEnviar:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(172, 140, 35, 0.4);
 }
