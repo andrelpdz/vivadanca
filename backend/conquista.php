@@ -53,4 +53,19 @@ function excluirConquista($id){
     $stmt->close();
     return $resultado;
 }
+
+// Funções auxiliares para popular os selects
+function listarEventosSimples() {
+    global $con;
+    $sql = "SELECT id, nome FROM eventos";
+    $res = $con->query($sql);
+    return $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
+}
+
+function listarCoreografiasSimples() {
+    global $con;
+    $sql = "SELECT id, titulo FROM coreografias";
+    $res = $con->query($sql);
+    return $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
+}
 ?>
