@@ -34,7 +34,7 @@ if(isset($_SESSION['email'])){
             <h2>Fazer Login</h2>
             <p>Informe seu e-mail e senha cadastrados.</p>
 
-            <form method="post" class="form-integrantes" id="auth" action="backend/valida_login.php">
+            <form method="post" class="form-integrantes" id="auth" action="/backend/valida_login.php">
                 <label for="loginEmail">E-mail</label>
                 <input 
                     id="loginEmail" 
@@ -67,6 +67,5 @@ if(isset($_SESSION['email'])){
     <footer class="admin-login-footer">
         <p>&copy; 2026 Viva Dança</p>
     </footer>
-
 </body> 
 </html>
