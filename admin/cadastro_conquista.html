@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="../assets/css/conquista.css">
+
+    <title>Cadastro de Conquistas</title>
+</head>
+
+<body class="login-page">
+    <header></header>
+
+    <main class="login-main">
+        <!-- Lado direito -->
+        <section class="login-right">
+
+            <form class="form-login" action="../backend/conquista.php" method="POST" enctype="multipart/form-data">
+
+                <h2>Nova Conquista</h2>
+                <p>Preencha os dados da conquista.</p>
+                <input type="hidden" id="evento_id" name="evento_id">
+                <input type="hidden" id="coreografia_id" name="coreografia_id">
+
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="Nome da conquista" required>
+
+                <label for="descricao">Descrição</label> 
+                <input id="descricao" name="descricao" placeholder="Descreva a conquista"></input>
+
+                <label for="foto">Foto</label>
+                <input type="file" id="foto" name="foto" accept="image/*">
+
+                <button type="submit">
+                    Cadastrar Conquista →
+                </button>
+
+            </form>
+
+        </section>
+        <section class="lista-conquistas">
+            <h2>Conquistas cadastradas</h2>
+            <div id="conquista"></div>
+        </section>
+    </main>
+ 
+</body>
+    <script src="../assets/js/conquistas.js"></script>
+    <script src="../assets/js/admin.js"></script>
+    <script src="../assets/js/cadastro_conquista.js"></script>
+    <script>popularCardsConquistaAdmin();</script>
+</html>
