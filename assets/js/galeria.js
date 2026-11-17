@@ -103,27 +103,3 @@ document.getElementById("auth")?.addEventListener("submit", async (event) => {
     }
 }); //mostrar as paginas sem precisar atualizar a pagina
 
-async function popularGalerias() {
-    const sectionGaleria = document.querySelector(".galeria-imagens");
-
-    if (!sectionGaleria) return;
-
-    const dados = await carregarGaleria();
-
-    sectionGaleria.replaceChildren();
-
-    (dados.galeria || []).forEach((galeria) => {
-        const card = document.createElement("figure");
-        const foto = document.createElement("img");
-        const descricao = document.createElement("figcaption");
-
-        foto.src = `assets/galeria/${encodeURIComponent(galeria.foto)}`;
-        foto.alt = galeria.descricao || "Imagem da galeria";
-        foto.loading = "lazy";
-
-        descricao.textContent = galeria.descricao || "";
-
-        card.append(foto, descricao);
-        sectionGaleria.append(card);
-    });
-}
