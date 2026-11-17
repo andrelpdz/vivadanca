@@ -35,7 +35,16 @@ function showLightbox(index, trigger) {
   const image = document.querySelector('#lightbox-photo');
   image.alt = recordTitle(record);
   image.src = archiveImage(record);
-  document.querySelector('#lightbox-caption').textContent = recordTitle(record);
+  const caption = document.querySelector('#lightbox-caption');
+  caption.replaceChildren();
+  if (collectionKind === 'gallery') {
+    const year = record.ano || recordYear(record);
+    if (year) caption.append(textNode('span', String(year), 'lightbox-year'));
+    caption.append(textNode('strong', record.nome || record.titulo || 'Registro do Viva Dança', 'lightbox-title'));
+    if (record.descricao) caption.append(textNode('span', record.descricao, 'lightbox-description'));
+  } else {
+    caption.textContent = recordTitle(record);
+  }
   document.querySelector('#lightbox-position').textContent = `${index + 1} / ${archiveVisible.length}`;
   document.querySelector('#lightbox-prev').disabled = index === 0;
   document.querySelector('#lightbox-next').disabled = index === archiveVisible.length - 1;
@@ -69,7 +78,7 @@ function addPhoto(card, record, index) {
     button.setAttribute('aria-label', 'Imagem indisponível');
     image.src = '../assets/img/logo.png';
     image.alt = 'Viva Dança';
-    card.append(textNode('p', 'O arquivo desta imagem não está disponível no acervo.', 'archive-photo-missing-note'));
+    if (collectionKind !== 'gallery') card.append(textNode('p', 'O arquivo desta imagem não está disponível no acervo.', 'archive-photo-missing-note'));
   }, { once: true });
   image.src = archiveImage(record);
   button.append(image);
@@ -81,6 +90,7 @@ function createArchiveCard(record, index) {
   const card = document.createElement('article');
   card.className = 'archive-card';
   addPhoto(card, record, index);
+  if (collectionKind === 'gallery') return card;
   const eyebrow = [recordYear(record), record.modalidade || record.evento_nome].filter(Boolean).join(' · ');
   if (eyebrow) card.append(textNode('p', eyebrow, 'eyebrow'));
   card.append(textNode('h3', collectionKind === 'gallery' ? (record.descricao || 'Registro do acervo') : recordTitle(record)));

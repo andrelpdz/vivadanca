@@ -11,3 +11,11 @@
 .archive-placeholder span{font:400 11px var(--sans);color:var(--muted)}
 .archive-detail>button,.archive-detail>.archive-placeholder{max-width:650px;margin-bottom:35px}
 .archive-card h3{font-size:32px}
+/* Galeria: apenas imagens na grade; informacoes na ampliacao */
+body[data-collection="gallery"] .archive-grid{gap:22px}
+body[data-collection="gallery"] .archive-card{padding:0;border:0;background:transparent}
+body[data-collection="gallery"] .archive-placeholder span{display:none}
+body[data-collection="gallery"] .archive-card>button:focus-visible{outline-offset:-4px}
+.lightbox-year{display:block;font:500 10px/1.6 var(--sans);letter-spacing:.15em;color:var(--gold);margin-bottom:9px}
+.lightbox-title{display:block;font:400 clamp(26px,3vw,38px)/1.15 var(--serif);color:var(--cream)}
+.lightbox-description{display:block;margin-top:12px;font:400 20px/1.55 var(--serif);color:#ddc9cf;white-space:pre-line;overflow-wrap:anywhere}
