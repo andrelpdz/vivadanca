@@ -1,157 +1,40 @@
-<!-- CAMINHO DA PÁGINA -->
-<div class="integrante-caminho">
-    <a href="?pagina=tragetoria">Trajetória</a>
-    <span>›</span>
-    <a href="?pagina=integrantes">Integrantes</a>
-    <span>›</span>
-    <span>Helena Souza</span>
-</div>
-
-<!-- PERFIL DO INTEGRANTE -->
-<section class="perfil-integrante">
-
-    <div class="perfil-foto">
-        <img src="assets/integrantes/integrante.png"
-             alt="Helena Souza">
-    </div>
-
-    <div class="perfil-texto">
-        <h1>Helena Souza</h1>
-        <h2>Fundadora</h2>  
-
-        <p>
-            Maria Helena de Souza é bailarina do Viva Dança
-            Sorocaba 60+ e uma das integrantes com trajetória
-            mais antiga na formação que deu origem ao grupo.
-            Nascida em Botucatu, mudou-se ainda jovem para
-            Sorocaba e construiu carreira como funcionária
-            pública estadual, aposentando-se como diretora
-            administrativa.
-        </p>
-
-        <p>
-            Entrou na dança coletiva aos 55 anos, cinco anos
-            antes de poder competir nos Jogos Regionais
-            do Idoso em Sorocaba (JORI).
-        </p>
-
-        <p>
-            Desde então, participa de apresentações, festivais
-            e competições, incluindo o Festival de Dança de
-            Joinville e uma apresentação em programa nacional
-            de televisão. Para Helena, a dança é força, saúde
-            e afirmação da própria existência:
-            "Eu existo. Eu estou aqui."
-        </p>
-
-        <div class="perfil-informacoes">
-            <span>Idade: 60+</span>
-            <span>Cidade: Botucatu - SP</span>
-            <span>Desde: 2015</span>
-        </div>
-    </div>
-
-</section>
-
-<!-- ABAS -->
-<section class="integrante-conteudo">
-
-    <div class="integrante-abas">
-        <button class="aba ativa"
-                onclick="mostrarAba('coreografias', this)">
-            COREOGRAFIAS
-        </button>
-
-        <button class="aba"
-                onclick="mostrarAba('conquistas', this)">
-            CONQUISTAS
-        </button>
-
-        <button class="aba"
-                onclick="mostrarAba('galeria', this)">
-            GALERIA
-        </button>
-    </div>
-
-    <!-- COREOGRAFIAS -->
-    <div id="coreografias" class="conteudo-aba">
-        <p>Participou das coreografias:</p>
-
-        <div class="integrante-cards">
-
-            <div class="integrante-card">
-                <img src="assets/integrantes/integrante.png"
-                     alt="Indiana">
-                <div class="card-informacoes">
-                    <div>
-                        <h3>Indiana</h3>
-                        <p>2012</p>
-                    </div>
-                    <button class="botao-integrante">›</button>
-                </div>
-            </div>
-
-            <div class="integrante-card">
-                <img src="assets/integrantes/integrante.png"
-                     alt="Noite em Paris">
-                <div class="card-informacoes">
-                    <div>
-                        <h3>Noite em Paris</h3>
-                        <p>2014</p>
-                    </div>
-                    <button class="botao-integrante">›</button>
-                </div>
-            </div>
-
-            <div class="integrante-card">
-                <img src="assets/integrantes/integrante.png"
-                     alt="La Vita è Bella">
-                <div class="card-informacoes">
-                    <div>
-                        <h3>La Vita è Bella</h3>
-                        <p>2016</p>
-                    </div>
-                    <button class="botao-integrante">›</button>
-                </div>
-            </div>
-
-            <div class="integrante-card">
-                <img src="assets/integrantes/integrante.png"
-                     alt="Memórias">
-                <div class="card-informacoes">
-                    <div>
-                        <h3>Memórias</h3>
-                        <p>2018</p>
-                    </div>
-                    <button class="botao-integrante">›</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- CONQUISTAS -->
-    <div id="conquistas" class="conteudo-aba"
-         style="display: none;">
-        <p>Festivais, competições, premiações e convites.</p>
-        <!-- Colocaremos os cards das conquistas aqui -->
-    </div>
-
-    <!-- GALERIA -->
-    <div id="galeria" class="conteudo-aba"
-         style="display: none;">
-        <p>Fotos de apresentações e momentos especiais.</p>
-        <!-- Colocaremos as fotos aqui -->
-    </div>
-
-</section>
-<script>
-function mostrarAba(id, botao) {
-    document.querySelectorAll('.conteudo-aba').forEach((aba) => {
-        aba.style.display = aba.id === id ? '' : 'none';
-    });
-    document.querySelectorAll('.integrante-abas .aba').forEach((item) => {
-        item.classList.toggle('ativa', item === botao);
-    });
-}
-</script>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Viva Dança Sorocaba 60+: histórias, encontros e arte em movimento.">
+  <title>Integrante — Viva Dança</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/home.css?v=20261117">
+  <link rel="stylesheet" href="../assets/css/integrante.css">
+  <script src="../assets/js/home.js" defer></script>
+  <script src="../assets/js/integrante.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header">
+    <a class="brand" href="home.html" aria-label="Viva Dança, início"><img src="../assets/img/logo.png" alt="Viva Dança" width="88" height="88"><span>Sorocaba <span class="brand-age">60+</span></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navegacao">Menu <span aria-hidden="true">☰</span></button>
+    <nav id="navegacao" aria-label="Navegação principal"><a href="sobre.html">O grupo</a><a href="trajetoria.html">Trajetória</a><a href="coreografias.html">Repertório</a><a href="integrantes.html" aria-current="page">Integrantes</a><a href="eventos.html">Agenda</a><a href="conquistas.html">Conquistas</a><a href="galeria.html">Galeria</a><a href="contato.html">Contato</a></nav>
+  </header>
+  <main id="conteudo">
+    <div class="wrap profile-breadcrumb" aria-label="Caminho da página"><a href="home.html">Início</a><span aria-hidden="true">/</span><a href="integrantes.html">Integrantes</a><span aria-hidden="true">/</span><span id="breadcrumb-name">Perfil</span></div>
+    <section class="wrap profile-feedback" aria-live="polite"><p id="profile-status">Carregando a história deste integrante…</p><button id="profile-retry" class="outline-link" type="button" hidden>Tentar novamente ↻</button></section>
+    <section id="member-profile" class="wrap member-profile" aria-labelledby="member-name" hidden>
+      <div class="member-portrait"><img id="member-photo" alt="" width="600" height="800" fetchpriority="high"><span class="portrait-note">Viva Dança · Sorocaba 60+</span></div>
+      <div class="member-story"><p class="eyebrow line">Quem dá vida à dança</p><h1 id="member-name"></h1><p class="member-signature">Uma história em <em>movimento.</em></p><div class="member-divider"></div><p id="member-description"></p><a class="text-link" href="integrantes.html">Conheça todos os integrantes <span aria-hidden="true">→</span></a></div>
+    </section>
+    <section id="member-work" class="member-work" aria-labelledby="work-title" hidden><div class="wrap section-space"><div class="section-heading"><div><p class="eyebrow line">Presença em cena</p><h2 id="work-title">Uma trajetória de<br><em>arte e encontros.</em></h2></div><p>Coreografias e conquistas<br>que fazem parte desta história.</p></div>
+      <div class="work-nav" aria-label="Explore a trajetória"><a href="#member-choreographies">Coreografias <span id="choreography-count"></span></a><a href="#member-achievements">Conquistas <span id="achievement-count"></span></a></div>
+      <section class="work-section" id="member-choreographies" aria-labelledby="choreographies-title"><h3 id="choreographies-title">Coreografias</h3><div id="choreographies-list" class="work-list"></div></section>
+      <section class="work-section" id="member-achievements" aria-labelledby="achievements-title"><h3 id="achievements-title">Conquistas</h3><div id="achievements-list" class="work-list"></div></section>
+    </div></section>
+    <section class="profile-return wrap"><p class="eyebrow">Cada pessoa, uma nova história</p><h2>O movimento é <em>coletivo.</em></h2><a class="outline-link" href="integrantes.html">Voltar aos integrantes <span aria-hidden="true">↗</span></a></section>
+    <noscript><p class="wrap">Ative o JavaScript para carregar o perfil cadastrado.</p></noscript>
+  </main>
+  <footer><div class="wrap footer-grid"><a class="brand footer-brand" href="home.html"><img src="../assets/img/logo.png" alt="Viva Dança" width="100" height="100"><span>Sorocaba 60+</span></a><div><p class="eyebrow">Conheça</p><a href="sobre.html">O grupo</a><a href="integrantes.html">Integrantes</a><a href="coreografias.html">Repertório</a></div><div><p class="eyebrow">Explore</p><a href="eventos.html">Agenda</a><a href="trajetoria.html">Trajetória</a><a href="conquistas.html">Conquistas</a></div><div><p class="eyebrow">Vamos conversar</p><a href="contato.html">Fale conosco ↗</a><p>Sorocaba, São Paulo</p></div></div><div class="wrap footer-bottom"><span>Viva Dança Sorocaba 60+</span><span class="footer-motto">Arte não tem <em>idade.</em></span></div></footer>
+</body>
+</html>

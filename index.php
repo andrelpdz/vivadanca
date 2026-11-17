@@ -1,10 +1,23 @@
 <?php
-// Paginas de teste independentes: evita misturar o layout global com o estudo visual.
-if (isset($_GET['pagina']) && in_array($_GET['pagina'], ['testehome', 'testeintegrantes', 'testeintegrante', 'testeeventos', 'testesobre', 'testecontato', 'testecoreografias', 'testegaleria', 'testeconquistas', 'testetrajetoria'], true)) {
-    $testQuery = in_array($_GET['pagina'], ['testeintegrante', 'testecoreografias'], true) && isset($_GET['id'])
-        ? '?' . http_build_query(['id' => (string) $_GET['id']]) : '';
-    header('Location: pages/' . $_GET['pagina'] . '.html' . $testQuery);
-    exit;
+// As paginas publicas possuem seu proprio documento e layout.
+$paginaPublica = $_GET['pagina'] ?? 'home';
+$paginasPublicas = ['home', 'sobre', 'integrantes', 'integrante', 'eventos', 'conquistas', 'contato', 'coreografias', 'galeria', 'trajetoria'];
+if (is_string($paginaPublica)) {
+    // Mantem os antigos acessos por query string funcionando.
+    if (str_starts_with($paginaPublica, 'teste') && in_array(substr($paginaPublica, 5), $paginasPublicas, true)) {
+        $paginaPublica = substr($paginaPublica, 5);
+    }
+    if ($paginaPublica === 'coreografia') $paginaPublica = 'coreografias';
+    if ($paginaPublica === 'linhadotempo') $paginaPublica = 'trajetoria';
+    if (in_array($paginaPublica, $paginasPublicas, true)) {
+        $parametros = [];
+        if (in_array($paginaPublica, ['integrante', 'coreografias'], true) && isset($_GET['id']) && is_scalar($_GET['id'])) {
+            $parametros['id'] = (string) $_GET['id'];
+        }
+        $query = $parametros ? '?' . http_build_query($parametros) : '';
+        header('Location: pages/' . $paginaPublica . '.html' . $query);
+        exit;
+    }
 }
 ?>
 <?php

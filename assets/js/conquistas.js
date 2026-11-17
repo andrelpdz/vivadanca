@@ -1,3 +1,5 @@
+(() => {
+if (!document.querySelector('#collection-grid')) return;
 const collectionKind = document.body.dataset.collection;
 const settings = {
   achievements: { endpoint: 'api_conquista.php', key: 'conquistas', label: 'conquistas', empty: 'Ainda não há conquistas cadastradas no acervo.' },
@@ -97,14 +99,14 @@ function createArchiveCard(record, index) {
   if (collectionKind === 'choreographies') {
     card.append(textNode('p', record.descricao || 'Uma criação do Viva Dança Sorocaba 60+.'));
     const link = textNode('a', 'Conheça a coreografia ↗', 'text-link');
-    link.href = `testecoreografias.html?id=${encodeURIComponent(record.id)}#acervo`;
+    link.href = `coreografias.html?id=${encodeURIComponent(record.id)}#acervo`;
     card.append(link);
   } else if (collectionKind === 'achievements') {
     const details = document.createElement('details');
     details.append(textNode('summary', 'Conheça esta conquista'), textNode('p', record.descricao || 'Reconhecimento ao trabalho coletivo do Viva Dança.'));
     if (record.coreografia_titulo) {
       const link = textNode('a', record.coreografia_titulo + ' ↗', 'text-link');
-      link.href = `testecoreografias.html?id=${encodeURIComponent(record.coreografia_id)}#acervo`;
+      link.href = `coreografias.html?id=${encodeURIComponent(record.coreografia_id)}#acervo`;
       details.append(link);
     }
     card.append(details);
@@ -127,7 +129,7 @@ function renderChoreographyDetail(record) {
   }
   card.append(facts);
   const gallery = textNode('a', 'Visite nossa galeria →', 'text-link');
-  gallery.href = 'testegaleria.html';
+  gallery.href = 'galeria.html';
   card.append(gallery);
   archiveGrid.append(card);
   document.title = `${record.titulo} — Viva Dança`;
@@ -201,3 +203,5 @@ archiveDialog.addEventListener('close', () => {
   lightboxTrigger?.focus();
 });
 loadArchive();
+
+})();
