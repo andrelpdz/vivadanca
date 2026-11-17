@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coreografias | Gerenciar</title>
     <link rel="stylesheet" href="../assets/css/fernanda.css">
+    <link rel="stylesheet" href="../assets/css/admin-acervo.css">
 </head>
-<body>
+<body data-admin-collection="coreografia">
     <main class="admin-main">
         <!-- TOPO -->
         <header></header>
@@ -14,7 +15,7 @@
         <!-- CADASTRO -->
         <section class="integrantes-painel">
             <h2>Cadastrar coreografia</h2>
-            <form class="form-integrantes" action="../backend/api_coreografia.php" method="POST">
+            <form class="form-integrantes" action="../backend/api_coreografia.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" id="id" name="id" value="">
 
                 <label for="titulo">Título</label>
@@ -29,6 +30,7 @@
                 <label for="modalidade">Modalidade</label>
                 <input type="text" id="modalidade" name="modalidade" required>
 
+                <label for="foto">Foto da coreografia (opcional, até 5 MB)</label><input type="file" id="foto" name="foto" accept="image/jpeg,image/png,image/gif,image/webp">
                 <input type="submit" id="btnEnviar" name="btnEnviar" class="integrantes-btn" value="Cadastrar">
             </form>
         </section>
@@ -39,7 +41,7 @@
         </section>
     </main>
     <script src="../assets/js/admin.js"></script>
-    <script src="../assets/js/coreografia.js"></script>
-    <script>popularCards();</script>
+    <script src="../assets/js/admin-acervo.js" defer></script>
+    
 </body>
 </html>

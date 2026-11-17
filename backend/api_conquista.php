@@ -33,9 +33,8 @@ function atualizar(){
     
     try{
         // Se uma nova foto foi enviada, substitui; caso contrário, mantém a atual
-        if ($foto && $foto['error'] === UPLOAD_ERR_OK) {
+        if ($foto && $foto['error'] !== UPLOAD_ERR_NO_FILE) {
             $itemAntigo = obterConquista($id);
-            excluirFoto("conquistas", $itemAntigo["foto"]);
             $nome_foto = salvarFoto("conquistas", $foto);
         } else {
             $itemAntigo = obterConquista($id);

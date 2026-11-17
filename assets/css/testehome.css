@@ -1075,3 +1075,7 @@ footer {
 @keyframes explore-cascade{0%{transform:translateY(-110%);opacity:0}12%{opacity:1}78%{opacity:1}100%{transform:translateY(200%);opacity:0}}
 @media(max-width:600px){.footer-bottom{align-items:flex-start;gap:14px}}
 @media(prefers-reduced-motion:reduce){.explore span::after{animation:none;transform:none;opacity:1;background:var(--gold);height:100%;will-change:auto}}
+/* Navegacao unica para todas as paginas de teste */
+.site-header nav{gap:clamp(15px,1.8vw,28px)}
+.site-header nav a{white-space:nowrap}
+@media(min-width:901px) and (max-width:1100px){.site-header nav{gap:14px;font-size:10px}.site-header .brand>span{display:none}}

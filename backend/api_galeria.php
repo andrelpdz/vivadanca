@@ -22,9 +22,14 @@ function cadastrar(){
 function atualizar(){
     $id = trim($_POST['id']);
     $descricao = trim($_POST['descricao']);
-    $foto = $_FILES['foto'];
+    $foto = $_FILES['foto'] ?? null;
     try{
-        $nome_foto = salvarFoto("galeria", $foto);
+        $atual = obterGaleria($id);
+        if (!$atual) throw new Exception('Registro não encontrado.');
+        $nome_foto = $atual['foto'];
+        if ($foto && $foto['error'] !== UPLOAD_ERR_NO_FILE) {
+            $nome_foto = salvarFoto('galeria', $foto);
+        }
         $resposta = atualizarGaleria($id, $nome_foto, $descricao);
         if (!$resposta) throw new Exception("Erro ao atualizar galeria");
         return "Atualizado com sucesso";

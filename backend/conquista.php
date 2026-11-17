@@ -17,10 +17,10 @@ function cadastrarConquista($evento_id, $coreografia_id, $nome, $descricao, $fot
 
 function listarConquistas(){
     global $con;
-    $sql = "SELECT c.*, e.nome as evento_nome, cor.titulo as coreografia_titulo 
+    $sql = "SELECT c.*, e.nome as evento_nome, e.data_inicio, e.cidade, cor.titulo as coreografia_titulo 
             FROM conquistas c 
-            JOIN eventos e ON c.evento_id = e.id 
-            JOIN coreografias cor ON c.coreografia_id = cor.id";
+            LEFT JOIN eventos e ON c.evento_id = e.id 
+            LEFT JOIN coreografias cor ON c.coreografia_id = cor.id";
     $resultado = $con->query($sql);
     return $resultado->fetch_all(MYSQLI_ASSOC);
 }

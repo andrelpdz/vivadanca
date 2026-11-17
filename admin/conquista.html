@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conquistas | Gerenciar</title>
     <link rel="stylesheet" href="../assets/css/fernanda.css">
+    <link rel="stylesheet" href="../assets/css/admin-acervo.css">
 </head>
-<body>
+<body data-admin-collection="conquista">
     <main class="admin-main">
         <!-- TOPO -->
         <header></header>
@@ -44,7 +45,7 @@
                 <textarea id="descricao" name="descricao" placeholder="Digite uma descrição"></textarea>
 
                 <label for="foto">Foto/Troféu</label>
-                <input type="file" id="foto" name="foto" accept="image/*">
+                <input type="file" id="foto" name="foto" accept="image/*" required>
 
                 <input type="submit" id="btnEnviar" name="btnEnviar" class="integrantes-btn" value="Cadastrar">
             </form>
@@ -67,7 +68,7 @@
     </footer>
 
     <script src="../assets/js/admin.js"></script>
-    <script src="../assets/js/conquista.js"></script>
-    <script>inicializarPagina();</script>
+    <script src="../assets/js/admin-acervo.js" defer></script>
+    
 </body>
 </html>

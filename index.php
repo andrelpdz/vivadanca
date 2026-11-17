@@ -1,7 +1,7 @@
 <?php
 // Paginas de teste independentes: evita misturar o layout global com o estudo visual.
-if (isset($_GET['pagina']) && in_array($_GET['pagina'], ['testehome', 'testeintegrantes', 'testeintegrante', 'testeeventos', 'testesobre'], true)) {
-    $testQuery = $_GET['pagina'] === 'testeintegrante' && isset($_GET['id'])
+if (isset($_GET['pagina']) && in_array($_GET['pagina'], ['testehome', 'testeintegrantes', 'testeintegrante', 'testeeventos', 'testesobre', 'testeconquistas', 'testecontato', 'testecoreografias', 'testegaleria'], true)) {
+    $testQuery = in_array($_GET['pagina'], ['testeintegrante', 'testecoreografias'], true) && isset($_GET['id'])
         ? '?' . http_build_query(['id' => (string) $_GET['id']]) : '';
     header('Location: pages/' . $_GET['pagina'] . '.html' . $testQuery);
     exit;
