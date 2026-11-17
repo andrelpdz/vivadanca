@@ -5,6 +5,7 @@ async function popularCardsGaleriaAdmin(){
     dados.galeria.forEach((galeria)=>{
         sectionGaleria.append(criarCardAdmin(galeria));
     });
+
 }
  
 function criarCardAdmin(galeria) {
@@ -18,8 +19,23 @@ function criarCardAdmin(galeria) {
     foto.loading = "lazy";
     descricao.textContent = galeria.descricao || "";
     data.textContent = galeria.data || "";
- 
-    card.append(foto, descricao, data);
+
+
+    const deletarBtn = document.createElement("button");
+    deletarBtn.textContent = "Deletar";
+    deletarBtn.addEventListener("click", async () => {
+        if (confirm("Tem certeza que deseja deletar esta imagem?")) {
+            await excluirImagemGaleria(galeria.id);
+            card.remove();
+        }
+
+        
+
+    });
+
+        
+
+    card.append(foto, descricao, data, deletarBtn);
     return card;
 }
  
@@ -45,20 +61,17 @@ async function carregarGaleria() {
     }
 }
 
-async function deletarFoto(id) {
-    try {
-        const resposta = await fetch(`../backend/galeria.php?id=${encodeURIComponent(id)}`, {
-            method: "DELETE",
-            headers: { Accept: "application/json" }
-        });
-        const dados = await resposta.json();
-
-        if (!resposta.ok || !dados.sucesso) {
-            throw new Error(dados.mensagem || "Não foi possível excluir a imagem.");
-        }
-    } catch (erro) {
-        console.error("Erro ao excluir a foto:", erro);
+async function excluirImagemGaleria(id){
+    const resposta = await fetch(`../backend/galeria.php?id=${id}`,{
+        method: "DELETE",
+        headers: {Accept: "application/json"},
+    });
+    const dados = await resposta.json();
+    if (!resposta.ok || !dados.sucesso){
+        console.log("Erro ao excluir a imagem!");
+        return;
     }
+    location.reload();
 }
 
 document.getElementById("auth").addEventListener("submit", async (event) => {
