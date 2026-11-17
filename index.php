@@ -69,5 +69,6 @@ $v = md5(date('Y-m-d H:m:s'));
 
         <p class="footer-copy">©</p>
     </footer>
+
 </body>
 </html>
