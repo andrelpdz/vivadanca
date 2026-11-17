@@ -6,6 +6,8 @@ if(isset($_SESSION['email'])){
         header("location:/vivadanca/admin/integrante.html");
     }
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
