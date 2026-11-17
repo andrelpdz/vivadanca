@@ -29,6 +29,12 @@ function renderWork(target, items, type) {
     const content = document.createElement('div');
     const name = document.createElement('h4');
     name.textContent = (type === 'choreography' ? item.titulo : item.nome) || 'Registro do acervo';
+    if (type === 'choreography' && item.id != null) {
+      const link = document.createElement('a');
+      link.href = `testecoreografias.html?id=${encodeURIComponent(item.id)}#acervo`;
+      link.textContent = name.textContent + ' ↗';
+      name.replaceChildren(link);
+    }
     content.append(name);
     if (type === 'achievement' && item.nome_evento) {
       const event = document.createElement('p');

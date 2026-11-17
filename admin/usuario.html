@@ -68,39 +68,39 @@
                 >
 
                 <!-- CONFIGURAÇÕES DO USUÁRIO -->
-                <div style="margin: 20px 0; padding: 15px; border: 1px solid #e1e5ec; border-radius: 8px; background: #fafbfc;">
-                    <h3 style="font-size: 15px; margin-bottom: 10px; color: var(--azul);">Tipo de usuário</h3>
-                    <div style="display: flex; gap: 20px; margin-bottom: 15px;">
-                        <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; cursor: pointer;">
-                            <input type="radio" name="tipo_usuario" value="admin" checked style="accent-color: var(--dourado);">
+                <div class="usuario-permissoes-card">
+                    <h3 class="usuario-subtitulo">Tipo de usuário</h3>
+                    <div class="usuario-tipos">
+                        <label class="usuario-opcao">
+                            <input type="radio" name="tipo_usuario" value="admin" checked class="usuario-check">
                             Administrador
                         </label>
-                        <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; cursor: pointer;">
-                            <input type="radio" name="tipo_usuario" value="editor" style="accent-color: var(--dourado);">
+                        <label class="usuario-opcao">
+                            <input type="radio" name="tipo_usuario" value="editor" class="usuario-check">
                             Editor
                         </label>
                     </div>
 
-                    <h3 style="font-size: 15px; margin-bottom: 10px; color: var(--azul);">Permissões</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px;">
-                        <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; cursor: pointer;">
-                            <input type="checkbox" name="permissoes[]" value="Linha do tempo" style="accent-color: var(--dourado);">
+                    <h3 class="usuario-subtitulo">Permissões</h3>
+                    <div class="usuario-permissoes-grid">
+                        <label class="usuario-opcao">
+                            <input type="checkbox" name="permissoes[]" value="Linha do tempo" class="usuario-check">
                             Linha do tempo
                         </label>
-                        <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; cursor: pointer;">
-                            <input type="checkbox" name="permissoes[]" value="Integrantes" style="accent-color: var(--dourado);">
+                        <label class="usuario-opcao">
+                            <input type="checkbox" name="permissoes[]" value="Integrantes" class="usuario-check">
                             Integrantes
                         </label>
-                        <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; cursor: pointer;">
-                            <input type="checkbox" name="permissoes[]" value="Coreografias" style="accent-color: var(--dourado);">
+                        <label class="usuario-opcao">
+                            <input type="checkbox" name="permissoes[]" value="Coreografias" class="usuario-check">
                             Coreografias
                         </label>
-                        <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; cursor: pointer;">
-                            <input type="checkbox" name="permissoes[]" value="Conquistas" style="accent-color: var(--dourado);">
+                        <label class="usuario-opcao">
+                            <input type="checkbox" name="permissoes[]" value="Conquistas" class="usuario-check">
                             Conquistas
                         </label>
-                        <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; cursor: pointer;">
-                            <input type="checkbox" name="permissoes[]" value="Galerias" style="accent-color: var(--dourado);">
+                        <label class="usuario-opcao">
+                            <input type="checkbox" name="permissoes[]" value="Galerias" class="usuario-check">
                             Galerias
                         </label>
                     </div>
@@ -108,7 +108,7 @@
 
                 <input type="submit" id="btnSalvar" name="btnEnviar" class="integrantes-btn" value="Cadastrar usuário">
                 
-                <button type="button" id="btnCancelar" class="integrantes-btn" style="background: #687386; margin-top: 10px; display: none;" onclick="limparFormulario()">
+                <button type="button" id="btnCancelar" class="integrantes-btn usuario-cancelar" onclick="limparFormulario()">
                     Cancelar Edição
                 </button>
             </form>
@@ -120,10 +120,10 @@
             <p>Visualize, edite ou remova os usuários do sistema.</p>
 
             <!-- Grid de cards igual às outras páginas ou tabela adaptada -->
-            <div id="usuarios" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 20px;">
+            <div id="usuarios" class="usuarios-lista">
             </div>
             
-            <p id="mensagemVazia" style="color: var(--cinza); text-align: center; padding: 20px; display: none;">
+            <p id="mensagemVazia" class="usuario-empty-message">
                 Nenhum usuário cadastrado.
             </p>
         </section>

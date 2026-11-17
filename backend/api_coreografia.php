@@ -1,74 +1,52 @@
 <?php
-require_once __DIR__ . "/coreografia.php";
+require_once __DIR__ . '/coreografia.php';
+require_once __DIR__ . '/foto.php';
 
-$metodo = $_SERVER['REQUEST_METHOD'];
-$status = true;
-$resp = [];
-
-function cadastrar(){
-    $titulo = trim($_POST['titulo']);
-    $descricao = trim($_POST['descricao']);
-    $data_criacao = trim($_POST['data_criacao']);
-    $modalidade = trim($_POST['modalidade']);
-    
-    try{
-        $resposta = cadastrarCoreografia($titulo, $descricao, $data_criacao, $modalidade);
-        if (!$resposta) throw new Exception("Erro ao cadastrar coreografia");
-        return "Cadastro Efetuado com sucesso";
-    }catch(Throwable $e){
-        throw $e;
-    }
-}
-
-function atualizar(){
-    $id = trim($_POST['id']);
-    $titulo = trim($_POST['titulo']);
-    $descricao = trim($_POST['descricao']);
-    $data_criacao = trim($_POST['data_criacao']);
-    $modalidade = trim($_POST['modalidade']);
-    
-    try{
-        $resposta = atualizarCoreografia($id, $titulo, $descricao, $data_criacao, $modalidade);
-        if (!$resposta) throw new Exception("Erro ao atualizar coreografia");
-        return "Atualizado com sucesso";
-    }catch(Throwable $e){
-        throw $e;
-    }
-}
-
-function deletar(){
-    $id = $_GET['id'] ?? 0;
-    try{
-        excluirCoreografia($id);
-        return true;
-    }catch(Throwable $e){
-        throw $e;
-    }
-}
-
-try{
-    if ($metodo == "GET"){
-        $resp = ["coreografias" => listarCoreografias()];
-    }
-    else if ($metodo == "POST"){
-        if($_POST['btnEnviar'] == "Cadastrar") cadastrar();
-        else if($_POST['btnEnviar'] == "Atualizar") atualizar();
-        header("location: ../admin/coreografia.html");
+try {
+    $metodo = $_SERVER['REQUEST_METHOD'];
+    if ($metodo === 'GET') {
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode(['sucesso' => true, 'coreografias' => listarCoreografias()]);
         exit;
     }
-    else if ($metodo == "DELETE"){
-        deletar();
+    if ($metodo === 'POST') {
+        $titulo = trim($_POST['titulo'] ?? '');
+        $descricao = trim($_POST['descricao'] ?? '');
+        $data = trim($_POST['data_criacao'] ?? '');
+        $modalidade = trim($_POST['modalidade'] ?? '');
+        if ($titulo === '' || $data === '' || $modalidade === '') throw new Exception('Preencha título, data e modalidade.');
+        $id = filter_var($_POST['id'] ?? '', FILTER_VALIDATE_INT);
+        $atualizar = ($_POST['btnEnviar'] ?? '') === 'Atualizar';
+        $atual = $atualizar && $id ? obterCoreografia($id) : null;
+        if ($atualizar && !$atual) throw new Exception('Coreografia não encontrada.');
+        $foto = $atual['foto'] ?? null;
+        $novaFoto = null;
+        if (isset($_FILES['foto']) && $_FILES['foto']['error'] !== UPLOAD_ERR_NO_FILE) {
+            $novaFoto = salvarFoto('coreografias', $_FILES['foto']);
+            $foto = $novaFoto;
+        }
+        try {
+            $ok = $atualizar ? atualizarCoreografia($id, $titulo, $descricao, $data, $modalidade, $foto)
+                : cadastrarCoreografia($titulo, $descricao, $data, $modalidade, $foto);
+            if (!$ok) throw new Exception('Não foi possível salvar a coreografia.');
+        } catch (Throwable $e) {
+            if ($novaFoto) excluirFoto('coreografias', $novaFoto);
+            throw $e;
+        }
+        header('Location: ../admin/coreografia.html');
+        exit;
     }
-    else{
-        throw new Exception("Metodo invalido!");
+    if ($metodo === 'DELETE') {
+        $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+        if (!$id || !excluirCoreografia($id)) throw new Exception('Não foi possível excluir a coreografia.');
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode(['sucesso' => true]);
+        exit;
     }
-}catch(Throwable $e){
-    http_response_code(500);
-    $status = false;
-    $resp = ["erro" => $e->getMessage()];
+    http_response_code(405);
+    throw new Exception('Método não permitido.');
+} catch (Throwable $e) {
+    if (http_response_code() < 400) http_response_code(400);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode(['sucesso' => false, 'erro' => $e->getMessage()]);
 }
-finally{
-    header("Content-Type: application/json; charset=utf-8");
-    echo json_encode( ["sucesso"=> $status] + $resp );
-}
-?>

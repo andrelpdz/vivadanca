@@ -75,7 +75,7 @@ async function loadMembers() {
   statusText.textContent = 'Carregando os integrantes…';
   retryButton.hidden = true;
   try {
-    const response = await fetch('../backend/listar_integrantes.php', { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(15000) });
+    const response = await fetch('../backend/api_integrante.php', { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(15000) });
     if (!response.ok) throw new Error('Falha ao consultar integrantes');
     const data = await response.json();
     if (!data.sucesso || !Array.isArray(data.integrantes)) throw new Error('Resposta inválida');
