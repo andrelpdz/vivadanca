@@ -10,6 +10,8 @@ const timelineReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce
 let timelineActive = 0;
 let timelineFrame = 0;
 let timelineDrag = null;
+let timelineTarget = null;
+const timelineReading = timeline.querySelector('.timeline-reading');
 
 function updateTimeline(index) {
   timelineActive = index;
@@ -21,6 +23,7 @@ function updateTimeline(index) {
   timelinePrevious.disabled = index === 0;
   timelineNext.disabled = index === timelineSlides.length - 1;
   timelinePosition.textContent = `${index + 1} / ${timelineSlides.length}`;
+  timelineReading.replaceChildren(timelineSlides[index].querySelector('.timeline-story').cloneNode(true));
   const selected = timelineLinks[index];
   const yearBounds = selected.getBoundingClientRect();
   const stripBounds = timelineYears.getBoundingClientRect();
@@ -29,26 +32,35 @@ function updateTimeline(index) {
   }
 }
 
-function closestTimelineSlide() {
+function paintAlbum() {
   const bounds = timelineViewport.getBoundingClientRect();
   const center = bounds.left + bounds.width / 2;
+  const step = timelineSlides[0].getBoundingClientRect().width;
   let nearest = 0;
-  let distance = Infinity;
+  let nearestDistance = Infinity;
   timelineSlides.forEach((slide, index) => {
     const rect = slide.getBoundingClientRect();
-    const nextDistance = Math.abs(rect.left + rect.width / 2 - center);
-    if (nextDistance < distance) { nearest = index; distance = nextDistance; }
+    const distance = (rect.left + rect.width / 2 - center) / step;
+    const strength = Math.min(Math.abs(distance), 1);
+    slide.style.setProperty('--album-angle', `${-Math.max(-1, Math.min(1, distance)) * 55}deg`);
+    slide.style.setProperty('--album-scale', String(1 - strength * 0.23));
+    slide.style.setProperty('--album-opacity', String(1 - Math.min(Math.abs(distance), 2) * 0.23));
+    slide.style.zIndex = String(Math.max(0, 100 - Math.round(Math.abs(distance) * 20)));
+    if (Math.abs(distance) < nearestDistance) { nearest = index; nearestDistance = Math.abs(distance); }
   });
+  if (timelineTarget === nearest && nearestDistance < 0.04) timelineTarget = null;
+  if (timelineTarget === null && nearest !== timelineActive) updateTimeline(nearest);
   return nearest;
 }
-
 function goToTimeline(index, smooth = true) {
   index = Math.max(0, Math.min(index, timelineSlides.length - 1));
   const slideBounds = timelineSlides[index].getBoundingClientRect();
   const viewportBounds = timelineViewport.getBoundingClientRect();
   const left = timelineViewport.scrollLeft + slideBounds.left + slideBounds.width / 2 - viewportBounds.left - viewportBounds.width / 2;
+  timelineTarget = index;
   timelineViewport.scrollTo({ left, behavior: smooth && !timelineReducedMotion.matches ? 'smooth' : 'instant' });
   updateTimeline(index);
+  requestAnimationFrame(paintAlbum);
 }
 
 timeline.classList.add('timeline-ready');
@@ -68,11 +80,13 @@ timelineViewport.addEventListener('scroll', () => {
   if (timelineFrame) cancelAnimationFrame(timelineFrame);
   timelineFrame = requestAnimationFrame(() => {
     timelineFrame = 0;
-    const nearest = closestTimelineSlide();
-    if (nearest !== timelineActive) updateTimeline(nearest);
+    paintAlbum();
   });
 }, { passive: true });
+timelineViewport.addEventListener('scrollend', () => { timelineTarget = null; paintAlbum(); });
+timelineViewport.addEventListener('wheel', () => { timelineTarget = null; }, { passive: true });
 timelineViewport.addEventListener('pointerdown', (event) => {
+  timelineTarget = null;
   if (event.pointerType !== 'mouse' || event.button !== 0) return;
   timelineDrag = { x: event.clientX, left: timelineViewport.scrollLeft, pointerId: event.pointerId };
   timelineViewport.classList.add('is-dragging');
@@ -85,7 +99,7 @@ timelineViewport.addEventListener('pointermove', (event) => {
 function finishTimelineDrag() {
   if (!timelineDrag) return;
   const pointerId = timelineDrag.pointerId;
-  const nearest = closestTimelineSlide();
+  const nearest = paintAlbum();
   timelineDrag = null;
   timelineViewport.classList.remove('is-dragging');
   if (timelineViewport.hasPointerCapture(pointerId)) timelineViewport.releasePointerCapture(pointerId);
