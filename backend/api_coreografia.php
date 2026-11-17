@@ -53,7 +53,7 @@ try{
     else if ($metodo == "POST"){
         if($_POST['btnEnviar'] == "Cadastrar") cadastrar();
         else if($_POST['btnEnviar'] == "Atualizar") atualizar();
-        header("location: ../admin/coreografias.html");
+        header("location: ../admin/coreografia.html");
         exit;
     }
     else if ($metodo == "DELETE"){
