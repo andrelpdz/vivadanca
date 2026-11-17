@@ -1,13 +1,25 @@
 <?php
 require_once __DIR__ . "/conexao.php";
+require_once __DIR__ . "/foto.php";
 
-function cadastrarConquista($nome, $descricao, $foto, $evento_id, $coreografia_id){
+$metodo = $_SERVER['REQUEST_METHOD'];
+
+function cadastrar(){
     global $con;
+
+    $evento_id = 1; //teste
+    $coreografia_id = 3; //teste
+
+    $nome = $_POST['nome'];
+    $descricao  = $_POST['descricao'];
+    $foto = $_FILES['foto'];
+    $nome_foto = salvarFoto("conquistas", $foto);
+
     $sql = "INSERT INTO conquistas
         (nome, descricao, foto, evento_id, coreografia_id)
         VALUES (?, ?, ?, ?, ?)";
     $stmt = $con->prepare($sql);
-    $stmt->bind_param("sssii", $nome, $descricao, $foto, $evento_id, $coreografia_id);
+    $stmt->bind_param("sssii", $nome, $descricao, $nome_foto, $evento_id, $coreografia_id);
     $stmt->execute();
     $stmt->close();
     return true;
@@ -67,6 +79,46 @@ function excluirConquista($id){
     $stmt->close();
     return true;
 }
+
+try {
+    $status = true;
+
+    if ($metodo == "GET") {
+
+        $resp = ["conquista" => listarConquistas()];
+
+    } 
+    else if ($metodo == "POST") {
+
+        cadastrar();
+        header("location: ../admin/cadastro_conquista.html");
+        exit;
+
+    } 
+    else if ($metodo == "DELETE") {
+
+        $id = $_GET['id'];
+        excluirConquista($id);
+
+        $resp = ["mensagem" => "Conquista excluída!"];
+
+    } 
+    else {
+
+        throw new Exception("Método inválido!");
+
+    }
+
+} catch (Throwable $e) {
+
+    http_response_code(500);
+    $status = false;
+    $resp = ["erro" => $e->getMessage()];
+
+}
+
+header("Content-Type: application/json; charset=utf-8");
+echo json_encode(["sucesso" => $status] + $resp);
 
 
 ?>

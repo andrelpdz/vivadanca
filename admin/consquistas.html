@@ -19,31 +19,28 @@
         <h1>Cadastro de Conquistas</h1>
         <p>Cadastre uma nova conquista.</p>
 
-        <form action="#" method="POST">
+        
+<form action="../backend/conquista.php" method="POST" enctype="multipart/form-data">
 
-            <label>Nome da conquista:</label>
-            <input type="text" name="nome" placeholder="Digite o nome da conquista" required>
+    <label>Evento ID:</label>
+    <input type="number" name="evento_id" required>
 
-            <label>Descrição:</label>
-            <textarea name="descricao" placeholder="Descreva a conquista" required></textarea>
+    <label>Coreografia ID:</label>
+    <input type="number" name="coreografia_id" required>
 
-            <label>Integrante responsável:</label>
-            <input type="text" name="integrante" placeholder="Nome do integrante">
+    <label>Nome da conquista:</label>
+    <input type="text" name="nome" placeholder="Digite o nome" required>
 
-            <label>Data da conquista:</label>
-            <input type="date" name="data">
+    <label>Descrição:</label>
+    <textarea name="descricao" placeholder="Descreva a conquista" required></textarea>
 
-            <label>Categoria:</label>
-            <select name="categoria">
-                <option value="">Selecione uma categoria</option>
-                <option value="Profissional">Profissional</option>
-                <option value="Esportiva">Esportiva</option>
-                <option value="Pessoal">Pessoal</option>
-            </select>
+    <label>Foto:</label>
+    <input type="file" name="foto" accept="image/*" required>
 
-            <button type="submit">Cadastrar Conquista</button>
+    <button type="submit">Cadastrar Conquista</button>
 
-        </form>
+</form>
+
 
     </main>
 

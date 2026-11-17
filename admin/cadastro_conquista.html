@@ -13,42 +13,18 @@
 </head>
 
 <body class="login-page">
+    <header></header>
 
     <main class="login-main">
-
-        <!-- Lado esquerdo -->
-        <section class="login-left">
-
-            <img src="../assets/img/logo.png" alt="Logo VivaDança">
-
-            <div>
-                <p class="welcome">VIVADANÇA</p>
-
-                <h1>
-                    Cada conquista conta uma história.
-                </h1>
-
-                <p>
-                    Registre os momentos e as conquistas
-                    importantes da nossa trajetória.
-                </p>
-            </div>
-
-        </section>
-
         <!-- Lado direito -->
         <section class="login-right">
 
-            <form class="form-login" action="#" method="POST" enctype="multipart/form-data">
+            <form class="form-login" action="../backend/conquista.php" method="POST" enctype="multipart/form-data">
 
                 <h2>Nova Conquista</h2>
                 <p>Preencha os dados da conquista.</p>
-
-                <label for="evento_id">Evento ID</label>
-                <input type="number" id="evento_id" name="evento_id" required>
-
-                <label for="coreografia_id">Coreografia ID</label>
-                <input type="number" id="coreografia_id" name="coreografia_id" required>
+                <input type="hidden" id="evento_id" name="evento_id">
+                <input type="hidden" id="coreografia_id" name="coreografia_id">
 
                 <label for="nome">Nome</label>
                 <input type="text" id="nome" name="nome" placeholder="Nome da conquista" required>
@@ -66,9 +42,15 @@
             </form>
 
         </section>
-
+        <section class="lista-conquistas">
+            <h2>Conquistas cadastradas</h2>
+            <div id="conquista"></div>
+        </section>
     </main>
  
 </body>
     <script src="../assets/js/conquistas.js"></script>
+    <script src="../assets/js/admin.js"></script>
+    <script src="../assets/js/cadastro_conquista.js"></script>
+    <script>popularCardsConquistaAdmin();</script>
 </html>
