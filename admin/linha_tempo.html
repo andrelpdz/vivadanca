@@ -20,8 +20,10 @@
                 <label for="descricao">Descrição</label>
                 <textarea id="descricao" name="descricao" required></textarea>
 
-                <label for="data">Data</label>
-                <input type="date" id="data" name="data" required>
+                <label for="data">Ano</label>
+                <select id="data" name="data" required style="width: 100%; padding: 13px; margin-bottom: 15px; border: 1px solid #e1e5ec; border-radius: 8px; font-family: inherit;">
+                    <option value="">Selecione o ano</option>
+                </select>
 
                 <label for="foto">Foto</label>
                 <input type="file" id="foto" name="foto" accept="image/*" required>
@@ -37,6 +39,9 @@
     </main>
     <script src="../assets/js/admin.js"></script>
     <script src="../assets/js/linha_tempo.js"></script>
-    <script>popularCards();</script>
+    <script>
+        popularAnosSelect();
+        popularCards();
+    </script>
 </body>
 </html>
