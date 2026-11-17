@@ -6,7 +6,7 @@ function cadastrarLinhaTempo($foto, $descricao, $data){
     try{
         $sql = "INSERT INTO linha_tempo(foto, descricao, data) VALUES (?, ?, ?)";
         $stmt = $con->prepare($sql);
-        $stmt->bind_param("sss", $foto, $descricao, $data);
+        $stmt->bind_param("ssi", $foto, $descricao, $data); // 'i' para inteiro (ano)
         $stmt->execute();
         $stmt->close();
         return true;
@@ -35,7 +35,7 @@ function atualizarLinhaTempo($id, $foto, $descricao, $data){
     global $con;
     $sql = "UPDATE linha_tempo SET foto = ?, descricao = ?, data = ? WHERE id = ?";
     $stmt = $con->prepare($sql);
-    $stmt->bind_param("sssi", $foto, $descricao, $data, $id);
+    $stmt->bind_param("ssii", $foto, $descricao, $data, $id); // 'i' para inteiro (ano)
     $resultado = $stmt->execute();
     $stmt->close();
     return $resultado;
