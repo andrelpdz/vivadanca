@@ -16,7 +16,7 @@
         <h1>Cadastro de <span>Eventos</span></h1>
         <p>Cadastre os eventos do Viva Dança.</p>
 
-        <form id="formEvento" action="../backend/registro_evento.php" method="POST">
+        <form id="formEvento" action="../backend/api_evento.php" method="POST">
             <h2>Novo evento</h2>
 
             <input type="hidden" id="id" name="id">
@@ -44,7 +44,7 @@
 
             <input type="hidden" id= "listaIntegrantes" name="listaIntegrantes" value = "">
             
-            <button type="submit" id="btnEnviar" value = "Cadastrar Evento">Cadastrar Evento</button>
+            <button type="submit" id="btnEnviar" name="btnEnviar" value="Cadastrar">Cadastrar Evento</button>
         </form>
 
         <hr>

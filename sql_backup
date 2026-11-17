@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13/11/2026 às 21:22
+-- Tempo de geração: 17/11/2026 às 21:25
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -36,6 +36,13 @@ CREATE TABLE `conquistas` (
   `foto` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `conquistas`
+--
+
+INSERT INTO `conquistas` (`id`, `evento_id`, `coreografia_id`, `nome`, `descricao`, `foto`) VALUES
+(5, 1, 40, 'teste', 'tesetes', '10a21a043c96d43520aea10ff99c8a68.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -55,7 +62,7 @@ CREATE TABLE `coreografias` (
 --
 
 INSERT INTO `coreografias` (`id`, `titulo`, `descricao`, `data_criacao`, `modalidade`) VALUES
-(37, 'Nova coreografia1', 'asdasdasdas', '2026-11-12', 'novo teste');
+(40, 'asdasd', 'asdasdas', '2026-11-03', 'asdasdasd');
 
 -- --------------------------------------------------------
 
@@ -92,7 +99,8 @@ CREATE TABLE `eventos` (
 
 INSERT INTO `eventos` (`id`, `nome`, `descricao`, `data_inicio`, `data_termino`, `cidade`, `local`, `premiacao`) VALUES
 (1, 'asdasdasd', 'asdasdasdas', '2026-10-06 14:38:00', '2026-10-23 14:51:00', 'asdasd', 'asdasd', 'asdasdasdasd'),
-(2, 'asdasdasd', 'asdasdasdas', '2026-10-06 14:38:00', '2026-10-23 14:51:00', 'asdasd', 'asdasd', 'asdasdasdasd');
+(2, 'asdasdasd', 'asdasdasdas', '2026-10-06 14:38:00', '2026-10-23 14:51:00', 'asdasd', 'asdasd', 'asdasdasdasd'),
+(5, 'qwertw', 'asdf', '2026-11-09 13:55:00', '2026-11-19 13:55:00', 'Sorocaba', 'Senac', 'Sein ao');
 
 -- --------------------------------------------------------
 
@@ -104,15 +112,16 @@ CREATE TABLE `galeria` (
   `id` int(11) NOT NULL,
   `foto` varchar(64) NOT NULL,
   `descricao` text NOT NULL,
-  `data` datetime NOT NULL DEFAULT current_timestamp()
+  `data` datetime NOT NULL DEFAULT current_timestamp(),
+  `data_foto` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `galeria`
 --
 
-INSERT INTO `galeria` (`id`, `foto`, `descricao`, `data`) VALUES
-(1, 'Foto.jpg', 'Descrição', '2026-11-06 14:30:47');
+INSERT INTO `galeria` (`id`, `foto`, `descricao`, `data`, `data_foto`) VALUES
+(3, '6a85440c17286525e7c5d0f0dee19d94.jpg', 'teste', '2026-11-17 15:20:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -133,7 +142,7 @@ CREATE TABLE `integrantes` (
 --
 
 INSERT INTO `integrantes` (`id`, `nome`, `descricao`, `foto`, `ativo`) VALUES
-(22, 'Juka', 'Jukinha', '46136cbe040940eaff1c73bdd8824055.jpg', 1);
+(26, 'andreee', 'asdfasdfasdfee', '7b19de7d0ae7d32e3d9277abf25b3c08.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -145,7 +154,7 @@ CREATE TABLE `linha_tempo` (
   `id` int(11) NOT NULL,
   `foto` varchar(64) NOT NULL,
   `descricao` text NOT NULL,
-  `data` date NOT NULL
+  `data` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -153,7 +162,7 @@ CREATE TABLE `linha_tempo` (
 --
 
 INSERT INTO `linha_tempo` (`id`, `foto`, `descricao`, `data`) VALUES
-(1, 'foto.jpg', 'Descrição', '2026-11-06');
+(2, '6b8da3808478f0864b07c7ecad6cd3ec.jpg', 'teste', 20261109);
 
 -- --------------------------------------------------------
 
@@ -178,21 +187,23 @@ CREATE TABLE `usuario` (
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `senha` varchar(255) NOT NULL,
-  `criado` timestamp NOT NULL DEFAULT current_timestamp()
+  `criado` timestamp NOT NULL DEFAULT current_timestamp(),
+  `tipo_usuario` varchar(20) NOT NULL DEFAULT 'editor',
+  `permissões` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`, `criado`) VALUES
-(1, 'admin', 'admin@email.com', '$2a$12$ENx0f1V0/GNVQJFtKOI8TeaiyQj9gkr2QfXXAwJ1L6xjniY9PdBwW', '2026-10-06 16:45:11'),
-(2, 'jeff', 'jeff@email.com', '$2a$12$ENx0f1V0/GNVQJFtKOI8TeaiyQj9gkr2QfXXAwJ1L6xjniY9PdBwW', '2026-10-06 16:45:11'),
-(3, 'felipe', 'felipe@email.com', '$2a$12$ENx0f1V0/GNVQJFtKOI8TeaiyQj9gkr2QfXXAwJ1L6xjniY9PdBwW', '2026-10-06 16:45:11'),
-(13, 'Izete', 'izete@email.com', '$2a$12$ENx0f1V0/GNVQJFtKOI8TeaiyQj9gkr2QfXXAwJ1L6xjniY9PdBwW', '2026-10-06 18:13:01'),
-(18, 'Jurema1', 'jurema3@email.com', '$2y$10$/z1lJpEv.LwSDzXTN4mZSejmH51./ru5PdguREia.KLQXLxc84KxO', '2026-10-06 19:40:21'),
-(19, 'andre', 'andre@email.com', '$2y$10$/xINnOyQhLQPKK34qCiLh.uQbwx0fpDC5B6rEPuCJVDwmeCSVu7te', '2026-10-09 17:07:32'),
-(20, 'Jeff Rayner', 'jeff_rayner@email.com', '$2y$10$igpGzyjkWLl./p1rCCzyMe0pWr5rlmzH/JjMBWc9xqDBgxBYZ0wBO', '2026-10-13 16:45:06');
+INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`, `criado`, `tipo_usuario`, `permissões`) VALUES
+(1, 'admin', 'admin@email.com', '$2y$10$pk5eG3gnB.wx56hTEfNhheRaLC0DZnHKsj9ErS2E9R3tDms3v7dy2', '2026-10-06 16:45:11', 'editor', NULL),
+(2, 'jeff', 'jeff@email.com', '$2a$12$ENx0f1V0/GNVQJFtKOI8TeaiyQj9gkr2QfXXAwJ1L6xjniY9PdBwW', '2026-10-06 16:45:11', 'editor', NULL),
+(3, 'felipe', 'felipe@email.com', '$2a$12$ENx0f1V0/GNVQJFtKOI8TeaiyQj9gkr2QfXXAwJ1L6xjniY9PdBwW', '2026-10-06 16:45:11', 'editor', NULL),
+(13, 'Izete', 'izete@email.com', '$2a$12$ENx0f1V0/GNVQJFtKOI8TeaiyQj9gkr2QfXXAwJ1L6xjniY9PdBwW', '2026-10-06 18:13:01', 'editor', NULL),
+(18, 'Jurema1', 'jurema3@email.com', '$2y$10$/z1lJpEv.LwSDzXTN4mZSejmH51./ru5PdguREia.KLQXLxc84KxO', '2026-10-06 19:40:21', 'editor', NULL),
+(19, 'andre', 'andre@email.com', '$2y$10$/xINnOyQhLQPKK34qCiLh.uQbwx0fpDC5B6rEPuCJVDwmeCSVu7te', '2026-10-09 17:07:32', 'editor', NULL),
+(20, 'Jeff Rayner', 'jeff_rayner@email.com', '$2y$10$igpGzyjkWLl./p1rCCzyMe0pWr5rlmzH/JjMBWc9xqDBgxBYZ0wBO', '2026-10-13 16:45:06', 'editor', NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -267,13 +278,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `conquistas`
 --
 ALTER TABLE `conquistas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `coreografias`
 --
 ALTER TABLE `coreografias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de tabela `dancarinos`
@@ -285,25 +296,25 @@ ALTER TABLE `dancarinos`
 -- AUTO_INCREMENT de tabela `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `galeria`
 --
 ALTER TABLE `galeria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `integrantes`
 --
 ALTER TABLE `integrantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de tabela `linha_tempo`
 --
 ALTER TABLE `linha_tempo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `participantes`
