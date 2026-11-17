@@ -78,6 +78,7 @@ function trocarFoto() {
 
  
 //-> EVENTOS DAS PAGINAS
+//-> INTEGRANTES
 async function popularIntegrantes(){
     sectionIntegrantes = document.querySelector(".integrantes-galeria");
     const dados = await carregarIntegrantes();
@@ -85,8 +86,7 @@ async function popularIntegrantes(){
     dados.integrantes.forEach((integrante)=>{
         sectionIntegrantes.innerHTML += cardIntegrantes(integrante);
     });
-}
- 
+} 
 async function carregarIntegrantes(){
     try {
         const resposta = await fetch(
@@ -102,8 +102,7 @@ async function carregarIntegrantes(){
         console.log(error);
         return { "integrantes":[] };
     }    
-}
- 
+} 
 function cardIntegrantes(integrante){
     const card = `
     <a class="item integrante-link" href="#">
@@ -115,7 +114,7 @@ function cardIntegrantes(integrante){
 }
 
 
-// Carrega Integrantes
+//-> COREOGRAFIA
 async function popularCoreografias(){
     sectionCoreografias = document.querySelector(".lista-cards");
     const dados = await carregarCoreografias();
@@ -123,8 +122,7 @@ async function popularCoreografias(){
     dados.coreografias.forEach((coreografia)=>{
         sectionCoreografias.innerHTML += cardCoreografias(coreografia);
     });
-}
- 
+} 
 async function carregarCoreografias(){
     try {
         const resposta = await fetch(
@@ -140,8 +138,7 @@ async function carregarCoreografias(){
         console.log(error);
         return { "coreografias":[] };
     }    
-}
- 
+} 
 function cardCoreografias(coreografia){
     const card = `
    <div class="card">
@@ -160,8 +157,7 @@ function cardCoreografias(coreografia){
     return card
 }
 
-
-//Caregar Galeria
+//-> GALERIA
 async function popularGalerias(){
     sectionGalerias = document.querySelector(".galeria-imagens");
     const dados = await carregarGalerias();
@@ -170,7 +166,6 @@ async function popularGalerias(){
         sectionGalerias.innerHTML += cardGalerias(galeria);
     });
 }
-
 async function carregarGalerias(){
     try {
         const resposta = await fetch(
@@ -186,13 +181,45 @@ async function carregarGalerias(){
         console.log(error);
         return { "galerias": [] };
     }    
-}
- 
+} 
 function cardGalerias(galeria){
     const card = `
     <a class="item galeria-link" href="#">
         <div class="foto" style="background-image:url('assets/galeria/${galeria.foto}');"></div>
     </a>
     `;
+    return card;
+}
+
+//-> LINHA DO TEMPO
+async function popularLinhaTempo(){
+    sectionLinhaTempo = document.querySelector(".linhatempo");
+    const dados = await carregarLinhaTempo();
+
+    dados.linha_tempo.forEach((linhatempo)=>{
+        sectionLinhaTempo.innerHTML += cardLinhaTempo(linhatempo);
+    });
+}
+async function carregarLinhaTempo(){
+    try {
+        const resposta = await fetch(
+            "backend/api_linha_tempo.php",
+            { headers:{"Accept": "application/json"}}
+        );
+        const dados = await resposta.json();
+        if(!resposta.ok || !dados.sucesso){
+            throw new Error( dados.mensagem || "Não foi possivel carregar");
+        }
+        return dados;        
+    }catch(error) {
+        console.log(error);
+        return { "linhatempo": [] };
+    }    
+} 
+function cardLinhaTempo(linhatempo){
+    const card = `<li><div>
+                    <img src="assets/linha_tempo/${linhatempo.foto}" alt="Imagem Linha do tempo" draggable="false">
+                    <p>${linhatempo.data}<br>${linhatempo.descricao}</p>
+                </div></li>`;
     return card;
 }
