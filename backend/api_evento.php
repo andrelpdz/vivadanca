@@ -69,7 +69,7 @@ try{
         }else if($_POST['btnEnviar'] == "Atualizar"){
             atualizar();
         }
-        header("location: ../admin/eventos.html");
+        header("location: ../admin/evento.html");
         exit;
     }
     else if ($metodo == "DELETE"){
