@@ -1,52 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/style.css">
-    <link rel="stylesheet" href="../assets/css/login.css">
-    <title>Document</title>
+    <title>Login | Viva Dança</title>
+    <link rel="stylesheet" href="assets/css/fernanda.css">
 </head>
-<body class="login-page">
-    <div class="login-main">
-        <div class="login-container">
-            
-            <!-- Imagem -->
-            <div class="left">
-                <div>
-                    <img src="../assets/img/image.png" alt="" >
-                </div>
-            </div>
-            
-            <!-- login -->
-            <div class="auth">
-                <div class="text-login">
-                    <h1>VivaDança Login</h1>
-                    <p class="login-subtitle">Entre na sua conta</p>
-                </div>
 
-                <div class="painel-auth form-login"  >
-                    
-                    <form class="form-login" id="auth" action="../backend/valida_login.php" method="post">
-                        <div class="form-login">
-                            <label for="loginEmail">E-mail</label>
-                            <input id="loginEmail" name="email" type="email" placeholder="seuemail@exemplo.com.br" autocomplete="username" required>
-                        </div>
-                    
-                        <div class="form-passwd">
-                            <label for="loginPassword">Senha</label>
-                            <input id="loginPassword" name="senha" type="password" placeholder="SENHA" autocomplete="current-password" required>
-                        </div>
-                    
-                        <button class="btn-submit" type="submit">Entrar</button>
-                    </form>
-                    <div class="voltar-home">
-                        <a href="../">voltar</a>
-                    </div>
-                </div>
-            </div>
+<body class="admin-login-page">
 
-        </div>
-    </div>
-</body>
+    <main class="admin-main admin-login-card">
+        <!-- CABEÇALHO DO LOGIN -->
+        <header class="admin-login-header">
+            <div>
+                <span>ÁREA RESTRITA</span>
+                <h1 class="admin-login-title">Viva<em>Dança</em></h1>
+                <p>Entre com suas credenciais para gerenciar o sistema.</p>
+            </div>
+        </header>
+
+        <!-- FORMULÁRIO DE LOGIN -->
+        <section class="integrantes-painel admin-login-panel">
+            <h2>Fazer Login</h2>
+            <p>Informe seu e-mail e senha cadastrados.</p>
+
+            <form class="form-integrantes" id="auth" action="../backend/valida_login.php" method="POST">
+                <label for="loginEmail">E-mail</label>
+                <input 
+                    id="loginEmail" 
+                    name="email" 
+                    type="email" 
+                    placeholder="seuemail@exemplo.com.br" 
+                    autocomplete="username" 
+                    required
+                >
+
+                <label for="loginPassword">Senha</label>
+                <input 
+                    id="loginPassword" 
+                    name="senha" 
+                    type="password" 
+                    placeholder="Digite sua senha" 
+                    autocomplete="current-password" 
+                    required
+                >
+
+                <button class="integrantes-btn admin-login-submit" type="submit">Entrar</button>
+            </form>
+
+            <div class="admin-login-back">
+                <a class="admin-login-back-link" href="../">&larr; Voltar para a página inicial</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="admin-login-footer">
+        <p>&copy; 2026 Viva Dança</p>
+    </footer>
+
+</body> 
 </html>
