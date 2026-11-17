@@ -80,6 +80,7 @@ function excluirConquista($id){
     return $resultado;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 try {
     $status = true;
@@ -124,4 +125,21 @@ echo json_encode(["sucesso" => $status] + $resp);
 
 =======
 >>>>>>> b53359648acc28bfb299e25220db34b65ce444bb
+=======
+
+// Funções auxiliares para popular os selects
+function listarEventosSimples() {
+    global $con;
+    $sql = "SELECT id, nome FROM eventos";
+    $res = $con->query($sql);
+    return $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
+}
+
+function listarCoreografiasSimples() {
+    global $con;
+    $sql = "SELECT id, titulo FROM coreografias";
+    $res = $con->query($sql);
+    return $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
+}
+>>>>>>> 42fe8ba85f30bcaee2a6c4d0e29a445e968fef1b
 ?>

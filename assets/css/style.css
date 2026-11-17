@@ -1879,64 +1879,459 @@ section.integrantes .des {
    CONQUISTAS
 ========================================================= */
 
-.nav-conquistas {
-    padding: 10px;
-    background-color: var(--bege);
-    width: 100%;
-}
-
-.nav-conquistas-container ul {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    list-style: none;
-}
-
-.nav-conquistas-container ul li a {
-    text-decoration: none;
-    color: var(--azul);
-    font-weight: 500;
-}
+/* =========================================
+   CONQUISTAS - VIVA DANÇA
+========================================= */
 
 .main-conquistas-container {
-    min-height: 1300px;
     width: 100%;
-    padding: 40px 20%;
-    background-color: var(--creme);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 45px 40px 0;
+    box-sizing: border-box;
+    background: var(--creme);
+    color: var(--azul);
+    overflow: hidden;
 }
 
-.main-conquistas-container h2 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 5rem;
-    font-weight: bold;
-    color: var(--vinho);
-    padding-bottom: 10px;
-}
+/* BANNER */
 
-.main-conquistas-container .main-conquistas-p1 {
-    color: var(--links);
-    font-size: 2rem;
-    font-family: "Cormorant Garamond", serif;
-    font-weight: 500;
-}
-
-.main-conquistas-container .main-conquistas-p2 {
-    padding-top: 10px;
-}
-
-.main-conquistas-container .main-conquistas-img {
-    width: 500px;
-    max-width: 100%;
-    height: auto;
+.conquistas-imagem {
     float: right;
+    width: 48%;
+    height: 300px;
+    margin: 0 0 25px 35px;
+    overflow: hidden;
 }
 
-.main-conquistas-dados{
+.conquistas-imagem .main-conquistas-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* TÍTULO */
+
+.main-conquistas-container > h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 4.5rem;
+    line-height: 1;
+    font-weight: 700;
+    color: var(--vinho);
+    margin: 0 0 15px;
+    padding: 0;
+}
+
+.main-conquistas-p1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    color: var(--links);
+    margin: 0;
+}
+
+.main-conquistas-p2 {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 12px 0 0;
+    color: var(--azul);
+}
+
+/* FILTROS */
+
+.filtros-galeria {
+    clear: both;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    width: 100%;
+    margin-top: 35px;
+    border-bottom: 1px solid #d8d0c6;
 }
 
-.main-conquistas-dados h2{
+.filtro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 16px 10px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #777;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.filtro i {
+    width: 20px;
+    height: 20px;
+}
+
+.filtro.ativo {
+    color: var(--vinho);
+    border-bottom-color: var(--vinho);
+    font-weight: 700;
+}
+
+.filtro:hover {
+    color: var(--vinho);
+}
+
+/* FILTROS SECUNDÁRIOS */
+
+.segundo-filtro {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 15px;
+    padding: 13px 10px;
+    background: white;
+    font-size: 0.85rem;
+    color: var(--azul);
+}
+
+/* GALERIA */
+
+.galeria {
+    width: 100%;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    background: #f5f1eb;
+    border-left: 5px solid var(--azul);
+}
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    width: 100%;
+}
+
+/* CARDS */
+
+.galeria-grid .card {
+    min-width: 0;
+    width: 100%;
+    background: #fffdf9;
+    border: 1px solid #e6dacb;
+    border-radius: 7px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0,0,0,.06);
+    transition: .25s ease;
+}
+
+.galeria-grid .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 7px 18px rgba(0,0,0,.12);
+}
+
+.galeria-grid .card > img {
+    display: block;
+    width: 100%;
+    height: 135px;
+    object-fit: cover;
+}
+
+/* CONTEÚDO DOS CARDS */
+
+.card-conteudo {
+    padding: 10px;
+}
+
+.card-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.card-topo > div {
+    min-width: 0;
+}
+
+.card .ano {
+    display: block;
+    font-size: .9rem;
+    font-weight: 700;
+    color: var(--vinho);
+    margin-bottom: 3px;
+}
+
+.card h3 {
+    font-family: "Cormorant Garamond", serif;
     font-size: 1rem;
+    line-height: 1.1;
+    font-weight: 600;
+    color: var(--azul);
+    margin: 0;
+}
+
+.card .local {
+    font-size: .7rem;
+    color: #888;
+    margin: 7px 0 4px;
+}
+
+.card .descricao {
+    font-size: .72rem;
+    color: #c47b19;
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* SETA */
+
+.card .seta {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #d89027;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--vinho);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.card .seta:hover {
+    background: #d89027;
+    color: white;
+}
+
+/* =========================================
+   ESTATÍSTICAS
+========================================= */
+
+.main-conquistas-dados {
+    display: grid;
+    grid-template-columns: 1.3fr repeat(4, 1fr);
+    align-items: center;
+    width: 100%;
+    padding: 22px 10px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e5d8c6;
+}
+
+.main-conquistas-dados > h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.4rem;
+    line-height: 1.1;
+    color: var(--vinho);
+    margin: 0;
+    padding: 0;
+}
+
+.dados-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 4px;
+    min-height: 65px;
+    border-left: 1px solid #e5d8c6;
+}
+
+.dados-item i {
+    width: 24px;
+    height: 24px;
+    color: #c58b2e;
+}
+
+.dados-item h3 {
+    font-size: 1.4rem;
+    color: var(--vinho);
+    margin: 0;
+}
+
+.dados-item p {
+    font-size: .7rem;
+    color: var(--azul);
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* =========================================
+   RODAPÉ
+========================================= */
+
+.conquistas-final {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    align-items: center;
+    width: 100%;
+    min-height: 220px;
+    background: #f3ebdf;
+    overflow: hidden;
+}
+
+.conquistas-final-texto {
+    position: relative;
+    padding: 30px;
+}
+
+.conquistas-final-texto .aspas {
+    display: block;
+    color: #c58b2e;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 3rem;
+    line-height: .7;
+}
+
+.conquistas-final-texto > p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.55rem;
+    font-style: italic;
+    line-height: 1.2;
+    color: #c58b2e;
+    padding-left: 15px;
+    border-left: 1px solid #d5b77f;
+    margin: 10px 0 20px;
+}
+
+.conquistas-assinatura {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.conquistas-assinatura span {
+    flex: 1;
+    height: 1px;
+    background: #d5b77f;
+}
+
+.conquistas-assinatura small {
+    font-size: .58rem;
+    letter-spacing: 2px;
+    color: #777;
+    white-space: nowrap;
+}
+
+.conquistas-final-imagem {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.conquistas-final-imagem img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .main-conquistas-container {
+        padding: 30px 20px 0;
+    }
+
+    .galeria-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .filtros-galeria {
+        gap: 10px;
+    }
+
+    .conquistas-imagem {
+        width: 43%;
+        height: 250px;
+    }
+}
+
+/* =========================================
+   CELULAR
+========================================= */
+
+@media (max-width: 600px) {
+
+    .main-conquistas-container {
+        padding: 20px 12px 0;
+    }
+
+    .conquistas-imagem {
+        float: none;
+        width: 100%;
+        height: 200px;
+        margin: 0 0 20px;
+    }
+
+    .main-conquistas-container > h2 {
+        font-size: 3rem;
+    }
+
+    .main-conquistas-p1 {
+        font-size: 1.5rem;
+    }
+
+    .filtros-galeria {
+        justify-content: flex-start;
+        overflow-x: auto;
+        gap: 12px;
+    }
+
+    .filtro {
+        flex-shrink: 0;
+        font-size: .72rem;
+    }
+
+    .segundo-filtro {
+        grid-template-columns: 1fr;
+    }
+
+    .galeria {
+        padding: 15px 8px;
+    }
+
+    .galeria-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .galeria-grid .card > img {
+        height: 110px;
+    }
+
+    .card-conteudo {
+        padding: 7px;
+    }
+
+    .card h3 {
+        font-size: .85rem;
+    }
+
+    .main-conquistas-dados {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .main-conquistas-dados > h2 {
+        grid-column: span 2;
+        text-align: center;
+    }
+
+    .conquistas-final {
+        grid-template-columns: 1fr;
+    }
+
+    .conquistas-final-imagem {
+        height: 180px;
+    }
 }
 
 /* ===== Linha do tempo (Wellington) ===== */

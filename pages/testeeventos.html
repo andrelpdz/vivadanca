@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Viva Dança Sorocaba 60+: histórias, encontros e arte em movimento.">
+  <title>Agenda e eventos — Viva Dança</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/testehome.css">
+  <link rel="stylesheet" href="../assets/css/testeeventos.css">
+  <script src="../assets/js/testehome.js" defer></script>
+  <script src="../assets/js/testeeventos.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header">
+    <a class="brand" href="testehome.html" aria-label="Viva Dança, início"><img src="../assets/img/logo.png" alt="Viva Dança" width="88" height="88"><span>Sorocaba <span class="brand-age">60+</span></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navegacao">Menu <span aria-hidden="true">☰</span></button>
+    <nav id="navegacao" aria-label="Navegação principal">
+      <a href="testesobre.html">O grupo</a>
+      <a href="../index.php?pagina=coreografias">Repertório</a>
+      <a href="testeintegrantes.html">Integrantes</a>
+      <a href="testeeventos.html" aria-current="page">Agenda</a>
+      <a href="../index.php?pagina=conquistas">Conquistas</a>
+      <a class="nav-contact" href="../index.php?pagina=contato">Vamos conversar <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main id="conteudo">
+    <section class="events-hero" aria-labelledby="events-title"><img src="../assets/img/banner-eventos.jpg" alt="Viva Dança em cena" fetchpriority="high"><div class="wrap"><p class="eyebrow line">Agenda & eventos</p><h1 id="events-title">O próximo encontro.<br>Uma nova <em>história.</em></h1><p>Apresentações, festivais e momentos que marcam<br>a trajetória do Viva Dança Sorocaba 60+.</p><a href="#agenda" class="text-link">Explore a programação <span aria-hidden="true">↓</span></a></div></section>
+    <section id="agenda" class="wrap section-space" aria-labelledby="agenda-title">
+      <div class="section-heading"><div><p class="eyebrow line">Dança que aproxima</p><h2 id="agenda-title">Nos vemos <em>no palco.</em></h2></div><p>Confira nossos próximos encontros<br>e revisite momentos especiais.</p></div>
+      <div class="events-controls"><div class="period-controls" role="group" aria-label="Período dos eventos"><button type="button" data-period="upcoming" aria-pressed="true">Próximos encontros</button><button type="button" data-period="past" aria-pressed="false">Eventos anteriores</button></div><div class="events-filters"><label>Buscar evento<input id="event-search" type="search" placeholder="Nome, local ou palavra-chave"></label><label>Cidade<select id="event-city"><option value="">Todas as cidades</option></select></label><label>Ano<select id="event-year"><option value="">Todos os anos</option></select></label><label>Ordenar<select id="event-sort"><option value="nearest">Data crescente</option><option value="latest">Data decrescente</option></select></label></div></div>
+      <div class="events-result-heading"><h3 id="period-title">Próximos encontros</h3><p id="events-count" aria-live="polite"></p></div>
+      <p id="events-status" class="events-status" role="status">Carregando a programação…</p><button id="events-retry" class="outline-link" type="button" hidden>Tentar novamente ↻</button><div id="events-list" class="events-list" aria-busy="true"></div>
+      <noscript><p>Ative o JavaScript para consultar a programação cadastrada.</p></noscript>
+    </section>
+    <section class="events-memory"><div class="wrap events-memory-grid"><img src="../assets/img/palco1.png" alt="Encontro dos integrantes do Viva Dança" loading="lazy"><div><p class="eyebrow line">Encontros que ficam</p><h2>Cada palco,<br><em>uma memória.</em></h2><p>Nosso caminho é feito de criação, convivência e histórias compartilhadas. Conheça os momentos que fazem parte dessa trajetória.</p><a class="text-link" href="../index.php?pagina=trajetoria">Explore nossa história <span aria-hidden="true">→</span></a></div></div></section>
+    <section class="contact" aria-labelledby="events-contact"><div class="wrap"><p class="eyebrow">Novas possibilidades em cena</p><h2 id="events-contact">Vamos criar um<br>novo <em>encontro?</em></h2><p>Converse com o grupo e conheça nosso trabalho.</p><a class="gold-link" href="../index.php?pagina=contato">Fale com o Viva Dança <span aria-hidden="true">→</span></a></div></section>
+  </main>
+  <footer><div class="wrap footer-grid"><a class="brand footer-brand" href="testehome.html"><img src="../assets/img/logo.png" alt="Viva Dança" width="100" height="100"><span>Sorocaba 60+</span></a><div><p class="eyebrow">Conheça</p><a href="testesobre.html">O grupo</a><a href="testeintegrantes.html">Integrantes</a><a href="../index.php?pagina=coreografias">Repertório</a></div><div><p class="eyebrow">Explore</p><a href="testeeventos.html">Agenda</a><a href="../index.php?pagina=trajetoria">Trajetória</a><a href="../index.php?pagina=conquistas">Conquistas</a></div><div><p class="eyebrow">Vamos conversar</p><a href="../index.php?pagina=contato">Fale conosco ↗</a><p>Sorocaba, São Paulo</p></div></div><div class="wrap footer-bottom"><span>Viva Dança Sorocaba 60+</span><span>Arte, presença e movimento.</span></div></footer>
+</body>
+</html>

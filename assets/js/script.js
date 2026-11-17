@@ -1,4 +1,3 @@
-// Cada evento da agenda é um "objeto" dentro da lista (os dois últimos são exemplos, troque pelos reais)
 const eventos = [
     { dia: "09", mes: "Nov", ano: "2026", hora: "18:00", local: "Sesc", cidade: "Sorocaba-SP", rua: "R. Barão de Piratininga, 555" },
     { dia: "21", mes: "Nov", ano: "2026", hora: "19:30", local: "Teatro Exemplo", cidade: "Votorantim-SP", rua: "Rua Exemplo, 100" },

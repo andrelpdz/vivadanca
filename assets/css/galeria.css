@@ -320,7 +320,7 @@ main:has(> #galeria) .cadastroGaleria {
 
 
 /* NAO FUNCIONANDOM, POREM NO "INSPECIONAR" FUNCIONA VER ERRO!!!!!!!!!!!!!!!!!!!!!*/
-.item-galeria-link{
+.galeria-link{
     display: flex;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
     gap: 16px;
@@ -328,4 +328,10 @@ main:has(> #galeria) .cadastroGaleria {
     padding: 12px 8px 28px;
     max-width: 688px;
     min-width: 0px;
+}
+
+.galeria-link div{
+    width:100px;
+    height: 100px;
+    background-size: contain;
 }

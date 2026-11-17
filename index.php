@@ -1,4 +1,13 @@
 <?php
+// Paginas de teste independentes: evita misturar o layout global com o estudo visual.
+if (isset($_GET['pagina']) && in_array($_GET['pagina'], ['testehome', 'testeintegrantes', 'testeintegrante', 'testeeventos', 'testesobre'], true)) {
+    $testQuery = $_GET['pagina'] === 'testeintegrante' && isset($_GET['id'])
+        ? '?' . http_build_query(['id' => (string) $_GET['id']]) : '';
+    header('Location: pages/' . $_GET['pagina'] . '.html' . $testQuery);
+    exit;
+}
+?>
+<?php
 // Pagina responsavel por carregar o conteudo de pages
 $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : "home";
 $titulo = isset($_GET['titulo']) ? $_GET['titulo'] : "Sorocaba 60+";
@@ -15,7 +24,6 @@ $v = md5(date('Y-m-d H:m:s'));
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php if ($pagina === "trajetoria"): ?><link rel="stylesheet" href="assets/css/linha_tempo.css?v=<?=$v;?>"><?php endif; ?>
     <link rel="stylesheet" href="assets/css/style.css?v=<?=$v;?>">
-    <script src="assets/js/script.js"></script>
 
     <title>Viva Dança - <?=$titulo?></title>
     <script src="https://unpkg.com/lucide@latest"></script>
