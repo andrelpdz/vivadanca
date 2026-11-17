@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/conexao.php";
+require_once __DIR__ . "/foto.php";
 
 function cadastrarGaleria($foto, $descricao){
     global $con;

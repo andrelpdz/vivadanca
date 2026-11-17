@@ -23,6 +23,7 @@ async function popularCards(){
     dados.galeria.forEach((item) => {
         container.innerHTML += criarCard(item);
     });
+
 }
 
 async function carregarLista(){
