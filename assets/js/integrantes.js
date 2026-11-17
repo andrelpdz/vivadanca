@@ -36,7 +36,7 @@ function renderMembers() {
     const card = document.createElement('article');
     card.className = 'cast-card';
     const button = document.createElement('a');
-    button.href = `testeintegrante.html?id=${encodeURIComponent(member.id)}`;
+    button.href = `integrante.html?id=${encodeURIComponent(member.id)}`;
     button.setAttribute('aria-label', `Conhecer ${member.nome}`);
 
     const photo = document.createElement('img');

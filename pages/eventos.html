@@ -1,251 +1,37 @@
-<!--SUBMENU DA PÁGINA AGENDA E EVENTOS-->
-
-    <nav class="integrantes-menu">
-            <ul>
-                <li><a href="<?=$raiz;?>/?pagina=trajetoria">LINHA DO TEMPO</a></li>
-                <li><a href="<?=$raiz;?>/?pagina=integrantes">INTEGRANTES</a></li>
-                <li><a href="<?=$raiz;?>/?pagina=coreografias">COREOGRAFIAS</a></li>
-                <li><a href="<?=$raiz;?>/?pagina=conquistas">CONQUISTAS</a></li>
-                <li><a href="<?=$raiz;?>/?pagina=galeria">GALERIA</a></li>
-                <li><a href="?pagina=eventos" class="integrantes-ativo">AGENDA & EVENTOS</a></li>
-            </ul>
-    </nav>
-</section>
-
-<!-- BANNER -->
-<section class="eventos-banner">
-
-    <div class="eventos-banner-texto">
-        <h1>AGENDA & EVENTOS</h1>
-
-        <h2>Próximos encontros e momentos<br>
-            que fizeram história.</h2>
-
-        <p>
-            Acompanhe nossas apresentações, festivais,
-            competições e todos os acontecimentos que
-            marcam a trajetória do Viva Dança Sorocaba 60+.
-        </p>
-    </div>
-
-    <!-- <div class="eventos-banner-foto"></div> -->
-
-</section>
-
-<!-- BOTÕES E FILTROS
-<section class="eventos-filtros">
-
-    <div class="eventos-botoes">
-        <button class="evento-botao ativo"
-                onclick="irParaEventos('proximos')">
-            PRÓXIMOS EVENTOS
-        </button>
-
-        <button class="evento-botao"
-                onclick="irParaEventos('anteriores')">
-            EVENTOS ANTERIORES
-        </button>
-    </div>
-
-    <div class="eventos-pesquisa">
-
-        <select id="filtro-data">
-            <option value="">Todas as datas</option>
-            <option value="11">Novembro</option>
-            <option value="12">Dezembro</option>
-        </select>
-
-        <select id="filtro-cidade">
-            <option value="">Todas as cidades</option>
-            <option value="Sorocaba">Sorocaba</option>
-            <option value="Campinas">Campinas</option>
-        </select>
-
-        <select id="filtro-tipo">
-            <option value="">Todos os tipos</option>
-            <option value="Apresentação">Apresentação</option>
-            <option value="Festival">Festival</option>
-        </select>
-
-        <input type="search" id="buscar-evento"
-               placeholder="Buscar evento...">
-
-    </div>
-</section> -->
-
-<!-- PRÓXIMOS EVENTOS -->
-<section class="proximos-eventos" id="proximos">
-
-    <h2>PRÓXIMOS EVENTOS</h2>
-
-    <p class="eventos-introducao">
-        Venha nos prestigiar! Confira nossas próximas
-        apresentações e acompanhe de perto a energia,
-        a alegria e o talento do Viva Dança Sorocaba 60+.
-    </p>
-
-    <div class="eventos-cards">
-
-        <!-- EVENTO 1 -->
-        <div class="evento-card" data-mes="11"
-             data-cidade="Sorocaba" data-tipo="Apresentação">
-
-            <img src="assets/img/evento1.jpg" alt="Apresentação no Sesc">
-
-            <div class="evento-card-conteudo">
-                <div class="evento-data">
-                    <strong>09</strong>
-                    <span>NOV<br>2026</span>
-                </div>
-
-                <div class="evento-detalhes">
-                    <h3>Apresentação no Sesc</h3>
-                    <p>📍 Sorocaba - SP</p>
-                    <p>▤ Sesc Sorocaba</p>
-                    <p>◷ 18:00 hrs</p>
-                    <span class="evento-tipo">Apresentação</span>
-                    <p>Uma noite especial para celebrar a dança,
-                       a amizade e a vitalidade do nosso grupo.</p>
-                    <a href="?pagina=eventos" class="evento-link">
-                        Ver detalhes →
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- EVENTO 2 -->
-        <div class="evento-card" data-mes="11"
-             data-cidade="Campinas" data-tipo="Festival">
-
-            <img src="assets/img/evento2.jpg" alt="Festival de Dança">
-
-            <div class="evento-card-conteudo">
-                <div class="evento-data">
-                    <strong>28</strong>
-                    <span>NOV<br>2026</span>
-                </div>
-
-                <div class="evento-detalhes">
-                    <h3>Festival de Dança</h3>
-                    <p>📍 Campinas - SP</p>
-                    <p>▤ Teatro Municipal</p>
-                    <p>◷ 20:00 hrs</p>
-                    <span class="evento-tipo">Festival</span>
-                    <p>O Viva Dança Sorocaba 60+ participa
-                       de mais uma edição deste importante festival.</p>
-                    <a href="?pagina=eventos" class="evento-link">
-                        Ver detalhes →
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- EVENTO 3 -->
-        <div class="evento-card" data-mes="12"
-             data-cidade="Sorocaba" data-tipo="Apresentação">
-
-            <img src="assets/img/evento3.jpg" alt="Evento de Natal">
-
-            <div class="evento-card-conteudo">
-                <div class="evento-data">
-                    <strong>12</strong>
-                    <span>DEZ<br>2026</span>
-                </div>
-
-                <div class="evento-detalhes">
-                    <h3>Evento Especial de Natal</h3>
-                    <p>📍 Sorocaba - SP</p>
-                    <p>▤ Teatro Municipal</p>
-                    <p>◷ 19:30 hrs</p>
-                    <span class="evento-tipo">Apresentação</span>
-                    <p>Uma celebração de fim de ano, com muita dança,
-                       emoção e momentos inesquecíveis.</p>
-                    <a href="?pagina=eventos" class="evento-link">
-                        Ver detalhes →
-                    </a>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- <p id="eventos-vazio" style="display:none;">
-        Nenhum evento encontrado.
-    </p> -->
-
-</section>
-
-<!-- EVENTOS ANTERIORES -->
-<section class="eventos-anteriores" id="anteriores">
-
-    <div class="anteriores-topo">
-        <h2>EVENTOS ANTERIORES</h2>
-
-        <select id="ordenar-eventos">
-            <option value="recentes">Ano (mais recentes)</option>
-            <option value="antigos">Ano (mais antigos)</option>
-        </select>
-    </div>
-
-    <p class="eventos-introducao">
-        Reviva conosco os momentos que marcaram nossa trajetória.
-        Cada evento é uma parte importante da nossa história,
-        construída com dedicação, amizade e muita dança.
-    </p>
-
-    <div class="eventos-linha-tempo">
-
-        <div class="evento-passado" data-ano="2025">
-            <div class="passado-ano">2025</div>
-            <img src="assets/img/evento2.jpg" alt="Viva Dança 60+">
-            <div class="passado-texto">
-                <h3>Viva Dança 60+</h3>
-                <p>Sorocaba - SP | Teatro Municipal | 15/06/2025</p>
-                <span class="evento-tipo">Apresentação</span>
-                <p>Celebrando nossa essência e tudo o que seguimos
-                   construindo juntos.</p>
-            </div>
-            <a href="?pagina=eventos" class="botao-integrante">›</a>
-        </div>
-
-        <div class="evento-passado" data-ano="2024">
-            <div class="passado-ano">2024</div>
-            <img src="assets/img/evento3.jpg" alt="Festival de Dança">
-            <div class="passado-texto">
-                <h3>Festival de Dança de Sorocaba</h3>
-                <p>Sorocaba - SP | Sesc Sorocaba | 10/11/2024</p>
-                <span class="evento-tipo">Festival</span>
-                <p>Mais uma participação inesquecível, com muita
-                   alegria e reconhecimento.</p>
-            </div>
-            <a href="?pagina=eventos" class="botao-integrante">›</a>
-        </div>
-
-        <div class="evento-passado" data-ano="2023">
-            <div class="passado-ano">2023</div>
-            <img src="assets/img/evento1.jpg" alt="Encontro de Grupos">
-            <div class="passado-texto">
-                <h3>Encontro de Grupos</h3>
-                <p>São Paulo - SP | Centro Cultural | 18/05/2023</p>
-                <span class="evento-tipo">Encontro</span>
-                <p>Um dia de troca, aprendizado e novas amizades
-                   através da dança.</p>
-            </div>
-            <a href="?pagina=eventos" class="botao-integrante">›</a>
-        </div>
-
-        <div class="evento-passado" data-ano="2022">
-            <div class="passado-ano">2022</div>
-            <img src="assets/img/evento3.jpg" alt="Mostra Cultural">
-            <div class="passado-texto">
-                <h3>Mostra Cultural de Dança</h3>
-                <p>Sorocaba - SP | Teatro Municipal | 22/10/2022</p>
-                <span class="evento-tipo">Mostra Cultural</span>
-                <p>Apresentamos coreografias que emocionaram
-                   e encantaram o público.</p>
-            </div>
-            <a href="?pagina=eventos" class="botao-integrante">›</a>
-        </div>
-
-    </div>
-</section>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Viva Dança Sorocaba 60+: histórias, encontros e arte em movimento.">
+  <title>Agenda e eventos — Viva Dança</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/home.css?v=20261117">
+  <link rel="stylesheet" href="../assets/css/eventos.css">
+  <script src="../assets/js/home.js" defer></script>
+  <script src="../assets/js/eventos.js?v=20261117" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header">
+    <a class="brand" href="home.html" aria-label="Viva Dança, início"><img src="../assets/img/logo.png" alt="Viva Dança" width="88" height="88"><span>Sorocaba <span class="brand-age">60+</span></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navegacao">Menu <span aria-hidden="true">☰</span></button>
+    <nav id="navegacao" aria-label="Navegação principal"><a href="sobre.html">O grupo</a><a href="trajetoria.html">Trajetória</a><a href="coreografias.html">Repertório</a><a href="integrantes.html">Integrantes</a><a href="eventos.html" aria-current="page">Agenda</a><a href="conquistas.html">Conquistas</a><a href="galeria.html">Galeria</a><a href="contato.html">Contato</a></nav>
+  </header>
+  <main id="conteudo">
+    <section class="events-hero" aria-labelledby="events-title"><img src="../assets/img/banner-eventos.jpg" alt="Viva Dança em cena" fetchpriority="high"><div class="wrap"><p class="eyebrow line">Agenda & eventos</p><h1 id="events-title">O próximo encontro.<br>Uma nova <em>história.</em></h1><p>Apresentações, festivais e momentos que marcam<br>a trajetória do Viva Dança Sorocaba 60+.</p><a href="#agenda" class="text-link">Explore a programação <span aria-hidden="true">↓</span></a></div></section>
+    <section id="agenda" class="wrap section-space" aria-labelledby="agenda-title">
+      <div class="section-heading"><div><p class="eyebrow line">Dança que aproxima</p><h2 id="agenda-title">Nos vemos <em>no palco.</em></h2></div><p>Confira nossos próximos encontros<br>e revisite momentos especiais.</p></div>
+      <div class="events-controls"><div class="period-controls" role="group" aria-label="Período dos eventos"><button type="button" data-period="all" aria-pressed="true">Todos os eventos</button><button type="button" data-period="upcoming" aria-pressed="false">Próximos encontros</button><button type="button" data-period="past" aria-pressed="false">Eventos anteriores</button></div><div class="events-filters"><label>Buscar evento<input id="event-search" type="search" placeholder="Nome, local ou palavra-chave"></label><label>Cidade<select id="event-city"><option value="">Todas as cidades</option></select></label><label>Ano<select id="event-year"><option value="">Todos os anos</option></select></label><label>Ordenar<select id="event-sort"><option value="nearest">Data crescente</option><option value="latest" selected>Data decrescente</option></select></label></div></div>
+      <div class="events-result-heading"><h3 id="period-title">Todos os eventos</h3><p id="events-count" aria-live="polite"></p></div>
+      <p id="events-status" class="events-status" role="status">Carregando a programação…</p><button id="events-retry" class="outline-link" type="button" hidden>Tentar novamente ↻</button><div id="events-list" class="events-list" aria-busy="true"></div>
+      <noscript><p>Ative o JavaScript para consultar a programação cadastrada.</p></noscript>
+    </section>
+    <section class="events-memory"><div class="wrap events-memory-grid"><img src="../assets/img/palco1.png" alt="Encontro dos integrantes do Viva Dança" loading="lazy"><div><p class="eyebrow line">Encontros que ficam</p><h2>Cada palco,<br><em>uma memória.</em></h2><p>Nosso caminho é feito de criação, convivência e histórias compartilhadas. Conheça os momentos que fazem parte dessa trajetória.</p><a class="text-link" href="trajetoria.html">Explore nossa história <span aria-hidden="true">→</span></a></div></div></section>
+    <section class="contact" aria-labelledby="events-contact"><div class="wrap"><p class="eyebrow">Novas possibilidades em cena</p><h2 id="events-contact">Vamos criar um<br>novo <em>encontro?</em></h2><p>Converse com o grupo e conheça nosso trabalho.</p><a class="gold-link" href="contato.html">Fale com o Viva Dança <span aria-hidden="true">→</span></a></div></section>
+  </main>
+  <footer><div class="wrap footer-grid"><a class="brand footer-brand" href="home.html"><img src="../assets/img/logo.png" alt="Viva Dança" width="100" height="100"><span>Sorocaba 60+</span></a><div><p class="eyebrow">Conheça</p><a href="sobre.html">O grupo</a><a href="integrantes.html">Integrantes</a><a href="coreografias.html">Repertório</a></div><div><p class="eyebrow">Explore</p><a href="eventos.html">Agenda</a><a href="trajetoria.html">Trajetória</a><a href="conquistas.html">Conquistas</a></div><div><p class="eyebrow">Vamos conversar</p><a href="contato.html">Fale conosco ↗</a><p>Sorocaba, São Paulo</p></div></div><div class="wrap footer-bottom"><span>Viva Dança Sorocaba 60+</span><span class="footer-motto">Arte não tem <em>idade.</em></span></div></footer>
+</body>
+</html>

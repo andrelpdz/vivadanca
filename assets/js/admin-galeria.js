@@ -2,7 +2,7 @@ const adminCollection = document.body.dataset.adminCollection;
 const adminConfig = {
   coreografia: { key: 'coreografias', folder: 'coreografias', fields: ['titulo', 'descricao', 'data_criacao', 'modalidade'] },
   conquista: { key: 'conquistas', folder: 'conquistas', fields: ['evento_id', 'coreografia_id', 'nome', 'descricao'] },
-  galeria: { key: 'galeria', folder: 'galeria', fields: ['descricao'] }
+  galeria: { key: 'galeria', folder: 'galeria', fields: ['descricao', 'data_foto'] }
 }[adminCollection];
 const adminContainer = document.getElementById(adminConfig.key);
 const adminForm = document.querySelector('form.form-integrantes');
@@ -70,6 +70,9 @@ function adminCard(record) {
   const body = adminNode('div');
   body.append(adminNode('h3', record.titulo || record.nome || record.descricao || 'Registro da galeria'));
   if (record.modalidade) body.append(adminNode('p', record.modalidade));
+  if (adminCollection === 'galeria' && record.data_foto) {
+    body.append(adminNode('p', `Data da foto: ${String(record.data_foto).slice(0, 10).split('-').reverse().join('/')}`));
+  }
   if (record.evento_nome) body.append(adminNode('p', `Evento: ${record.evento_nome}`));
   if (record.coreografia_titulo) body.append(adminNode('p', `Coreografia: ${record.coreografia_titulo}`));
   if (adminCollection !== 'galeria' && record.descricao) body.append(adminNode('p', record.descricao));
@@ -98,7 +101,7 @@ async function loadAdminRecords() {
   adminContainer.setAttribute('aria-busy', 'true');
   adminContainer.replaceChildren(adminNode('p', 'Carregando registros…'));
   try {
-    const response = await fetch(`../backend/api_${adminCollection}.php`, { headers: { Accept: 'application/json' } });
+    const response = await fetch(`../backend/api_${adminCollection}.php`, { cache: 'no-store', headers: { Accept: 'application/json' } });
     const data = await response.json();
     if (!response.ok || !data.sucesso || !Array.isArray(data[adminConfig.key])) throw new Error('Não foi possível carregar o cadastro.');
     if (adminCollection === 'conquista') {
