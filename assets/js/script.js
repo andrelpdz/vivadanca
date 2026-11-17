@@ -159,17 +159,15 @@ function cardCoreografias(coreografia){
 
 //-> GALERIA
 async function popularGalerias(){
-    sectionGalerias = document.querySelector(".galeria-imagens");
+    const sectionGalerias = document.querySelector(".galeria-imagens");
     const dados = await carregarGalerias();
 
-    dados.galeria.forEach((galeria)=>{
-        sectionGalerias.innerHTML += cardGalerias(galeria);
-    });
+    sectionGalerias.replaceChildren(...dados.galeria.map(cardGalerias));
 }
 async function carregarGalerias(){
     try {
         const resposta = await fetch(
-            "backend/galeria.php",
+            "backend/api_galeria.php",
             { headers:{"Accept": "application/json"}}
         );
         const dados = await resposta.json();
@@ -179,15 +177,33 @@ async function carregarGalerias(){
         return dados;        
     }catch(error) {
         console.log(error);
-        return { "galerias": [] };
+        return { "galeria": [] };
     }    
 } 
 function cardGalerias(galeria){
-    const card = `
-    <a class="item galeria-link" href="#">
-        <div class="foto" style="background-image:url('assets/galeria/${galeria.foto}');"></div>
-    </a>
-    `;
+    const card = document.createElement("a");
+    card.className = "item galeria-link";
+    card.href = "#";
+
+    const foto = document.createElement("div");
+    foto.className = "foto";
+    foto.style.backgroundImage = `url("assets/galeria/${encodeURIComponent(galeria.foto)}")`;
+    card.append(foto);
+
+    if (galeria.descricao) {
+        const descricao = document.createElement("p");
+        descricao.textContent = galeria.descricao;
+        card.append(descricao);
+    }
+
+    const data = galeria.data_foto;
+    if (/^\d{4}-\d{2}-\d{2}$/.test(data)) {
+        const legenda = document.createElement("time");
+        legenda.dateTime = data;
+        legenda.textContent = data.split("-").reverse().join("/");
+        card.append(legenda);
+    }
+
     return card;
 }
 

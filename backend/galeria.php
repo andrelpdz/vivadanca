@@ -2,12 +2,12 @@
 require_once __DIR__ . "/conexao.php";
 require_once __DIR__ . "/foto.php";
 
-function cadastrarGaleria($foto, $descricao){
+function cadastrarGaleria($foto, $descricao, $dataFoto){
     global $con;
     try{
-        $sql = "INSERT INTO galeria(foto, descricao) VALUES (?, ?)";
+        $sql = "INSERT INTO galeria(foto, descricao, data_foto) VALUES (?, ?, ?)";
         $stmt = $con->prepare($sql);
-        $stmt->bind_param("ss", $foto, $descricao);
+        $stmt->bind_param("sss", $foto, $descricao, $dataFoto);
         $stmt->execute();
         $stmt->close();
         return true;
@@ -33,11 +33,11 @@ function obterGaleria($id){
     return $resultado->fetch_assoc();
 }
 
-function atualizarGaleria($id, $foto, $descricao){
+function atualizarGaleria($id, $foto, $descricao, $dataFoto){
     global $con;
-    $sql = "UPDATE galeria SET foto = ?, descricao = ? WHERE id = ?";
+    $sql = "UPDATE galeria SET foto = ?, descricao = ?, data_foto = ? WHERE id = ?";
     $stmt = $con->prepare($sql);
-    $stmt->bind_param("ssi", $foto, $descricao, $id);
+    $stmt->bind_param("sssi", $foto, $descricao, $dataFoto, $id);
     $resultado = $stmt->execute();
     $stmt->close();
     return $resultado;

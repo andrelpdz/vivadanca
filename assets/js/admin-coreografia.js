@@ -2,7 +2,7 @@ const adminCollection = document.body.dataset.adminCollection;
 const adminConfig = {
   coreografia: { key: 'coreografias', folder: 'coreografias', fields: ['titulo', 'descricao', 'data_criacao', 'modalidade'] },
   conquista: { key: 'conquistas', folder: 'conquistas', fields: ['evento_id', 'coreografia_id', 'nome', 'descricao'] },
-  galeria: { key: 'galeria', folder: 'galeria', fields: ['descricao'] }
+  galeria: { key: 'galeria', folder: 'galeria', fields: ['descricao', 'data_foto'] }
 }[adminCollection];
 const adminContainer = document.getElementById(adminConfig.key);
 const adminForm = document.querySelector('form.form-integrantes');
@@ -69,6 +69,7 @@ function adminCard(record) {
   image.src = record.foto ? adminPhotoUrl(record) : '../assets/img/logo.png';
   const body = adminNode('div');
   body.append(adminNode('h3', record.titulo || record.nome || record.descricao || 'Registro da galeria'));
+  if (record.data_foto) body.append(adminNode('p', record.data_foto.split('-').reverse().join('/')));
   if (record.modalidade) body.append(adminNode('p', record.modalidade));
   if (record.evento_nome) body.append(adminNode('p', `Evento: ${record.evento_nome}`));
   if (record.coreografia_titulo) body.append(adminNode('p', `Coreografia: ${record.coreografia_titulo}`));
