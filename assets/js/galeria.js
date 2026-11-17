@@ -41,7 +41,11 @@ function criarCardAdmin(galeria) {
  
 async function carregarGaleria() {
     try {
-        const resposta = await fetch("../backend/galeria.php", {
+        const caminhoBackend = document.querySelector(".galeria-imagens")
+            ? "backend/galeria.php"
+            : "../backend/galeria.php";
+
+const resposta = await fetch(caminhoBackend, {
             headers: { Accept: "application/json" }
         });
         const dados = await resposta.json();
@@ -74,7 +78,7 @@ async function excluirImagemGaleria(id){
     location.reload();
 }
 
-document.getElementById("auth").addEventListener("submit", async (event) => {
+document.getElementById("auth")?.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const form = event.currentTarget;
@@ -98,3 +102,4 @@ document.getElementById("auth").addEventListener("submit", async (event) => {
         console.error("Erro ao cadastrar a foto:", erro);
     }
 }); //mostrar as paginas sem precisar atualizar a pagina
+
