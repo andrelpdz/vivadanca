@@ -1,72 +1,56 @@
 <?php
 require_once __DIR__ . "/conexao.php";
 
-function cadastrarConquista($nome, $descricao, $foto, $evento_id, $coreografia_id){
+function cadastrarConquista($evento_id, $coreografia_id, $nome, $descricao, $foto){
     global $con;
-    $sql = "INSERT INTO conquistas
-        (nome, descricao, foto, evento_id, coreografia_id)
-        VALUES (?, ?, ?, ?, ?)";
-    $stmt = $con->prepare($sql);
-    $stmt->bind_param("sssii", $nome, $descricao, $foto, $evento_id, $coreografia_id);
-    $stmt->execute();
-    $stmt->close();
-    return true;
-} 
+    try{
+        $sql = "INSERT INTO conquistas(evento_id, coreografia_id, nome, descricao, foto) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("iisss", $evento_id, $coreografia_id, $nome, $descricao, $foto);
+        $stmt->execute();
+        $stmt->close();
+        return true;
+    }catch(Throwable $e){
+        return false;
+    }
+}
 
 function listarConquistas(){
     global $con;
-    $sql = "SELECT * FROM conquistas";
+    $sql = "SELECT c.*, e.nome as evento_nome, cor.titulo as coreografia_titulo 
+            FROM conquistas c 
+            JOIN eventos e ON c.evento_id = e.id 
+            JOIN coreografias cor ON c.coreografia_id = cor.id";
     $resultado = $con->query($sql);
     return $resultado->fetch_all(MYSQLI_ASSOC);
 }
 
 function obterConquista($id){
     global $con;
-    $sql = "SELECT * FROM conquistas WHERE id = ?";
+    $sql = "SELECT * FROM conquistas WHERE id=?";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
-    $resultado = $stmt->get_result();
-    $stmt->close();
-    $conquista = $resultado->fetch_assoc();
-    if(!$conquista){
-        return null;
-    }
-    return $conquista;
+    return $stmt->get_result()->fetch_assoc();
 }
 
-function atualizarConquista($id, $nome, $descricao, $foto, $evento_id, $coreografia_id){
+function atualizarConquista($id, $evento_id, $coreografia_id, $nome, $descricao, $foto){
     global $con;
-    $con->begin_transaction();
-    try{
-        $sql = "UPDATE conquistas SET
-            nome = ?, descricao = ?, foto = ?, evento_id = ?, coreografia_id = ?
-            WHERE id = ?";
-        $stmt = $con->prepare($sql);
-        $stmt->bind_param(
-            "sssiii", 
-            $nome, $descricao, $foto, $evento_id, $coreografia_id, $id
-        );
-        $stmt->execute();
-        $stmt->close();
-        $con->commit();
-        return true;
-
-    }catch(throwable $e){
-        $con->rollback();
-        throw $e;
-    }
+    $sql = "UPDATE conquistas SET evento_id = ?, coreografia_id = ?, nome = ?, descricao = ?, foto = ? WHERE id = ?";
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param("iisssi", $evento_id, $coreografia_id, $nome, $descricao, $foto, $id);
+    $resultado = $stmt->execute();
+    $stmt->close();
+    return $resultado;
 }
 
 function excluirConquista($id){
     global $con;
-    $sql = "DELETE FROM conquistas WHERE id = ?";
+    $sql = "DELETE FROM conquistas WHERE id=?";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("i", $id);
-    $stmt->execute();
+    $resultado = $stmt->execute();
     $stmt->close();
-    return true;
+    return $resultado;
 }
-
-
 ?>
