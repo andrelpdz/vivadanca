@@ -1,6 +1,6 @@
 <!-- CAMINHO DA PÁGINA -->
 <div class="integrante-caminho">
-    <a href="?pagina=trajetoria">Trajetória</a>
+    <a href="?pagina=linhadotempo">Trajetória</a>
     <span>›</span>
     <a href="?pagina=integrantes">Integrantes</a>
     <span>›</span>
@@ -57,11 +57,12 @@
 <section class="integrante-conteudo">
 
     <div class="integrante-abas">
-        <button class="aba"
-                onclick="mostrarAba('coreografias', this)">
-            COREOGRAFIAS</button>
-
         <button class="aba ativa"
+                onclick="mostrarAba('coreografias', this)">
+            COREOGRAFIAS
+        </button>
+
+        <button class="aba"
                 onclick="mostrarAba('conquistas', this)">
             CONQUISTAS
         </button>
@@ -73,7 +74,7 @@
     </div>
 
     <!-- COREOGRAFIAS -->
-    <div id="coreografias" class="conteudo-aba" style="display: none;">
+    <div id="coreografias" class="conteudo-aba">
         <p>Participou das coreografias:</p>
 
         <div class="integrante-cards">
@@ -130,18 +131,17 @@
     </div>
 
     <!-- CONQUISTAS -->
-    <div id="conquistas" class="conteudo-aba">
+    <div id="conquistas" class="conteudo-aba"
+         style="display: none;">
         <p>Festivais, competições, premiações e convites.</p>
+        <!-- Colocaremos os cards das conquistas aqui -->
     </div>
 
     <!-- GALERIA -->
-        <div id="galeria" class="conteudo-aba" style="display: none;">
-        <p class="galeria-integrante-legenda">Fotos de Helena em apresentações do Viva Dança.</p>
-        <div class="galeria-integrante-grid">
-            <figure>
-                <img src="assets/integrantes/integrante.png" alt="Helena dançando em uma apresentação">
-            </figure>
-        </div>
+    <div id="galeria" class="conteudo-aba"
+         style="display: none;">
+        <p>Fotos de apresentações e momentos especiais.</p>
+        <!-- Colocaremos as fotos aqui -->
     </div>
 
 </section>

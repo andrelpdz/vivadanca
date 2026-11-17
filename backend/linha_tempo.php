@@ -1,15 +1,24 @@
 ﻿<?php
 require_once __DIR__ . "/conexao.php";
+require_once __DIR__ . "/foto.php";
 
-function cadastrarLinhaTempo($foto, $descricao, $data)
+$metodo = $_SERVER['REQUEST_METHOD'];
+$status = true;
+$resp = [];
+
+function cadastrar()
 {
     global $con;
+    $descricao = trim($_POST['descricao']);
+    $data = $_POST['ano'];
+    $foto = $_FILES['foto'];
+    $nome_foto = salvarFoto("linha_tempo", $foto);
 
     $sql = "INSERT INTO linha_tempo (foto, descricao, data)
             VALUES (?, ?, ?)";
 
     $stmt = $con->prepare($sql);
-    $stmt->bind_param("sss", $foto, $descricao, $data);
+    $stmt->bind_param("ssi", $nome_foto, $descricao, $data);
     $stmt->execute();
     $stmt->close();
 
@@ -47,24 +56,31 @@ function obterLinhaTempo($id)
     return $linhaTempo;
 }
 
-function atualizarLinhaTempo($id, $foto, $descricao, $data)
+function atualizarLinhaTempo()
 {
     global $con;
+
+    $id = $_POST['id'];
+    $descricao = $_POST['descricao'];
+    $data = $_POST['ano'];
+    $foto = $_FILES['foto'];
+    $nome_foto = salvarFoto("linha_tempo", $foto);
 
     $sql = "UPDATE linha_tempo
             SET foto = ?, descricao = ?, data = ?
             WHERE id = ?";
 
     $stmt = $con->prepare($sql);
-    $stmt->bind_param("sssi", $foto, $descricao, $data, $id);
+    $stmt->bind_param("ssii", $nome_foto, $descricao, $data, $id);
     $stmt->execute();
     $stmt->close();
 
     return true;
 }
 
-function excluirLinhaTempo($id)
+function excluirLinhaTempo()
 {
+    $id = $_GET['id'] ?? 0;
     global $con;
 
     $sql = "DELETE FROM linha_tempo WHERE id = ?";
@@ -76,31 +92,39 @@ function excluirLinhaTempo($id)
     return true;
 }
 
-try {
-    if ($_SERVER["REQUEST_METHOD"] !== "GET") {
-        http_response_code(405);
-        throw new Exception("Método não permitido.");
+
+
+try{
+    if ($metodo == "GET"){
+        // listar os integrantes
+        $resp = ["linha_tempo" => listarLinhaTempo()];        
     }
- 
-    echo json_encode(
-        [
-            "sucesso" => true,
-            "linha_tempo" => listarLinhaTempo()
-        ],
-        JSON_UNESCAPED_UNICODE
-    );
-} catch (Throwable $erro) {
-    if (http_response_code() < 400) {
-        http_response_code(500);
+    else if ($metodo == "POST"){
+        if($_POST['btnEnviar'] == 'Cadastrar'){
+            cadastrar();
+        }else if($_POST['btnEnviar'] == 'Atualizar'){
+            atualizarLinhaTempo();
+        }
+        header("location: ../admin/linha_tempo.html");
+        exit;
     }
- 
-    error_log($erro->getMessage());
-    echo json_encode(
-        [
-            "sucesso" => false,
-            "mensagem" => "Não foi possível carregar a galeria."
-        ],
-        JSON_UNESCAPED_UNICODE
-    );
+    else if ($metodo == "PUT"){
+        // atualização integrante
+        header("location: ../admin/linha_tempo.html");
+        exit;
+    }
+    else if ($metodo == "DELETE"){
+        excluirLinhaTempo();
+    }
+    else{
+        throw new Exception("Metodo invalido!");
+    }
+}catch(Throwable $e){
+    http_response_code(500);
+    $status = false;
+    $resp = ["erro" => $e->getMessage()];
+}finally{
+    header("Content-Type: application/json; charset=utf-8");
+     echo json_encode( ["sucesso"=> $status] + $resp );
 }
 ?>
