@@ -7,7 +7,7 @@ const eventCity = document.querySelector('#event-city');
 const eventYear = document.querySelector('#event-year');
 const eventSort = document.querySelector('#event-sort');
 let agendaEvents = [];
-let period = 'upcoming';
+let period = 'all';
 let eventsLoaded = false;
 const normalizeEvent = (value) => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR');
 const saoPauloDate = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date()).reduce((parts, part) => ({ ...parts, [part.type]: part.value }), {});
@@ -88,7 +88,7 @@ function renderEvents() {
   const query = normalizeEvent(eventSearch.value.trim());
   const visible = agendaEvents.filter((event) => {
     const isPast = Boolean(event.endKey || event.startKey) && (event.endKey || event.startKey) < today;
-    return (period === 'past' ? isPast : !isPast)
+    return (period === 'all' || (period === 'past' ? isPast : !isPast))
       && (!eventCity.value || event.cidade === eventCity.value)
       && (!eventYear.value || event.startKey.slice(0, 4) === eventYear.value)
       && normalizeEvent([event.nome, event.descricao, event.cidade, event.local].join(' ')).includes(query);
@@ -101,7 +101,7 @@ function renderEvents() {
   eventCount.textContent = `${visible.length} ${visible.length === 1 ? 'evento' : 'eventos'}`;
   eventStatus.hidden = visible.length > 0;
   const filtered = query || eventCity.value || eventYear.value;
-  eventStatus.textContent = filtered ? 'Nenhum evento corresponde a estes filtros. Experimente outra busca.' : period === 'past' ? 'Ainda não há eventos anteriores cadastrados.' : 'Novos encontros serão anunciados por aqui. Acompanhe a programação em breve.';
+  eventStatus.textContent = filtered ? 'Nenhum evento corresponde a estes filtros. Experimente outra busca.' : period === 'all' ? 'Ainda não há eventos cadastrados.' : period === 'past' ? 'Ainda não há eventos anteriores cadastrados.' : 'Novos encontros serão anunciados por aqui. Acompanhe a programação em breve.';
 }
 
 async function loadEvents() {
@@ -134,7 +134,7 @@ document.querySelectorAll('[data-period]').forEach((button) => button.addEventLi
   period = button.dataset.period;
   document.querySelectorAll('[data-period]').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
   document.querySelector('#period-title').textContent = button.textContent;
-  eventSort.value = period === 'past' ? 'latest' : 'nearest';
+  eventSort.value = period === 'upcoming' ? 'nearest' : 'latest';
   renderEvents();
 }));
 eventSearch.addEventListener('input', renderEvents);
