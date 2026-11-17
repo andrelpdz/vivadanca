@@ -2,12 +2,11 @@
 require_once __DIR__ . "/integrante.php";
 require_once __DIR__ . "/foto.php";
 
-
 $metodo = $_SERVER['REQUEST_METHOD'];
 $status = true;
 $resp = [];
 
-
+#-> Responsavel pelo cadastro
 function cadastrar(){
     $nome = trim($_POST['nome']);
     $descricao = trim($_POST['descricao']);
@@ -37,7 +36,7 @@ function atualizar(){
     $foto = $_FILES['foto'];
     try{
         $nome_foto = salvarFoto("integrantes", $foto);
-        $resposta = atualizarIntegrante($nome, $descricao, $nome_foto, $ativo);
+        $resposta = atualizarIntegrante($id, $nome, $descricao, $nome_foto, $ativo);
         if (!$resposta){
             throw new Exception("Erro ao atualizar o integrante");
         }
@@ -47,6 +46,7 @@ function atualizar(){
     }
 }
 
+#-> Exclui o Item no Banco
 function deletar(){
     $id = $_GET['id'] ?? 0;
     try{
@@ -60,16 +60,18 @@ function deletar(){
     }
 }
 
-
-
-
+#-> Executado ao Carregar Arquivo
 try{
     if ($metodo == "GET"){
         // listar os integrantes
         $resp = ["integrantes" => listarIntegrantes()];
     }
     else if ($metodo == "POST"){
-        cadastrar();
+        if($_POST['btnEnviar'] == "Cadastrar"){
+            cadastrar();
+        }else if($_POST['btnEnviar'] == "Atualizar"){
+            atualizar();
+        }
         header("location: ../admin/integrantes.html");
         exit;
     }
@@ -95,7 +97,4 @@ finally{
     header("Content-Type: application/json; charset=utf-8");
     echo json_encode( ["sucesso"=> $status] + $resp );
 }
-
-
-
 ?>

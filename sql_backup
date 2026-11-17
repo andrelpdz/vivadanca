@@ -1,0 +1,348 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Tempo de geração: 13/11/2026 às 21:22
+-- Versão do servidor: 10.4.28-MariaDB
+-- Versão do PHP: 8.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Banco de dados: `pi_danca`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `conquistas`
+--
+
+CREATE TABLE `conquistas` (
+  `id` int(11) NOT NULL,
+  `evento_id` int(11) NOT NULL,
+  `coreografia_id` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `descricao` text DEFAULT NULL,
+  `foto` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `coreografias`
+--
+
+CREATE TABLE `coreografias` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `descricao` text NOT NULL,
+  `data_criacao` date NOT NULL,
+  `modalidade` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `coreografias`
+--
+
+INSERT INTO `coreografias` (`id`, `titulo`, `descricao`, `data_criacao`, `modalidade`) VALUES
+(37, 'Nova coreografia1', 'asdasdasdas', '2026-11-12', 'novo teste');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `dancarinos`
+--
+
+CREATE TABLE `dancarinos` (
+  `id` int(11) NOT NULL,
+  `integrante_id` int(11) NOT NULL,
+  `coreografia_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `eventos`
+--
+
+CREATE TABLE `eventos` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `descricao` text NOT NULL,
+  `data_inicio` datetime NOT NULL,
+  `data_termino` datetime NOT NULL,
+  `cidade` varchar(255) NOT NULL,
+  `local` varchar(255) NOT NULL,
+  `premiacao` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `eventos`
+--
+
+INSERT INTO `eventos` (`id`, `nome`, `descricao`, `data_inicio`, `data_termino`, `cidade`, `local`, `premiacao`) VALUES
+(1, 'asdasdasd', 'asdasdasdas', '2026-10-06 14:38:00', '2026-10-23 14:51:00', 'asdasd', 'asdasd', 'asdasdasdasd'),
+(2, 'asdasdasd', 'asdasdasdas', '2026-10-06 14:38:00', '2026-10-23 14:51:00', 'asdasd', 'asdasd', 'asdasdasdasd');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `galeria`
+--
+
+CREATE TABLE `galeria` (
+  `id` int(11) NOT NULL,
+  `foto` varchar(64) NOT NULL,
+  `descricao` text NOT NULL,
+  `data` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `galeria`
+--
+
+INSERT INTO `galeria` (`id`, `foto`, `descricao`, `data`) VALUES
+(1, 'Foto.jpg', 'Descrição', '2026-11-06 14:30:47');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `integrantes`
+--
+
+CREATE TABLE `integrantes` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `descricao` text NOT NULL,
+  `foto` varchar(255) NOT NULL,
+  `ativo` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `integrantes`
+--
+
+INSERT INTO `integrantes` (`id`, `nome`, `descricao`, `foto`, `ativo`) VALUES
+(22, 'Juka', 'Jukinha', '46136cbe040940eaff1c73bdd8824055.jpg', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `linha_tempo`
+--
+
+CREATE TABLE `linha_tempo` (
+  `id` int(11) NOT NULL,
+  `foto` varchar(64) NOT NULL,
+  `descricao` text NOT NULL,
+  `data` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `linha_tempo`
+--
+
+INSERT INTO `linha_tempo` (`id`, `foto`, `descricao`, `data`) VALUES
+(1, 'foto.jpg', 'Descrição', '2026-11-06');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `participantes`
+--
+
+CREATE TABLE `participantes` (
+  `id` int(11) NOT NULL,
+  `integrante_id` int(11) NOT NULL,
+  `evento_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `senha` varchar(255) NOT NULL,
+  `criado` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`, `criado`) VALUES
+(1, 'admin', 'admin@email.com', '$2a$12$ENx0f1V0/GNVQJFtKOI8TeaiyQj9gkr2QfXXAwJ1L6xjniY9PdBwW', '2026-10-06 16:45:11'),
+(2, 'jeff', 'jeff@email.com', '$2a$12$ENx0f1V0/GNVQJFtKOI8TeaiyQj9gkr2QfXXAwJ1L6xjniY9PdBwW', '2026-10-06 16:45:11'),
+(3, 'felipe', 'felipe@email.com', '$2a$12$ENx0f1V0/GNVQJFtKOI8TeaiyQj9gkr2QfXXAwJ1L6xjniY9PdBwW', '2026-10-06 16:45:11'),
+(13, 'Izete', 'izete@email.com', '$2a$12$ENx0f1V0/GNVQJFtKOI8TeaiyQj9gkr2QfXXAwJ1L6xjniY9PdBwW', '2026-10-06 18:13:01'),
+(18, 'Jurema1', 'jurema3@email.com', '$2y$10$/z1lJpEv.LwSDzXTN4mZSejmH51./ru5PdguREia.KLQXLxc84KxO', '2026-10-06 19:40:21'),
+(19, 'andre', 'andre@email.com', '$2y$10$/xINnOyQhLQPKK34qCiLh.uQbwx0fpDC5B6rEPuCJVDwmeCSVu7te', '2026-10-09 17:07:32'),
+(20, 'Jeff Rayner', 'jeff_rayner@email.com', '$2y$10$igpGzyjkWLl./p1rCCzyMe0pWr5rlmzH/JjMBWc9xqDBgxBYZ0wBO', '2026-10-13 16:45:06');
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices de tabela `conquistas`
+--
+ALTER TABLE `conquistas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `conquistas_ibfk_1` (`evento_id`),
+  ADD KEY `conquistas_ibfk_2` (`coreografia_id`);
+
+--
+-- Índices de tabela `coreografias`
+--
+ALTER TABLE `coreografias`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `dancarinos`
+--
+ALTER TABLE `dancarinos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `dancarinos_ibfk_1` (`integrante_id`),
+  ADD KEY `dancarinos_ibfk_2` (`coreografia_id`);
+
+--
+-- Índices de tabela `eventos`
+--
+ALTER TABLE `eventos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `galeria`
+--
+ALTER TABLE `galeria`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `integrantes`
+--
+ALTER TABLE `integrantes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `linha_tempo`
+--
+ALTER TABLE `linha_tempo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `participantes`
+--
+ALTER TABLE `participantes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `participantes_ibfk_1` (`integrante_id`),
+  ADD KEY `participantes_ibfk_2` (`evento_id`);
+
+--
+-- Índices de tabela `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `conquistas`
+--
+ALTER TABLE `conquistas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de tabela `coreografias`
+--
+ALTER TABLE `coreografias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT de tabela `dancarinos`
+--
+ALTER TABLE `dancarinos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- AUTO_INCREMENT de tabela `eventos`
+--
+ALTER TABLE `eventos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de tabela `galeria`
+--
+ALTER TABLE `galeria`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `integrantes`
+--
+ALTER TABLE `integrantes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT de tabela `linha_tempo`
+--
+ALTER TABLE `linha_tempo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `participantes`
+--
+ALTER TABLE `participantes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de tabela `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- Restrições para tabelas despejadas
+--
+
+--
+-- Restrições para tabelas `conquistas`
+--
+ALTER TABLE `conquistas`
+  ADD CONSTRAINT `conquistas_ibfk_1` FOREIGN KEY (`evento_id`) REFERENCES `eventos` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `conquistas_ibfk_2` FOREIGN KEY (`coreografia_id`) REFERENCES `coreografias` (`id`) ON DELETE CASCADE;
+
+--
+-- Restrições para tabelas `dancarinos`
+--
+ALTER TABLE `dancarinos`
+  ADD CONSTRAINT `dancarinos_ibfk_1` FOREIGN KEY (`integrante_id`) REFERENCES `integrantes` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `dancarinos_ibfk_2` FOREIGN KEY (`coreografia_id`) REFERENCES `coreografias` (`id`) ON DELETE CASCADE;
+
+--
+-- Restrições para tabelas `participantes`
+--
+ALTER TABLE `participantes`
+  ADD CONSTRAINT `participantes_ibfk_1` FOREIGN KEY (`integrante_id`) REFERENCES `integrantes` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `participantes_ibfk_2` FOREIGN KEY (`evento_id`) REFERENCES `eventos` (`id`) ON DELETE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

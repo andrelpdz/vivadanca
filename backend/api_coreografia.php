@@ -5,40 +5,33 @@ $metodo = $_SERVER['REQUEST_METHOD'];
 $status = true;
 $resp = [];
 
-
 function cadastrar(){
-    $titulo = trim($_POST['titulo']) ?? "";
-    $descricao = trim($_POST['descricao']) ?? "";
-    $data_criacao = $_POST["data_criacao"] ?? "";
-    $modalidade = trim($_POST["modalidade"]) ?? "";
-    $dancarinos = empty(trim($_POST["listaIntegrantes"])) ? [] : explode("," , $_POST["listaIntegrantes"]);
-
+    $titulo = trim($_POST['titulo']);
+    $descricao = trim($_POST['descricao']);
+    $data_criacao = trim($_POST['data_criacao']);
+    $modalidade = trim($_POST['modalidade']);
+    
     try{
-        $resposta = cadastrarCoreografia($titulo, $descricao, $data_criacao, $modalidade, $dancarinos);
-        if (!$resposta){
-            throw new Exception("Erro ao cadastrar a coreografia");
-        }
+        $resposta = cadastrarCoreografia($titulo, $descricao, $data_criacao, $modalidade);
+        if (!$resposta) throw new Exception("Erro ao cadastrar coreografia");
         return "Cadastro Efetuado com sucesso";
-    }catch(throwable $e){
+    }catch(Throwable $e){
         throw $e;
     }
 }
 
 function atualizar(){
     $id = trim($_POST['id']);
-    $titulo = trim($_POST['titulo']) ?? "";
-    $descricao = trim($_POST['descricao']) ?? "";
-    $data_criacao = $_POST["data_criacao"] ?? "";
-    $modalidade = trim($_POST["modalidade"]) ?? "";
-    $dancarinos = empty(trim($_POST["listaIntegrantes"])) ? [] : explode("," , $_POST["listaIntegrantes"]);
-
+    $titulo = trim($_POST['titulo']);
+    $descricao = trim($_POST['descricao']);
+    $data_criacao = trim($_POST['data_criacao']);
+    $modalidade = trim($_POST['modalidade']);
+    
     try{
-        $resposta = atualizarCoreografia($id, $titulo, $descricao, $data_criacao, $modalidade, $dancarinos);
-        if (!$resposta){
-            throw new Exception("Erro ao atualizar a coreografia");
-        }
+        $resposta = atualizarCoreografia($id, $titulo, $descricao, $data_criacao, $modalidade);
+        if (!$resposta) throw new Exception("Erro ao atualizar coreografia");
         return "Atualizado com sucesso";
-    }catch(throwable $e){
+    }catch(Throwable $e){
         throw $e;
     }
 }
@@ -48,27 +41,18 @@ function deletar(){
     try{
         excluirCoreografia($id);
         return true;
-    }catch(throwable $e){
+    }catch(Throwable $e){
         throw $e;
     }
 }
 
-
 try{
     if ($metodo == "GET"){
-        $id = isset($_GET['id']) ? $_GET['id'] : null;
-        if ($id){
-            $resp = ["coreografia" => obterCoreografia($id)];
-        }else{
-            $resp = ["coreografias" => listarCoreografias()];
-        }
+        $resp = ["coreografias" => listarCoreografias()];
     }
     else if ($metodo == "POST"){
-        if ($_POST["tipo"] == "PUT"){
-            atualizar();
-        }else{
-            cadastrar();
-        }
+        if($_POST['btnEnviar'] == "Cadastrar") cadastrar();
+        else if($_POST['btnEnviar'] == "Atualizar") atualizar();
         header("location: ../admin/coreografias.html");
         exit;
     }
@@ -78,8 +62,6 @@ try{
     else{
         throw new Exception("Metodo invalido!");
     }
-
-
 }catch(Throwable $e){
     http_response_code(500);
     $status = false;
@@ -89,6 +71,4 @@ finally{
     header("Content-Type: application/json; charset=utf-8");
     echo json_encode( ["sucesso"=> $status] + $resp );
 }
-
-
 ?>

@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . "/conexao.php";
 
-
 function cadastrarIntegrante($nome, $descricao, $nome_foto, $ativo){
     global $con;
     try{
@@ -60,8 +59,4 @@ function excluirIntegrante($id){
     $stmt->close();
     return $resultado;
 }
-
-
-
-
 ?>
