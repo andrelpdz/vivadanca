@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
            $_SESSION['email'] = $usuario['email'];
            $_SESSION['nome'] = $usuario['nome'];
 
-           header("location: /projetodanca");
+           header("location: /vivadanca/admin.php");
         }else{
            echo "Senha Incorreta!"; 
         }
@@ -35,10 +35,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         echo "Usuario não encontrado!";
     }
 
-
-
-
     $stmt->close();
     $con->close();
+}
+
+if(isset($_SESSION['email'])){
+    if($_SESSION['email'] != ""){
+        echo "logado";
+    }
 }
 ?>

@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if(isset($_SESSION['email'])){
+    if($_SESSION['email'] != ""){
+        header("location:/vivadanca/admin/integrante.html");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -9,8 +18,8 @@
 </head>
 
 <body class="admin-login-page">
-
     <main class="admin-main admin-login-card">
+        
         <!-- CABEÇALHO DO LOGIN -->
         <header class="admin-login-header">
             <div>
@@ -25,7 +34,7 @@
             <h2>Fazer Login</h2>
             <p>Informe seu e-mail e senha cadastrados.</p>
 
-            <form class="form-integrantes" id="auth" action="../backend/valida_login.php" method="POST">
+            <form method="post" class="form-integrantes" id="auth" action="/backend/valida_login.php">
                 <label for="loginEmail">E-mail</label>
                 <input 
                     id="loginEmail" 
@@ -58,6 +67,5 @@
     <footer class="admin-login-footer">
         <p>&copy; 2026 Viva Dança</p>
     </footer>
-
 </body> 
 </html>
