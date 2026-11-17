@@ -1,70 +1,42 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viva Dança - Envio de Fotos</title>
-    <!-- Link para o arquivo CSS separado -->
-     <link rel="stylesheet" href="../assets/css/admin.css">
-    <link rel="stylesheet" href="../assets/css/linha_tempo_admin.css">
+    <title>Linha do Tempo | Gerenciar</title>
+    <link rel="stylesheet" href="../assets/css/fernanda.css">
 </head>
 <body>
-    <!-- TOPO -->
-        
+    <main class="admin-main">
+        <!-- TOPO -->
         <header></header>
 
-        <main>    
-        <div class="form-card">
-            <div class="logo">
-                <span>Viva Dança</span>
-            </div>
-        <form class="form-linha_tempo" action="../backend/linha_tempo.php" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="id" id="id">      
-                <!-- Ano da Coreografia -->
-                <div class="form-group">
-                    <label for="ano"> Ano da Coreografia</label>
-                    <input type="number" id="ano" name="ano" 
-                        min="2015" placeholder="Ex: 2026" required>
-                </div>
+        <!-- CADASTRO -->
+        <section class="integrantes-painel">
+            <h2>Cadastrar na Linha do Tempo</h2>
+            <form class="form-integrantes" action="../backend/api_linha_tempo.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" id="id" name="id" value="">
 
-                <!-- Descrição Ampliada -->
-                <div class="form-group">
-                    <label for="descricao">Descrição / Nome da Coreografia</label>
-                    <textarea id="descricao" name="descricao" 
-                            placeholder="Descreva aqui: nome da coreografia, grupo, estilo, detalhes da apresentação..." 
-                            required></textarea>
-                </div>
+                <label for="descricao">Descrição</label>
+                <textarea id="descricao" name="descricao" required></textarea>
 
-                <!-- Upload de Imagem com Pré-visualização -->
-                <div class="form-group">
-                    <label> Escolha a Foto</label>
-                    <label class="upload-area">
-                        <input type="file" id="foto" name="foto" 
-                            accept="image/*" required>
-                        <div class="upload-text">
-                            Clique ou arraste a foto aqui<br>
-                            <small>Formatos: JPG, PNG | Máx: 5MB</small>
-                        </div>
-                        <div class="preview-container" id="previewContainer">
-                            <img id="previewImg" class="preview-img" alt="Pré-visualização">
-                        </div>
-                    </label>
-                </div>
+                <label for="data">Data</label>
+                <input type="date" id="data" name="data" required>
 
-                <input type="submit" name="btnEnviar" id="btnEnviar" value="Cadastrar">
+                <label for="foto">Foto</label>
+                <input type="file" id="foto" name="foto" accept="image/*" required>
+
+                <input type="submit" id="btnEnviar" name="btnEnviar" class="integrantes-btn" value="Cadastrar">
             </form>
-    </div>
-            <div id="linha_tempo"></div>
-
         </section>
 
+        <section class="integrantes-painel">
+            <h2>Itens da Linha do Tempo</h2>
+            <div id="linha_tempo"></div>
+        </section>
     </main>
-
+    <script src="../assets/js/admin.js"></script>
     <script src="../assets/js/linha_tempo.js"></script>
-    <script>
-        popularCardsLinha_tempoAdmin();
-    </script>
-
+    <script>popularCards();</script>
 </body>
-<script src="../assets/js/admin.js"></script>
 </html>
