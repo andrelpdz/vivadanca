@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários | Gerenciar</title>
+    <link rel="stylesheet" href="../assets/css/fernanda.css">
+</head>
+
+<body>
+    <main class="admin-main">
+        <!-- TOPO -->
+        <header>
+            <div>
+                <span>PAINEL ADMINISTRATIVO</span>
+                <h1 id="tituloFormulario">Novo <em>usuário</em></h1>
+                <p id="descricaoFormulario">Preencha os dados para registrar um novo usuário no sistema.</p>
+            </div>
+        </header>
+
+        <!-- CADASTRO / EDIÇÃO -->
+        <section class="integrantes-painel">
+            <h2>Dados do Usuário</h2>
+            <p>Informe as credenciais, tipo de acesso e permissões.</p>
+
+            <form class="form-integrantes" id="auth" action="../backend/api_usuario.php" method="POST">
+                <input type="hidden" id="idUsuario" name="idUsuario" value="">
+
+                <label for="cadastroNome">Nome</label>
+                <input
+                    type="text"
+                    id="cadastroNome"
+                    name="nome"
+                    placeholder="Digite o nome completo"
+                    autocomplete="name"
+                    required
+                >
+
+                <label for="cadastroEmail">E-mail</label>
+                <input
+                    type="email"
+                    id="cadastroEmail"
+                    name="email"
+                    placeholder="seuemail@exemplo.com"
+                    autocomplete="email"
+                    required
+                >
+
+                <label for="senha">Senha</label>
+                <input
+                    type="password"
+                    id="senha"
+                    name="senha"
+                    placeholder="Digite a senha (mínimo 8 caracteres)"
+                    autocomplete="new-password"
+                    minlength="8"
+                >
+
+                <label for="confirmarSenha">Confirme sua senha</label>
+                <input
+                    type="password"
+                    id="confirmarSenha"
+                    name="confirmarSenha"
+                    placeholder="Confirme a senha"
+                    autocomplete="new-password"
+                    minlength="8"
+                >
+
+                <!-- CONFIGURAÇÕES DO USUÁRIO -->
+                <div style="margin: 20px 0; padding: 15px; border: 1px solid #e1e5ec; border-radius: 8px; background: #fafbfc;">
+                    <h3 style="font-size: 15px; margin-bottom: 10px; color: var(--azul);">Tipo de usuário</h3>
+                    <div style="display: flex; gap: 20px; margin-bottom: 15px;">
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; cursor: pointer;">
+                            <input type="radio" name="tipo_usuario" value="admin" checked style="accent-color: var(--dourado);">
+                            Administrador
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; cursor: pointer;">
+                            <input type="radio" name="tipo_usuario" value="editor" style="accent-color: var(--dourado);">
+                            Editor
+                        </label>
+                    </div>
+
+                    <h3 style="font-size: 15px; margin-bottom: 10px; color: var(--azul);">Permissões</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px;">
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; cursor: pointer;">
+                            <input type="checkbox" name="permissoes[]" value="Linha do tempo" style="accent-color: var(--dourado);">
+                            Linha do tempo
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; cursor: pointer;">
+                            <input type="checkbox" name="permissoes[]" value="Integrantes" style="accent-color: var(--dourado);">
+                            Integrantes
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; cursor: pointer;">
+                            <input type="checkbox" name="permissoes[]" value="Coreografias" style="accent-color: var(--dourado);">
+                            Coreografias
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; cursor: pointer;">
+                            <input type="checkbox" name="permissoes[]" value="Conquistas" style="accent-color: var(--dourado);">
+                            Conquistas
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; cursor: pointer;">
+                            <input type="checkbox" name="permissoes[]" value="Galerias" style="accent-color: var(--dourado);">
+                            Galerias
+                        </label>
+                    </div>
+                </div>
+
+                <input type="submit" id="btnSalvar" name="btnEnviar" class="integrantes-btn" value="Cadastrar usuário">
+                
+                <button type="button" id="btnCancelar" class="integrantes-btn" style="background: #687386; margin-top: 10px; display: none;" onclick="limparFormulario()">
+                    Cancelar Edição
+                </button>
+            </form>
+        </section>
+
+        <!-- LISTAGEM -->
+        <section class="integrantes-painel">
+            <h2>Usuários cadastrados</h2>
+            <p>Visualize, edite ou remova os usuários do sistema.</p>
+
+            <!-- Grid de cards igual às outras páginas ou tabela adaptada -->
+            <div id="usuarios" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 20px;">
+            </div>
+            
+            <p id="mensagemVazia" style="color: var(--cinza); text-align: center; padding: 20px; display: none;">
+                Nenhum usuário cadastrado.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Viva Dança</p>
+        <div>
+            <a href="#">Privacidade</a>
+            <a href="#">Termos</a>
+            <a href="#">Ajuda</a>
+        </div>
+    </footer>
+
+    <script src="../assets/js/admin.js" defer></script>
+    <script src="../assets/js/cadastro_usuarios.js" defer></script>
+</body>
+
+</html>
