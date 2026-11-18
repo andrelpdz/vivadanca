@@ -14,10 +14,10 @@ fetch('../backend/valida_login.php')
             return response.text();
         })
         .then(html => {
-            console.log(html);
-            if(html != "logado"){
-                location.href="/vivadanca/admin.php"
-            }
+          console.log(html);
+          if(html.trim() != "logado"){
+            location.href="/vivadanca/admin.php"
+          }
         })
         .catch(error => console.error(error));
 
