@@ -72,7 +72,7 @@ try{
         }else if($_POST['btnEnviar'] == "Atualizar"){
             atualizar();
         }
-        header("location: ../admin/integrantes.html");
+        header("location: ../admin/integrante.html");
         exit;
     }
     else if ($metodo == "PUT"){
