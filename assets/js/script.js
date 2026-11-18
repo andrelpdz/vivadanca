@@ -280,8 +280,14 @@ function showLightbox(index, trigger) {
   const caption = document.querySelector('#lightbox-caption');
   caption.replaceChildren();
   if (collectionKind === 'gallery') {
-    const year = record.ano || recordYear(record);
-    if (year) caption.append(textNode('span', String(year), 'lightbox-year'));
+    const dateMatch = String(record.data_foto || '').match(/^([1-9]\d{3})-(\d{2})-(\d{2})$/);
+    if (dateMatch) {
+      const date = textNode('time', `Foto tirada em ${dateMatch[3]}/${dateMatch[2]}/${dateMatch[1]}`, 'lightbox-year');
+      date.dateTime = dateMatch[0];
+      caption.append(date);
+    } else {
+      caption.append(textNode('span', 'Data da foto não informada', 'lightbox-year'));
+    }
     caption.append(textNode('strong', record.nome || record.titulo || 'Registro do Viva Dança', 'lightbox-title'));
     if (record.descricao) caption.append(textNode('span', record.descricao, 'lightbox-description'));
   } else {
