@@ -117,6 +117,13 @@ header nav a:hover {
     font-weight: bold;
 }
 
+.form-integrantes input{
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #e1e5ec;
+    width: 100%;
+}
+
 .form-integrantes textarea,
 .eventos textarea,
 .form-integrantes input[type="text"],
@@ -141,6 +148,8 @@ header nav a:hover {
 input:focus {
     outline-color: var(--dourado);
 }
+
+
 
 /* INTEGRANTE ATIVO */
 
