@@ -19,3 +19,6 @@ body[data-collection="gallery"] .archive-card>button:focus-visible{outline-offse
 .lightbox-year{display:block;font:500 18px/1.4 var(--sans);letter-spacing:.15em;color:var(--gold);margin-bottom:9px}
 .lightbox-title{display:block;font:400 clamp(26px,3vw,38px)/1.15 var(--serif);color:var(--cream)}
 .lightbox-description{display:block;margin-top:12px;font:400 20px/1.55 var(--serif);color:#ddc9cf;white-space:pre-line;overflow-wrap:anywhere}
+/* Transicao suave entre o texto e a foto do banner */
+.archive-hero>img{-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.4) 12%,#000 36%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.4) 12%,#000 36%)}
+@media(max-width:600px){.archive-hero>img{-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 28%);mask-image:linear-gradient(180deg,transparent 0%,#000 28%)}}
