@@ -28,7 +28,7 @@ const adminCollection = document.body.dataset.adminCollection;
 const adminConfig = {
   coreografia: { key: 'coreografias', folder: 'coreografias', fields: ['titulo', 'descricao', 'data_criacao', 'modalidade'] },
   conquista: { key: 'conquistas', folder: 'conquistas', fields: ['evento_id', 'coreografia_id', 'nome', 'descricao'] },
-  galeria: { key: 'galeria', folder: 'galeria', fields: ['descricao', 'data_foto'] }
+  galeria: { key: 'galeria', folder: 'galeria', fields: ['nome', 'descricao', 'data_foto'] }
 }[adminCollection];
 const adminContainer = document.getElementById(adminConfig.key);
 const adminForm = document.querySelector('form.form-integrantes');
@@ -101,7 +101,7 @@ function adminCard(record) {
   }
   if (record.evento_nome) body.append(adminNode('p', `Evento: ${record.evento_nome}`));
   if (record.coreografia_titulo) body.append(adminNode('p', `Coreografia: ${record.coreografia_titulo}`));
-  if (adminCollection !== 'galeria' && record.descricao) body.append(adminNode('p', record.descricao));
+  if (record.descricao && (adminCollection !== 'galeria' || record.nome)) body.append(adminNode('p', record.descricao));
   const actions = adminNode('div', '', 'admin-acervo-actions');
   const edit = adminNode('button', 'Editar');
   edit.type = 'button';

@@ -3,7 +3,7 @@ function popularAnosSelect() {
     if (!select) return;
     
     const anoAtual = new Date().getFullYear(); // Pega 2026 (ou o ano corrente)
-    for (let ano = anoAtual; ano >= 2000; ano--) {
+    for (let ano = anoAtual; ano >= 2015; ano--) {
         const option = document.createElement("option");
         option.value = ano;
         option.textContent = ano;

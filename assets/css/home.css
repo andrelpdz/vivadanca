@@ -1082,3 +1082,7 @@ footer {
 /* Menu completo com acesso direto a trajetoria */
 @media(min-width:901px){.site-header nav{gap:clamp(12px,1.4vw,24px)}}
 @media(min-width:901px) and (max-width:1200px){.site-header{padding-inline:4%;gap:16px}.site-header .brand>span{display:none}.site-header nav{gap:13px;font-size:10px}}
+/* Acesso visivel ao inicio e identificacao da pagina atual */
+.site-header nav a[aria-current="page"]{color:var(--gold);text-decoration:underline;text-underline-offset:8px}
+@media(min-width:901px){.site-header nav{gap:clamp(10px,1.2vw,20px)}}
+@media(max-width:900px){.site-header #navegacao{max-height:calc(100svh - 88px);overflow-y:auto}}

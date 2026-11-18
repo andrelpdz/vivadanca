@@ -15,13 +15,22 @@ function validarDataFoto($data){
     return $data;
 }
 
+function validarNomeGaleria($valor){
+    $nome = is_string($valor) ? trim($valor) : '';
+    if ($nome === '' || preg_match('/^.{1,255}$/usD', $nome) !== 1) {
+        throw new InvalidArgumentException('Informe um nome de até 255 caracteres para a foto.');
+    }
+    return $nome;
+}
+
 function cadastrar(){
+    $nome = validarNomeGaleria($_POST['nome'] ?? null);
     $dataFoto = validarDataFoto($_POST['data_foto'] ?? null);
     $descricao = trim($_POST['descricao']);
     $foto = $_FILES['foto'];
     try{
         $nome_foto = salvarFoto("galeria", $foto);
-        $resposta = cadastrarGaleria($nome_foto, $descricao, $dataFoto);
+        $resposta = cadastrarGaleria($nome_foto, $nome, $descricao, $dataFoto);
         if (!$resposta) throw new Exception("Erro ao cadastrar foto na galeria");
         return "Cadastro Efetuado com sucesso";
     }catch(Throwable $e){
@@ -30,6 +39,7 @@ function cadastrar(){
 }
 
 function atualizar(){
+    $nome = validarNomeGaleria($_POST['nome'] ?? null);
     $id = trim($_POST['id']);
     $descricao = trim($_POST['descricao']);
     $foto = $_FILES['foto'] ?? null;
@@ -41,7 +51,7 @@ function atualizar(){
         if ($foto && $foto['error'] !== UPLOAD_ERR_NO_FILE) {
             $nome_foto = salvarFoto('galeria', $foto);
         }
-        $resposta = atualizarGaleria($id, $nome_foto, $descricao, $dataFoto);
+        $resposta = atualizarGaleria($id, $nome_foto, $nome, $descricao, $dataFoto);
         if (!$resposta) throw new Exception("Erro ao atualizar galeria");
         return "Atualizado com sucesso";
     }catch(Throwable $e){
