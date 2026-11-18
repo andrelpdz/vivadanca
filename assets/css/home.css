@@ -1086,3 +1086,67 @@ footer {
 .site-header nav a[aria-current="page"]{color:var(--gold);text-decoration:underline;text-underline-offset:8px}
 @media(min-width:901px){.site-header nav{gap:clamp(10px,1.2vw,20px)}}
 @media(max-width:900px){.site-header #navegacao{max-height:calc(100svh - 88px);overflow-y:auto}}
+/* Melhorias publicas de leitura e navegacao. O banner .hero permanece intacto. */
+body.site-publico{--gold-readable:#866127}
+body.site-publico :is(.text-link,.outline-link,.gold-link):not(.hero *){font-size:14px;letter-spacing:.045em;min-height:44px}
+body.site-publico .eyebrow:not(.hero *){font-size:12px;line-height:1.6;letter-spacing:.14em}
+body.site-publico .footer-bottom{font-size:13px}
+body.site-publico .footer-brand>span{font-size:12px}
+body.site-publico :is(.archive-tools,.events-filters,.cast-toolbar) label{font:500 14px/1.5 var(--sans);letter-spacing:0;text-transform:none}
+body.site-publico :is(.archive-tools,.events-filters,.cast-toolbar) :is(input,select){font-size:16px;min-height:44px}
+body.site-publico :is(.archive-tools>p,.cast-toolbar>p,.events-result-heading>p,.event-meta,.event-facts dt,.event-month,.work-row p,.work-date,.memory-links p,.agenda-row p,.stage-note,.timeline-heading>p:last-child,.timeline-controls>p){font-size:14px;line-height:1.6}
+body.site-publico .stage-photo>span{font-size:12px}
+/* O dourado mais escuro se limita aos textos sobre superficies claras. */
+body.site-publico :is(.essence,.people,.memory,.about-essence,.about-values,.about-together,.cast-intro,.cast-section,.member-profile,.profile-return,.events-memory,.contact-intro,.contact-editorial,.contact-topics,.timeline-intro,.timeline-story) em{color:var(--gold-readable)}
+body.site-publico :is(.essence,.memory,.about-essence,.about-values,.about-together,.cast-intro,.member-profile,.profile-return,.events-memory,.contact-intro,.contact-editorial,.contact-topics,.timeline-intro,.timeline-heading,.timeline-story) .eyebrow{color:var(--gold-readable)}
+body.site-publico :is(.cast-intro-bottom,.memory-links>a,.work-row)>.eyebrow,body.site-publico .age-mark sup,body.site-publico .about-age sup{color:var(--gold-readable)}
+body.site-publico :is(.essence,.people,.memory,.about-essence,.about-values,.about-together,.cast-section,.member-profile,.profile-return,.events-memory,.contact-intro,.contact-editorial,.contact-topics,.timeline) :is(a,button,input,select,summary):focus-visible{outline:3px solid var(--wine);outline-offset:4px}
+body.site-publico .site-header :is(a,button):focus-visible,body.site-publico footer a:focus-visible,body.site-publico dialog :is(a,button):focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+body.site-publico .timeline-years>a{min-height:44px;padding-inline:5px}
+body.site-publico .timeline-controls>button{min-width:44px;min-height:44px}
+body.site-publico .timeline-controls>button:disabled{opacity:.55}
+body.site-publico .filter-reset{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 16px;border:1px solid var(--wine);border-radius:0;background:transparent;color:var(--wine);font:500 14px/1.5 var(--sans);cursor:pointer;white-space:nowrap}
+body.site-publico .filter-reset:hover{background:var(--wine);color:var(--cream)}
+body.site-publico .filter-reset[hidden]{display:none}
+body.site-publico .events-filters .filter-reset{grid-column:1/-1;justify-self:start}
+body.site-publico .archive-tools{flex-wrap:wrap}
+body.site-publico .archive-tools label:first-child{min-width:min(100%,240px)}
+body.site-publico .timeline-feedback{padding-block:18px;color:var(--muted)}
+body.site-publico .timeline-feedback:has(#timeline-status[hidden]){display:none}
+body.site-publico .timeline-feedback button{background:transparent;color:var(--wine);cursor:pointer;margin-top:16px}
+body.site-publico .contact-channels a{display:inline-flex;align-items:center;gap:12px;min-height:44px;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px;overflow-wrap:anywhere}
+body.site-publico .contact-channels a:hover{color:var(--gold-readable)}
+/* O foco da ampliacao permanece dentro do dialog nativo. */
+body.site-publico #archive-lightbox{max-height:94svh;padding-top:64px}
+body.site-publico .lightbox-close{top:10px;right:15px;min-width:88px;min-height:44px;font-size:16px;padding:10px}
+body.site-publico .lightbox-controls button{width:48px;height:48px;font-size:20px}
+body.site-publico .lightbox-controls{font-size:14px}
+/* O menu fica compacto antes de depender de letras muito pequenas. */
+body.site-publico .site-header #navegacao{font-size:14px}
+body.site-publico .site-header #navegacao a{display:flex;align-items:center;min-height:44px}
+@media(min-width:1201px){body.site-publico .site-header #navegacao{gap:clamp(10px,1vw,18px)}}
+@media(max-width:1200px){
+  body.site-publico .site-header{height:88px;padding-inline:5%;gap:20px}
+  body.site-publico .site-header .brand img{width:64px;height:64px}
+  body.site-publico .site-header .brand>span{display:block}
+  body.site-publico .menu-toggle{display:flex;align-items:center;gap:14px;min-height:44px;padding:10px 0;background:none;border:0;color:var(--cream);font:500 16px var(--sans)}
+  body.site-publico .site-header #navegacao{display:none;position:absolute;top:100%;left:0;right:0;max-height:calc(100svh - 88px);overflow-y:auto;background:var(--dark);padding:16px 5% 24px;border-bottom:1px solid var(--gold);flex-direction:column;align-items:stretch;gap:0;font-size:16px}
+  body.site-publico .site-header #navegacao.is-open{display:flex}
+  body.site-publico .site-header #navegacao a{padding-block:12px;min-height:48px}
+}
+@media(max-width:600px){
+  body.site-publico .archive-tools{align-items:stretch;gap:18px}
+  body.site-publico .archive-tools label:first-child{flex-basis:100%}
+  body.site-publico .cast-toolbar{align-items:stretch}
+  body.site-publico #lightbox-photo{max-height:52svh}
+  body.site-publico .lightbox-description{font-size:20px;line-height:1.5}
+}
+
+body.site-publico :is(.people,.cast-section)>.section-heading .eyebrow,body.site-publico :is(.work-number,.about-values-list li>span,.contact-topic-grid article>span,.memory-links>a>span,.archive-card>.eyebrow){color:var(--gold-readable)}
+body.site-publico main>.section-space :is(a,button,input,select,summary):focus-visible,body.site-publico .timeline-viewport:focus-visible{outline:3px solid var(--wine);outline-offset:4px}
+
+body.site-publico .period-controls button{font-size:14px;min-height:44px;letter-spacing:.04em}
+
+/* Titulos das secoes claras de Repertorio, Agenda, Conquistas e Galeria */
+body.site-publico main>.section-space :is(h1,h2,h3) em,
+body.site-publico main>.section-space>.section-heading .eyebrow{color:var(--gold-readable)}

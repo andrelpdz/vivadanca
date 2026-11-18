@@ -25,6 +25,11 @@ function readableDate(value) {
   return key ? key.split('-').reverse().join('/') : 'A confirmar';
 }
 
+function eventHour(value) {
+  const match = String(value || '').match(/[ T]([01]\d|2[0-3]):([0-5]\d)/);
+  if (!match || (match[1] === '00' && match[2] === '00')) return '';
+  return `${match[1]}h${match[2]}`;
+}
 function addFact(list, label, value) {
   if (!value) return;
   const item = document.createElement('div');
@@ -73,6 +78,7 @@ function createEvent(event) {
   const facts = document.createElement('dl');
   facts.className = 'event-facts';
   addFact(facts, 'Data', readableDate(event.data_inicio));
+  addFact(facts, 'Horário', eventHour(event.data_inicio) || 'A confirmar');
   if (event.endKey && event.endKey !== event.startKey) addFact(facts, 'Até', readableDate(event.data_termino));
   addFact(facts, 'Cidade', event.cidade);
   addFact(facts, 'Local', event.local);
@@ -81,8 +87,26 @@ function createEvent(event) {
   return entry;
 }
 
+const eventClear = document.createElement('button');
+eventClear.type = 'button';
+eventClear.className = 'filter-reset';
+eventClear.textContent = 'Limpar filtros';
+eventClear.hidden = true;
+document.querySelector('.events-filters').append(eventClear);
+eventClear.addEventListener('click', () => {
+  eventSearch.value = '';
+  eventCity.value = '';
+  eventYear.value = '';
+  eventSort.value = 'latest';
+  period = 'all';
+  document.querySelectorAll('[data-period]').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.period === 'all')));
+  document.querySelector('#period-title').textContent = 'Todos os eventos';
+  renderEvents();
+  eventSearch.focus();
+});
 function renderEvents() {
   if (!eventsLoaded) return;
+  eventClear.hidden = !eventSearch.value.trim() && !eventCity.value && !eventYear.value && period === 'all';
   const current = saoPauloDate();
   const today = `${current.year}-${current.month}-${current.day}`;
   const query = normalizeEvent(eventSearch.value.trim());

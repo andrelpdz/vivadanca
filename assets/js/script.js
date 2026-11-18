@@ -270,6 +270,16 @@ const recordTitle = (record) => record.titulo || record.nome || record.descricao
 const recordYear = (record) => String(collectionKind === 'gallery' ? (record.data_foto || '') : (record.data_criacao || record.data_inicio || record.data || '')).match(/^[1-9]\d{3}/)?.[0] || '';
 const archiveImage = (record) => `../assets/${collectionKind === 'gallery' ? 'galeria' : collectionKind === 'choreographies' ? 'coreografias' : 'conquistas'}/${encodeURIComponent(String(record.foto).split(/[\\/]/).pop())}`;
 
+const archiveClear = textNode('button', 'Limpar filtros', 'filter-reset');
+archiveClear.type = 'button';
+archiveClear.hidden = true;
+document.querySelector('.archive-tools').append(archiveClear);
+archiveClear.addEventListener('click', () => {
+  archiveSearch.value = '';
+  archiveYear.value = '';
+  renderArchive();
+  archiveSearch.focus();
+});
 function showLightbox(index, trigger) {
   lightboxIndex = index;
   if (trigger) lightboxTrigger = trigger;
@@ -381,6 +391,7 @@ function renderChoreographyDetail(record) {
 
 function renderArchive() {
   if (!archiveReady) return;
+  archiveClear.hidden = !archiveSearch.value.trim() && !archiveYear.value;
   archiveGrid.replaceChildren();
   archiveStatus.hidden = true;
   if (collectionKind === 'choreographies' && archiveSelectedId !== null) {
@@ -414,10 +425,29 @@ async function loadArchive() {
     if (!response.ok) throw new Error('Falha na consulta');
     const data = await response.json();
     if (!data.sucesso || !Array.isArray(data[settings.key])) throw new Error('Resposta inválida');
-    archiveRecords = data[settings.key].filter((record) => record && typeof record === 'object').sort((a, b) => recordYear(b).localeCompare(recordYear(a)));
+    let records = data[settings.key].filter((record) => record && typeof record === 'object');
+    if (collectionKind === 'achievements' && records.length) {
+      // Usa as datas dos eventos existentes sem alterar o cadastro de conquistas.
+      try {
+        const eventsResponse = await fetch('../backend/api_evento.php', { cache: 'no-store', headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(15000) });
+        if (eventsResponse.ok) {
+          const eventsData = await eventsResponse.json();
+          if (eventsData.sucesso && Array.isArray(eventsData.eventos)) {
+            const eventsById = new Map(eventsData.eventos.map((event) => [String(event.id), event]));
+            records = records.map((record) => {
+              const event = eventsById.get(String(record.evento_id));
+              return event ? { ...record, data_inicio: record.data_inicio || event.data_inicio, cidade: record.cidade || event.cidade } : record;
+            });
+          }
+        }
+      } catch { /* Os cards continuam disponíveis se a consulta complementar falhar. */ }
+    }
+    archiveRecords = records.sort((a, b) => recordYear(b).localeCompare(recordYear(a)));
     const years = [...new Set(archiveRecords.map(recordYear).filter(Boolean))].sort().reverse();
     archiveYear.replaceChildren(new Option('Todos os anos', ''));
     years.forEach((year) => archiveYear.add(new Option(year, year)));
+    archiveYear.disabled = years.length === 0;
+    archiveYear.closest('label').hidden = years.length === 0;
     archiveReady = true;
     renderArchive();
   } catch {

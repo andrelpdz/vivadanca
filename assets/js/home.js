@@ -23,4 +23,4 @@ document.addEventListener('keydown', (event) => {
 document.addEventListener('click', (event) => {
   if (!event.target.closest('.site-header')) closeMenu();
 });
-window.matchMedia('(min-width: 901px)').addEventListener('change', closeMenu);
+window.matchMedia('(min-width: 1201px)').addEventListener('change', closeMenu);
