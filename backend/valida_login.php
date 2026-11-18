@@ -1,38 +1,49 @@
+
 <?php
-#-> Valida usuário
+
 session_start();
 
 require_once __DIR__ . "/conexao.php";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $email = trim( $_POST['email'] );
-    $senha = trim( $_POST['senha'] );
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim($_POST['email'] ?? '');
+    $senha = trim($_POST['senha'] ?? '');
 
-    if (empty($email) || empty($senha)){
+    if (empty($email) || empty($senha)) {
         echo "Campos obrigatórios";
         exit;
     }
-    
+
     $sql = "SELECT * FROM usuario WHERE email = ?";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("s",$email);
 
-    $stmt->execute(); //-> Executa Comando SQL
+    $stmt->execute();
 
-    $resultado = $stmt->get_result(); //-> Extrai resultado da consulta
+    $resultado = $stmt->get_result();
 
-    if($resultado->num_rows == 1){
-        $usuario = $resultado->fetch_assoc(); //-> Salva os dados do banco em usuario
-        if(password_verify($senha, $usuario['senha'])){ //-> Verifica os Hashs
-           $_SESSION['email'] = $usuario['email'];
-           $_SESSION['nome'] = $usuario['nome'];
+    if ($resultado->num_rows == 1) {
 
-           header("location: /vivadanca/admin.php");
-        }else{
-           echo "Senha Incorreta!"; 
+        $usuario = $resultado->fetch_assoc();
+
+        if (password_verify($senha, $usuario['senha'])) {
+
+            $_SESSION['email'] = $usuario['email'];
+            $_SESSION['nome'] = $usuario['nome'];
+
+            header("Location: /vivadanca/admin.php");
+            exit;
+
+        } else {
+
+            echo "Senha incorreta!";
+
         }
-    }else{
-        echo "Usuario não encontrado!";
+
+    } else {
+
+        echo "Usuário não encontrado!";
+
     }
 
     $stmt->close();

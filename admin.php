@@ -6,68 +6,137 @@ if(isset($_SESSION['email'])){
         header("location:/vivadanca/admin/integrante.html");
     }
 }
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/admin.css">
     <title>Login | Viva Dança</title>
-    <link rel="stylesheet" href="assets/css/fernanda.css">
 </head>
 
-<body class="admin-login-page">
-    <main class="admin-main admin-login-card">
-        
-        <!-- CABEÇALHO DO LOGIN -->
-        <header class="admin-login-header">
-            <div>
-                <span>ÁREA RESTRITA</span>
-                <h1 class="admin-login-title">Viva<em>Dança</em></h1>
-                <p>Entre com suas credenciais para gerenciar o sistema.</p>
-            </div>
-        </header>
+<body>
 
-        <!-- FORMULÁRIO DE LOGIN -->
-        <section class="integrantes-painel admin-login-panel">
-            <h2>Fazer Login</h2>
-            <p>Informe seu e-mail e senha cadastrados.</p>
+    <main class="login-main">
 
-            <form method="post" class="form-integrantes" id="auth" action="backend/valida_login.php">
-                <label for="loginEmail">E-mail</label>
-                <input 
-                    id="loginEmail" 
-                    name="email" 
-                    type="email" 
-                    placeholder="seuemail@exemplo.com.br" 
-                    autocomplete="username" 
-                    required
-                >
+        <div class="login-container">
 
-                <label for="loginPassword">Senha</label>
-                <input 
-                    id="loginPassword" 
-                    name="senha" 
-                    type="password" 
-                    placeholder="Digite sua senha" 
-                    autocomplete="current-password" 
-                    required
-                >
+            <section class="login-info">
 
-                <button class="integrantes-btn admin-login-submit" type="submit">Entrar</button>
-            </form>
+                <div class="logo-area">
+                    <img src="assets/img/logo.png" alt="Logo Viva Dança" class="login-img">
+                </div>
 
-            <div class="admin-login-back">
-                <a class="admin-login-back-link" href="../">&larr; Voltar para a página inicial</a>
-            </div>
-        </section>
+                <div class="info">
+                    <span class="tag-bem-vindo">BEM-VINDO DE VOLTA</span>
+
+                    <h1>
+                        Tudo começa
+                        <span>aqui.</span>
+                    </h1>
+
+                    <p>
+                        Entre na sua conta para acessar
+                        todos os recursos da plataforma.
+                    </p>
+                </div>
+
+                <div class="info-footer">
+                    <span>●</span>
+                    Acesso rápido e seguro
+                </div>
+
+            </section>
+
+            <section class="cadastro">
+
+                <div class="painel-cadastro">
+
+                    <div class="texto-login">
+                        <h2>Entrar</h2>
+                        <p>Acesse sua conta</p>
+                    </div>
+
+                    <form class="form-login" id="auth" action="backend/valida_login.php" method="POST">
+
+                        <div class="input-grupo">
+                            <label for="loginEmail">E-mail</label>
+
+                            <div class="input-box">
+                                <span class="input-icon">👤</span>
+
+                                <input
+                                    id="loginEmail"
+                                    name="email"
+                                    type="email"
+                                    placeholder="seuemail@exemplo.com"
+                                    autocomplete="username"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <div class="input-grupo">
+
+                            <div class="senha-label">
+                                <label for="senha">Senha</label>
+                                <a href="#">Esqueceu?</a>
+                            </div>
+
+                            <div class="input-box">
+                                <span class="input-icon">🗝️</span>
+
+                                <input
+                                    id="senha"
+                                    name="senha"
+                                    type="password"
+                                    placeholder="Digite sua senha"
+                                    autocomplete="current-password"
+                                    required
+                                >
+                            </div>
+
+                        </div>
+
+                        <div class="lembrar">
+                            <label>
+                                <input type="checkbox" name="remember">
+                                <span>Lembrar de mim</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-submit">
+                            Entrar
+                            <span class="arrow">→</span>
+                        </button>
+
+                    </form>
+
+                </div>
+
+                <div class="segurança">
+                    <span>🔒</span>
+                    Seus dados estão protegidos e sua conexão é segura.
+                </div>
+
+            </section>
+
+        </div>
+
     </main>
 
-    <footer class="admin-login-footer">
+    <footer class="login-footer">
         <p>&copy; 2026 Viva Dança</p>
+
+        <div>
+            <a href="#">Privacidade</a>
+            <a href="#">Termos</a>
+            <a href="#">Ajuda</a>
+        </div>
     </footer>
-</body> 
+
+</body>
 </html>
