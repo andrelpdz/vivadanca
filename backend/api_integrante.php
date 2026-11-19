@@ -64,7 +64,11 @@ function deletar(){
 try{
     if ($metodo == "GET"){
         // listar os integrantes
-        $resp = ["integrantes" => listarIntegrantes()];
+        if(isset($_GET['id'])){
+            $resp = ["integrantes" => obterIntegrante($_GET['id'])];
+        }else{
+            $resp = ["integrantes" => listarIntegrantes()];
+        }
     }
     else if ($metodo == "POST"){
         if($_POST['btnEnviar'] == "Cadastrar"){
