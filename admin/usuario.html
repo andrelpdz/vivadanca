@@ -108,9 +108,7 @@
 
                 <input type="submit" id="btnSalvar" name="btnEnviar" class="integrantes-btn" value="Cadastrar usuário">
                 
-                <button type="button" id="btnCancelar" class="integrantes-btn usuario-cancelar" onclick="limparFormulario()">
-                    Cancelar Edição
-                </button>
+                <button type="button" id="btnCancelar" class="integrantes-btn usuario-cancelar" onclick="window.location.reload()">Cancelar Edição</button>
             </form>
         </section>
 
@@ -127,6 +125,11 @@
                 Nenhum usuário cadastrado.
             </p>
         </section>
+        <section id="listaUsuarios">
+            <table>
+                                
+            </table>
+        </section>
     </main>
 
     <footer>
@@ -138,8 +141,9 @@
         </div>
     </footer>
 
-    <script src="../assets/js/admin.js" defer></script>
-    <script src="../assets/js/cadastro_usuarios.js" defer></script>
+    <script src="../assets/js/admin.js"></script>
+    <script src="../assets/js/usuario.js"></script>
+
 </body>
 
 </html>
