@@ -1,13 +1,41 @@
 function criarCard(item){
+    const caminhoFoto = `../${(item.foto || "").replace(/^\/+/, "")}`;
+
     return `
     <div style="padding: 20px; border: 1px solid #e1e5ec; border-radius: 12px; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-        <img src="../assets/conquistas/${item.foto}" alt="" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 12px;">
-        <h3 style="font-size: 18px; margin-bottom: 5px; color: var(--azul);">${item.nome}</h3>
-        <p style="font-size: 13px; color: var(--cinza); margin-bottom: 4px;"><strong>Evento:</strong> ${item.evento_nome || 'N/A'}</p>
-        <p style="font-size: 13px; color: var(--cinza); margin-bottom: 12px;"><strong>Coreografia:</strong> ${item.coreografia_titulo || 'N/A'}</p>
+        <img 
+            src="${caminhoFoto}" 
+            alt="${item.nome}" 
+            style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 12px;"
+            onerror="this.style.display='none';"
+        >
+
+        <h3 style="font-size: 18px; margin-bottom: 5px; color: var(--azul);">
+            ${item.nome}
+        </h3>
+
+        <p style="font-size: 13px; color: var(--cinza); margin-bottom: 4px;">
+            <strong>Evento:</strong> ${item.evento_nome || 'N/A'}
+        </p>
+
+        <p style="font-size: 13px; color: var(--cinza); margin-bottom: 12px;">
+            <strong>Coreografia:</strong> ${item.coreografia_titulo || 'N/A'}
+        </p>
+
         <span style="display: flex; gap: 8px;">
-            <button type="button" onclick='editarFormulario(${JSON.stringify(item)})' style="flex: 1; padding: 10px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; background: var(--dourado); color: white;">Editar</button>
-            <button type="button" onclick="excluirConquista(${item.id})" style="flex: 1; padding: 10px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; background: #fff1f1; color: var(--vinho);">Excluir</button>
+            <button 
+                type="button" 
+                onclick='editarFormulario(${JSON.stringify(item)})' 
+                style="flex: 1; padding: 10px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; background: var(--dourado); color: white;">
+                Editar
+            </button>
+
+            <button 
+                type="button" 
+                onclick="excluirConquista(${item.id})" 
+                style="flex: 1; padding: 10px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; background: #fff1f1; color: var(--vinho);">
+                Excluir
+            </button>
         </span>
     </div>
     `;
@@ -20,15 +48,18 @@ async function inicializarPagina() {
 
 async function carregarOpcoesSelects() {
     try {
-        const resposta = await fetch("../backend/api_conquista.php", { headers: {"Accept": "application/json"} });
+        const resposta = await fetch("../backend/api_conquista.php", {
+            headers: {"Accept": "application/json"}
+        });
+
         const dados = await resposta.json();
-        
+
         if (resposta.ok && dados.sucesso) {
             const selectEvento = document.getElementById("evento_id");
             const selectCoreografia = document.getElementById("coreografia_id");
 
             // Preencher Eventos
-            if (dados.eventos) {
+            if (dados.eventos && selectEvento) {
                 dados.eventos.forEach(ev => {
                     const opt = document.createElement("option");
                     opt.value = ev.id;
@@ -38,7 +69,7 @@ async function carregarOpcoesSelects() {
             }
 
             // Preencher Coreografias
-            if (dados.coreografias) {
+            if (dados.coreografias && selectCoreografia) {
                 dados.coreografias.forEach(cor => {
                     const opt = document.createElement("option");
                     opt.value = cor.id;
@@ -55,52 +86,68 @@ async function carregarOpcoesSelects() {
 function editarFormulario(item){
     document.getElementById("id").value = item.id;
     document.getElementById("evento_id").value = item.evento_id;
-    document.getElementById("coreografia_id").value = item.coreografia_id;
+    document.getElementById("coreografia_id").value = item.coreografia_id || "";
     document.getElementById("nome").value = item.nome;
     document.getElementById("descricao").value = item.descricao || "";
-    
+
     document.getElementById("btnEnviar").value = "Atualizar";
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 async function popularCards(){
     const container = document.getElementById("conquistas");
     if (!container) return;
-    
+
     const dados = await carregarLista();
     container.innerHTML = "";
-    
+
     if (dados.conquistas && dados.conquistas.length > 0) {
         dados.conquistas.forEach((item) => {
             container.innerHTML += criarCard(item);
         });
     } else {
-        container.innerHTML = `<p style="color: var(--cinza); grid-column: 1 / -1; text-align: center;">Nenhuma conquista cadastrada.</p>`;
+        container.innerHTML = `
+            <p style="color: var(--cinza); grid-column: 1 / -1; text-align: center;">
+                Nenhuma conquista cadastrada.
+            </p>
+        `;
     }
 }
 
 async function carregarLista(){
     try {
-        const resposta = await fetch("../backend/api_conquistase.php" in window ? "../backend/api_conquistase.php" : "../backend/api_conquista.php", { headers: {"Accept": "application/json"} });
-        const respostaReal = await fetch("../backend/api_conquista.php", { headers: {"Accept": "application/json"} });
-        const dados = await respostaReal.json();
-        return (respostaReal.ok && dados.sucesso) ? dados : { "conquistas": [] };
+        const resposta = await fetch("../backend/api_conquista.php", {
+            headers: {"Accept": "application/json"}
+        });
+
+        const dados = await resposta.json();
+
+        return (resposta.ok && dados.sucesso)
+            ? dados
+            : { conquistas: [] };
+
     } catch(error) {
-        console.log(error);
-        return { "conquistas": [] };
+        console.log("Erro ao carregar conquistas:", error);
+        return { conquistas: [] };
     }
 }
 
 async function excluirConquista(id){
     if(!confirm("Deseja realmente excluir esta conquista?")) return;
+
     try {
         const resposta = await fetch(`../backend/api_conquista.php?id=${id}`, {
             method: "DELETE",
             headers: {"Accept": "application/json"},
         });
+
         const dados = await resposta.json();
-        if (resposta.ok && dados.sucesso) location.reload();
+
+        if (resposta.ok && dados.sucesso) {
+            location.reload();
+        }
+
     } catch(error) {
-        console.log(error);
+        console.log("Erro ao excluir conquista:", error);
     }
 }
