@@ -113,6 +113,35 @@ function cardIntegrantes(integrante){
     return card;
 }
 
+//-> INTEGRANTE - Dados especificos de um integrante
+async function dadosIntegrante(id){
+    sectionIntegrantes = document.querySelector(".profile-feedback");
+    const dados = await carregarIntegrante(id);
+    console.log(dados);
+    sectionIntegrantes.innerHTML = "";   
+    sectionIntegrantes.innerHTML += `<h1>${dados.integrantes.nome}</h1>`;
+    sectionIntegrantes.innerHTML += `<img class="perfil" src="../assets/integrantes/${dados.integrantes.foto}" >`; 
+    let i = nl2br(dados.integrantes.descricao);
+    sectionIntegrantes.innerHTML += `<p>${i}</p>`;
+    
+} 
+async function carregarIntegrante(id){
+    try {
+        const resposta = await fetch(
+            "../backend/api_integrante.php?id="+id,
+            { headers:{"Accept": "application/json"}}
+        );
+        const dados = await resposta.json();
+        if(!resposta.ok || !dados.sucesso){
+            throw new Error( dados.mensagem || "Não foi possivel carregar");
+        }
+        return dados;        
+    }catch(error) {
+        console.log(error);
+        return { "integrantes":[] };
+    }    
+}
+
 
 //-> COREOGRAFIA
 async function popularCoreografias(){
@@ -238,6 +267,15 @@ function cardLinhaTempo(linhatempo){
                     <p>${linhatempo.data}<br>${linhatempo.descricao}</p>
                 </div></li>`;
     return card;
+}
+
+function nl2br(str, isXhtml = true) {
+    if (typeof str !== 'string') {
+        return ''; // Retorna vazio se não for string
+    }
+    const breakTag = isXhtml ? '<br />' : '<br>';
+    // Substitui \r\n, \n ou \r por <br>
+    return str.replace(/(\r\n|\n|\r)/g, breakTag);
 }
 
 // Listagem e ampliacao compartilhadas pelas paginas publicas.
