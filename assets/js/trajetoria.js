@@ -1,6 +1,13 @@
-document.addEventListener("DOMContentLoaded", async () => {
+async function iniciarTrajetoria() {
   const timeline = document.querySelector('.timeline');
   if (!timeline) return;
+  const timelineStatus = document.querySelector('#timeline-status');
+  const timelineRetry = document.querySelector('#timeline-retry');
+  timelineStatus.hidden = false;
+  timelineStatus.textContent = 'Carregando nossa trajetória…';
+  timelineRetry.hidden = true;
+  timelineRetry.onclick = iniciarTrajetoria;
+  timeline.setAttribute('aria-busy', 'true');
 
   const timelineViewport = timeline.querySelector('.timeline-viewport');
   const timelineYears = timeline.querySelector('.timeline-years');
@@ -19,15 +26,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // 1. Busca os dados diretamente da sua API PHP
   try {
-    const response = await fetch('../backend/api_linha_tempo.php');
+    const response = await fetch('../backend/api_linha_tempo.php', { cache: 'no-store', headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(15000) });
+    if (!response.ok) throw new Error('Falha ao consultar a trajetória');
     const resultado = await response.json();
     
-    if (!resultado.sucesso || !resultado.linha_tempo) {
-      console.error("Erro ao carregar linha do tempo");
-      return;
-    }
+    if (!resultado.sucesso || !Array.isArray(resultado.linha_tempo)) throw new Error('Resposta inválida');
 
     const dados = resultado.linha_tempo;
+    if (!dados.length) {
+      timelineStatus.textContent = 'Ainda não há registros disponíveis nesta linha do tempo.';
+      timeline.setAttribute('aria-busy', 'false');
+      return;
+    }
 
     // 2. Monta os anos na navegação de topo e os slides no carrossel dinamicamente
     const track = timeline.querySelector('.timeline-track');
@@ -68,7 +78,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     timelineLinks = [...timelineYears.querySelectorAll('[data-moment]')];
 
   } catch (error) {
-    console.error("Erro de conexão com a API:", error);
+    timelineStatus.textContent = 'Não foi possível carregar a trajetória. Verifique sua conexão e tente novamente.';
+    timelineRetry.hidden = false;
+    timeline.setAttribute('aria-busy', 'false');
     return;
   }
 
@@ -128,6 +140,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     requestAnimationFrame(paintAlbum);
   }
 
+  timelineStatus.hidden = true;
+  timeline.setAttribute('aria-busy', 'false');
   timeline.classList.add('timeline-ready');
   timeline.querySelector('.timeline-controls').hidden = false;
 
@@ -186,4 +200,5 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const initialMoment = location.hash.match(/^#momento-(\d+)$/);
   requestAnimationFrame(() => goToTimeline(initialMoment ? Number(initialMoment[1]) : 0, false));
-});
+}
+document.addEventListener("DOMContentLoaded", iniciarTrajetoria);

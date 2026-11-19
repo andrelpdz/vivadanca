@@ -24,8 +24,20 @@ function setPhoto(image, member) {
 }
 
 
+const memberClear = document.createElement('button');
+memberClear.type = 'button';
+memberClear.className = 'filter-reset';
+memberClear.textContent = 'Limpar busca';
+memberClear.hidden = true;
+document.querySelector('.cast-toolbar').append(memberClear);
+memberClear.addEventListener('click', () => {
+  searchInput.value = '';
+  renderMembers();
+  searchInput.focus();
+});
 function renderMembers() {
   if (!loaded) return;
+  memberClear.hidden = !searchInput.value.trim();
   const query = normalizeName(searchInput.value.trim());
   const visible = members.filter((member) => normalizeName(member.nome).includes(query));
   grid.replaceChildren();
