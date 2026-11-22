@@ -458,12 +458,13 @@ nav .nav-contact {
 	filter: saturate(.75);
 }
 
-.people figure:hover img {
+.people-secondary figure:hover img {
 	transform: scale(1.025);
 }
 
 .people-main img {
 	aspect-ratio: 1/1.04;
+	object-position: center 90%;
 }
 
 .people-secondary img {
