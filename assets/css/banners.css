@@ -30,7 +30,7 @@
   background:linear-gradient(90deg,var(--dark),transparent 28%),linear-gradient(0deg,#210c1340,transparent 35%);
 }
 .editorial-banner .banner-photo figcaption{bottom:24px;left:28px;right:28px}
-.banner-sobre{--banner-position:center 35%}
+.banner-sobre{--banner-position:center 85%}
 .banner-coreografias{--banner-position:center}
 .banner-eventos{--banner-position:center 65%}
 .banner-conquistas{--banner-position:center 25%}
@@ -50,3 +50,6 @@
   .editorial-banner .banner-photo{height:320px;min-height:0}
   .editorial-banner .banner-photo::after{background:linear-gradient(180deg,var(--dark),transparent 22%),linear-gradient(0deg,#210c1340,transparent 35%)}
 }
+
+/* O grupo: transicao mais curta para preservar a artista a esquerda. */
+@media(min-width:701px){.editorial-banner.banner-sobre .banner-photo::after{background:linear-gradient(90deg,var(--dark),rgba(33,12,19,.35) 5%,transparent 14%),linear-gradient(0deg,#210c1340,transparent 35%)}}
