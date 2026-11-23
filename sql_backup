@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17/11/2026 às 21:25
+-- Tempo de geração: 23/11/2026 às 18:13
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -32,8 +32,8 @@ CREATE TABLE `conquistas` (
   `evento_id` int(11) NOT NULL,
   `coreografia_id` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
-  `descricao` text DEFAULT NULL,
-  `foto` varchar(255) NOT NULL
+  `descricao` text NOT NULL,
+  `foto` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -41,7 +41,10 @@ CREATE TABLE `conquistas` (
 --
 
 INSERT INTO `conquistas` (`id`, `evento_id`, `coreografia_id`, `nome`, `descricao`, `foto`) VALUES
-(5, 1, 40, 'teste', 'tesetes', '10a21a043c96d43520aea10ff99c8a68.jpg');
+(2, 1, 25, 'Segundo melhor dançarino', 'Segundo melhor dançarino da noite', 'conquista_04.jpg'),
+(3, 1, 25, 'Conquista 01', '', 'conquista_01.jpg'),
+(4, 1, 25, 'Conquista 02', '', 'conquista_02.jpg'),
+(5, 1, 25, 'Conquista 03', '', 'conquista_03.jpg');
 
 -- --------------------------------------------------------
 
@@ -53,16 +56,19 @@ CREATE TABLE `coreografias` (
   `id` int(11) NOT NULL,
   `titulo` varchar(255) NOT NULL,
   `descricao` text NOT NULL,
-  `data_criacao` date NOT NULL,
-  `modalidade` varchar(255) NOT NULL
+  `data_criacao` date DEFAULT NULL,
+  `modalidade` varchar(255) DEFAULT NULL,
+  `foto` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `coreografias`
 --
 
-INSERT INTO `coreografias` (`id`, `titulo`, `descricao`, `data_criacao`, `modalidade`) VALUES
-(40, 'asdasd', 'asdasdas', '2026-11-03', 'asdasdasd');
+INSERT INTO `coreografias` (`id`, `titulo`, `descricao`, `data_criacao`, `modalidade`, `foto`) VALUES
+(25, 'Tap Dance e Glamour', 'uma dança nova com estilo único', '2023-05-23', 'Sapateado', 'fc96c3551ebf14f990955232c7d52562.jpg'),
+(26, 'Indiana', 'Uma dança com um ritmo envolvente que prende a atenção do publico que levou o grupo a apresentações em palcos e até mesmo apresentação no busão do faustão na Band em 2022', '2022-07-11', 'Indiana', '257b7b77ba8ce31d2e3fbc0c36e08e51.jpg'),
+(27, 'Lancem as cartas', 'uma das primeiras danças criadas pelo grupo que teve algumas premiações em eventos', '2017-06-11', 'lancem as cartas', '555ec70bc55d4fcab86c60dc07fb3a43.jpg');
 
 -- --------------------------------------------------------
 
@@ -98,9 +104,7 @@ CREATE TABLE `eventos` (
 --
 
 INSERT INTO `eventos` (`id`, `nome`, `descricao`, `data_inicio`, `data_termino`, `cidade`, `local`, `premiacao`) VALUES
-(1, 'asdasdasd', 'asdasdasdas', '2026-10-06 14:38:00', '2026-10-23 14:51:00', 'asdasd', 'asdasd', 'asdasdasdasd'),
-(2, 'asdasdasd', 'asdasdasdas', '2026-10-06 14:38:00', '2026-10-23 14:51:00', 'asdasd', 'asdasd', 'asdasdasdasd'),
-(5, 'qwertw', 'asdf', '2026-11-09 13:55:00', '2026-11-19 13:55:00', 'Sorocaba', 'Senac', 'Sein ao');
+(1, 'Festival de dança', 'Outubro', '2026-10-31 12:00:00', '2026-10-31 23:59:00', 'Sorocaba', 'Senac', '');
 
 -- --------------------------------------------------------
 
@@ -113,15 +117,15 @@ CREATE TABLE `galeria` (
   `foto` varchar(64) NOT NULL,
   `descricao` text NOT NULL,
   `data` datetime NOT NULL DEFAULT current_timestamp(),
-  `data_foto` date DEFAULT NULL
+  `nome` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `galeria`
 --
 
-INSERT INTO `galeria` (`id`, `foto`, `descricao`, `data`, `data_foto`) VALUES
-(3, '6a85440c17286525e7c5d0f0dee19d94.jpg', 'teste', '2026-11-17 15:20:10', NULL);
+INSERT INTO `galeria` (`id`, `foto`, `descricao`, `data`, `nome`) VALUES
+(1, 'foto.jpg', 'Descrição', '2026-11-06 14:30:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -142,7 +146,17 @@ CREATE TABLE `integrantes` (
 --
 
 INSERT INTO `integrantes` (`id`, `nome`, `descricao`, `foto`, `ativo`) VALUES
-(26, 'andreee', 'asdfasdfasdfee', '7b19de7d0ae7d32e3d9277abf25b3c08.jpg', 1);
+(24, 'Helena de Souza', 'Maria Helena de Souza é bailarina do Viva Dança Sorocaba 60+ e uma das integrantes com trajetória mais antiga na formação que deu origem ao grupo. Nascida em Botucatu, mudou-se ainda jovem para Sorocaba e construiu carreira como funcionária pública estadual, aposentando-se como diretora administrativa. Entrou na dança coletiva aos 55 anos, cinco anos antes de poder competir nos Jogos Regionais do Idoso em Sorocaba (JORI). Desde então, participa de apresentações, festivais e competições, incluindo o Festival de Dança de Joinville e uma apresentação em programa nacional de televisão. Para Helena, a dança é força, saúde e afirmação da própria existência: “Eu existo. Eu estou aqui.”\r\n\r\nMaria Helena de Souza iniciou sua trajetória na dança coletiva aos 55 anos, em uma formação ligada aos Jogos Regionais do Idoso em Sorocaba (JORI). Como ainda não possuía a idade mínima para competir, participou dos ensaios durante aproximadamente cinco anos antes de realizar sua primeira apresentação na competição. \r\nPosteriormente, integrou a formação do Viva Dança Sorocaba 60+, participando de coreografias de diferentes linguagens, como dança indiana, sapateado irlandês e Bollywood. Sua trajetória inclui apresentações e premiações em festivais, participações no Festival de Dança de Joinville, representação de Sorocaba em competição estadual e atuação em programa nacional de televisão apresentado por Faustão.', 'd5ea88cd0e2341f78647ee02d5a56a8e.jpg', 1),
+(25, 'Suely Aparecida Rodrigues', 'Suely Aparecida Rodrigues é cantora, bailarina e uma das idealizadoras do Viva Dança Sorocaba 60+. Nascida em Lins, cresceu em uma família de músicos, foi baliza durante a infância e cantora de conjunto na adolescência. Começou a dançar coletivamente por volta dos 60 anos e, após representar Sorocaba nos Jogos Regionais do Idoso em Sorocaba (JORI), propôs em 2017 a criação de um grupo independente para que as integrantes continuassem dançando. Desde então, participa de festivais, competições e apresentações no Brasil e no exterior, além de colaborar com a organização de viagens, figurinos e ações de arrecadação. Para Suely, “a dança é vida” e o palco é seu segundo lar.\r\n\r\nSuely Aparecida Rodrigues iniciou sua trajetória artística ainda na infância, atuando como baliza principal em desfiles cívicos na cidade de Lins. Na adolescência, foi cantora de um conjunto musical durante aproximadamente quatro anos, apresentando-se em bailes e eventos. \r\nPor volta dos 60 anos, passou a integrar a equipe de dança que representava Sorocaba nos Jogos Regionais do Idoso em Sorocaba (JORI). Em 2017, foi uma das responsáveis pela criação do Viva Dança Sorocaba 60+, propondo a continuidade independente da formação ao lado das demais integrantes e do coreógrafo Vítor Gil. ', '92f4fb7e73aec122d62caa787705159a.jpg', 1),
+(26, 'Catarina da Silva Mello', 'Catarina Da Silva Mello é professora aposentada, poeta e integrante do Viva Dança Sorocaba 60+. Nascida em Araçoiaba da Serra e radicada em Sorocaba desde a adolescência, construiu uma trajetória marcada pela educação, pela criatividade e pelo incentivo à expressão artística. Durante sua atuação como professora, incorporou música, poesia, teatro e dança às atividades escolares. Depois de criar os filhos, retomou um antigo desejo de estar em cena e passou a dedicar-se à dança. Participou dos Jogos Regionais do Idoso em Sorocaba (JORI) e esteve entre as integrantes que deram continuidade ao trabalho por meio da formação independente do Viva Dança Sorocaba 60+. Além de atuar nos palcos, colabora na escolha e na aquisição de materiais para os figurinos e participa ativamente das ações de manutenção do grupo. Para Catarina, toda pessoa carrega uma forma de arte e envelhecer não significa deixar de aprender, criar ou ocupar novos espaços.\r\n\r\nCatarina integra o Viva Dança Sorocaba 60+ desde o período de formação do grupo. Sua trajetória na dança começou em academias de Sorocaba, com participação em festivais e apresentações, e prosseguiu nos Jogos Regionais do Idoso em Sorocaba (JORI). Como intérprete do Viva Dança, participou de competições, mostras e festivais realizados em diferentes cidades e estados, além de apresentações no exterior e em programa de televisão de alcance nacional. Possui experiências em coreografias temáticas, dança italiana, dança indiana e sapateado irlandês. Também colabora com a produção de figurinos, a aquisição de tecidos e as ações coletivas de sustentabilidade financeira do grupo. Professora aposentada e autora de poemas e paródias, mantém uma relação ampla com a arte, reunindo dança, música, poesia e educação em sua trajetória.', '8fb9622e8450109987a87ded4a495119.jpg', 1),
+(27, 'Marili Nerina Bruestle Pereira da Silva', 'Marili Nerina Bruestle Pereira da Silva é integrante do Viva Dança Sorocaba 60+ desde 2015. Formada em Administração de Empresas, encontrou na dança um espaço de expressão artística, amizade e constante desafio. Ao lado do grupo, participa de festivais, competições e apresentações, levando ao palco uma trajetória marcada por autonomia, disciplina e alegria. Para Marili, cada nova coreografia é uma oportunidade de aprender, superar limites e mostrar que o envelhecimento não interrompe a capacidade de criar: “Ainda tenho muito para fazer. Ainda nem comecei.” \r\n\r\nMarili Nerina Bruestle Pereira da Silva integra o Viva Dança Sorocaba 60+ desde 2015, quando foi selecionada para participar da formação ligada aos Jogos Regionais do Idoso em Sorocaba (JORI). Desde então, atua em coreografias de diferentes linguagens e participa de festivais, competições e apresentações em cidades brasileiras. Entre as experiências marcantes de sua trajetória estão as participações no Festival de Dança de Joinville, apresentações em festivais destinados ao público 60+ e competições com bailarinos de outras faixas etárias. Com o grupo, recebeu troféus e uma premiação especial de inspiração. Sua atuação é marcada pela disciplina, expressividade cênica e compromisso com o aperfeiçoamento artístico.', 'f75c134ca6e899a04e6c72bfbc15c925.jpg', 1),
+(28, 'Neide Isabel Palande', 'Neide Isabel Palande é pedagoga, profissional aposentada da área escolar e integrante do Viva Dança Sorocaba 60+ desde aproximadamente 2020. Apaixonada por bailes, viagens e convivência, encontrou o grupo ao assistir a uma apresentação no Teatro Municipal de Sorocaba e decidiu procurá-lo até conseguir participar. No Viva Dança, descobriu-se capaz de aprender diferentes linguagens, incluindo o sapateado, e passou a atuar em festivais, competições e apresentações. Para Neide, a dança representa alegria, autonomia e a possibilidade de continuar aprendendo: “Nós existimos para viver a vida.” \r\n\r\nNeide Isabel Palande integra o Viva Dança Sorocaba 60+ desde aproximadamente 2020. Com o grupo, atua em coreografias de diferentes linguagens, incluindo dança de salão, danças temáticas e sapateado, participando de festivais, competições, mostras e apresentações públicas. Sua trajetória inclui apresentações em Piratuba, Barra Bonita, Sorocaba e outras cidades, além da participação em trabalhos premiados por desempenho coletivo e figurino. Em Piratuba, também conquistou o terceiro lugar em uma atividade cultural voltada às participantes da melhor idade. Sua atuação é marcada pela alegria cênica, comprometimento com os ensaios e disposição para novos aprendizados.', 'b23aa521675c26d03a731dd23ffc5332.jpg', 1),
+(29, 'Ivani Cristina Portillo de Oliveira', 'Ivani Cristina Portillo de Oliveira é professora aposentada e integrante do Viva Dança Sorocaba 60+. Nascida em Sorocaba, começou a trabalhar aos 12 anos em uma indústria têxtil e, depois de concluir o curso normal, construiu sua trajetória profissional no magistério público, lecionando para crianças dos primeiros anos escolares. Sempre ligada à música, aos bailes e às viagens, aproximou-se da dança artística por meio de aulas e dos Jogos Regionais do Idoso em Sorocaba (JORI). Participou da criação independente do Viva Dança e atua em suas apresentações, festivais e competições desde a formação inicial. Aos 74 anos, idade informada na entrevista, reconhece na dança um espaço de liberdade, autoestima, convivência e transformação pessoal. \r\n\r\nIvani Cristina Portillo de Oliveira integra o Viva Dança Sorocaba 60+ desde sua formação inicial. Sua trajetória inclui aulas de dança, apresentações em festivais e participação nos Jogos Regionais do Idoso em Sorocaba (JORI). Como bailarina do Viva Dança, atua em coreografias temáticas e competitivas, com circulação por diferentes cidades e estados. Entre os trabalhos mais marcantes de seu repertório estão a coreografia de marinheiros e a dança indiana, premiada em etapa estadual. Em Piratuba, Santa Catarina, foi coroada rainha em atividade realizada durante o evento e recebeu, em outra ocasião, indicação como melhor bailarina. Participa também da produção dos figurinos, da aquisição de materiais e da preparação coletiva nos bastidores.', '16bd2968c59abf6d759a323b7b30f222.jpg', 1),
+(30, 'Nilceia Guidolin Zambon', 'Nilceia Guidolin Zambon é professora aposentada, atriz e integrante do Viva Dança Sorocaba 60+. Nascida em Sorocaba, dedicou sua trajetória profissional à educação, trabalhando nas redes estadual e municipal até se aposentar, em 1996. Participou de um grupo teatral durante aproximadamente seis anos e encontrou na dança uma nova forma de expressão artística depois da aposentadoria. Conheceu parte das futuras integrantes do Viva Dança nos Jogos Regionais do Idoso em Sorocaba (JORI) e participou da consolidação do grupo como formação independente. Aos 78 anos, idade informada na entrevista, conciliava dança, gateball, viagens, competições e ações solidárias. Para Nilceia, envelhecer não significa retirar-se da vida, mas encontrar novas maneiras de permanecer em movimento, em convivência e em cena. \r\n\r\nNilceia Guidolin Zambon é atriz e bailarina do Viva Dança Sorocaba 60+. Sua trajetória artística inclui aproximadamente seis anos de atuação teatral em Sorocaba, com participação em diferentes montagens, além de atividades cênicas desenvolvidas no ambiente escolar. Na dança, participou inicialmente dos Jogos Regionais do Idoso em Sorocaba (JORI) e integrou o processo de formação independente do Viva Dança. Com o grupo, atua em coreografias de sapateado e danças temáticas, participando de mostras, competições, festivais, viagens nacionais e apresentação internacional. Entre seus trabalhos mais lembrados está uma coreografia inspirada no sapateado irlandês. Professora aposentada, Nilceia reúne em sua trajetória educação, teatro, dança, convivência e participação comunitária.', 'cb90fe72e5aaf2d6b732f1ca09c991c5.jpg', 1),
+(31, 'Maria Cristina Galvão Leite Gomes', 'Maria Cristina Galvão Leite Gomes é administradora de empresas, formada também em Educação Física, e integrante do Viva Dança Sorocaba 60+ desde julho de 2025. Nascida em São Paulo, construiu sua trajetória profissional na área administrativa e manteve, ao longo da vida, uma relação próxima com o esporte e a expressão corporal. Teve experiências com jazz, dança de salão, sapateado americano e práticas intergeracionais de movimento. Depois de muitos anos dançando acompanhada da irmã, do marido ou da filha, decidiu retomar essa atividade por iniciativa própria e ingressou sozinha no Viva Dança. Sua primeira apresentação com o grupo aconteceu em janeiro de 2026. Cristina reconhece a dança como espaço de realização pessoal, saúde, convivência e exercício da memória, além de representar uma nova geração comprometida com a continuidade do grupo. \r\n\r\nMaria Cristina Galvão Leite Gomes integra o Viva Dança Sorocaba 60+ desde 2025. Sua formação artística reúne experiências em jazz, dança de salão, sapateado americano e práticas intergeracionais de movimento. Entre 2006 e 2008, participou de aulas e espetáculos de dança de salão, com apresentações de bolero, forró, valsa e samba de gafieira, além de números de sapateado e participações teatrais. Em 2025, ingressou no Viva Dança e passou a desenvolver treinamento técnico em sapateado e composição coreográfica. Desde janeiro de 2026, participa de mostras, apresentações e competições com o grupo. Administradora de empresas e formada também em Educação Física, contribui para o projeto com sua experiência em organização, consciência corporal e trabalho coletivo.', 'a8dcae9e01a09b6399f5d446e1e57ba9.jpg', 1),
+(32, 'João Fábio Leonardi', 'João Fábio Leonardi é profissional aposentado de Educação Física e integrante do Viva Dança Sorocaba 60+. Ao longo de 37 anos de carreira, atuou especialmente com basquete, da iniciação ao treinamento de rendimento, e com o ensino de natação para adultos. Também foi atleta de basquete e praticou provas de corrida. Depois da aposentadoria e da mudança para Sorocaba, desenvolveu durante vários anos um trabalho voluntário de iniciação esportiva. Começou a dançar depois dos 60 anos, inicialmente por influência de Eliana, sua esposa, e em atividades ligadas aos Jogos Regionais do Idoso em Sorocaba (JORI). No Viva Dança, participa de ensaios, apresentações, festivais e competições, incluindo uma viagem artística a Portugal. Único homem da formação atual, Fábio encontrou na dança um novo campo de aprendizagem, realização e trabalho coletivo. \r\n\r\nJoão Fábio Leonardi integra o Viva Dança Sorocaba 60+, grupo dedicado à criação, apresentação e circulação de coreografias interpretadas por artistas com mais de 60 anos. Iniciou sua trajetória na dança após a aposentadoria, participando inicialmente de danças circulares, dança de salão e atividades ligadas aos Jogos Regionais do Idoso em Sorocaba (JORI). \r\nComo integrante do Viva Dança, desenvolve formação prática em diferentes linguagens, incluindo sapateado, danças folclóricas e dança contemporânea. Participou de apresentações, festivais e competições no Brasil e de uma viagem artística a Portugal. Integra o elenco da coreografia contemporânea Memórias em Trânsito e também criou e apresentou um dueto com Eliana Aparecida Galvão. \r\nFormado em Educação Física, Fábio possui 37 anos de experiência profissional nas áreas de basquete e natação. Sua trajetória esportiva contribui para sua disciplina, persistência, consciência corporal e compreensão da dança como construção coletiva.', 'fa653986845b4539ab80fafbd0d4d515.jpg', 1),
+(33, 'Eliana Aparecida Galvão', 'Eliana Aparecida Galvão é formada em Educação Física, policial civil aposentada, focalizadora de danças circulares e integrante do Viva Dança Sorocaba 60+. Dança desde a juventude e retomou essa relação de maneira mais intensa durante a preparação para a aposentadoria. Depois de se mudar para Sorocaba, buscou formações específicas e passou a conduzir voluntariamente grupos de danças circulares em pé e sentadas, ampliando a participação de pessoas com diferentes condições de mobilidade. Ingressou no Viva Dança depois de aproximadamente dois anos acompanhando o trabalho do grupo. Em sua estreia, aprendeu uma coreografia de sapateado em cerca de duas semanas e participou de uma conquista de primeiro lugar em Curitiba. Sua trajetória reúne disciplina, autonomia, facilidade musical e compromisso com a democratização da dança. \r\n\r\nEliana Aparecida Galvão integra o Viva Dança Sorocaba 60+, com atuação em sapateado, dança folclórica, dança contemporânea e outras composições coreográficas. Sua relação com a dança começou na juventude e foi retomada de maneira sistemática após sua aposentadoria e mudança para Sorocaba. \r\nPossui formações específicas em danças circulares e participa de cursos de aperfeiçoamento realizados em diferentes cidades brasileiras. Como focalizadora, conduz voluntariamente grupos de danças circulares em pé e sentadas, desenvolvendo repertórios adaptados a participantes com diferentes possibilidades de movimento. \r\nIngressou no Viva Dança após acompanhar o grupo durante aproximadamente dois anos. Em sua estreia, aprendeu uma coreografia de sapateado em cerca de duas semanas e participou de uma competição em Curitiba na qual o grupo conquistou o primeiro lugar. Integra também a coreografia contemporânea Memórias em Trânsito e criou, com João Fábio Leonardi, um dueto sobre o amor vivido na maturidade.', '62206b83bffabf23dbc40ecfbd0c90be.jpg', 1),
+(34, 'Vítor Gil', 'Coreógrafo e orientador artístico do Viva Dança Sorocaba 60+. Acompanha o núcleo desde o período anterior à formação independente e responde pela criação coreográfica, preparação técnica, adaptação dos movimentos e desenvolvimento do repertório. Informações biográficas e currículo completo ainda precisam ser fornecidos pelo profissional.', '18ec9d21fd38d00433511bddeb49c3ea.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -162,7 +176,15 @@ CREATE TABLE `linha_tempo` (
 --
 
 INSERT INTO `linha_tempo` (`id`, `foto`, `descricao`, `data`) VALUES
-(2, '6b8da3808478f0864b07c7ecad6cd3ec.jpg', 'teste', 20261109);
+(13, 'Vivadanca8.jpg', 'Foi quando o grupo começou, O grupo inicial reunia mulheres com trajetórias diversas: algumas vinham de experiências em bailes, teatro, música, desfiles; outras nunca haviam dançado, movidas apenas pela vontade de aprender.', 2015),
+(14, 'Vivadanca3.jpg', 'Diante da possibilidade de não poderem continuar juntas na formação ligada ao JORI, Suely propõe: “Vamos montar o nosso grupo”. A decisão é tomada: criam o Viva Dança Sorocaba, com Vítor Gil como coreógrafo. Sem apoio institucional, organizam bingos, rifas, festas e campanhas para custear ensaios no Central Parque, figurinos e viagens. A coreografia Lancem as Cartas marca essa fase.', 2017),
+(15, 'Vivadanca1.jpg', 'O grupo amplia a circulação: festivais em cidades paulistas e em Piratuba (SC), que se torna um espaço querido e simbólico. Ingressam no Festival de Dança de Joinville sempre que há categoria para 60+. O repertório cresce: dança indiana, Bollywood, sapateado, dança italiana e salsa. A Hora do Show é apontada como uma das primeiras coreografias de sapateado do grupo.', 2018),
+(16, 'Vivadanca9.jpg', 'Conquistam a medalha de ouro na etapa estadual dos Jogos da Melhor Idade em Jundiaí, com dança indiana — considerada título inédito para Sorocaba. Participam de programa de televisão com Faustão, apresentando Indiana e Sapatear Bollywood. O reconhecimento confirma que artistas 60+ brilham em palcos competitivos.', 2019),
+(17, 'Vivadanca2.jpg', 'Ensaios e apresentações são interrompidos pela pandemia. Neide conhece o grupo em apresentação no Teatro Municipal de Sorocaba e decide participar, ingressando neste período. Enfrentam o desafio de recomeçar, mantendo viva a convivência e o desejo de dançar.', 2020),
+(18, 'Vivadanca7.jpg', 'Retomam os palcos com premiações em Sorocaba, Pindamonhangaba, Itu, Vinhedo, Mauá, Barra Bonita, Indaiatuba e Curitiba. Fábio (primeiro homem do elenco) e Eliana ingressam — ela estreia aprendendo uma coreografia de sapateado em apenas duas semanas, com conquista de 1º lugar em Curitiba. O grupo passa a ensaiar no Centro do Professorado Paulista (CPP).', 2021),
+(19, 'Vivadanca4.jpg', 'Viagem artística a Portugal: duas apresentações, dois segundos lugares e recebimento de certificado-convite para apresentações internacionais. Parte das integrantes estende a viagem pela Europa. Nasce Memórias em Trânsito, obra contemporânea com malas e deslocamentos, celebrando a experiência de vida sem reduzir-se à idade.', 2024),
+(20, 'Vivadanca6.jpg', 'Em julho de 2025, Cristina ingressa no grupo, retomando o sapateado de forma autônoma. Em janeiro de 2026, faz sua estreia oficial. O elenco atual reúne 10 artistas 60+ (9 mulheres + 1 homem) e o coreógrafo: fundadoras, integrantes antigas e recém-chegadas, unindo memória e renovação. Três novas coreografias estão em preparação.', 2026),
+(21, 'Vivadanca5.jpg', 'Lançamento da Matriz Institucional consolidada. Mais de 10 anos de trajetória, 99 registros de atividades, 41 premiações, 54 troféus e reconhecimentos. O futuro traz metas: formar turma preparatória, digitalizar o acervo, produzir documentário/livro/exposição, ampliar a circulação e captar recursos para garantir que a dança continue sendo direito de todos.', 2026);
 
 -- --------------------------------------------------------
 
@@ -184,26 +206,17 @@ CREATE TABLE `participantes` (
 
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
-  `nome` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `senha` varchar(255) NOT NULL,
-  `criado` timestamp NOT NULL DEFAULT current_timestamp(),
-  `tipo_usuario` varchar(20) NOT NULL DEFAULT 'editor',
-  `permissões` text DEFAULT NULL
+  `nome` varchar(50) NOT NULL,
+  `email` varchar(64) NOT NULL,
+  `senha` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`, `criado`, `tipo_usuario`, `permissões`) VALUES
-(1, 'admin', 'admin@email.com', '$2y$10$pk5eG3gnB.wx56hTEfNhheRaLC0DZnHKsj9ErS2E9R3tDms3v7dy2', '2026-10-06 16:45:11', 'editor', NULL),
-(2, 'jeff', 'jeff@email.com', '$2a$12$ENx0f1V0/GNVQJFtKOI8TeaiyQj9gkr2QfXXAwJ1L6xjniY9PdBwW', '2026-10-06 16:45:11', 'editor', NULL),
-(3, 'felipe', 'felipe@email.com', '$2a$12$ENx0f1V0/GNVQJFtKOI8TeaiyQj9gkr2QfXXAwJ1L6xjniY9PdBwW', '2026-10-06 16:45:11', 'editor', NULL),
-(13, 'Izete', 'izete@email.com', '$2a$12$ENx0f1V0/GNVQJFtKOI8TeaiyQj9gkr2QfXXAwJ1L6xjniY9PdBwW', '2026-10-06 18:13:01', 'editor', NULL),
-(18, 'Jurema1', 'jurema3@email.com', '$2y$10$/z1lJpEv.LwSDzXTN4mZSejmH51./ru5PdguREia.KLQXLxc84KxO', '2026-10-06 19:40:21', 'editor', NULL),
-(19, 'andre', 'andre@email.com', '$2y$10$/xINnOyQhLQPKK34qCiLh.uQbwx0fpDC5B6rEPuCJVDwmeCSVu7te', '2026-10-09 17:07:32', 'editor', NULL),
-(20, 'Jeff Rayner', 'jeff_rayner@email.com', '$2y$10$igpGzyjkWLl./p1rCCzyMe0pWr5rlmzH/JjMBWc9xqDBgxBYZ0wBO', '2026-10-13 16:45:06', 'editor', NULL);
+INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`) VALUES
+(1, 'well', 'admin@email.com', '$2y$10$pk5eG3gnB.wx56hTEfNhheRaLC0DZnHKsj9ErS2E9R3tDms3v7dy2');
 
 --
 -- Índices para tabelas despejadas
@@ -267,8 +280,7 @@ ALTER TABLE `participantes`
 -- Índices de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
@@ -278,55 +290,55 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `conquistas`
 --
 ALTER TABLE `conquistas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `coreografias`
 --
 ALTER TABLE `coreografias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de tabela `dancarinos`
 --
 ALTER TABLE `dancarinos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de tabela `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `galeria`
 --
 ALTER TABLE `galeria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `integrantes`
 --
 ALTER TABLE `integrantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de tabela `linha_tempo`
 --
 ALTER TABLE `linha_tempo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de tabela `participantes`
 --
 ALTER TABLE `participantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restrições para tabelas despejadas
