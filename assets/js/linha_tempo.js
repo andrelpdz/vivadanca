@@ -29,6 +29,7 @@ function editarFormulario(id, descricao, data){
     document.getElementById("id").value = id;
     document.getElementById("descricao").value = descricao;
     document.getElementById("data").value = data; // Seleciona automaticamente o ano correspondente no select
+    document.getElementById("foto").required = false;
     document.getElementById("btnEnviar").value = "Atualizar";
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
