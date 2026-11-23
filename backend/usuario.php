@@ -6,23 +6,21 @@ require_once __DIR__ . "/conexao.php";
    CADASTRAR USUÁRIO
 ========================================= */
 
-function cadastrarUsuario($nome, $email, $senha, $tipo_usuario, $permissoes) {
+function cadastrarUsuario($nome, $email, $senha) {
     global $con;
 
     try {
         $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO usuario (nome, email, senha, tipo_usuario, permissoes)
-                VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO usuario (nome, email, senha)
+                VALUES (?, ?, ?)";
 
         $stmt = $con->prepare($sql);
         $stmt->bind_param(
-            "sssss",
+            "sss",
             $nome,
             $email,
             $senha_cripto,
-            $tipo_usuario,
-            $permissoes
         );
 
         $resultado = $stmt->execute();
@@ -43,8 +41,7 @@ function cadastrarUsuario($nome, $email, $senha, $tipo_usuario, $permissoes) {
 function listarUsuarios() {
     global $con;
 
-    $sql = "SELECT id, nome, email, tipo_usuario, permissoes, criado
-            FROM usuario";
+    $sql = "SELECT * FROM usuario";
 
     $resultado = $con->query($sql);
 
@@ -58,7 +55,7 @@ function listarUsuarios() {
 function obterUsuario($id) {
     global $con;
 
-    $sql = "SELECT id, nome, email, tipo_usuario, permissoes
+    $sql = "SELECT id, nome, email
             FROM usuario
             WHERE id = ?";
 
@@ -77,7 +74,7 @@ function obterUsuario($id) {
    ATUALIZAR USUÁRIO
 ========================================= */
 
-function atualizarUsuario($id, $nome, $email, $senha, $tipo_usuario, $permissoes) {
+function atualizarUsuario($id, $nome, $email, $senha) {
     global $con;
 
     try {
@@ -90,20 +87,16 @@ function atualizarUsuario($id, $nome, $email, $senha, $tipo_usuario, $permissoes
             $sql = "UPDATE usuario
                     SET nome = ?,
                         email = ?,
-                        senha = ?,
-                        tipo_usuario = ?,
-                        permissoes = ?
+                        senha = ?
                     WHERE id = ?";
 
             $stmt = $con->prepare($sql);
 
             $stmt->bind_param(
-                "sssssi",
+                "sssi",
                 $nome,
                 $email,
                 $senha_cripto,
-                $tipo_usuario,
-                $permissoes,
                 $id
             );
 
@@ -112,19 +105,15 @@ function atualizarUsuario($id, $nome, $email, $senha, $tipo_usuario, $permissoes
             // Mantém a senha atual
             $sql = "UPDATE usuario
                     SET nome = ?,
-                        email = ?,
-                        tipo_usuario = ?,
-                        permissoes = ?
+                        email = ?
                     WHERE id = ?";
 
             $stmt = $con->prepare($sql);
 
             $stmt->bind_param(
-                "ssssi",
+                "ssi",
                 $nome,
                 $email,
-                $tipo_usuario,
-                $permissoes,
                 $id
             );
         }
