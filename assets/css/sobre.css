@@ -29,3 +29,6 @@
 @media(prefers-reduced-motion:reduce){.about-history-photo img{transition:none}}
 /* Exibe a fotografia completa, sem recorte nem altura fixa. */
 .about-together-grid>img{display:block;width:100%;height:auto;max-height:none;aspect-ratio:auto;object-fit:contain}
+
+/* Mantem toda a composicao da foto dos principios, inclusive no celular. */
+.about-principles-photo img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
