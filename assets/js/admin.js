@@ -48,10 +48,10 @@ adminPreview.alt = 'Prévia da foto';
 adminPreview.hidden = true;
 adminPreview.style.cssText = 'max-width:220px;max-height:180px;object-fit:contain;margin-block:12px';
 adminPhoto.after(adminPreview);
-const adminNew = adminNode('button', 'Novo cadastro');
-adminNew.type = 'button';
-adminNew.hidden = true;
-adminSubmit.after(adminNew);
+// const adminNew = adminNode('button', 'Novo cadastro');
+// adminNew.type = 'button';
+// adminNew.hidden = true;
+// adminSubmit.after(adminNew);
 const adminPhotoUrl = (record) => `../assets/${adminConfig.folder}/${encodeURIComponent(String(record.foto).split(/[\\/]/).pop())}`;
 let previewObjectUrl;
 
@@ -61,11 +61,11 @@ function resetAdminForm() {
   adminSubmit.value = 'Cadastrar';
   adminPhoto.required = adminCollection !== 'coreografia';
   adminPreview.hidden = true;
-  adminNew.hidden = true;
+  // adminNew.hidden = true;
   adminFeedback.textContent = '';
   if (previewObjectUrl) URL.revokeObjectURL(previewObjectUrl);
 }
-adminNew.addEventListener('click', resetAdminForm);
+// adminNew.addEventListener('click', resetAdminForm);
 adminPhoto.addEventListener('change', () => {
   if (previewObjectUrl) URL.revokeObjectURL(previewObjectUrl);
   const file = adminPhoto.files[0];
@@ -81,7 +81,7 @@ function editAdminRecord(record) {
   adminPhoto.required = false;
   adminPreview.hidden = !record.foto;
   if (record.foto) adminPreview.src = adminPhotoUrl(record);
-  adminNew.hidden = false;
+  // adminNew.hidden = false;
   adminFeedback.textContent = 'Editando cadastro. Deixe a foto em branco para manter a atual.';
   adminForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
