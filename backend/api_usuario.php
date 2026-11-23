@@ -13,12 +13,11 @@ function cadastrar() {
     $email = trim($_POST['email'] ?? '');
     $senha = $_POST['senha'] ?? '';
     $confirmarSenha = $_POST['confirmarSenha'] ?? '';
-    $tipo_usuario = trim($_POST['tipo_usuario'] ?? 'editor');
-
-    $permissoes_arr = $_POST['permissoes'] ?? [];
-    $permissoes = is_array($permissoes_arr)
-        ? implode(", ", $permissoes_arr)
-        : $permissoes_arr;
+    // $tipo_usuario = trim($_POST['tipo_usuario'] ?? 'editor');
+    // $permissoes_arr = $_POST['permissoes'] ?? [];
+    // $permissoes = is_array($permissoes_arr)
+    //     ? implode(", ", $permissoes_arr)
+    //     : $permissoes_arr;
 
     if ($nome === '' || $email === '') {
         throw new Exception("Preencha nome e e-mail.");
@@ -36,8 +35,6 @@ function cadastrar() {
         $nome,
         $email,
         $senha,
-        $tipo_usuario,
-        $permissoes
     );
 
     if (!$resposta) {
@@ -52,12 +49,12 @@ function atualizar() {
     $nome = trim($_POST['nome'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $senha = $_POST['senha'] ?? '';
-    $tipo_usuario = trim($_POST['tipo_usuario'] ?? 'editor');
+    // $tipo_usuario = trim($_POST['tipo_usuario'] ?? 'editor');
 
-    $permissoes_arr = $_POST['permissoes'] ?? [];
-    $permissoes = is_array($permissoes_arr)
-        ? implode(", ", $permissoes_arr)
-        : $permissoes_arr;
+    // $permissoes_arr = $_POST['permissoes'] ?? [];
+    // $permissoes = is_array($permissoes_arr)
+    //     ? implode(", ", $permissoes_arr)
+    //     : $permissoes_arr;
 
     if ($id === '') {
         throw new Exception("ID do usuário não informado.");
@@ -76,8 +73,6 @@ function atualizar() {
         $nome,
         $email,
         $senha,
-        $tipo_usuario,
-        $permissoes
     );
 
     if (!$resposta) {
