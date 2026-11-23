@@ -7,7 +7,13 @@ const eventCity = document.querySelector('#event-city');
 const eventYear = document.querySelector('#event-year');
 const eventSort = document.querySelector('#event-sort');
 let agendaEvents = [];
-let period = 'all';
+let period = 'upcoming';
+let eventPage = 1;
+const eventsPerPage = 6;
+const eventPagination = document.querySelector('#events-pagination');
+const eventPageStatus = document.querySelector('#events-page-status');
+const eventPrevious = document.querySelector('#events-previous');
+const eventNext = document.querySelector('#events-next');
 let eventsLoaded = false;
 const normalizeEvent = (value) => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR');
 const saoPauloDate = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date()).reduce((parts, part) => ({ ...parts, [part.type]: part.value }), {});
@@ -97,22 +103,20 @@ eventClear.addEventListener('click', () => {
   eventSearch.value = '';
   eventCity.value = '';
   eventYear.value = '';
-  eventSort.value = 'latest';
-  period = 'all';
-  document.querySelectorAll('[data-period]').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.period === 'all')));
-  document.querySelector('#period-title').textContent = 'Todos os eventos';
+  eventSort.value = period === 'upcoming' ? 'nearest' : 'latest';
+  eventPage = 1;
   renderEvents();
   eventSearch.focus();
 });
 function renderEvents() {
   if (!eventsLoaded) return;
-  eventClear.hidden = !eventSearch.value.trim() && !eventCity.value && !eventYear.value && period === 'all';
+  eventClear.hidden = !eventSearch.value.trim() && !eventCity.value && !eventYear.value;
   const current = saoPauloDate();
   const today = `${current.year}-${current.month}-${current.day}`;
   const query = normalizeEvent(eventSearch.value.trim());
   const visible = agendaEvents.filter((event) => {
     const isPast = Boolean(event.endKey || event.startKey) && (event.endKey || event.startKey) < today;
-    return (period === 'all' || (period === 'past' ? isPast : !isPast))
+    return (period === 'past' ? isPast : !isPast)
       && (!eventCity.value || event.cidade === eventCity.value)
       && (!eventYear.value || event.startKey.slice(0, 4) === eventYear.value)
       && normalizeEvent([event.nome, event.descricao, event.cidade, event.local].join(' ')).includes(query);
@@ -121,7 +125,14 @@ function renderEvents() {
     if (!b.startKey) return -1;
     return eventSort.value === 'nearest' ? a.startKey.localeCompare(b.startKey) : b.startKey.localeCompare(a.startKey);
   });
-  eventList.replaceChildren(...visible.map(createEvent));
+  const totalPages = Math.max(1, Math.ceil(visible.length / eventsPerPage));
+  eventPage = Math.min(eventPage, totalPages);
+  const offset = (eventPage - 1) * eventsPerPage;
+  eventList.replaceChildren(...visible.slice(offset, offset + eventsPerPage).map(createEvent));
+  eventPagination.hidden = visible.length <= eventsPerPage;
+  eventPageStatus.textContent = `Página ${eventPage} de ${totalPages}`;
+  eventPrevious.disabled = eventPage === 1;
+  eventNext.disabled = eventPage === totalPages;
   eventCount.textContent = `${visible.length} ${visible.length === 1 ? 'evento' : 'eventos'}`;
   eventStatus.hidden = visible.length > 0;
   const filtered = query || eventCity.value || eventYear.value;
@@ -156,12 +167,30 @@ async function loadEvents() {
 
 document.querySelectorAll('[data-period]').forEach((button) => button.addEventListener('click', () => {
   period = button.dataset.period;
+  eventPage = 1;
+  eventSearch.value = '';
+  eventCity.value = '';
+  eventYear.value = '';
+  document.querySelector('.events-filters').hidden = period !== 'past';
   document.querySelectorAll('[data-period]').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
   document.querySelector('#period-title').textContent = button.textContent;
   eventSort.value = period === 'upcoming' ? 'nearest' : 'latest';
   renderEvents();
 }));
-eventSearch.addEventListener('input', renderEvents);
-[eventCity, eventYear, eventSort].forEach((select) => select.addEventListener('change', renderEvents));
+function resetEventPage() {
+  eventPage = 1;
+  renderEvents();
+}
+function changeEventPage(step) {
+  eventPage += step;
+  renderEvents();
+  const title = document.querySelector('#period-title');
+  title.focus({ preventScroll: true });
+  title.scrollIntoView({ block: 'start', behavior: 'auto' });
+}
+eventPrevious.addEventListener('click', () => changeEventPage(-1));
+eventNext.addEventListener('click', () => changeEventPage(1));
+eventSearch.addEventListener('input', resetEventPage);
+[eventCity, eventYear, eventSort].forEach((select) => select.addEventListener('change', resetEventPage));
 eventRetry.addEventListener('click', loadEvents);
 loadEvents();
