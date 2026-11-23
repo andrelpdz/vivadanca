@@ -5,7 +5,7 @@ require_once __DIR__ . "/foto.php";
 function cadastrarGaleria($foto, $nome, $descricao, $dataFoto){
     global $con;
     try{
-        $sql = "INSERT INTO galeria(foto, nome, descricao, data_foto) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO galeria(foto, nome, descricao, data) VALUES (?, ?, ?, ?)";
         $stmt = $con->prepare($sql);
         $stmt->bind_param("ssss", $foto, $nome, $descricao, $dataFoto);
         $stmt->execute();
@@ -35,7 +35,7 @@ function obterGaleria($id){
 
 function atualizarGaleria($id, $foto, $nome, $descricao, $dataFoto){
     global $con;
-    $sql = "UPDATE galeria SET foto = ?, nome = ?, descricao = ?, data_foto = ? WHERE id = ?";
+    $sql = "UPDATE galeria SET foto = ?, nome = ?, descricao = ?, data = ? WHERE id = ?";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("ssssi", $foto, $nome, $descricao, $dataFoto, $id);
     $resultado = $stmt->execute();
