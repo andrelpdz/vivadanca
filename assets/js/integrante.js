@@ -67,11 +67,11 @@ async function loadProfile() {
   profileStatus.textContent = 'Carregando a história deste integrante…';
   profileSection.setAttribute('aria-busy', 'true');
   try {
-    const response = await fetch(`../backend/obter_integrante.php?id=${encodeURIComponent(memberId)}`, { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(15000) });
+    const response = await fetch(`../backend/api_integrante.php?id=${encodeURIComponent(memberId)}`, { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(15000) });
     if (!response.ok) throw new Error('Falha na consulta');
     const data = await response.json();
     if (!data.sucesso) throw new Error('Resposta inválida');
-    const member = data.integrante;
+    const member = data.integrante || data.integrantes;
     if (!member || typeof member.nome !== 'string') {
       profileStatus.textContent = 'Este integrante não foi encontrado. Volte à listagem para escolher outro perfil.';
       return;
@@ -97,7 +97,7 @@ async function loadProfile() {
     renderWork(document.querySelector('#achievements-list'), achievements, 'achievement');
     profileStatus.hidden = true;
     profileSection.hidden = false;
-    workSection.hidden = false;
+    workSection.hidden = choreographies.length === 0 && achievements.length === 0;
   } catch {
     profileStatus.textContent = 'Não foi possível carregar este perfil. Tente novamente em instantes ou volte à listagem de integrantes.';
     profileRetry.hidden = false;
