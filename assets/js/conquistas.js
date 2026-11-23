@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const nomeFoto = caminhoAtual.split("/").pop();
 
             if (nomeFoto && nomeFoto.startsWith("conquista_")) {
-                const caminhoCorreto = `/vivadanca/assets/img/conquistas/${nomeFoto}`;
+                const caminhoCorreto = `/vivadanca/assets/conquistas/${nomeFoto}`;
 
                 if (img.getAttribute("src") !== caminhoCorreto) {
                     img.setAttribute("src", caminhoCorreto);

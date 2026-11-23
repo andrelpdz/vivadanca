@@ -1,5 +1,6 @@
 function criarCard(item){
-    const caminhoFoto = `../${(item.foto || "").replace(/^\/+/, "")}`;
+    const caminhoFoto = `../assets/conquistas/${(item.foto || "").replace(/^\/+/, "")}`;
+    console.log(caminhoFoto);
 
     return `
     <div style="padding: 20px; border: 1px solid #e1e5ec; border-radius: 12px; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
