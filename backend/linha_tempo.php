@@ -17,7 +17,7 @@ function cadastrarLinhaTempo($foto, $descricao, $data){
 
 function listarLinhasTempo(){
     global $con;
-    $sql = "SELECT * FROM linha_tempo ORDER BY data DESC";
+    $sql = "SELECT * FROM linha_tempo ORDER BY data ASC";
     $resultado = $con->query($sql);
     return $resultado->fetch_all(MYSQLI_ASSOC);
 }

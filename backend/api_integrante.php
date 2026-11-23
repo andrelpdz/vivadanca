@@ -35,7 +35,12 @@ function atualizar(){
     $ativo = isset($_POST['ativo']) ? 1 : 0 ;
     $foto = $_FILES['foto'];
     try{
-        $nome_foto = salvarFoto("integrantes", $foto);
+        $integrante = obterIntegrante($id);
+        $nome_foto = $integrante["foto"];
+        try{
+            $nome_foto = salvarFoto("integrantes", $foto);
+            excluirFoto("integrantes", $integrante["foto"]);
+        }catch(throwable $e){}
         $resposta = atualizarIntegrante($id, $nome, $descricao, $nome_foto, $ativo);
         if (!$resposta){
             throw new Exception("Erro ao atualizar o integrante");

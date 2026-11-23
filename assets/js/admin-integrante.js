@@ -1,10 +1,11 @@
 function criarCard(integrante){
+    const integranteJSON = JSON.stringify(integrante)
     const card = `
     <div>
         <img src="../assets/integrantes/${integrante.foto}" alt="" width=200 height=200>
         <p>${integrante.nome}</p>
         <span>
-            <button onclick="editarFormulario('${integrante.id}', '${integrante.nome}', '${integrante.descricao}', '${integrante.foto}', '${integrante.ativo}')">Editar</button>
+            <button data-integrante='${integranteJSON}' onclick="editarFormulario(this.dataset.integrante)">Editar</button>
             <button onclick="excluirIntegrante(${integrante.id})" >Excluir</button>
         </span>
     </div>
@@ -13,7 +14,9 @@ function criarCard(integrante){
     return card;
 }
 
-function editarFormulario(id, nome, descricao, foto, ativo){
+function editarFormulario(dados){
+    let integrante = JSON.parse(dados);
+
     const campo_id = document.getElementById("id");
     const campo_nome = document.getElementById("nome");
     const campo_descricao = document.getElementById("descricao");
@@ -21,10 +24,10 @@ function editarFormulario(id, nome, descricao, foto, ativo){
     const campo_ativo = document.getElementById("ativo");
     const btn = document.getElementById("btnEnviar");
 
-    campo_id.value = id;
-    campo_nome.value = nome;
-    campo_descricao.value = descricao;
-    campo_ativo.checked = ativo;
+    campo_id.value = integrante.id;
+    campo_nome.value = integrante.nome;
+    campo_descricao.value = integrante.descricao;
+    campo_ativo.checked = integrante.ativo;
     btn.value = "Atualizar";
 }
 
