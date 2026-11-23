@@ -58,6 +58,7 @@ function editarFormulario(evento){
     
     const btn = document.getElementById("btnEnviar");
     btn.value = "Atualizar";
+    btn.textContent = "Atualizar";
     
     // Opcional: rolar a página para o topo onde está o formulário
     window.scrollTo({ top: 0, behavior: 'smooth' });
