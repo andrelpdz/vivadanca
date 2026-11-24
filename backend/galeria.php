@@ -18,7 +18,7 @@ function cadastrarGaleria($foto, $nome, $descricao, $dataFoto){
 
 function listarGaleria(){
     global $con;
-    $sql = "SELECT * FROM galeria ORDER BY data ASC";
+    $sql = "SELECT * FROM galeria ORDER BY data DESC";
     $resultado = $con->query($sql);
     return $resultado->fetch_all(MYSQLI_ASSOC);
 }
