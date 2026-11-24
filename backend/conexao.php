@@ -5,7 +5,7 @@
 //$banco = "if0_43466453_vivadanca";
 
 //if(strpos($_SERVER['SERVER_NAME'],'localhost') !== false) {
-    $local = "10.62.57.79";
+    $local = "localhost";
     $usuario = "root";
     $senha = "";
     $banco = "pi_danca"; 
