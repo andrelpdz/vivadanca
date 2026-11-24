@@ -18,7 +18,7 @@ function cadastrarIntegrante($nome, $descricao, $nome_foto, $ativo){
 
 function listarIntegrantes(){
     global $con;
-    $sql = "SELECT * FROM integrantes";
+    $sql = "SELECT * FROM integrantes ORDER BY nome ASC";
     $resultado = $con->query($sql);
     return $resultado->fetch_all(MYSQLI_ASSOC);
 }
